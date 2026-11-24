@@ -1,0 +1,343 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { CATEGORY_NAME_TO_SLUG } from "../data/categories.js";
+import { SITE_URL, SITE_NAME, ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import AdSlot from "../components/AdSlot.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+const wheelEntries = Object.entries(SPECIALIZED_WHEELS as Record<string, any>);
+const totalCount = wheelEntries.length;
+const canonicalUrl = `${SITE_URL}/tools`;
+
+const toolsTitle = `All ${totalCount} Free Spin Wheels | Random Wheel Picker Directory`;
+const toolsDesc = `Browse all ${totalCount} free online spin wheels: Wheel of Names, Country Wheel, Number Picker 1–100, Animal Wheel, Yes or No, Color Wheel Spinner & more.`;
+
+const CAT_PILLS = [
+  { key: "Quick Decisions", label: "⚡ Quick Decisions" },
+  { key: "Names & Classrooms", label: "👤 Names & Classrooms" },
+  { key: "Numbers & Math", label: "🔢 Numbers & Math" },
+  { key: "Giveaways & Events", label: "🎁 Giveaways & Events" },
+  { key: "Food & Lifestyle", label: "🍽️ Food & Lifestyle" },
+  { key: "Party & Games", label: "🎉 Party & Games" },
+  { key: "Gaming & Pop Culture", label: "🎮 Gaming & Pop Culture" },
+  { key: "Geography & Knowledge", label: "🌍 Geography & Knowledge" }
+];
+
+const catCounts: Record<string, number> = {};
+for (const [, w] of wheelEntries) {
+  const c = w.category || "Other";
+  catCounts[c] = (catCounts[c] || 0) + 1;
+}
+
+const toolsGraphSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 },
+      contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}/#organization` }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonicalUrl}#webpage`,
+      name: "Random Picker Wheels Directory",
+      description: `Directory of ${totalCount} specialized online random picker wheels for decisions, classrooms, giveaways, numbers, food, gaming, and geography.`,
+      url: canonicalUrl,
+      inLanguage: "en",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      breadcrumb: { "@id": `${canonicalUrl}#breadcrumbs` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: totalCount,
+        itemListElement: wheelEntries.map(([slug, w], idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: w.name,
+          url: `${SITE_URL}/${slug}`
+        }))
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumbs`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "All Tools", item: canonicalUrl }
+      ]
+    }
+  ]
+};
+const schemaJson = JSON.stringify(toolsGraphSchema).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{toolsTitle}</title>
+  <meta name="description" content={toolsDesc} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content={toolsTitle} />
+  <meta property="og:description" content={toolsDesc} />
+  <meta property="og:image" content={`${SITE_URL}/eng-spin-the-wheel-picker.webp`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={toolsTitle} />
+  <meta name="twitter:description" content={toolsDesc} />
+  <meta name="twitter:image" content={`${SITE_URL}/eng-spin-the-wheel-picker.webp`} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+
+  <AnalyticsHead enableAds={true} />
+  <script type="application/ld+json" set:html={schemaJson} />
+</head>
+
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/tools" />
+
+  <main class="container" style="padding: 32px 20px 80px; max-width: 1240px; margin: 0 auto;">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 20px; font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a>
+      <span aria-hidden="true">&rsaquo;</span>
+      <span style="color: var(--text-primary); font-weight: 700;" aria-current="page">All Tools ({totalCount})</span>
+    </nav>
+
+    <section class="hero-section" style="text-align: center; margin-bottom: 32px;">
+      <div style="display:inline-block; margin-bottom: 12px;">
+        <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(245,158,11,0.12); color:#D97706; font-size:0.82rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:6px 16px; border-radius:999px; border:1px solid rgba(245,158,11,0.25);">
+          🎯 Complete Wheel Catalog • {totalCount} Free Tools
+        </span>
+      </div>
+      <h1 class="hero-title" style="margin-bottom: 12px;">
+        Explore All <span>Random Picker Wheels</span>
+      </h1>
+      <p class="hero-subtitle" style="max-width: 780px; margin: 0 auto 24px;">
+        Every specialized wheel uses browser Web Cryptography randomness, holds up to 500 entries, supports 1x–20x slice weights, winner removal, and QR sharing, and runs free with zero signup.
+      </p>
+
+      <div style="max-width: 620px; margin: 0 auto; position: relative;">
+        <label for="toolSearchInput" class="sr-only">Search spin wheels</label>
+        <input type="text" id="toolSearchInput"
+               placeholder="Search wheels (e.g. Yes No, Country, Names, NFL, 1-100, Color, Classroom)..."
+               style="width: 100%; padding: 14px 20px 14px 44px; border-radius: var(--radius-full); border: 2px solid var(--border-color); background: var(--bg-surface); font-size: 1rem; color: var(--text-primary); box-shadow: var(--shadow-sm); outline: none; transition: border-color 0.2s, box-shadow 0.2s;"
+               oninput="filterTools()" />
+        <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1rem; opacity: 0.6;" aria-hidden="true">🔍</span>
+      </div>
+
+      <div class="category-filters" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 22px;" role="tablist" aria-label="Filter wheels by category">
+        <button class="filter-pill active" onclick="setCategoryFilter('all', this)" role="tab" aria-selected="true">
+          All Wheels ({totalCount})
+        </button>
+        {CAT_PILLS.map((c) => (
+          <button class="filter-pill" onclick={`setCategoryFilter('${c.key}', this)`} role="tab" aria-selected="false">
+            {c.label} ({catCounts[c.key] || 0})
+          </button>
+        ))}
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin-top: 14px; font-size: 0.84rem;" aria-label="Browse wheel categories">
+        <span style="color: var(--text-muted); font-weight: 700;">Browse by Category:</span>
+        {CAT_PILLS.map((c) => {
+          const cSlug = (CATEGORY_NAME_TO_SLUG as any)[c.key];
+          return cSlug ? (
+            <a href={`/category/${cSlug}`} style="color: var(--accent-gold-dark); font-weight: 700; text-decoration: none; padding: 3px 10px; border-radius: 999px; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.22);">
+              {c.label} &rarr;
+            </a>
+          ) : null;
+        })}
+      </div>
+    </section>
+
+    <div id="toolsGrid" class="tools-grid">
+      {wheelEntries.map(([slug, tool]) => {
+        const searchHaystack = [slug.replace(/-/g, " "), (tool.keywords || "").split(",").slice(0, 3).join(" ")].join(" ").toLowerCase();
+        return (
+          <article class="tool-card card" data-category={tool.category || ""} data-search={searchHaystack}>
+            <div>
+              <div class="tool-card-top">
+                <span class="tool-card-cat">{tool.category || "Tool"}</span>
+                <span class="tool-card-count">{tool.items ? tool.items.length : 0} slices</span>
+              </div>
+              <h2 class="tool-card-title"><a href={`/${slug}`}>{tool.name}</a></h2>
+              <p class="tool-card-desc">{tool.description.slice(0, 128)}&hellip;</p>
+            </div>
+            <a href={`/${slug}`} class="btn btn-primary tool-card-cta">
+              <span>Open Wheel</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+
+    <div id="noResultsState" style="display: none; text-align: center; padding: 60px 20px;" aria-live="polite">
+      <div style="font-size: 3rem; margin-bottom: 12px;">🔍</div>
+      <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">No matching wheels found</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 18px;">Try searching with another term, or reset filters to browse all {totalCount} wheels.</p>
+      <button class="btn-secondary" type="button" onclick="resetSearch()">View All Wheels</button>
+    </div>
+
+    <AdSlot slot="inContent" />
+
+    <article class="card editorial-article" style="margin-top: 60px;">
+      <h2 style="font-size: 1.55rem; font-weight: 900; margin-bottom: 14px; color: var(--text-primary);">
+        How to Pick the Right Random Wheel for Your Situation
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 18px;">
+        All 69 tools in this catalog share the exact same browser-local Web Cryptography engine (<code>window.crypto.getRandomValues()</code> with rejection sampling), so the real difference between pages is the verified starting dataset and quick-filter presets. Opening the <a href="/country-picker-wheel">Country Wheel</a> puts all 195 UN countries on the canvas immediately, <a href="/us-state-picker-wheel">US State Picker</a> loads all 50 states by Census region, and <a href="/bingo-number-generator-1-75">Bingo 1–75</a> arrives ready for live B1–O75 calls—saving ten to twenty minutes of typing before class, stream, or game night starts.
+      </p>
+      <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 22px;">
+        If you already have your own roster or custom items in a spreadsheet, jump straight to <a href="/wheel-of-names">Wheel of Names</a> or the <a href="/">main custom spinner</a>, click <strong>Bulk Paste Entries</strong>, and drop in up to 500 lines at once. Every saved wheel stays in your browser's <code>localStorage</code> rather than an external database, so student names and private lists never leave your device.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 22px 0 30px;">
+        <div style="padding: 18px; border-radius: var(--radius-md); background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.18);">
+          <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--accent-gold-dark); margin-bottom: 6px;">🎓 Teachers &amp; Classrooms</h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin: 0;">
+            Pair <a href="/classroom-name-picker">Classroom Name Picker</a> and <a href="/team-picker-wheel">Team Picker Wheel</a> with <a href="/us-state-picker-wheel">US State Picker</a>, <a href="/country-picker-wheel">Country Wheel</a>, <a href="/planet-picker-wheel">Planet Picker</a>, or <a href="/letter-picker-wheel">A–Z Letter Picker</a> for smartboard lessons.
+          </p>
+        </div>
+        <div style="padding: 18px; border-radius: var(--radius-md); background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.18);">
+          <h3 style="font-size: 1.05rem; font-weight: 800; color: #2563eb; margin-bottom: 6px;">🎁 Giveaways, Raffles &amp; Booths</h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin: 0;">
+            Run verifiable social media contests with <a href="/raffle-wheel">Raffle Wheel</a>, award weighted booth coupons via <a href="/prize-wheel">Prize Wheel</a>, or pull numbered ticket stubs on <a href="/number-picker-wheel">Number Picker Wheel</a> and <a href="/randomizer-number-1-100">1–100 Numbers</a>.
+          </p>
+        </div>
+        <div style="padding: 18px; border-radius: var(--radius-md); background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.18);">
+          <h3 style="font-size: 1.05rem; font-weight: 800; color: #059669; margin-bottom: 6px;">🍽️ Everyday Life &amp; Game Night</h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin: 0;">
+            Settle indecisive evenings quickly with <a href="/yes-no-wheel">Yes or No Wheel</a>, <a href="/animal-picker-wheel">Animal Wheel</a>, <a href="/color-picker-wheel">Color Wheel Spinner</a>, <a href="/truth-or-dare-wheel">Truth or Dare Wheel</a>, <a href="/dinner-wheel">Dinner Wheel</a>, and <a href="/date-night-wheel">Date Night Wheel</a>.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 10px; color: var(--text-primary);">Core Controls Available Across Every Wheel</h3>
+      <ul class="editorial-bullets">
+        <li><strong>Bulk Paste Up to 500 Items:</strong> Import columns straight from Google Sheets, Excel, or plain text files in one click.</li>
+        <li><strong>Per-Slice Probability Weights (1x–20x):</strong> Use the <code>+</code> and <code>-</code> controls beside any entry to scale slice width and live odds percentage.</li>
+        <li><strong>With Replacement vs. Elimination Mode:</strong> Leave <em>Remove Winner After Spin</em> OFF for dice rolls and independent trials, or toggle it ON for multi-prize raffles, Bingo calls, and no-repeat class participation.</li>
+        <li><strong>QR Links, CSV Logs &amp; Clean Embeds:</strong> Share custom lists by URL or QR code, download timestamped CSV spin logs for audits, or drop an ad-free <code>?embed=1</code> iframe into OBS, Notion, or school portals.</li>
+      </ul>
+    </article>
+  </main>
+
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/tools" />
+  <script src={ASSETS.jsHref} defer></script>
+
+  <script is:inline>
+    var activeCategory = 'all';
+    function setCategoryFilter(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('.filter-pill').forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      if (btn) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      }
+      filterTools();
+    }
+    function filterTools() {
+      var input = document.getElementById('toolSearchInput');
+      var query = (input ? input.value : '').trim().toLowerCase();
+      var cards = document.querySelectorAll('.tool-card');
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var cat = card.getAttribute('data-category') || '';
+        var haystack = ((card.getAttribute('data-search') || '') + ' ' + card.textContent).toLowerCase();
+        var matchesCat = (activeCategory === 'all' || cat === activeCategory);
+        var matchesQuery = (!query || haystack.includes(query));
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      var noResults = document.getElementById('noResultsState');
+      if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+    function resetSearch() {
+      var input = document.getElementById('toolSearchInput');
+      if (input) input.value = '';
+      setCategoryFilter('all', document.querySelector('.filter-pill'));
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        var q = new URLSearchParams(window.location.search).get('q');
+        var input = document.getElementById('toolSearchInput');
+        if (q && input) { input.value = q; filterTools(); }
+      } catch (e) {}
+    });
+  </script>
+
+  <style>
+    .filter-pill {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-pill:hover {
+      border-color: var(--accent-gold);
+      color: var(--text-primary);
+      background: var(--bg-surface-elevated);
+    }
+    .filter-pill.active {
+      background: var(--accent-gold);
+      color: #fff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-gold);
+    }
+  </style>
+</body>
+</html>

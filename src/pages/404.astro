@@ -1,0 +1,58 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import { ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page Not Found (404) – Spin The Wheels Online</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={false} />
+</head>
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/404" />
+  <main class="container" style="max-width: 680px; padding: 80px 20px; text-align: center;">
+    <div class="card" style="padding: 48px 30px;">
+      <div style="font-size: 4.5rem; margin-bottom: 12px;">🎡</div>
+      <h1 class="section-title" style="margin-bottom: 10px;">404 – Page Not Found</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 28px; line-height: 1.6;">
+        Oops! The wheel spun to an address that does not exist or has been relocated. Let's get you back on track to spin!
+      </p>
+      <div style="display:flex; justify-content:center; gap:12px; margin-bottom: 28px; flex-wrap:wrap;">
+        <a href="/" class="btn-primary" style="text-decoration:none !important;">Go to Home Wheel →</a>
+        <a href="/tools" class="btn-secondary" style="text-decoration:none !important;">Browse All Wheels</a>
+      </div>
+      <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">Popular Quick Wheels:</div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+          <a class="preset-chip" href="/yes-no-wheel">Yes or No Wheel</a>
+          <a class="preset-chip" href="/wheel-of-names">Wheel of Names</a>
+          <a class="preset-chip" href="/country-picker-wheel">Country Wheel</a>
+          <a class="preset-chip" href="/number-picker-wheel">Number Picker</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/404" />
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

@@ -1,0 +1,1263 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Move beyond simple cold-calling: 10 proven name picker wheel workflows for presentation orders, peer review pairs, team roles &amp; classroom turns." />
+    <title>10 Ways to Use a Name Picker Wheel at Work &amp; School</title>
+    <link rel="icon" href="/favicon.ico?v=1" />
+    <meta
+      name="keywords"
+      content="name picker wheel work school, random name selector classroom, spin wheel team meeting, name wheel teacher ideas, fair random name picker, name picker wheel ideas 2026, random student picker, team name wheel office"
+    />
+    <meta name="author" content="Harman S., Spin The Wheels Online" />
+    <meta
+      property="og:title"
+      content="10 Smart Ways to Use a Name Picker Wheel at Work or School (2026)"
+    />
+    <meta
+      property="og:description"
+      content="A name picker wheel is more than a cold-calling tool. Here are 10 practical ways teachers, managers, and teams use one in 2026 to run fairer meetings, better lessons, and more balanced participation."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:image"
+      content="https://spinthewheelsonline.com/eng-team-picker-wheel.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+    />
+
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+    />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school\",\n      \"name\": \"10 Ways to Use a Name Picker Wheel at Work & School\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#breadcrumbs\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Name Picker Wheel Work School\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#article\",\n      \"headline\": \"10 Smart Ways to Use a Name Picker Wheel at Work or School\",\n      \"description\": \"A name picker wheel is more than a cold-calling tool. Here are 10 practical ways teachers, managers, and teams use one in 2026 to run fairer meetings, better lessons, and more balanced participation.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-team-picker-wheel.webp\",\n      \"datePublished\": \"2026-10-15\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Does a name picker wheel give every name a genuinely equal chance?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes, provided every name occupies equal arc space on the wheel. The result comes from a random number generated at the moment of the spin, so each entry's odds match its share of the wheel and are not affected by past spins or entry order.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I weight the wheel so some names come up more often?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Tap the '+' weight control (1x to 20x) beside any name to widen its slice and boost its odds without cluttering labels—or enable duplicate entries to add extra tickets. All weights remain visible beside each item.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Is a name picker wheel suitable for remote or hybrid meetings?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Since it runs in any browser with no installation, screen-sharing it during a video call gives remote participants the same live view as everyone in the room.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" /></noscript>
+    <style is:inline>:root{--teal:#0d9488;--teal-dark:#0f766e;--teal-light:#14b8a6;--amber:#d97706;--amber-lt:#f59e0b;--gold:#f59e0b;--dark:#0f1923;--dark2:#1e293b;--text:#1e293b;--muted:#64748b;--bg:#f7fafa;--border:#e2e8f0;--card:#ffffff;--sidebar:#f0fdfa;--green:#16a34a;--blue:#2563eb;--indigo:#4f46e5;--red:#dc2626;--orange:#ea580c;--work-col:#2563eb;--school-col:#d97706}*,::after,::before{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{font-family:Lora,Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:16px;overflow-x:hidden}img{max-width:100%;height:auto;display:block}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}#read-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--amber-lt));z-index:9999;width:0%;transition:width .1s}#back-top{position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);width:clamp(38px,5vw,46px);height:clamp(38px,5vw,46px);border-radius:50%;background:var(--teal);color:#fff;border:none;cursor:pointer;font-size:clamp(16px, 2.5vw, 20px);display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(13,148,136,.4);transition:transform .2s;z-index:100}#back-top.show{display:flex}#back-top:hover{transform:translateY(-3px)}.breadcrumb-bar{background:#fff;border-bottom:1px solid var(--border)}.bc-inner{max-width:1240px;margin:0 auto;padding:9px clamp(14px,4vw,24px);font-family:"DM Sans",sans-serif;font-size:clamp(11.5px, 1.5vw, 13px);color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:2px}.bc-inner a{color:var(--teal)}.bc-sep{margin:0 5px;color:#cbd5e1}.post-hero{background:linear-gradient(135deg,#071a18 0,#0f2f2b 45%,#0a1a2e 100%);color:#fff;padding:clamp(36px,7vw,72px) clamp(16px,5vw,24px) clamp(36px,6vw,60px);text-align:center;position:relative;overflow:hidden}.post-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 18% 52%,rgba(13,148,136,.3),transparent 52%),radial-gradient(ellipse at 82% 28%,rgba(217,119,6,.2),transparent 50%),radial-gradient(ellipse at 50% 90%,rgba(20,184,166,.12),transparent 55%)}.hero-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden}.hero-floats span{position:absolute;font-size:clamp(15px, 2.5vw, 26px);animation:floatUp 9s infinite ease-in-out;opacity:.12}.hero-floats span:first-child{left:4%;top:18%;animation-delay:0s}.hero-floats span:nth-child(2){left:13%;top:73%;animation-delay:1.4s}.hero-floats span:nth-child(3){left:88%;top:14%;animation-delay:.6s}.hero-floats span:nth-child(4){left:77%;top:76%;animation-delay:2.2s}.hero-floats span:nth-child(5){left:52%;top:85%;animation-delay:3.1s}.hero-floats span:nth-child(6){left:93%;top:45%;animation-delay:1.9s}.hero-floats span:nth-child(7){left:33%;top:8%;animation-delay:.9s}.hero-floats span:nth-child(8){left:63%;top:33%;animation-delay:2.7s}@keyframes floatUp{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-16px) rotate(4deg)}}.hero-tag{display:inline-block;background:var(--teal);color:#fff;font-family:"DM Sans",sans-serif;font-size:clamp(10px, 1.3vw, 11.5px);font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:5px clamp(12px,2vw,16px);border-radius:20px;margin-bottom:clamp(12px,2.5vw,20px);position:relative}.post-hero h1{font-family:"Playfair Display",serif;font-size:clamp(22px, 5vw, 50px);font-weight:900;max-width:960px;margin:0 auto clamp(12px,2.5vw,18px);line-height:1.14;position:relative}.post-hero h1 em{color:var(--gold);font-style:normal}.hero-sub{font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2.2vw, 17px);color:rgba(255,255,255,.7);max-width:700px;margin:0 auto clamp(18px,3vw,28px);position:relative}.post-meta{display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,18px);font-family:"DM Sans",sans-serif;font-size:clamp(11.5px, 1.5vw, 13px);color:rgba(255,255,255,.5);flex-wrap:wrap;position:relative}.meta-dot{color:rgba(255,255,255,.22)}.updated-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:clamp(11px, 1.4vw, 12px);font-weight:600;padding:5px 13px;border-radius:20px;margin-top:clamp(10px,2vw,16px);position:relative}.hero-image-wrap{max-width:880px;margin:clamp(22px,4vw,34px) auto 0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.45)}.hero-image-wrap img{width:100%;display:block}.ctx-badge{display:inline-flex;align-items:center;gap:7px;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:4px 13px;border-radius:20px;margin-bottom:14px}.ctx-work{background:var(--work-col);color:#fff}.ctx-school{background:var(--school-col);color:#fff}.ctx-both{background:linear-gradient(90deg,var(--work-col),var(--school-col));color:#fff}.layout{max-width:1240px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(14px,4vw,24px) clamp(40px,6vw,60px);display:grid;grid-template-columns:1fr 330px;gap:clamp(24px,4vw,44px);align-items:start}article{background:var(--card);border-radius:14px;padding:clamp(20px,5vw,44px) clamp(18px,5vw,48px);box-shadow:0 1px 4px rgba(0,0,0,.06);min-width:0}.toc{background:#f0fdfa;border:1px solid #99f6e4;border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:clamp(14px,3vw,22px) clamp(16px,3vw,26px);margin-bottom:clamp(24px,4vw,38px)}.toc-title{font-family:"DM Sans",sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:14px;font-weight:600}.toc ol{padding-left:18px;display:flex;flex-direction:column;gap:7px}.toc li{font-family:"DM Sans",sans-serif;font-size:clamp(13px, 1.6vw, 14px)}.toc a{color:var(--teal);transition:color .15s}.toc a:hover{color:var(--teal-dark)}article h2{font-family:"Playfair Display",serif;font-size:clamp(20px, 3.5vw, 26px);font-weight:800;color:var(--dark);margin:clamp(28px,5vw,44px) 0 clamp(10px,2vw,16px);padding-bottom:10px;border-bottom:2px solid #ccfbf1;scroll-margin-top:82px;line-height:1.25}article h3{font-family:"DM Sans",sans-serif;font-size:clamp(16px, 2.5vw, 19px);font-weight:700;color:var(--dark);margin:clamp(18px,3vw,28px) 0 10px}article p{margin-bottom:18px;color:#1e3a3a;font-size:clamp(15px, 2vw, 16.5px)}article ol,article ul{padding-left:clamp(16px,3vw,22px);margin-bottom:18px;display:flex;flex-direction:column;gap:9px}article li{font-size:clamp(14.5px, 2vw, 16px);color:#1e3a3a;line-height:1.75}article strong{color:var(--dark)}article figure{margin:26px 0}article figure img{border-radius:12px;border:1px solid var(--border)}article figcaption{font-family:"DM Sans",sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:8px}.ilink{color:var(--teal);font-weight:600;border-bottom:1px dashed rgba(13,148,136,.45);transition:border-color .2s}.ilink:hover{border-bottom-style:solid;text-decoration:none}.use-case{border:1px solid var(--border);border-radius:14px;padding:clamp(20px,3.5vw,32px) clamp(18px,3.5vw,30px);margin:clamp(28px,4vw,40px) 0;position:relative;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);overflow:hidden}.use-case::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}.use-case.work::before{background:linear-gradient(90deg,var(--work-col),#60a5fa)}.use-case.school::before{background:linear-gradient(90deg,var(--school-col),#fbbf24)}.use-case.both::before{background:linear-gradient(90deg,var(--teal),var(--amber-lt))}.uc-header{display:flex;align-items:flex-start;gap:clamp(14px,2.5vw,20px);margin-bottom:clamp(14px,2.5vw,20px)}.uc-number{width:clamp(44px,6vw,56px);height:clamp(44px,6vw,56px);border-radius:12px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:clamp(18px, 3vw, 24px);font-weight:900;flex-shrink:0}.use-case.work .uc-number{background:var(--work-col)}.use-case.school .uc-number{background:var(--school-col)}.use-case.both .uc-number{background:linear-gradient(135deg,var(--teal),var(--amber))}.uc-title-block{flex:1}.uc-title-block h3{font-family:"Playfair Display",serif;font-size:clamp(17px, 2.8vw, 22px);font-weight:800;color:var(--dark);margin:0 0 5px;line-height:1.25}.uc-subtitle{font-family:"DM Sans",sans-serif;font-size:clamp(12px, 1.6vw, 13.5px);color:var(--muted);font-weight:500}.uc-body p{color:#1e3a3a;font-size:clamp(14.5px, 2vw, 16px);margin-bottom:14px}.uc-body p:last-child{margin-bottom:0}.seg-block{background:var(--sidebar);border:1px solid #99f6e4;border-radius:10px;padding:clamp(14px,2.5vw,18px) clamp(14px,2.5vw,20px);margin-top:16px}.seg-block.work{background:#eff6ff;border-color:#bfdbfe}.seg-block.school{background:#fffbeb;border-color:#fde68a}.seg-label{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-dark);margin-bottom:10px;display:flex;align-items:center;gap:5px}.seg-block.work .seg-label{color:var(--work-col)}.seg-block.school .seg-label{color:#92400e}.pill-list{display:flex;flex-wrap:wrap;gap:7px}.pill{font-family:"DM Sans",sans-serif;font-size:12.5px;font-weight:600;padding:4px 12px;border-radius:20px;border:1.5px solid}.pill-teal{color:var(--teal-dark);background:#f0fdfa;border-color:#5eead4}.pill-blue{color:#1e40af;background:#eff6ff;border-color:#93c5fd}.pill-amber{color:#92400e;background:#fffbeb;border-color:#fcd34d}.pill-indigo{color:#3730a3;background:#eef2ff;border-color:#a5b4fc}.pill-green{color:#166534;background:#f0fdf4;border-color:#86efac}.pill-orange{color:#9a3412;background:#fff7ed;border-color:#fdba74}.step-list{list-style:none!important;padding:0!important;counter-reset:steps}.step-list li{counter-increment:steps;display:flex;gap:clamp(12px,2.5vw,16px);padding:clamp(14px,2.5vw,20px) 0;border-bottom:1px solid #e2faf7}.step-list li:last-child{border:none}.step-num{width:clamp(32px,4.5vw,42px);height:clamp(32px,4.5vw,42px);background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"DM Sans",sans-serif;font-weight:700;font-size:clamp(13px, 1.8vw, 16px);flex-shrink:0;margin-top:2px}.step-num::before{content:counter(steps)}.step-body strong{display:block;font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2vw, 16px);font-weight:700;margin-bottom:6px;color:var(--dark)}.step-body p{font-size:clamp(13px, 1.8vw, 14.5px);color:#4b5563;margin:0}.step-body ul{font-size:clamp(13px, 1.8vw, 14.5px);color:#4b5563;margin-top:8px}.box{border-radius:10px;padding:clamp(14px,3vw,20px) clamp(16px,3vw,24px);margin:26px 0}.box-tip{background:#fef9ec;border:1px solid #fde68a;border-left:4px solid var(--gold)}.box-teal{background:#f0fdfa;border:1px solid #99f6e4;border-left:4px solid var(--teal)}.box-blue{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--blue)}.box-success{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--green)}.box-warn{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #f97316}.box-dark{background:var(--dark2);border:1px solid #334155;border-left:4px solid var(--teal-light);color:#e2e8f0}.box-label{font-family:"DM Sans",sans-serif;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;gap:6px}.box-tip .box-label{color:#92400e}.box-teal .box-label{color:var(--teal-dark)}.box-blue .box-label{color:#1e40af}.box-success .box-label{color:#166534}.box-warn .box-label{color:#9a3412}.box-dark .box-label{color:var(--teal-light)}.box p{margin:0;font-size:clamp(14px, 2vw, 15.5px)}.box ul{margin:0;font-size:clamp(13.5px, 2vw, 15px);padding-left:18px;display:flex;flex-direction:column;gap:7px}.box-dark li,.box-dark p{color:#cbd5e1}.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2vw,14px);margin:28px 0}.stat-box{background:var(--dark);color:#fff;border-radius:10px;padding:clamp(14px,2.5vw,20px);text-align:center;border:1px solid #1e3a3a}.stat-num{font-family:"Playfair Display",serif;font-size:clamp(22px, 4vw, 30px);font-weight:800;color:var(--gold);display:block}.stat-label{font-family:"DM Sans",sans-serif;font-size:clamp(11px, 1.4vw, 12.5px);color:rgba(255,255,255,.55);margin-top:4px;display:block}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.07)}.comp-table{width:100%;border-collapse:collapse;font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 14px);min-width:440px}.comp-table th{background:var(--dark);color:#fff;padding:clamp(10px,2vw,13px) clamp(10px,2vw,16px);text-align:left;font-weight:600;white-space:nowrap}.comp-table td{padding:clamp(9px,1.8vw,12px) clamp(10px,2vw,16px);border-bottom:1px solid var(--border);vertical-align:top}.comp-table tr:last-child td{border:none}.comp-table tr:nth-child(2n) td{background:#f7fafa}.check{color:var(--green);font-weight:700}.cross{color:var(--red);font-weight:700}.tag-work{display:inline-block;background:#dbeafe;color:#1e40af;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap}.tag-school{display:inline-block;background:#fef9c3;color:#78350f;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap}.tag-both{display:inline-block;background:#ccfbf1;color:#0f766e;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap}.article-related{background:linear-gradient(135deg,#f0fdfa,#f0f9ff);border:1px solid #99f6e4;border-radius:12px;padding:clamp(18px,3.5vw,26px) clamp(16px,3.5vw,30px);margin:40px 0}.article-related h3{font-family:"Playfair Display",serif;font-size:clamp(17px, 2.5vw, 20px);margin-bottom:18px;color:var(--dark)}.ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ar-card{background:#fff;border:1px solid var(--border);border-radius:9px;padding:clamp(12px,2vw,14px) clamp(12px,2vw,16px);display:block;transition:box-shadow .2s,transform .2s}.ar-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.1);transform:translateY(-2px);text-decoration:none}.ar-tag{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:5px}.ar-title{font-family:"DM Sans",sans-serif;font-size:clamp(13px, 1.8vw, 14px);font-weight:600;color:var(--dark);line-height:1.4}.ar-read{font-size:12px;color:var(--muted);margin-top:6px;font-family:"DM Sans",sans-serif}.cta-block{background:linear-gradient(135deg,#071a18 0,#0f4039 100%);color:#fff;border-radius:14px;padding:clamp(24px,4.5vw,36px) clamp(20px,4.5vw,40px);text-align:center;margin:40px 0;border:1px solid #1a4a44}.cta-block h3{font-family:"Playfair Display",serif;font-size:clamp(19px, 3vw, 24px);margin-bottom:10px;color:#fff}.cta-block p{font-family:"DM Sans",sans-serif;font-size:clamp(13.5px, 1.9vw, 15px);color:rgba(255,255,255,.68);margin-bottom:22px}.cta-btn{display:inline-block;background:var(--teal);color:#fff;font-family:"DM Sans",sans-serif;font-weight:700;font-size:clamp(13.5px, 2vw, 15px);padding:clamp(10px,1.8vw,13px) clamp(22px,3.5vw,32px);border-radius:9px;text-decoration:none;transition:background .2s,transform .2s}.cta-btn:hover{background:var(--teal-dark);transform:translateY(-2px);text-decoration:none}.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden}.faq-q{font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2vw, 15.5px);font-weight:600;padding:clamp(13px,2.5vw,16px) clamp(14px,2.5vw,20px);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;color:var(--dark);user-select:none;transition:background .15s}.faq-q:hover{background:#f0fdfa}.faq-icon{font-size:20px;transition:transform .3s;color:var(--teal);flex-shrink:0;margin-left:12px}.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 clamp(14px,2.5vw,20px);font-size:clamp(13.5px, 1.9vw, 15px);color:#4b5563;line-height:1.75}.faq-item.open .faq-a{max-height:600px;padding:4px clamp(14px,2.5vw,20px) 18px}.faq-item.open .faq-icon{transform:rotate(45deg)}.share-row{display:flex;align-items:center;gap:10px;margin-top:32px;flex-wrap:wrap}.share-label{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--muted)}.share-btn{display:inline-flex;align-items:center;gap:7px;padding:clamp(7px,1.2vw,8px) clamp(12px,2vw,16px);border-radius:8px;font-family:"DM Sans",sans-serif;font-size:clamp(12px, 1.5vw, 13px);font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s,transform .2s}.share-btn:hover{opacity:.85;transform:translateY(-1px);text-decoration:none}.s-twitter{background:#1da1f2;color:#fff}.s-fb{background:#1877f2;color:#fff}.s-copy{background:var(--sidebar);color:var(--dark);border:1px solid var(--border)}.sidebar{display:flex;flex-direction:column;gap:24px;position:sticky;top:84px;min-width:0}.s-card{background:var(--card);border-radius:12px;padding:clamp(16px,3vw,22px) clamp(14px,3vw,20px);box-shadow:0 1px 4px rgba(0,0,0,.06);border:1px solid var(--border)}.s-title{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding-bottom:12px;border-bottom:2px solid var(--border);margin-bottom:16px}.s-cta{background:linear-gradient(135deg,#071a18 0,#0f4039 100%);color:#fff;border-radius:12px;padding:clamp(18px,3vw,24px) clamp(14px,3vw,20px);text-align:center;border:1px solid #1a4a44;box-shadow:0 4px 20px rgba(13,148,136,.3)}.s-cta h3{font-family:"Playfair Display",serif;font-size:clamp(16px, 2.5vw, 18px);margin-bottom:8px}.s-cta p{font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 13.5px);color:rgba(255,255,255,.78);margin-bottom:18px}.s-cta a{display:block;background:var(--teal);color:#fff;font-family:"DM Sans",sans-serif;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;text-decoration:none;transition:transform .2s,background .2s}.s-cta a:hover{transform:scale(1.03);background:var(--teal-dark);text-decoration:none}.related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}.related-post:last-child{border:none;padding-bottom:0}.rp-num{width:32px;height:32px;border-radius:7px;background:var(--sidebar);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--teal);flex-shrink:0;margin-top:2px}.rp-body a{font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 13.5px);font-weight:600;color:var(--dark);line-height:1.4;display:block;margin-bottom:3px;transition:color .2s}.rp-body a:hover{color:var(--teal);text-decoration:none}.rp-meta{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--muted)}@media (max-width:1100px){.layout{grid-template-columns:1fr 280px}}@media (max-width:960px){.layout{grid-template-columns:1fr}.sidebar{position:static}.ar-grid{grid-template-columns:1fr 1fr}.stat-strip{grid-template-columns:repeat(3,1fr)}}@media (max-width:680px){article{padding:clamp(18px,4vw,26px) clamp(14px,4vw,20px)}.ar-grid{grid-template-columns:1fr}.stat-strip{grid-template-columns:1fr 1fr}.uc-header{flex-direction:column;gap:12px}}@media (max-width:480px){.stat-strip{grid-template-columns:1fr}}@media (min-width:1400px){.bc-inner,.layout{max-width:1380px}.layout{grid-template-columns:1fr 360px}}@media print{#back-top,#read-progress,.cta-block,.share-row,.sidebar{display:none!important}.layout{grid-template-columns:1fr}article{box-shadow:none;padding:0}body{font-size:12pt}a{color:inherit;text-decoration:underline}}</style>
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="10 Smart Ways to Use a Name Picker Wheel at Work or School (2026)" />
+    <meta name="twitter:description" content="A name picker wheel is more than a cold-calling tool. Here are 10 practical ways teachers, managers, and teams use one in 2026 to run fairer meetings, better lessons, and more balanced participation." />
+    <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-team-picker-wheel.webp" />
+      <AnalyticsHead enableAds={true} />
+  </head>
+  <body>
+    <div id="read-progress"></div>
+    <button
+      id="back-top"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/name-picker-wheel-work-school" />
+
+    <div class="breadcrumb-bar">
+      <div class="bc-inner">
+        <a href="/">Home</a><span class="bc-sep">›</span>
+        <a href="/blogs">Blogs</a><span class="bc-sep">›</span>
+        10 Smart Ways to Use a Name Picker Wheel at Work or School
+      </div>
+    </div>
+
+    <div class="post-hero">
+      <div class="hero-floats">
+        <span>🎯</span><span>👥</span><span>🏫</span><span>💼</span
+        ><span>🎡</span><span>✨</span><span>📋</span><span>🏆</span>
+      </div>
+      <div class="hero-tag">
+        🎯 Productivity · Classroom · Team Tools · 2026
+      </div>
+      <h1>
+        10 <em>Smart Ways</em> to Use a <em>Name Picker Wheel</em> at
+        <em>Work or School</em>
+      </h1>
+      <p class="hero-sub">
+        It does more than pick who answers next. From breaking up meeting habits
+        to running fairer peer reviews and sprint retros, here's how teachers
+        and managers are actually putting the name picker wheel to work in 2026.
+      </p>
+      <div class="post-meta">
+        <span>⏱ 10 min read</span><span class="meta-dot">·</span>
+        <span>📂 Productivity &amp; Education</span>
+      </div>
+      <div class="updated-badge">✅ Last reviewed: November 24, 2026</div>
+
+      <div class="hero-image-wrap">
+        <img
+          src="/eng-team-picker-wheel.webp"
+          alt="Illustration of a glowing name picker wheel above a classroom and an office meeting table, symbolizing fair random selection at school and work"
+          width="880"
+          height="480"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="layout">
+      <article>
+        <div class="toc">
+          <div class="toc-title">📋 Table of Contents</div>
+          <ol>
+            <li>
+              <a href="#why-name-wheel">Why This Simple Tool Actually Works</a>
+            </li>
+            <li>
+              <a href="#use1">1. Calling on Students Without the Dread</a>
+            </li>
+            <li><a href="#use2">2. Splitting Up the Jobs Nobody Wants</a></li>
+            <li>
+              <a href="#use3">3. Group Assignments Nobody Can Argue With</a>
+            </li>
+            <li><a href="#use4">4. Rotating Who Runs the Meeting</a></li>
+            <li>
+              <a href="#use5">5. Pairing People Up for Honest Feedback</a>
+            </li>
+            <li><a href="#use6">6. Keeping Retrospectives Fresh</a></li>
+            <li>
+              <a href="#use7">7. Deciding Who Reads or Presents First</a>
+            </li>
+            <li>
+              <a href="#use8">8. Icebreakers That Don't Fall Flat</a>
+            </li>
+            <li><a href="#use9">9. A Prize Draw Nobody Can Dispute</a></li>
+            <li>
+              <a href="#use10">10. Settling a Genuine Toss-Up Decision</a>
+            </li>
+            <li>
+              <a href="#setup">Setting One Up Takes About Two Minutes</a>
+            </li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+          </ol>
+        </div>
+
+        <p>
+          Say "name picker wheel" and most people picture a teacher calling on
+          students — a screen-based stand-in for pulling a stick out of a jar.
+          That's a real use, and it works well. But it's also just the entry
+          point for what this tool can actually do.
+        </p>
+        <p>
+          In offices, the exact same mechanism runs duty rosters, rotates who
+          leads the standup, randomises retro formats, and breaks genuine ties
+          without putting any one person in the position of having chosen. In
+          classrooms, it hands out peer review partners, decides presentation
+          order, and builds project groups in a way students experience as fair
+          rather than quietly rigged.
+        </p>
+        <p>
+          What ties all of this together is one effect:
+          <strong
+            >a decision that comes from a wheel gets accepted in a way the same
+            decision, made by a person, often doesn't.</strong
+          >
+          Below are ten uses worth trying, each with a concrete setup so you can
+          put it into practice today.
+        </p>
+
+        <figure>
+          <img
+            src="/bulk-names.webp"
+            alt="Split illustration showing a spin wheel labeled with student names on one side and a spin wheel labeled with team task names on the other"
+            width="820"
+            height="420"
+            loading="lazy"
+          />
+          <figcaption>
+            The same mechanic, two very different rooms — a classroom name pool
+            on the left, a team task pool on the right.
+          </figcaption>
+        </figure>
+
+        <div class="box box-tip">
+          <div class="box-label">💡 New to spin wheel tools?</div>
+          <p>
+            Our guide to
+            <a href="/blogs/spin-the-wheel-tool" class="ilink"
+              >what a spin the wheel tool is and how it works</a
+            >
+            covers the basics in five minutes. Every use case below runs on the
+            free tool at
+            <a href="/" class="ilink">spinthewheelsonline.com</a>
+            — no account, no download.
+          </p>
+        </div>
+
+        <!-- ── WHY IT WORKS ── -->
+        <h2 id="why-name-wheel">Why This Simple Tool Actually Works</h2>
+
+        <p>
+          The name picker wheel's real strength isn't fairness in the abstract —
+          it's <strong>how fair the process looks</strong> to the people
+          standing around it.
+        </p>
+        <p>
+          When a teacher keeps calling on the same handful of students — even
+          with the best intentions, even just because those hands go up first —
+          the students left out notice. They build a story about who gets
+          favoured, and that story sticks around long after it stops being true.
+          Meetings have the same pattern: the same person always takes notes,
+          the same person always runs the call, the same voice always gets heard
+          first. Nobody says it out loud, but everyone feels the two-tier
+          dynamic building underneath.
+        </p>
+        <p>
+          Take a person out of the selection step entirely, and the fairness
+          stops being something you have to take on trust — it becomes something
+          the whole room can watch happen. That visibility is the actual
+          mechanism at work here, not just a nice side effect.
+        </p>
+
+        <div class="stat-strip">
+          <div class="stat-box">
+            <span class="stat-num">Fewer</span>
+            <span class="stat-label"
+              >student objections to being called on when selection moves from
+              hand-raising to a visible random wheel, according to teacher
+              reports</span
+            >
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">More</span>
+            <span class="stat-label"
+              >unique contributors per meeting once a random facilitator
+              rotation replaces a fixed lead or volunteer system</span
+            >
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">0</span>
+            <span class="stat-label"
+              >disputes about who "always" gets picked once the process is
+              visibly random rather than person-driven</span
+            >
+          </div>
+        </div>
+
+        <!-- ═══ USE 1 ═══ -->
+        <div class="use-case school" id="use1">
+          <div class="uc-header">
+            <div class="uc-number">1</div>
+            <div class="uc-title-block">
+              <h3>Calling on Students Without the Dread</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-school">🏫 Classroom</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              The classic lolly-stick draw — names on sticks, pulled from a pot
+              — gets a real upgrade from a wheel: everyone in the room watches
+              it happen in real time, nobody can quietly slip a stick back in,
+              and there's a genuine moment of shared suspense as it slows down.
+            </p>
+            <p>
+              Getting the anxiety level right comes down to how it's framed and
+              how consistently it's used. Students who know <em>anyone</em>
+              could be picked — not just the ones with their hands up — start
+              preparing differently. But that only pays off if the wheel is a
+              routine part of class, not a surprise tool for catching people
+              out. Set the tone early: "everyone gets a turn," not "you never
+              know when I'll catch you."
+            </p>
+            <p>
+              For anxious or quieter students, a simple rule helps a lot: give
+              it your best shot, pass to a classmate, or say "give me a second"
+              and circle back before the end of class. The wheel picks — the
+              student still decides how to respond. That balance keeps the
+              fairness benefit without adding unnecessary pressure.
+            </p>
+            <div class="seg-block school">
+              <div class="seg-label">
+                🎓 Setup: load first names, switch on Remove After Spin so
+                everyone gets a turn before anyone repeats, and reset it at the
+                start of each week or unit.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 2 ═══ -->
+        <div class="use-case work" id="use2">
+          <div class="uc-header">
+            <div class="uc-number">2</div>
+            <div class="uc-title-block">
+              <h3>Splitting Up the Jobs Nobody Wants</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-work">💼 Workplace</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Every team has its unloved tasks: writing up meeting notes,
+              booking the room, taking the first support ticket of the morning.
+              When those jobs quietly land on the same one or two people again
+              and again — even without anyone deciding it that way — resentment
+              builds slowly and unevenly.
+            </p>
+            <p>
+              Handing the decision to a wheel takes it out of anyone's hands.
+              Load the team and spin at the start of the week, sprint, or
+              meeting, whatever fits the task. Whoever gets picked has a job
+              that's hard to argue with — a wheel chose them, not a manager, not
+              a colleague dodging it.
+            </p>
+            <p>
+              There's a bonus here too: it sometimes hands a task to someone who
+              wouldn't normally take it on, which builds cross-team familiarity,
+              spreads out institutional knowledge, and stops any one person from
+              becoming the sole expert in something small but important.
+            </p>
+            <div class="seg-block work">
+              <div class="seg-label">
+                💼 Example segment sets for common workplace duty wheels
+              </div>
+              <div class="pill-list">
+                <span class="pill pill-blue">📝 Meeting notes</span>
+                <span class="pill pill-blue">📅 Books the room</span>
+                <span class="pill pill-blue">☕ Organises team lunch</span>
+                <span class="pill pill-blue"
+                  >📣 Presents the sprint update</span
+                >
+                <span class="pill pill-blue">🔍 First code review today</span>
+                <span class="pill pill-blue">📬 Checks the shared inbox</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 3 ═══ -->
+        <div class="use-case school" id="use3">
+          <div class="uc-header">
+            <div class="uc-number">3</div>
+            <div class="uc-title-block">
+              <h3>Group Assignments Nobody Can Argue With</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-school">🏫 Classroom</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Group work assignment is one of the most sensitive moments in any
+              classroom. Free choice recreates the same friendship clusters
+              every time and leaves someone out. Teacher-picked groups get
+              challenged too: "you did that on purpose," or "she always gets the
+              good group." A wheel sidesteps both problems entirely.
+            </p>
+            <p>
+              The cleanest method uses two wheels in sequence: one with student
+              names, one with group labels — Group A, Group B, Group C. Spin the
+              name wheel to pick a student, spin the group wheel to assign them,
+              repeat until everyone's placed. Since both steps are visibly
+              random, no student has real grounds to argue the grouping was set
+              up against them.
+            </p>
+            <p>
+              Turn on remove-after-spin for the name wheel so each student lands
+              exactly once. If numbers come out slightly uneven, spin again to
+              reassign the last name — keeping even that fix visibly random
+              matters.
+            </p>
+            <div class="seg-block school">
+              <div class="seg-label">
+                🎓 Tip: for groups working together over several weeks, consider
+                sticking with the wheel's assignment even if it looks imperfect
+                at first. Groups that wouldn't have chosen each other often
+                produce stronger, more varied work over time.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 4 ═══ -->
+        <div class="use-case work" id="use4">
+          <div class="uc-header">
+            <div class="uc-number">4</div>
+            <div class="uc-title-block">
+              <h3>Rotating Who Runs the Meeting</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-work">💼 Workplace</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Most meetings get run by the same person every time — usually
+              whoever's most senior, or whoever sent the invite. Over time, that
+              person builds strong facilitation instincts while everyone else
+              stays passive. It also means the meeting keeps reflecting one
+              person's priorities and style, which can slowly narrow what the
+              team actually talks about.
+            </p>
+            <p>
+              A facilitator wheel breaks that pattern. Spin it at the end of
+              each session to pick who runs the next one. That person owns the
+              agenda, keeps time, and decides how to handle disagreements. For
+              teams where some members have never run a meeting before, this
+              builds facilitation skills faster than almost anything else — and
+              it changes how those people show up as attendees, too.
+            </p>
+            <p>
+              For larger department meetings, a lighter version works well: spin
+              to shortlist three candidates, then let them sort out who runs it.
+              It keeps some flexibility while the selection stays visibly random
+              rather than top-down.
+            </p>
+            <div class="seg-block work">
+              <div class="seg-label">
+                💼 Load the full team, remove whoever led last cycle so no one
+                gets picked twice in a row, and reset the wheel every quarter or
+                half-year.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 5 ═══ -->
+        <div class="use-case both" id="use5">
+          <div class="uc-header">
+            <div class="uc-number">5</div>
+            <div class="uc-title-block">
+              <h3>Pairing People Up for Honest Feedback</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-both">🏫💼 Both</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Peer review is genuinely valuable — right up until people choose
+              their own reviewers. Self-selected feedback tends to cluster
+              around friendship rather than honesty: reviewers soften their
+              notes, and recipients know it. The whole exercise loses most of
+              its point.
+            </p>
+            <p>
+              A wheel assigns review partners with no regard for who's close to
+              whom, which tends to produce more direct feedback from reviewers
+              with nothing personal at stake, and recipients who read the
+              pairing as fair rather than targeted. That neutrality gives both
+              sides cover — the reviewer can be blunt because "the wheel put us
+              together," and the recipient takes it as impartial, not personal.
+            </p>
+            <p>
+              In classrooms, spin to pair students one-to-one or in threes. At
+              work, spin to decide who reviews whose code, writing, or design
+              each cycle. Keeping a simple log of past pairings helps spread
+              review relationships across the whole team over time instead of
+              settling into the same informal pairs.
+            </p>
+            <div class="seg-block">
+              <div class="seg-label">
+                🎯 Pairs vs. triads: one-to-one is quicker; three-person groups
+                give richer feedback but take longer. Use pairs for everyday
+                work, triads for anything higher-stakes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 6 ═══ -->
+        <div class="use-case work" id="use6">
+          <div class="uc-header">
+            <div class="uc-number">6</div>
+            <div class="uc-title-block">
+              <h3>Keeping Retrospectives Fresh</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-work"
+                  >💼 Workplace — Agile Teams</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Sprint retros fall into a predictable rhythm fast enough that
+              teams often stop really thinking and start giving ritual answers:
+              "what went well — communication; what didn't — estimation; what to
+              change — better docs." Same format, same answers, sprint after
+              sprint.
+            </p>
+            <p>
+              A retro-format wheel breaks the habit by picking the structure at
+              random instead of defaulting to "start/stop/continue" every time.
+              It might land on "five whys," the sailboat retro, or "one word per
+              person." Different formats surface different things from the same
+              team, and nobody can walk in with a rehearsed answer because they
+              don't know the format in advance.
+            </p>
+            <p>
+              A second wheel can pick who presents each retro category, which
+              spreads out the summarising work and stops one person from always
+              framing the team's conclusions. This works particularly well for
+              remote teams, where the same visible voice tends to dominate async
+              discussion.
+            </p>
+            <div class="seg-block work">
+              <div class="seg-label">💼 Sample retro-format wheel segments</div>
+              <div class="pill-list">
+                <span class="pill pill-blue">⛵ Sailboat retro</span>
+                <span class="pill pill-indigo"
+                  >🤔 Five whys on top blocker</span
+                >
+                <span class="pill pill-blue">🟢 Start / Stop / Continue</span>
+                <span class="pill pill-indigo"
+                  >💬 One word per person, then discuss</span
+                >
+                <span class="pill pill-blue">⭐ Rose / Bud / Thorn</span>
+                <span class="pill pill-indigo"
+                  >❤️ What made you proud this sprint?</span
+                >
+                <span class="pill pill-blue">🎯 Mad / Sad / Glad</span>
+                <span class="pill pill-indigo"
+                  >🧩 Team health check — 4 questions</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 7 ═══ -->
+        <div class="use-case school" id="use7">
+          <div class="uc-header">
+            <div class="uc-number">7</div>
+            <div class="uc-title-block">
+              <h3>Deciding Who Reads or Presents First</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-school">🏫 Classroom</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Reading aloud and presentation order share a familiar problem:
+              going first is nerve-wracking, going last gives extra prep time,
+              and students who already know their slot tend to check out until
+              it's their turn. Volunteer-based systems favour confident
+              students; strict alphabetical order sentences the same few
+              students to go first every single time.
+            </p>
+            <p>
+              A wheel keeps the next reader genuinely unknown until it lands.
+              Students who might be called at any moment track the text more
+              closely — they need to know where the class is, not just where
+              their own paragraph starts. That passive attention shift alone is
+              often reason enough for literacy teachers to switch.
+            </p>
+            <p>
+              For presentation order, spin it right when presentations begin —
+              not days ahead. That stops early presenters from checking out once
+              they're done and stops late-slot students from endlessly tweaking
+              their work. The randomness itself is the structure.
+            </p>
+            <div class="seg-block school">
+              <div class="seg-label">
+                🎓 For reading aloud, leave remove-after-spin off so the same
+                student could be called again — that keeps attention up
+                throughout the reading, not just until each student's first
+                turn.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 8 ═══ -->
+        <div class="use-case both" id="use8">
+          <div class="uc-header">
+            <div class="uc-number">8</div>
+            <div class="uc-title-block">
+              <h3>Icebreakers That Don't Fall Flat</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-both">🏫💼 Both</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Icebreakers usually die the same way: the facilitator asks "does
+              anyone want to share?" and the same three people answer while
+              everyone else waits it out. Round-the-room is a bit better but
+              still awkward — people either rehearse an answer or freeze when
+              it's their turn.
+            </p>
+            <p>
+              A two-wheel setup fixes both problems at once: one wheel with
+              names, one with question prompts. Spin the name wheel to pick a
+              speaker, spin the question wheel to pick what they answer. The
+              person picked gets a brief moment of attention, but on a question
+              the wheel chose — not one that feels pointed at them.
+            </p>
+            <p>
+              This works especially well for the first five minutes of a weekly
+              standup, the start of a new term, onboarding sessions, or the
+              opening of any workshop where the group doesn't know each other
+              well yet. It spreads out speaking time naturally and creates an
+              energy shift that static round-the-room intros just don't.
+            </p>
+            <div class="seg-block">
+              <div class="seg-label">
+                🎯 Sample icebreaker question wheel — works for classrooms and
+                offices alike
+              </div>
+              <div class="pill-list">
+                <span class="pill pill-teal"
+                  >🌍 Furthest place you've ever been?</span
+                >
+                <span class="pill pill-green"
+                  >📚 Last book you couldn't put down?</span
+                >
+                <span class="pill pill-teal"
+                  >🎵 Song stuck in your head this week?</span
+                >
+                <span class="pill pill-orange"
+                  >🍕 Unpopular food opinion you'll defend?</span
+                >
+                <span class="pill pill-teal"
+                  >🧩 Skill you'd learn if time wasn't a factor?</span
+                >
+                <span class="pill pill-green"
+                  >😂 Last thing that made you laugh out loud?</span
+                >
+                <span class="pill pill-teal"
+                  >🌅 Morning person or night owl — explain?</span
+                >
+                <span class="pill pill-orange"
+                  >🏆 Something you're quietly proud of?</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 9 ═══ -->
+        <div class="use-case both" id="use9">
+          <div class="uc-header">
+            <div class="uc-number">9</div>
+            <div class="uc-title-block">
+              <h3>A Prize Draw Nobody Can Dispute</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-both">🏫💼 Both</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              Prize draws share the same weak point everywhere: whoever runs the
+              draw is quietly suspected of tipping the outcome, even when they
+              had nothing to do with it. A teacher with a child in the class who
+              runs a hat draw will get raised eyebrows no matter who wins. A
+              manager who hand-picks a name for a team prize faces the same
+              suspicion.
+            </p>
+            <p>
+              Running the draw live on a wheel — projected on screen, every
+              entry visible before the first spin — turns fairness from
+              something people have to trust into something they can just see.
+              Show the full list, display the wheel to the room, have someone
+              other than the organiser click spin, and record the result. For
+              school settings, our detailed walkthrough on
+              <a href="/blogs/school-raffle-spin-wheel" class="ilink"
+                >running a school raffle using a spin wheel</a
+              >
+              covers the whole process.
+            </p>
+            <p>
+              The same idea applies at work for any recognition draw, raffle, or
+              end-of-year bonus spin. Record it and share it with the team
+              afterward — nobody can dispute something they watched happen and
+              can replay on demand.
+            </p>
+            <div class="seg-block">
+              <div class="seg-label">
+                🎯 Always enable Remove After Spin for prize draws, always show
+                the full entry list beforehand, and always have someone other
+                than the organiser click spin.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USE 10 ═══ -->
+        <div class="use-case both" id="use10">
+          <div class="uc-header">
+            <div class="uc-number">10</div>
+            <div class="uc-title-block">
+              <h3>Settling a Genuine Toss-Up Decision</h3>
+              <div class="uc-subtitle">
+                <span class="ctx-badge ctx-both">🏫💼 Both</span>
+              </div>
+            </div>
+          </div>
+          <div class="uc-body">
+            <p>
+              This one's easy to overlook, but it's genuinely useful.
+              Committees, teacher panels, and hiring groups sometimes land on a
+              true deadlock — two candidates, two projects, two approaches that
+              come out equal on every measure that matters. At that point, more
+              deliberation usually just loops the same conversation without
+              turning up anything new.
+            </p>
+            <p>
+              A wheel loaded with the two options makes a legitimate, defensible
+              tie-breaker. It takes the decision out of any one person's hands,
+              so nobody on the committee carries the weight — or the social cost
+              — of having chosen. The process stays fair, documented, and hard
+              to second-guess afterward.
+            </p>
+            <p>
+              One thing worth watching: the moment the result lands, notice your
+              own reaction. If it lands on Option A and someone feels genuinely
+              let down, that's a sign the group wasn't as evenly split as the
+              discussion suggested. Treat that reaction as useful information —
+              it can surface a preference the formal evaluation never quite
+              captured. We dig into this more in our guide on
+              <a href="/blogs/yes-no-wheel-when-to-use" class="ilink"
+                >when a Yes or No Wheel actually helps</a
+              >.
+            </p>
+            <div class="seg-block">
+              <div class="seg-label">
+                🎯 For anything high-stakes, agree the commitment upfront:
+                "whatever this spin lands on, we act on it." The commitment
+                matters more than which option wins.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── HOW TO BUILD ── -->
+        <h2 id="setup">Setting One Up Takes About Two Minutes</h2>
+
+        <ul class="step-list">
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Open spinthewheelsonline.com on any device</strong>
+              <p>
+                Go to
+                <a href="/" class="ilink">spinthewheelsonline.com</a>
+                in any browser — no account, nothing to install. It runs on a
+                classroom projector laptop, an office desktop, a workshop
+                tablet, or a phone for a quick meeting.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Add names in the segment panel</strong>
+              <p>
+                Type or paste one name per line. For a class of 30, paste the
+                whole list straight from your register spreadsheet. For a team
+                of 12, typing them takes under a minute. Each name becomes one
+                equally-sized wedge on the wheel.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Pick settings to match the use case</strong>
+              <p>
+                For cold-calling, reading aloud, or icebreakers where a repeat
+                is fine — leave remove-after-spin off. For duty rotation, group
+                formation, or prize draws where each name should land exactly
+                once — turn it on. For peer review pairs, turn it on and plan
+                ahead for an odd number of participants.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Bookmark the URL once it's set up</strong>
+              <p>
+                The wheel's URL stores your full setup. Bookmark it on your
+                classroom computer, browser favourites, or office laptop — one
+                bookmark per class or team works well. Reload it at the start of
+                every session with nothing to re-enter.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Project it so everyone actually sees it</strong>
+              <p>
+                The fairness benefit only lands when the whole group watches the
+                spin together. In classrooms, put it on the projector in
+                fullscreen. In meetings, share your screen or the room display.
+                When everyone sees the same spin at the same moment, the result
+                feels shared, not just announced.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="box box-teal">
+          <div class="box-label">
+            🎯 How a name picker differs from a general spin wheel
+          </div>
+          <p>
+            A name picker wheel is just a spin wheel where the segments happen
+            to be people rather than prizes or outcomes. Same mechanics apply —
+            equal odds per segment, remove-after-spin, custom colours — the
+            difference is purpose: selection rather than assigning an outcome.
+            See our comparison of the name picker against other random selection
+            tools in
+            <a href="/blogs/spin-wheel-vs-other-random-pickers" class="ilink"
+              >spin wheel vs. other random pickers</a
+            >.
+          </p>
+        </div>
+
+        <!-- ── COMPARISON TABLE ── -->
+        <h2>Name Picker Wheel vs. Other Selection Methods</h2>
+        <p>
+          Before digital wheels, teachers and managers relied on a handful of
+          other random-selection tricks. Here's how they stack up on what
+          actually matters in practice:
+        </p>
+
+        <div class="table-scroll">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Looks Fair to the Group?</th>
+                <th>Repeatable / Recordable?</th>
+                <th>Fast in Practice?</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🎡 <strong>Name Picker Wheel</strong></td>
+                <td><span class="check">✓ Yes — everyone watches</span></td>
+                <td><span class="check">✓ URL saves full setup</span></td>
+                <td><span class="check">✓ One click per pick</span></td>
+                <td><span class="tag-both">Both</span> All group settings</td>
+              </tr>
+              <tr>
+                <td>🧪 Lolly stick / name cards</td>
+                <td>Partly — the stick can be seen</td>
+                <td><span class="cross">✗ No record</span></td>
+                <td>Slow — needs a physical shuffle</td>
+                <td><span class="tag-school">School</span> Small classes</td>
+              </tr>
+              <tr>
+                <td>🙋 Hand-raising</td>
+                <td><span class="cross">✗ Favours confident students</span></td>
+                <td><span class="cross">✗ No record</span></td>
+                <td><span class="check">✓ Instant</span></td>
+                <td>
+                  <span class="tag-school">School</span> Volunteer tasks only
+                </td>
+              </tr>
+              <tr>
+                <td>📋 Fixed rota</td>
+                <td>Partly — transparent but rigid</td>
+                <td><span class="check">✓ Spreadsheet-based</span></td>
+                <td><span class="check">✓ No decision needed</span></td>
+                <td><span class="tag-work">Work</span> Predictable duties</td>
+              </tr>
+              <tr>
+                <td>🎲 Random number generator</td>
+                <td>Partly — not visually engaging</td>
+                <td>Partly — screenshot only</td>
+                <td><span class="check">✓ Fast</span></td>
+                <td>
+                  <span class="tag-both">Both</span> Remote / async settings
+                </td>
+              </tr>
+              <tr>
+                <td>👆 Manager chooses</td>
+                <td><span class="cross">✗ Reads as biased</span></td>
+                <td><span class="cross">✗ Nothing to verify</span></td>
+                <td><span class="check">✓ Instant</span></td>
+                <td>Never for disputed duties</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="article-related">
+          <h3>🔗 Related Guides</h3>
+          <div class="ar-grid">
+            <a href="/blogs/spin-wheel-classroom-activities" class="ar-card">
+              <div class="ar-tag">🏫 Education</div>
+              <div class="ar-title">
+                How to Use a Spin Wheel for Classroom Activities
+              </div>
+              <div class="ar-read">10 min read →</div>
+            </a>
+            <a href="/blogs/school-raffle-spin-wheel" class="ar-card">
+              <div class="ar-tag">🎟️ Events</div>
+              <div class="ar-title">
+                How to Run a School Raffle Using a Free Spin Wheel
+              </div>
+              <div class="ar-read">8 min read →</div>
+            </a>
+            <a href="/blogs/yes-no-wheel-when-to-use" class="ar-card">
+              <div class="ar-tag">🪙 Decisions</div>
+              <div class="ar-title">
+                Yes or No Wheel — When to Use It and Why It Helps
+              </div>
+              <div class="ar-read">9 min read →</div>
+            </a>
+            <a href="/blogs/psychology-random-decision-making" class="ar-card">
+              <div class="ar-tag">🧠 Psychology</div>
+              <div class="ar-title">
+                The Psychology Behind Random Decision Making
+              </div>
+              <div class="ar-read">9 min read →</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="cta-block">
+          <h3>🎯 Build Your Name Picker Wheel Now</h3>
+          <p>
+            Free, instant, no account needed. Load your class list or team
+            names, bookmark the URL, and it's ready every time you open it.
+          </p>
+          <a href="/" class="cta-btn">Open Free Name Picker Wheel →</a>
+        </div>
+
+        <!-- ── FAQ ── -->
+        <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["wheel-of-names","classroom-name-picker","random-name-generator","presentation-order-wheel","team-picker-wheel"]} ctaCategorySlug={"names-and-classrooms"} ctaCategoryName={"Names & Classrooms"} />
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does a name picker wheel give every name a genuinely equal
+            chance?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">
+            Yes, as long as every segment takes up equal arc space. The result
+            comes from a random number generated the instant the spin starts.
+            With 30 students loaded, each one has a 1-in-30 chance on any given
+            spin — unaffected by recent picks, where names sit on the wheel, or
+            anything else. For the full technical explanation, see our article
+            on
+            <a href="/blogs/is-spin-wheel-truly-random" class="ilink"
+              >whether a digital spin wheel is truly random</a
+            >.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How should I handle an anxious student who gets picked?<span
+              class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Set a clear, consistent rule before you start using the wheel for
+            cold-calling: a student can pass once per class, or say "give me a
+            second" and come back to it before class ends. Announce this on day
+            one so it's a known option, not something improvised on the spot.
+            The point of the wheel is fair distribution of participation — not
+            stripping away student choice. Students who know the pass option
+            exists tend to use it less, because knowing it's there lowers the
+            anxiety of being picked in the first place.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I keep separate name lists for different classes or teams?<span
+              class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Yes — the wheel's URL stores your exact setup. Build one wheel per
+            class or team, bookmark each one by name, and load the right one
+            each session. You can keep as many saved configurations as you need
+            — Year 9 English, Marketing Team, Board Meeting — each with its own
+            list and settings. Switching between them is as quick as switching
+            browser tabs.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is there a limit to how many names I can add?<span class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Up to 500 names fit cleanly on a single wheel—enough for any class, club, or mid-sized raffle. With hundreds of entries, slices narrow visually, while cryptographic selection and remove-after-spin stay mathematically uniform. On classroom projectors, 20 to 35 names read cleanly from the back row.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can someone game a name picker wheel by clicking at the right
+            moment?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">
+            No — the outcome comes directly from the browser's Web Cryptography API (<code>crypto.getRandomValues()</code>) with rejection sampling the instant the spin fires, so click timing has zero effect on where the pointer stops. Transparency at setup (showing the full list before spinning) is what prevents disputes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I weight the wheel so certain names come up more often?<span
+              class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Yes — click the <code>+</code> or <code>-</code> weight buttons (1x to 20x) beside any name to scale its odds without duplicating labels, or switch on duplicate entries to add multiple rows. At 2x, a student earning bonus participation credit gets double the slice share cleanly in front of the group.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does it work for remote or hybrid meetings?<span class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Yes — share your screen during the call so everyone can watch the
+            spin live. It runs in any browser with nothing to install. In hybrid
+            meetings, screen-sharing the wheel on the video call gives remote
+            participants the exact same view as everyone in the room, so the
+            selection moment is genuinely shared rather than something only
+            in-person attendees witnessed.
+          </div>
+        </div>
+
+
+        <BlogAuthorBox />
+
+        <div class="share-row">
+          <span class="share-label">Found this useful? Share it:</span>
+          <a
+            href="https://twitter.com/intent/tweet?text=10+Smart+Ways+to+Use+a+Name+Picker+Wheel+at+Work+or+School&url=https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+            target="_blank"
+            class="share-btn s-twitter"
+            >🐦 Twitter</a
+          >
+
+          <button class="share-btn s-copy" onclick="copyLink()">
+            🔗 Copy Link
+          </button>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="s-cta">
+          <h3>🎯 Build Your Name Picker Wheel</h3>
+          <p>
+            Load your class or team names, bookmark the URL, and it's ready
+            every single session. Free, instant, no account.
+          </p>
+          <a href="/">Open Free Name Picker Wheel →</a>
+        </div>
+
+        <div class="s-card">
+          <div class="s-title">📚 Related Articles</div>
+          <div class="related-post">
+            <div class="rp-num">1</div>
+            <div class="rp-body">
+              <a href="/blogs/spin-wheel-classroom-activities"
+                >Spin Wheel for Classroom Activities (With Examples)</a
+              >
+              <div class="rp-meta">🏫 Education · 10 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">2</div>
+            <div class="rp-body">
+              <a href="/blogs/school-raffle-spin-wheel"
+                >How to Run a School Raffle Using a Spin Wheel</a
+              >
+              <div class="rp-meta">🎟️ Events · 8 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">3</div>
+            <div class="rp-body">
+              <a href="/blogs/yes-no-wheel-when-to-use"
+                >Yes or No Wheel — When to Use It</a
+              >
+              <div class="rp-meta">🪙 Decisions · 9 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">4</div>
+            <div class="rp-body">
+              <a href="/blogs/is-spin-wheel-truly-random"
+                >Is a Digital Spin Wheel Truly Random?</a
+              >
+              <div class="rp-meta">🔬 Science · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">5</div>
+            <div class="rp-body">
+              <a href="/blogs/best-uses-random-wheel-spinner"
+                >10 Best Uses of a Random Wheel Spinner</a
+              >
+              <div class="rp-meta">💡 Ideas · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">6</div>
+            <div class="rp-body">
+              <a href="/blogs/how-to-run-online-giveaway"
+                >How to Pick a Fair Random Winner</a
+              >
+              <div class="rp-meta">🎁 Giveaways · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">7</div>
+            <div class="rp-body">
+              <a href="/blogs/psychology-random-decision-making"
+                >Psychology of Random Decision Making</a
+              >
+              <div class="rp-meta">🧠 Psychology · 9 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">8</div>
+            <div class="rp-body">
+              <a href="/blogs/spin-wheel-vs-other-random-pickers"
+                >Spin Wheel vs. Other Random Pickers</a
+              >
+              <div class="rp-meta">📊 Comparison · 7 min read</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <div class="s-title">🔗 More Free Tools</div>
+          <div class="related-post">
+            <div class="rp-num">🎡</div>
+            <div class="rp-body">
+              <a href="/">Spin the Wheel</a>
+              <div class="rp-meta">Custom random wheel spinner</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🪙</div>
+            <div class="rp-body">
+              <a href="/yes-no-wheel">Yes or No Wheel</a>
+              <div class="rp-meta">Instant binary decisions</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🔢</div>
+            <div class="rp-body">
+              <a href="/number-picker-wheel">Number Picker Wheel</a>
+              <div class="rp-meta">Random number generator</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🔤</div>
+            <div class="rp-body">
+              <a href="/letter-picker-wheel">Letter Picker Wheel</a>
+              <div class="rp-meta">Random letter selector</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/name-picker-wheel-work-school" />
+
+    <script is:inline>
+      function toggleFaq(el) {
+        var item = el.parentElement,
+          wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(function (i) {
+          i.classList.remove("open");
+        });
+        if (!wasOpen) item.classList.add("open");
+      }
+      function copyLink() {
+        var btn = event.currentTarget;
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(function () {
+            btn.textContent = "✅ Copied!";
+            setTimeout(function () {
+              btn.textContent = "🔗 Copy Link";
+            }, 2500);
+          })
+          .catch(function () {
+            btn.textContent = "❌ Try again";
+            setTimeout(function () {
+              btn.textContent = "🔗 Copy Link";
+            }, 2000);
+          });
+      }
+      window.addEventListener("scroll", function () {
+        var bar = document.getElementById("read-progress"),
+          scrollTop = window.scrollY,
+          docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width =
+          (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+        document
+          .getElementById("back-top")
+          .classList.toggle("show", scrollTop > 500);
+      });
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var id = a.getAttribute("href").slice(1),
+            target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            window.scrollTo({
+              top: target.getBoundingClientRect().top + window.scrollY - 86,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

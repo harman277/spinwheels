@@ -1,0 +1,1036 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { CATEGORIES, CATEGORIES_BY_SLUG, CATEGORY_NAME_TO_SLUG } from "../data/categories.js";
+import {
+  SITE_URL,
+  SITE_NAME,
+  REVIEWED_ISO,
+  REVIEWED_TEXT,
+  INDEXABLE_LANGS,
+  FEATURED_HOME_SLUGS,
+  FEATURED_HOME_BLOGS,
+  ASSETS,
+  toHreflangCode
+} from "../config/site";
+import AnalyticsHead from "./AnalyticsHead.astro";
+import AdSlot from "./AdSlot.astro";
+import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
+import WheelModals from "./WheelModals.astro";
+import CookieBanner from "./CookieBanner.astro";
+
+interface Props {
+  langCode?: string;
+  slug?: string;
+}
+
+const { langCode = "en", slug = "" } = Astro.props;
+
+const langMeta = (LANGUAGES as any)[langCode] || (LANGUAGES as any).en;
+const baseT = (TRANSLATIONS as any)[langCode] || (TRANSLATIONS as any).en;
+const uiChrome = getChrome(langCode);
+const tool = slug ? (SPECIALIZED_WHEELS as any)[slug] : null;
+const isRtl = langCode === "ar" || langCode === "he";
+const htmlLangAttr = toHreflangCode(langCode);
+
+// Build merged translation object (exact parity with Express renderToolWheel)
+const customT = JSON.parse(JSON.stringify(baseT));
+const rawLoc = tool?.translations?.[langCode] || null;
+const hasNativeToolLoc = Boolean(
+  slug && langCode !== "en" && INDEXABLE_LANGS.has(langCode) && rawLoc && rawLoc.name && rawLoc.heroSubtitle && rawLoc.items
+);
+
+let isIndexed = false;
+
+if (!slug) {
+  isIndexed = INDEXABLE_LANGS.has(langCode);
+} else if (langCode === "en" && tool) {
+  isIndexed = true;
+  customT.metaTitle = tool.title;
+  customT.metaDesc = tool.description;
+  if (tool.keywords) customT.keywords = tool.keywords;
+  customT.heroTitle = tool.heroTitle;
+  customT.heroHighlight = tool.heroHighlight;
+  customT.heroSubtitle = tool.heroSubtitle;
+  customT.quickAnswer = tool.quickAnswer;
+  if (tool.howTo) customT.howTo = tool.howTo;
+  if (tool.useCases) customT.useCases = tool.useCases;
+  if (tool.presets) customT.presets = tool.presets;
+  if (tool.faqs && tool.faqs.length) {
+    customT.faqs = tool.faqs.length >= 4 ? tool.faqs.slice() : tool.faqs.concat(baseT.faqs.slice(0, 3));
+  }
+  if (Array.isArray(tool.extraFaqs) && tool.extraFaqs.length) {
+    const seenQ = new Set((customT.faqs || []).map((f: any) => f.q));
+    tool.extraFaqs.forEach((f: any) => {
+      if (f && f.q && !seenQ.has(f.q)) {
+        seenQ.add(f.q);
+        customT.faqs.push(f);
+      }
+    });
+  }
+} else if (hasNativeToolLoc && rawLoc) {
+  isIndexed = true;
+  customT.metaTitle = rawLoc.title || `${rawLoc.name} – ${baseT.metaTitle}`;
+  customT.metaDesc = rawLoc.description || baseT.metaDesc;
+  if (rawLoc.keywords) customT.keywords = rawLoc.keywords;
+  customT.heroTitle = rawLoc.heroTitle || rawLoc.name;
+  customT.heroHighlight = rawLoc.heroHighlight || rawLoc.name;
+  customT.heroSubtitle = rawLoc.heroSubtitle;
+  if (rawLoc.quickAnswer) customT.quickAnswer = rawLoc.quickAnswer;
+  if (rawLoc.presets) customT.presets = rawLoc.presets;
+  if (rawLoc.faqs && rawLoc.faqs.length) {
+    customT.faqs = rawLoc.faqs.length >= 4 ? rawLoc.faqs.slice() : rawLoc.faqs.concat(baseT.faqs.slice(0, 3));
+  }
+} else if (tool) {
+  isIndexed = false;
+  customT.metaTitle = `${tool.name} – ${baseT.metaTitle}`;
+  customT.heroHighlight = tool.name;
+}
+
+const toolLoc = hasNativeToolLoc ? rawLoc : null;
+const defaultItems = (toolLoc && toolLoc.items) || (tool && tool.items) || null;
+const pageRobots = isIndexed
+  ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  : "noindex, follow";
+
+const selfPath = slug
+  ? langCode === "en" ? `/${slug}` : `/${langCode}/${slug}`
+  : langCode === "en" ? "/" : `/${langCode}`;
+const selfUrl = `${SITE_URL}${selfPath}`;
+const canonicalUrl = selfUrl;
+const pageTitle = customT.metaTitle;
+const pageDesc = customT.metaDesc;
+const bcp47Locale = (langMeta?.locale || "en_US").replace("_", "-");
+const ogImg = `${SITE_URL}/${tool?.ogImage || "eng-spin-the-wheel-picker.webp"}`;
+const totalWheelsCount = Object.keys(SPECIALIZED_WHEELS).length;
+const isLocalizedHub = langCode !== "en" && INDEXABLE_LANGS.has(langCode);
+const hasToolDeepGuide = Boolean(langCode === "en" && tool && tool.editorialGuide);
+
+const catSlug = tool ? (CATEGORY_NAME_TO_SLUG as any)[tool.category] : null;
+const activeCatObj = catSlug ? (CATEGORIES_BY_SLUG as any)[catSlug] : null;
+const localizedCatName = tool?.category ? (uiChrome.categories?.[tool.category] || tool.category) : "";
+const localizedWheelName = toolLoc?.name || tool?.name || SITE_NAME;
+
+const altNamesList = Array.isArray(tool?.altNames) && tool.altNames.length
+  ? tool.altNames
+  : ["Wheel of Names", "Random Wheel Spinner", "Decision Wheel", "Random Name Picker", "Picker Wheel Online"];
+
+const relatedWheels = (tool?.relatedSlugs || [])
+  .map((relSlug: string) => ((SPECIALIZED_WHEELS as any)[relSlug] ? { slug: relSlug, ...(SPECIALIZED_WHEELS as any)[relSlug] } : null))
+  .filter(Boolean);
+
+const featuredWheels = !slug
+  ? FEATURED_HOME_SLUGS.map((s) => ((SPECIALIZED_WHEELS as any)[s] ? { slug: s, ...(SPECIALIZED_WHEELS as any)[s] } : null)).filter(Boolean)
+  : [];
+
+const displayBlogs = slug
+  ? (langCode === "en" && Array.isArray(tool?.relatedBlogs) ? tool.relatedBlogs : [])
+  : (langCode === "en" ? FEATURED_HOME_BLOGS : []);
+
+// Breadcrumbs (4 levels on tool pages)
+const breadcrumbItems: Array<Record<string, any>> = [
+  { "@type": "ListItem", position: 1, name: uiChrome.homeBreadcrumb || "Home", item: `${SITE_URL}${isLocalizedHub ? `/${langCode}` : "/"}` }
+];
+if (slug) {
+  breadcrumbItems.push({ "@type": "ListItem", position: 2, name: uiChrome.allToolsBreadcrumb || "Tools", item: `${SITE_URL}/tools` });
+  if (activeCatObj) {
+    const catCrumbName = uiChrome.categories?.[activeCatObj.name] || activeCatObj.name;
+    breadcrumbItems.push({ "@type": "ListItem", position: 3, name: catCrumbName, item: `${SITE_URL}/category/${activeCatObj.slug}` });
+    breadcrumbItems.push({ "@type": "ListItem", position: 4, name: localizedWheelName, item: selfUrl });
+  } else {
+    breadcrumbItems.push({ "@type": "ListItem", position: 3, name: localizedWheelName, item: selfUrl });
+  }
+} else if (langCode !== "en") {
+  breadcrumbItems.push({ "@type": "ListItem", position: 2, name: langMeta.name || langCode, item: selfUrl });
+}
+
+// Hreflang alternates
+const hreflangs: Array<{ hreflang: string; href: string }> = [];
+if (isIndexed) {
+  const enBase = slug ? `${SITE_URL}/${slug}` : `${SITE_URL}/`;
+  hreflangs.push({ hreflang: "x-default", href: enBase });
+  hreflangs.push({ hreflang: "en", href: enBase });
+  if (slug && tool?.translations) {
+    for (const [code, lObj] of Object.entries(tool.translations as Record<string, any>)) {
+      if (code !== "en" && INDEXABLE_LANGS.has(code) && lObj && lObj.name && lObj.heroSubtitle && lObj.items) {
+        hreflangs.push({ hreflang: toHreflangCode(code), href: `${SITE_URL}/${code}/${slug}` });
+      }
+    }
+  } else if (!slug) {
+    for (const code of Object.keys(LANGUAGES)) {
+      if (code !== "en" && INDEXABLE_LANGS.has(code)) {
+        hreflangs.push({ hreflang: toHreflangCode(code), href: `${SITE_URL}/${code}` });
+      }
+    }
+  }
+}
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${selfUrl}#webpage`,
+      url: selfUrl,
+      name: pageTitle,
+      description: pageDesc,
+      inLanguage: bcp47Locale,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${selfUrl}#webapp` },
+      dateModified: REVIEWED_ISO,
+      breadcrumb: { "@id": `${selfUrl}#breadcrumbs` },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".hero-title", ".hero-subtitle", ".quick-answer-card"]
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": `${selfUrl}#webapp`,
+      name: localizedWheelName,
+      alternateName: altNamesList,
+      url: selfUrl,
+      description: pageDesc,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "All modern browsers (iOS, Android, Windows, macOS, Linux)",
+      browserRequirements: "Requires JavaScript. Fully functional on mobile and desktop.",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock" },
+      isAccessibleForFree: true,
+      featureList: Array.isArray(uiChrome.webAppFeatures) ? uiChrome.webAppFeatures : [
+        "Up to 500 entries capacity",
+        "Web Cryptography API randomness (crypto.getRandomValues)",
+        "Per-slice custom probability weighting",
+        "Mechanical tick & classic drum sound effects",
+        "Automatic winner elimination",
+        "Bulk paste from Excel & Google Sheets",
+        "Multiple color palettes & dark mode",
+        "Fullscreen presentation mode",
+        "Shareable wheel links, QR codes & iframe embed",
+        "Empirical frequency statistics & CSV export"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      description: "Free, cryptographically fair online spin wheels for names, decisions, classrooms, giveaways, and party games.",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/tools?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "spinthewheelsonline@gmail.com",
+        url: `${SITE_URL}/contact`
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${selfUrl}#breadcrumbs`,
+      itemListElement: breadcrumbItems
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${selfUrl}#howto`,
+      name: customT.howTo.title,
+      description: customT.howTo.subtitle,
+      totalTime: "PT1M",
+      step: customT.howTo.steps.map((s: any) => ({
+        "@type": "HowToStep",
+        position: s.num,
+        name: s.title,
+        text: s.desc
+      }))
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${selfUrl}#faq`,
+      mainEntity: customT.faqs.map((f: any) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a }
+      }))
+    }
+  ]
+};
+
+const schemaJson = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
+const presetsJson = JSON.stringify(customT.presets).replace(/</g, "\\u003c");
+const initialItemsJson = Array.isArray(defaultItems) && defaultItems.length
+  ? JSON.stringify(defaultItems).replace(/</g, "\\u003c")
+  : null;
+const hasDeepTable = Boolean(hasToolDeepGuide && Array.isArray(tool?.deepSections) && tool.deepSections.some((s: any) => s && s.table));
+const presetEntries = Object.entries(customT.presets || {}) as Array<[string, any]>;
+---
+
+<!doctype html>
+<html lang={htmlLangAttr} dir={isRtl ? "rtl" : "ltr"} data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDesc} />
+  {customT.keywords && <meta name="keywords" content={customT.keywords} />}
+  <meta name="author" content={SITE_NAME} />
+  <meta name="robots" content={pageRobots} />
+  <meta name="googlebot" content={pageRobots} />
+  <meta name="application-name" content={SITE_NAME} />
+  <meta name="theme-color" content="#F59E0B" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <link rel="canonical" href={canonicalUrl} />
+  {hreflangs.map((h) => <link rel="alternate" hreflang={h.hreflang} href={h.href} />)}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content={langMeta?.locale || "en_US"} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDesc} />
+  <meta property="og:image" content={ogImg} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={pageTitle} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDesc} />
+  <meta name="twitter:image" content={ogImg} />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/logo-192x192.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={true} />
+
+  <script type="application/ld+json" set:html={schemaJson} />
+  <script is:inline set:html={`window.stwol_presets = ${presetsJson};${initialItemsJson ? `\nwindow.stwol_initial_items = ${initialItemsJson};` : ""}`} />
+</head>
+
+<body>
+  <a class="skip-link embed-hide" href="#tool">{uiChrome.skipToWheel || "Skip to Wheel Tool"}</a>
+  <div class="embed-hide">
+    <SiteHeader lang={langMeta} t={customT} chrome={uiChrome} hasWheelTool={true} currentSlug={slug} currentPath={selfPath} />
+  </div>
+
+  <main id="main-content">
+    <div class="container">
+      {slug && (
+        <nav class="breadcrumb-nav embed-hide" aria-label="Breadcrumb navigation" style="padding: 12px 0 4px; font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <a href={isLocalizedHub ? `/${langCode}` : "/"} style="color: var(--text-muted); text-decoration: none;">{uiChrome.homeBreadcrumb || "Home"}</a>
+          <span aria-hidden="true">&rsaquo;</span>
+          <a href="/tools" style="color: var(--text-muted); text-decoration: none;">{uiChrome.allToolsBreadcrumb || "Tools"}</a>
+          {activeCatObj && (
+            <>
+              <span aria-hidden="true">&rsaquo;</span>
+              <a href={`/category/${activeCatObj.slug}`} style="color: var(--text-muted); text-decoration: none;">
+                {uiChrome.categories?.[activeCatObj.name] || activeCatObj.name}
+              </a>
+            </>
+          )}
+          <span aria-hidden="true">&rsaquo;</span>
+          <span style="color: var(--text-primary); font-weight: 600;" aria-current="page">{localizedWheelName}</span>
+        </nav>
+      )}
+
+      <section class="hero-section hero-compact embed-hide" aria-labelledby="heroHeading">
+        {tool?.category && (
+          <div style="display:inline-block; margin-bottom:8px;">
+            {activeCatObj ? (
+              <a href={`/category/${activeCatObj.slug}`} style="display:inline-flex; align-items:center; gap:6px; background:rgba(245,158,11,0.12); color:#D97706; font-size:0.76rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:4px 12px; border-radius:999px; border:1px solid rgba(245,158,11,0.25); text-decoration:none;">
+                {activeCatObj.icon} {localizedCatName}
+              </a>
+            ) : (
+              <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(245,158,11,0.12); color:#D97706; font-size:0.76rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:4px 12px; border-radius:999px; border:1px solid rgba(245,158,11,0.25);">
+                🎯 {localizedCatName}
+              </span>
+            )}
+          </div>
+        )}
+        <h1 class="hero-title" id="heroHeading">
+          {customT.heroTitle} – <span>{customT.heroHighlight}</span>
+        </h1>
+        <p class="hero-subtitle">{customT.heroSubtitle}</p>
+      </section>
+
+      <!-- Interactive Canvas Wheel Island (Zero framework JS overhead) -->
+      <section class="tool-section" id="tool" aria-label="Interactive Random Wheel Picker">
+        <div class="tool-grid">
+          <div class="wheel-stage">
+            <div class="wheel-wrapper">
+              <canvas id="wheel" width="440" height="440" role="img" aria-label="Interactive Spin Wheel Canvas — Click to Spin"></canvas>
+              <div class="wheel-pointer" aria-hidden="true"></div>
+              <button type="button" class="center-circle" onclick="window.stwol.spinWheel()" title={customT.ui.spinBtn} aria-label={customT.ui.spinBtn}>
+                ▶
+              </button>
+            </div>
+
+            <button class="spin-action-btn" id="spinBtn" type="button" onclick="window.stwol.spinWheel()" aria-label={customT.ui.spinBtn}>
+              {customT.ui.spinBtn}
+            </button>
+
+            <div class="result-banner" aria-live="polite">
+              <div class="result-banner-label">{customT.ui.resultDecided}</div>
+              <div class="result-banner-value" id="resultValue"></div>
+            </div>
+          </div>
+
+          <div class="control-panel">
+            <div class="card">
+              <div class="card-title">{customT.ui.addNamesHeading}</div>
+
+              <div class="preset-chips-wrap" aria-label="Instant preset lists">
+                {presetEntries.map(([key, val]) => (
+                  <button class="preset-chip" type="button" onclick={`window.stwol.loadPreset('${key}')`}>
+                    {val.label}
+                  </button>
+                ))}
+              </div>
+
+              <div class="entries-list" id="entriesList" role="list" aria-label="Current Wheel Items"></div>
+
+              <div class="add-entry-row">
+                <label for="newEntry" class="sr-only">Add an entry to the wheel</label>
+                <input type="text" id="newEntry" class="entry-input" placeholder={customT.ui.inputPlaceholder} maxlength="50" autocomplete="off" onkeydown="if(event.key==='Enter') window.stwol.addEntry();" />
+                <button class="btn-primary" type="button" onclick="window.stwol.addEntry()" aria-label="Add entry to list">
+                  + {customT.ui.addBtn}
+                </button>
+              </div>
+
+              <button class="btn-secondary" type="button" onclick="window.stwol.toggleBulk()" style="width:100%; margin-bottom:8px;">
+                {customT.ui.bulkBtn}
+              </button>
+
+              <div class="bulk-area" id="bulkArea" hidden>
+                <label for="bulkInput" class="sr-only">Paste multiple items</label>
+                <textarea id="bulkInput" class="bulk-textarea" placeholder={customT.ui.bulkPlaceholder}></textarea>
+                <div class="bulk-actions">
+                  <button class="btn-secondary" type="button" onclick="window.stwol.toggleBulk()">{customT.ui.bulkCloseBtn}</button>
+                  <button class="btn-primary" type="button" onclick="window.stwol.addBulkEntries()">{customT.ui.bulkAddBtn}</button>
+                </div>
+              </div>
+
+              <div class="action-grid">
+                <button class="btn-secondary" type="button" onclick="window.stwol.shuffleEntries()" title="Randomize item order">{customT.ui.shuffleBtn}</button>
+                <button class="btn-secondary" type="button" onclick="window.stwol.sortEntries()" title="Alphabetical sort">{customT.ui.sortBtn}</button>
+                <button class="btn-secondary" type="button" onclick="window.stwol.clearAllEntries()" title="Clear list">{customT.ui.clearAllBtn}</button>
+              </div>
+
+              {slug && (
+                <button class="btn-secondary" type="button" onclick="window.stwol.resetDefaultEntries()" style="width:100%; margin-top:8px;" title={uiChrome.resetDefaultsTitle || "Restore original default wheel entries"}>
+                  ↺ {uiChrome.resetDefaults || "Reset to Default Entries"}
+                </button>
+              )}
+            </div>
+
+            <div class="card">
+              <div class="card-title">{customT.ui.themesHeading}</div>
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <label for="themeSelect" class="setting-label">{uiChrome.paletteTheme || "Palette Theme"}</label>
+                <select id="themeSelect" class="setting-select" onchange="window.stwol.setTheme(this.value)">
+                  <option value="rainbow" selected>{uiChrome.themeRainbow || "🌈 Rainbow Classic"}</option>
+                  <option value="casino">{uiChrome.themeCasino || "🎰 Casino Gold"}</option>
+                  <option value="neon">{uiChrome.themeNeon || "⚡ Cyber Neon"}</option>
+                  <option value="pastel">{uiChrome.themePastel || "🌸 Pastel Dream"}</option>
+                  <option value="sunset">{uiChrome.themeSunset || "🌅 Sunset Coral"}</option>
+                  <option value="emerald">{uiChrome.themeEmerald || "🌲 Emerald Forest"}</option>
+                  <option value="ocean">{uiChrome.themeOcean || "🌊 Ocean Breeze"}</option>
+                  <option value="luxe">{uiChrome.themeLuxe || "🌌 Dark Luxe"}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card embed-hide" id="setting">
+              <div class="card-title">{customT.ui.settingsHeading}</div>
+
+              <div class="setting-row">
+                <label for="spinDuration" class="setting-label">{customT.ui.spinDuration}</label>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <input type="range" id="spinDuration" class="setting-slider" min="2" max="20" value="5" step="0.5" oninput="document.getElementById('durDisp').textContent = this.value + 's'" />
+                  <span id="durDisp" style="font-weight:700; font-size:0.85rem; min-width:32px;">5s</span>
+                </div>
+              </div>
+
+              <div class="setting-row">
+                <label for="soundSelect" class="setting-label">{customT.ui.soundEffect}</label>
+                <select id="soundSelect" class="setting-select">
+                  <option value="tick" selected>{customT.ui.soundTick}</option>
+                  <option value="drum">{customT.ui.soundDrum}</option>
+                  <option value="none">{customT.ui.soundNone}</option>
+                </select>
+              </div>
+
+              <div class="setting-row">
+                <label for="volumeSlider" class="setting-label">{customT.ui.soundVolume}</label>
+                <input type="range" id="volumeSlider" class="setting-slider" min="0" max="1" value="0.6" step="0.05" oninput="window.stwol.setVolume(this.value)" />
+              </div>
+
+              <div class="setting-row">
+                <div>
+                  <div class="setting-label">{customT.ui.removeWinner}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">{customT.ui.removeWinnerDesc}</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="removeWinner" aria-label={customT.ui.removeWinner} />
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <span class="setting-label">{customT.ui.showPopup}</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showPopup" checked aria-label={customT.ui.showPopup} />
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <span class="setting-label">{customT.ui.showConfetti}</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showConfetti" checked aria-label={customT.ui.showConfetti} />
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <span class="setting-label">{customT.ui.allowDuplicates}</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="allowDuplicates" aria-label={customT.ui.allowDuplicates} />
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="card embed-hide">
+              <div class="card-title">💾 {uiChrome.saveShareEmbed || "Save, Share & Embed"}</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-secondary" type="button" onclick="window.stwol.saveCurrentWheel()" style="flex:1;">{customT.ui.saveWheel}</button>
+                  <button class="btn-secondary" type="button" onclick="window.stwol.shareWheel()" style="flex:1;">{customT.ui.shareWheel}</button>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-secondary" type="button" onclick="window.stwol.openQRModal()" style="flex:1;">📱 {customT.ui.qrCodeTitle}</button>
+                  <button class="btn-secondary" type="button" onclick="window.stwol.openEmbedModal()" style="flex:1;">🖼️ {customT.ui.embedTitle || "Embed Wheel"}</button>
+                </div>
+                <select id="savedWheelsSelect" class="setting-select" style="width:100%; margin-top:4px;" onchange="window.stwol.loadSelectedSavedWheel(this.value)" aria-label="Load saved wheel">
+                  <option value="">-- {customT.ui.loadWheel} --</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card embed-hide">
+              <div class="card-title">{customT.ui.historyHeading}</div>
+              <div class="history-list" id="historyList" role="log" aria-live="polite">
+                <div class="empty-entries">{customT.ui.noSpinsYet}</div>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-secondary" type="button" onclick="window.stwol.exportHistoryCSV()" style="flex:1;">{customT.ui.exportHistory}</button>
+                <button class="btn-secondary" type="button" onclick="window.stwol.clearHistory()" style="flex:1; color:var(--danger);">{customT.ui.clearHistory}</button>
+              </div>
+              <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border-color);">
+                <div style="font-size:0.9rem; font-weight:700; margin-bottom:8px;">{customT.ui.statsHeading}</div>
+                <div id="statsList">
+                  <div class="empty-entries">{uiChrome.spinToViewStats || "Spin the wheel to view empirical odds!"}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Embed attribution (visible ONLY inside ?embed=1) -->
+      <div class="embed-attribution embed-only">
+        <span>Interactive Random Picker —</span>
+        <a href={selfUrl} target="_blank" rel="noopener">Open Full Wheel on SpinTheWheelsOnline.com &rarr;</a>
+      </div>
+
+      <div class="embed-hide">
+        <!-- Reserved Zero-CLS Ad Slot #1 (Active post-approval via src/config/ads.ts; >= 32px clear of Spin controls) -->
+        <AdSlot slot="belowTool" />
+
+        <section class="snippet-summary-section" aria-label="Tool summary">
+          <div class="quick-answer-card">
+            <p set:html={customT.quickAnswer} />
+          </div>
+          <div class="trust-badges" aria-label="Key tool highlights">
+            <span class="trust-badge">✅ {customT.badges.free}</span>
+            <span class="trust-badge">🔒 {customT.badges.secure}</span>
+            <span class="trust-badge">⚡ {customT.badges.capacity}</span>
+            <span class="trust-badge">🚀 {customT.badges.noSignup}</span>
+            <span class="trust-badge">📱 {customT.badges.device}</span>
+          </div>
+
+          {langCode === "en" && slug && relatedWheels.length > 0 && (
+            <div class="companion-strip" aria-label="Quick Companion Wheels">
+              <span class="companion-label">Popular Next Spins:</span>
+              {relatedWheels.slice(0, 4).map((rw: any) => (
+                <a href={`/${rw.slug}`} class="companion-pill">{rw.name} &rarr;</a>
+              ))}
+              {activeCatObj && (
+                <a href={`/category/${activeCatObj.slug}`} class="companion-pill companion-pill-cat">
+                  {activeCatObj.icon} All {activeCatObj.name}
+                </a>
+              )}
+            </div>
+          )}
+
+          {langCode === "en" && !slug && (
+            <div class="companion-strip" aria-label="Popular Specialized Wheels">
+              <span class="companion-label">Top Wheels:</span>
+              <a href="/wheel-of-names" class="companion-pill">Wheel of Names &rarr;</a>
+              <a href="/yes-no-wheel" class="companion-pill">Yes or No Wheel &rarr;</a>
+              <a href="/country-picker-wheel" class="companion-pill">Country Wheel &rarr;</a>
+              <a href="/number-picker-wheel" class="companion-pill">Number Picker &rarr;</a>
+              <a href="/tools" class="companion-pill companion-pill-cat">Explore All {totalWheelsCount}+ Wheels</a>
+            </div>
+          )}
+        </section>
+
+        {!slug && langCode === "en" && CATEGORIES.length > 0 && (
+          <section class="content-section cat-hub-section" aria-labelledby="categoriesHubHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="categoriesHubHeading">Browse Spin Wheels by Category</h2>
+              <p class="section-subtitle">Explore {totalWheelsCount} pre-built wheels organized across everyday decisions, classrooms, math, giveaways, food, sports, and geography.</p>
+            </div>
+            <div class="cat-hub-grid">
+              {CATEGORIES.map((cat: any) => {
+                const catToolCount = Object.values(SPECIALIZED_WHEELS).filter((w: any) => w.category === cat.name).length;
+                return (
+                  <a href={`/category/${cat.slug}`} class="cat-hub-card">
+                    <div class="cat-hub-top">
+                      <span class="cat-hub-icon" aria-hidden="true">{cat.icon}</span>
+                      <span class="cat-hub-count">{catToolCount} tools</span>
+                    </div>
+                    <h3>{cat.name}</h3>
+                    <p>{cat.subtitle.slice(0, 92)}&hellip;</p>
+                    <span class="cat-hub-cta">Open {cat.name} Hub &rarr;</span>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {!slug && featuredWheels.length > 0 && (
+          <section class="content-section hub-wheels-section" aria-labelledby="popularWheelsHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="popularWheelsHeading">
+                {(uiChrome.popularWheelsHeading || "Popular Free Spin Wheels ({count}+ Specialized Tools)").replace("{count}", String(totalWheelsCount))}
+              </h2>
+              <p class="section-subtitle">{uiChrome.popularWheelsSubtitle}</p>
+            </div>
+            <div class="hub-wheels-grid">
+              {featuredWheels.map((fw: any) => {
+                const rawFwLoc = langCode !== "en" && INDEXABLE_LANGS.has(langCode) ? fw.translations?.[langCode] : null;
+                const fwLoc = rawFwLoc && rawFwLoc.name && rawFwLoc.heroSubtitle && rawFwLoc.items ? rawFwLoc : null;
+                const fwHref = fwLoc ? `/${langCode}/${fw.slug}` : `/${fw.slug}`;
+                const fwCatLabel = uiChrome.categories?.[fw.category] || fw.category;
+                return (
+                  <a href={fwHref} class="hub-wheel-card">
+                    <span class="hub-wheel-cat">{fwCatLabel}</span>
+                    <h3>{fwLoc?.name || fw.name}</h3>
+                    <p>{(fwLoc?.description || fw.description).slice(0, 96)}&hellip;</p>
+                    <span class="hub-wheel-cta">{uiChrome.openWheelCta || "Open Wheel"} &rarr;</span>
+                  </a>
+                );
+              })}
+            </div>
+            <div style="text-align:center; margin-top:26px;">
+              <a href="/tools" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px; padding:12px 26px; text-decoration:none;">
+                {(uiChrome.exploreAllWheelsCta || "Explore All {count}+ Spin Wheels").replace("{count}", String(totalWheelsCount))} &rarr;
+              </a>
+            </div>
+          </section>
+        )}
+
+        <section class="content-section" aria-labelledby="howToHeading">
+          <div class="section-header">
+            <h2 class="section-title" id="howToHeading">{customT.howTo.title}</h2>
+            <p class="section-subtitle">{customT.howTo.subtitle}</p>
+          </div>
+          <div class="steps-grid">
+            {customT.howTo.steps.map((step: any) => (
+              <div class="step-card">
+                <span class="step-num">{step.num}</span>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {(!hasToolDeepGuide || tool?.useCases) && (
+          <section class="content-section" aria-labelledby="useCasesHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="useCasesHeading">{customT.useCases.title}</h2>
+              <p class="section-subtitle">{customT.useCases.subtitle}</p>
+            </div>
+            <div class="usecases-grid">
+              {customT.useCases.items.map((item: any) => (
+                <div class="usecase-card">
+                  <div class="usecase-icon" aria-hidden="true">{item.icon}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Reserved Zero-CLS Ad Slot #2 (In-content mid-page unit) -->
+        <AdSlot slot="inContent" />
+
+        {hasToolDeepGuide ? (
+          <section class="content-section" aria-labelledby="editorialHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="editorialHeading">{tool.editorialHeading || `Getting the Most Out of ${tool.name}`}</h2>
+              <p class="section-subtitle">{tool.editorialSubtitle || `Practical workflows, real-world tips, and honest trade-offs for ${tool.name}.`}</p>
+            </div>
+            <article class="card editorial-article">
+              {tool.editorialGuide.split(/\n\s*\n/).map((para: string) => (
+                <p class="editorial-lead" set:html={para.trim()} />
+              ))}
+
+              {Array.isArray(tool.editorialSections) && tool.editorialSections.map((sec: any) => (
+                <div class="editorial-subsection">
+                  <h3>{sec.heading}</h3>
+                  <p set:html={sec.body} />
+                  {Array.isArray(sec.bullets) && sec.bullets.length > 0 && (
+                    <ul class="editorial-bullets">
+                      {sec.bullets.map((b: string) => <li set:html={b} />)}
+                    </ul>
+                  )}
+                </div>
+              ))}
+
+              {Array.isArray(tool.deepSections) && tool.deepSections.map((sec: any) => (
+                <div class="editorial-subsection">
+                  <h3>{sec.heading}</h3>
+                  {Array.isArray(sec.paragraphs) && sec.paragraphs.map((p: string) => <p set:html={p} />)}
+                  {sec.table && Array.isArray(sec.table.headers) && Array.isArray(sec.table.rows) && (
+                    <div class="table-wrap" style="margin: 14px 0 18px;">
+                      <table class="compare-table">
+                        <thead>
+                          <tr>{sec.table.headers.map((h: string) => <th>{h}</th>)}</tr>
+                        </thead>
+                        <tbody>
+                          {sec.table.rows.map((r: string[]) => (
+                            <tr>
+                              {r.map((cell: string, idx: number) => (
+                                <td set:html={idx === 0 ? `<strong>${cell}</strong>` : cell} />
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {Array.isArray(sec.bullets) && sec.bullets.length > 0 && (
+                    <ul class="editorial-bullets">
+                      {sec.bullets.map((b: string) => <li set:html={b} />)}
+                    </ul>
+                  )}
+                </div>
+              ))}
+
+              {Array.isArray(tool.proTips) && tool.proTips.length > 0 && (
+                <div class="editorial-subsection">
+                  <h3>{tool.proTipsHeading || "Practical Tips Before You Spin"}</h3>
+                  <div class="pro-tips-grid">
+                    {tool.proTips.map((tip: any) => (
+                      <div class="pro-tip-card">
+                        <strong>💡 {tip.title}</strong>
+                        <p>{tip.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {tool.fairnessMath && (
+                <div class="math-callout">
+                  <strong>🔬 {tool.fairnessHeading || "How the Odds Work Behind the Scenes"}</strong>
+                  <p>{tool.fairnessMath}</p>
+                </div>
+              )}
+
+              {activeCatObj && (
+                <div class="category-callout">
+                  <div>
+                    <strong>{activeCatObj.icon} More in {activeCatObj.name}</strong>
+                    <p>See every companion wheel, reference chart, and guide collected inside our {activeCatObj.name} library.</p>
+                  </div>
+                  <a href={`/category/${activeCatObj.slug}`} class="btn-primary" style="text-decoration:none; white-space:nowrap;">
+                    Explore {activeCatObj.name} &rarr;
+                  </a>
+                </div>
+              )}
+            </article>
+          </section>
+        ) : (!slug && langCode === "en") && (
+          <section class="content-section" aria-labelledby="homeGuideHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="homeGuideHeading">How to Run Fair, Smooth Spins for Classrooms, Streams &amp; Groups</h2>
+              <p class="section-subtitle">Built for real classrooms, livestreams, standups, and everyday group calls—fast on any browser and private by default.</p>
+            </div>
+            <article class="card editorial-article">
+              <p class="editorial-lead">
+                Most free spinning wheel tools feel fine during a quick test with five names, right up until you paste 120 raffle entries before a stream or open the page on a school Chromebook two minutes before the bell. Suddenly labels overlap into an unreadable smudge, a login prompt blocks saving your list, or viewers start asking whether the spin speed changes who wins.
+              </p>
+              <p class="editorial-lead">
+                We built Spin The Wheels Online to behave like a dependable <strong>spinning tool</strong> you can trust in front of a room full of people. Every wheel handles up to 500 entries straight in your browser's local memory—student names and customer handles never leave your device—and selects each winner through the browser's hardware-backed <code>window.crypto.getRandomValues()</code> Web Cryptography API with rejection sampling so modulo remainders cannot skew slice #1 over slice #20.
+              </p>
+              <div class="editorial-subsection">
+                <h3>When an Online Spin the Wheel Generator Beats a Coin or Text Box (and When It Doesn't)</h3>
+                <p>
+                  A visual <strong>spinning wheel online</strong> earns its keep whenever <strong>more than two options are on the table</strong> or <strong>an audience needs to witness the draw unfold live</strong>. Cold-calling students on an interactive whiteboard, rotating daily standup speakers on Zoom, hosting a charity giveaway, or settling a Friday board game works far better on a wheel than inside a plain text RNG box because nobody suspects the host clicked "generate" twice off-camera.
+                </p>
+                <p>
+                  That said, a big custom wheel isn't always the right answer. If you are deciding a quick private 50/50 call at your desk—say whether to send an email now or after lunch—jump straight to our <a href="/yes-no-wheel">Yes or No Wheel</a> or <a href="/coin-flip-wheel">Coin Flip Wheel</a>, or toss a real coin. And if you need to randomize a 2,000-row database export for statistical sampling, a spreadsheet formula or Python script is the better tool for the job.
+                </p>
+                <ul class="editorial-bullets">
+                  <li><strong>Cleaner 1x–20x Slice Weights:</strong> Tap the <code>+</code> or <code>-</code> controls beside any entry to scale its slice arc and live win percentage cleanly from 1x up to 20x without cluttering the wheel with duplicate rows.</li>
+                  <li><strong>Zero-Repeat Elimination Rounds:</strong> Switch on <em>Remove Winner After Spin</em> so each chosen student, bingo ball, or prize winner clears off the wheel automatically until the entire roster has had a turn.</li>
+                  <li><strong>One-Click Sharing Without Accounts:</strong> Copy a stateless <code>?w=</code> share link, display a scannable QR code for phones in the room, download a timestamped CSV audit log after a draw, or drop an ad-free <code>?embed=1</code> iframe into Notion, Google Sites, or an OBS Browser Source.</li>
+                </ul>
+              </div>
+              <div class="editorial-subsection">
+                <h3>Four Setup Habits That Prevent Awkward Moments Live</h3>
+                <ul class="editorial-bullets">
+                  <li><strong>Match spin length to the stakes:</strong> Slide Spin Duration down to <strong>2–3 seconds</strong> for rapid-fire classroom vocabulary drills or Bingo calls, and stretch it to <strong>8–12 seconds</strong> with drumroll audio only for grand-prize giveaway reveals.</li>
+                  <li><strong>Agree on re-spin rules before pressing Spin:</strong> State out loud whether the first landing slice is binding—otherwise the group ends up spinning four times until someone's favorite wins.</li>
+                  <li><strong>Keep slice text short on projectors:</strong> Labels under 20 characters stay crisp from the back row even with 30–50 entries loaded.</li>
+                  <li><strong>Use Mute + Fullscreen in quiet rooms:</strong> Tap the header speaker icon before opening the wheel in a library or quiet study hall, and hit Fullscreen so side controls stay out of sight.</li>
+                </ul>
+              </div>
+              <div class="editorial-subsection">
+                <h3>What Runs Under the Hood (Quick Reference)</h3>
+                <div class="table-wrap" style="margin: 12px 0 16px;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr><th>Capability</th><th>How Spin The Wheels Online Handles It</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><strong>Entry Capacity</strong></td><td>Up to 500 names, numbers, or options via typing or Excel/Google Sheets bulk paste</td></tr>
+                      <tr><td><strong>Randomness Engine</strong></td><td>Browser Web Cryptography API (<code>crypto.getRandomValues()</code>) with rejection sampling</td></tr>
+                      <tr><td><strong>Custom Weighting</strong></td><td>1x to 20x per-slice weight buttons with live win-percentage display</td></tr>
+                      <tr><td><strong>Spin Speed &amp; Audio</strong></td><td>Adjustable 2s–20s spin duration with mechanical tick, drumroll, or silent mode</td></tr>
+                      <tr><td><strong>Sharing &amp; Audit Export</strong></td><td>Timestamped CSV spin log, QR code, shareable <code>?w=</code> URL, and ad-free <code>?embed=1</code> iframe</td></tr>
+                      <tr><td><strong>Cost &amp; Privacy</strong></td><td>100% Free, zero signup or login, Chromebook-friendly, custom lists stay strictly in your browser</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>
+                  Skip typing common lists from scratch by jumping straight into our most-used pre-loaded wheels: <a href="/country-picker-wheel">Country Picker Wheel (All 195 Countries)</a>, <a href="/wheel-of-names">Wheel of Names</a>, <a href="/number-picker-wheel">Number Picker Wheel</a>, <a href="/animal-picker-wheel">Animal Wheel Spinner</a>, <a href="/yes-no-wheel">Yes or No Wheel</a>, <a href="/color-picker-wheel">Color Wheel Spinner</a>, <a href="/truth-or-dare-wheel">Truth or Dare Wheel</a>, <a href="/letter-picker-wheel">Letter Picker Wheel (A–Z)</a>, <a href="/planet-picker-wheel">Pick a Planet Wheel</a>, <a href="/emoji-picker-wheel">Emoji Picker &amp; Emoji Name Picker</a>, <a href="/dandy-world-wheel-spinner">Dandy's World Wheel Spinner</a>, and <a href="/nba-team-wheel">NBA Teams Spin the Wheel</a>.
+                </p>
+              </div>
+            </article>
+          </section>
+        )}
+
+        {!(hasToolDeepGuide && tool?.fairnessMath) && (
+          <section class="content-section" aria-labelledby="fairnessHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="fairnessHeading">{customT.fairness.title}</h2>
+              <p class="section-subtitle">{customT.fairness.subtitle}</p>
+            </div>
+            <div class="fairness-box">
+              <p set:html={customT.fairness.text1} />
+              <p set:html={customT.fairness.text2} />
+              <div class="formula-card">{customT.fairness.formula}</div>
+              <p set:html={customT.fairness.text3} />
+            </div>
+          </section>
+        )}
+
+        {!hasDeepTable && (
+          <section class="content-section" aria-labelledby="comparisonHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="comparisonHeading">{customT.comparison.title}</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="compare-table" aria-label="Comparison Table">
+                <thead>
+                  <tr>{customT.comparison.headers.map((h: string) => <th>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {customT.comparison.rows.map((row: string[]) => (
+                    <tr>
+                      {row.map((cell: string, idx: number) => (
+                        <td>{idx === 0 ? <strong>{cell}</strong> : cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {langCode !== "en" && toolLoc?.guide && (
+          <section class="content-section" aria-labelledby="localizedGuideHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="localizedGuideHeading">{toolLoc.guide.title}</h2>
+              {toolLoc.guide.subtitle && <p class="section-subtitle">{toolLoc.guide.subtitle}</p>}
+            </div>
+            <article class="card localized-guide">
+              {toolLoc.guide.intro && <p class="editorial-lead">{toolLoc.guide.intro}</p>}
+              {Array.isArray(toolLoc.guide.paragraphs) && toolLoc.guide.paragraphs.map((para: string) => (
+                <p style="margin-top:12px; line-height:1.75; color:var(--text-secondary);">{para}</p>
+              ))}
+              {Array.isArray(toolLoc.guide.sections) && toolLoc.guide.sections.map((sec: any) => (
+                <div class="editorial-subsection" style="margin-top:20px;">
+                  <h3>{sec.heading}</h3>
+                  {sec.body && <p>{sec.body}</p>}
+                  {Array.isArray(sec.bullets) && sec.bullets.length > 0 && (
+                    <ul class="editorial-bullets">
+                      {sec.bullets.map((b: string) => <li>{b}</li>)}
+                    </ul>
+                  )}
+                </div>
+              ))}
+              {Array.isArray(toolLoc.guide.tips) && toolLoc.guide.tips.length > 0 && (
+                <ul style="margin:16px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
+                  {toolLoc.guide.tips.map((tip: string) => <li>{tip}</li>)}
+                </ul>
+              )}
+            </article>
+          </section>
+        )}
+
+        <!-- Reserved Zero-CLS Ad Slot #3 (Pre-FAQ high scroll-depth unit) -->
+        <AdSlot slot="preFaq" />
+
+        <section class="content-section" aria-labelledby="faqHeading">
+          <div class="section-header">
+            <h2 class="section-title" id="faqHeading">{uiChrome.faqHeading || "Frequently Asked Questions"}</h2>
+            <p class="section-subtitle">{uiChrome.faqSubtitle}</p>
+          </div>
+          <div class="faq-list">
+            {customT.faqs.map((faq: any) => (
+              <details class="faq-item">
+                <summary><span>{faq.q}</span></summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {slug && relatedWheels.length > 0 && (
+          <section class="content-section" aria-labelledby="relatedWheelsHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="relatedWheelsHeading">{uiChrome.relatedWheelsHeading || "Related Spin Wheels You Might Like"}</h2>
+              <p class="section-subtitle">{uiChrome.relatedWheelsSubtitle}</p>
+            </div>
+            <div class="related-wheels-grid">
+              {relatedWheels.map((rw: any) => {
+                const rawRwLoc = langCode !== "en" && INDEXABLE_LANGS.has(langCode) ? rw.translations?.[langCode] : null;
+                const rwLoc = rawRwLoc && rawRwLoc.name && rawRwLoc.heroSubtitle && rawRwLoc.items ? rawRwLoc : null;
+                const rwHref = rwLoc ? `/${langCode}/${rw.slug}` : `/${rw.slug}`;
+                const rwCatLabel = uiChrome.categories?.[rw.category] || rw.category;
+                return (
+                  <a href={rwHref} class="related-wheel-card">
+                    <span class="rw-cat">{rwCatLabel}</span>
+                    <h3>{rwLoc ? rwLoc.name : rw.name}</h3>
+                    <p>{(rwLoc?.description || rw.description).slice(0, 105)}&hellip;</p>
+                    <span class="rw-link">{uiChrome.spinNowCta || "Spin Now"} &rarr;</span>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {displayBlogs.length > 0 && (
+          <section class="content-section" aria-labelledby="relatedBlogsHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="relatedBlogsHeading">{slug ? "Helpful Guides & Ideas" : "Popular Guides & Playbooks"}</h2>
+              <p class="section-subtitle">Step-by-step articles, setup templates, and fairness deep-dives from our editorial desk.</p>
+            </div>
+            <div class="related-blogs-grid">
+              {displayBlogs.map((b: any) => (
+                <a href={`/blogs/${b.slug}`} class="related-blog-card">
+                  <span class="rb-tag">{b.tag}</span>
+                  <h3>{b.title}</h3>
+                  <span class="rb-link">Read Guide &rarr;</span>
+                </a>
+              ))}
+            </div>
+            {!slug && (
+              <div style="text-align:center; margin-top:20px;">
+                <a href="/blogs" class="btn-secondary" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+                  Browse All 25 Guides &rarr;
+                </a>
+              </div>
+            )}
+          </section>
+        )}
+
+        {langCode === "en" && CATEGORIES.length > 0 && (
+          <section class="content-section" aria-labelledby="siloStripHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="siloStripHeading">Browse All 8 Wheel Categories</h2>
+              <p class="section-subtitle">Explore every curated collection across {totalWheelsCount} free online spin wheels.</p>
+            </div>
+            <div class="cat-silo-strip">
+              {CATEGORIES.map((cat: any) => (
+                <a href={`/category/${cat.slug}`} class={`cat-silo-pill ${activeCatObj && activeCatObj.slug === cat.slug ? "active" : ""}`}>
+                  <span>{cat.icon}</span> {cat.name}
+                </a>
+              ))}
+              <a href="/tools" class="cat-silo-pill">🔎 All {totalWheelsCount} Wheels</a>
+            </div>
+          </section>
+        )}
+
+        <div class="eeat-card" role="complementary" aria-label="Editorial Note">
+          <div>
+            {langCode === "en" ? (
+              <>
+                <strong>Editorial Note:</strong> Built and maintained by <a href="/about">Harman S. &amp; Editorial Contributors</a>.{" "}
+                Last updated on <time datetime={REVIEWED_ISO}>{REVIEWED_TEXT}</time>.
+              </>
+            ) : (
+              <>
+                <strong>{uiChrome.editorialReviewLabel || "Editorial Review:"}</strong>{" "}
+                {uiChrome.editorialVerifiedText || "Verified and fact-checked by the"}{" "}
+                <a href="/about">{uiChrome.editorialTeamName || "Spin The Wheels Online Editorial Team"}</a>.{" "}
+                {uiChrome.editorialAuditedLabel || "Last updated on"} <time datetime={REVIEWED_ISO}>{REVIEWED_ISO}</time>.
+              </>
+            )}
+          </div>
+          <div class="eeat-badge">{uiChrome.editorialBadge || "🛡️ Browser Web Cryptography • 100% Client-Side"}</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <WheelModals lang={langMeta} t={customT} chrome={uiChrome} />
+  <div class="embed-hide">
+    <CookieBanner lang={langMeta} chrome={uiChrome} />
+    <SiteFooter lang={langMeta} chrome={uiChrome} currentSlug={slug} currentPath={selfPath} />
+  </div>
+
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

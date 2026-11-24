@@ -1,0 +1,147 @@
+---
+import { LANGUAGES } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { INDEXABLE_LANGS } from "../config/site";
+
+interface Props {
+  lang?: any;
+  t?: any;
+  chrome?: any;
+  hasWheelTool?: boolean;
+  currentSlug?: string;
+  currentPath?: string;
+}
+
+const { lang, t, chrome, hasWheelTool = false, currentSlug = "", currentPath = "" } = Astro.props;
+const headerLangCode = lang?.code || "en";
+const brandHref = headerLangCode !== "en" && INDEXABLE_LANGS.has(headerLangCode) ? `/${headerLangCode}` : "/";
+const uiChrome = chrome || getChrome(headerLangCode);
+const settingsLabel = t?.ui?.settingsHeading ? t.ui.settingsHeading.replace(/⚙️\s*/, "") : uiChrome.settings;
+
+const hasLocalizedWheel = (slug: string, targetCode: string) => {
+  if (targetCode === "en") return true;
+  if (!INDEXABLE_LANGS.has(targetCode)) return false;
+  const loc = (SPECIALIZED_WHEELS as any)[slug]?.translations?.[targetCode];
+  return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+};
+
+const getLangLink = (targetCode: string) => {
+  if (currentSlug) {
+    if (targetCode === "en") return `/${currentSlug}`;
+    return hasLocalizedWheel(currentSlug, targetCode) ? `/${targetCode}/${currentSlug}` : `/${targetCode}`;
+  }
+  if (currentPath && (currentPath.endsWith("/tools") || currentPath === "/tools")) {
+    return targetCode === "en" ? "/tools" : (INDEXABLE_LANGS.has(targetCode) ? `/${targetCode}/tools` : `/${targetCode}`);
+  }
+  return targetCode === "en" ? "/" : `/${targetCode}`;
+};
+
+const isTargetIndexable = (targetCode: string) => {
+  if (!INDEXABLE_LANGS.has(targetCode)) return false;
+  if (currentSlug) {
+    if (targetCode === "en") return true;
+    const loc = (SPECIALIZED_WHEELS as any)[currentSlug]?.translations?.[targetCode];
+    return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+  }
+  if (currentPath && (currentPath.endsWith("/tools") || currentPath === "/tools")) {
+    return targetCode === "en";
+  }
+  return true;
+};
+
+const allLangValues = Object.values(LANGUAGES) as any[];
+---
+
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="brand" href={brandHref} aria-label="SpinTheWheelsOnline Home">
+      <img src="/favicon.ico" alt="Wheel icon" width="28" height="28" loading="eager" />
+      <span>spinthewheelsonline</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      {hasWheelTool ? (
+        <a class="nav-link" href="#setting">⚙️ {settingsLabel}</a>
+      ) : (
+        <a class="nav-link" href={brandHref}>🎡 {uiChrome.spinWheelNav}</a>
+      )}
+      <a class="nav-link" href="/tools">🔨 {uiChrome.tools}</a>
+      <a class="nav-link" href="/blogs">📝 {uiChrome.blog}</a>
+
+      <button class="icon-btn" type="button" onclick="window.stwol.toggleFullscreen()" title={t?.ui?.fullscreen || uiChrome.fullscreen} aria-label={uiChrome.fullscreen}>
+        ⛶
+      </button>
+      <button class="icon-btn" type="button" id="muteBtn" onclick="window.stwol.toggleMute()" title={uiChrome.sound} aria-label={uiChrome.sound}>
+        🔊
+      </button>
+      <button class="icon-btn" type="button" id="themeModeBtn" onclick="window.stwol.toggleThemeMode()" title={uiChrome.theme} aria-label={uiChrome.theme}>
+        🌙
+      </button>
+
+      <div class="lang-selector">
+        <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label={uiChrome.changeLanguageAria} onclick="if(window.stwol && window.stwol.openLanguageModal) window.stwol.openLanguageModal();">
+          {lang ? lang.flag : "🌐"} {lang ? lang.name : "English"} ▾
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <div style="grid-column: 1 / -1; padding-bottom: 6px; margin-bottom: 4px; border-bottom: 1px solid var(--border-color);">
+            <button type="button" class="btn-secondary" onclick="if(window.stwol && window.stwol.openLanguageModal) window.stwol.openLanguageModal();" style="width:100%; font-size:0.8rem; padding:6px 10px; display:flex; align-items:center; justify-content:center; gap:6px;">
+              <span>🔍</span> {uiChrome.searchAllLanguages}
+            </button>
+          </div>
+          {allLangValues.map((l) => {
+            const langHref = getLangLink(l.code);
+            const canCrawl = isTargetIndexable(l.code);
+            return canCrawl ? (
+              <a class={`lang-item ${lang && lang.code === l.code ? "active" : ""}`} href={langHref} role="menuitem" onclick={`if(window.stwol && window.stwol.chooseLanguage) window.stwol.chooseLanguage('${l.code}')`}>
+                <span>{l.flag}</span> {l.name}
+              </a>
+            ) : (
+              <button type="button" class={`lang-item ${lang && lang.code === l.code ? "active" : ""}`} data-href={langHref} role="menuitem" onclick={`if(window.stwol && window.stwol.navigateLanguage) window.stwol.navigateLanguage('${l.code}', '${langHref}')`}>
+                <span>{l.flag}</span> {l.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </nav>
+
+    <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Toggle Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    {hasWheelTool ? (
+      <a class="nav-link" href="#setting" onclick="document.getElementById('mobileNav').classList.remove('open')">⚙️ {settingsLabel}</a>
+    ) : (
+      <a class="nav-link" href={brandHref} onclick="document.getElementById('mobileNav').classList.remove('open')">🎡 {uiChrome.spinWheelNav}</a>
+    )}
+    <a class="nav-link" href="/tools">🔨 {uiChrome.allTools}</a>
+    <a class="nav-link" href="/blogs">📝 {uiChrome.blog}</a>
+    <a class="nav-link" href="/about">ℹ️ {uiChrome.aboutUs}</a>
+    <a class="nav-link" href="/contact">✉️ {uiChrome.contactUs}</a>
+
+    <div style="display:flex; gap:10px; margin-top:8px;">
+      <button class="icon-btn" type="button" onclick="window.stwol.toggleFullscreen()" style="flex:1;">⛶ {uiChrome.fullscreen}</button>
+      <button class="icon-btn" type="button" onclick="window.stwol.toggleMute()" style="flex:1;">🔊 {uiChrome.sound}</button>
+      <button class="icon-btn" type="button" onclick="window.stwol.toggleThemeMode()" style="flex:1;">🌓 {uiChrome.theme}</button>
+    </div>
+
+    <div style="margin-top:12px;">
+      <label for="mobileLangSelect" style="font-size:0.85rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:6px;">🌐 {uiChrome.language}</label>
+      <select id="mobileLangSelect" class="setting-select" style="width:100%;" onchange="if(window.stwol && window.stwol.chooseLanguage) { window.stwol.chooseLanguage(this.options[this.selectedIndex].getAttribute('data-code') || ''); } window.location.href = this.value">
+        {allLangValues.map((l) => (
+          <option value={getLangLink(l.code)} data-code={l.code} selected={Boolean(lang && lang.code === l.code)}>
+            {l.flag} {l.name}
+          </option>
+        ))}
+      </select>
+      <button type="button" class="btn-secondary" onclick="if(window.stwol && window.stwol.openLanguageModal) { document.getElementById('mobileNav').classList.remove('open'); window.stwol.openLanguageModal(); }" style="width:100%; margin-top:8px; font-size:0.85rem; padding:8px 12px; display:flex; align-items:center; justify-content:center; gap:6px;">
+        <span>🔍</span> {uiChrome.searchAllLanguages}
+      </button>
+    </div>
+  </nav>
+</header>

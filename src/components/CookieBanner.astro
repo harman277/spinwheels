@@ -1,0 +1,30 @@
+---
+import { getChrome } from "../data/i18n-chrome.js";
+
+interface Props {
+  lang?: any;
+  chrome?: any;
+}
+
+const { lang, chrome } = Astro.props;
+const cbLang = lang?.code || "en";
+const uiChrome = chrome || getChrome(cbLang);
+---
+
+<!-- GDPR / CCPA Cookie Consent Banner -->
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie Consent">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      🍪 <strong>{uiChrome.cookieLead || "Privacy & Cookie Consent:"}</strong> {uiChrome.cookieBody}{" "}
+      <a href="/privacy-policy" style="text-decoration:underline;">{uiChrome.cookiePolicyLink || "Privacy Policy"}</a>.
+    </div>
+    <div class="cookie-buttons">
+      <button class="btn-primary" type="button" onclick="window.stwol.setConsent('all')">
+        {uiChrome.acceptAll || "Accept All"}
+      </button>
+      <button class="btn-secondary" type="button" onclick="window.stwol.setConsent('essential')">
+        {uiChrome.rejectNonEssential || "Reject Non-Essential"}
+      </button>
+    </div>
+  </div>
+</div>

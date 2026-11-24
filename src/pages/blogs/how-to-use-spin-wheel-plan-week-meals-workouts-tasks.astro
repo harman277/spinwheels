@@ -1,0 +1,1557 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Plan Your Week With a Spin Wheel: Meals &amp; Workouts</title>
+
+    <meta name="description" content="Build a flexible Sunday planning routine using five spin wheels for weekly dinners, bodyweight workouts, household chores, and deep-work task blocks." />
+    <meta
+      name="keywords"
+      content="weekly planner spin wheel, meal planning spinner, workout wheel routine, task batching wheel, sunday planning wheel"
+    />
+
+    <!-- Canonical -->
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks"
+    />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Author -->
+    <meta name="author" content="Harman S., Spin The Wheels Online" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" /></noscript>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Spin Wheel Weekly Planner: Meals, Workouts &amp; Tasks"
+    />
+    <meta
+      property="og:description"
+      content="Five free spin wheels that plan your entire week — meals, workouts, tasks, self-care, and weekends — without the daily decision fatigue."
+    />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks"
+    />
+    <meta
+      property="og:image"
+      content="https://spinthewheelsonline.com/eng-day-picker-wheel.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Spin Wheel Weekly Planner: Meals, Workouts &amp; Tasks"
+    />
+    <meta
+      name="twitter:description"
+      content="Five free spin wheels that plan your whole week — no sign-up, no app, no more staring at a blank to-do list."
+    />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Structured Data: single consolidated @graph -->
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks\",\n      \"name\": \"Plan Your Week With a Spin Wheel: Meals & Workouts\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#breadcrumbs\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Spin Wheel Weekly Planner\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#article\",\n      \"headline\": \"Spin Wheel Weekly Planner: How to Plan Meals, Workouts & Tasks Without the Daily Grind\",\n      \"description\": \"A practical, five-wheel system for planning meals, workouts, tasks, self-care, and weekends using a free online spin wheel.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-day-picker-wheel.webp\",\n      \"datePublished\": \"2026-10-15\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How many entries should each planning wheel have?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Meal wheels work best with 10-16 entries, fitness wheels with 6-8 workout types, task wheels with only the 5-10 items you're tackling that day, and self-care wheels with 8-12 options. The goal is enough variety to feel surprising, but never so many that an option gets forgotten.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Do I need to rebuild my wheels every week?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"No. Bookmark each wheel's link and reuse it. Task wheels should be refreshed daily since tasks change, but meal, fitness, and self-care wheels can run for months — just swap in three or four new entries every couple of months to keep them feeling current.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"What should I do if a spin result is impossible to follow through on?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Spin again, then edit the wheel. A result you can't act on is a sign the entry wasn't ready to be on the wheel — for example, a meal you don't have ingredients for. Move it to a separate 'needs a shopping trip' wheel instead.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Isn't this the same as using a to-do list app?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"A to-do list tells you what needs doing but leaves you to decide the order, which is often where procrastination begins. A spin wheel removes that ordering decision entirely and forces a starting point, functioning as a commitment device rather than another list to manage.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Should I use a spin wheel for big life decisions?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"No. Spin wheels are built for decisions where every option is already acceptable, like meals or workouts. For high-stakes or irreversible choices — careers, major purchases, relationships — the decision needs real deliberation, not a random pick.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can my family or team share the same wheel?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Every wheel generates a shareable link, so a household or team can spin from the same pre-agreed list. Because everyone approved the entries beforehand, the result is accepted without debate, which is especially useful for meal and weekend planning.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+
+    <!-- ================= ADSENSE ================= -->
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+  <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-day-picker-wheel.webp" />
+      <AnalyticsHead enableAds={true} />
+  
+<style is:inline>:root{--amber:#f59e0b;--amber-light:#fde68a;--amber-pale:#fffbeb;--ink:#1c1917;--ink-80:#44403c;--ink-50:#78716c;--ink-20:#d6d3d1;--ink-10:#f5f4f2;--white:#ffffff;--teal:#0d9488;--teal-pale:#f0fdfa;--rose:#e11d48;--rose-pale:#fff1f2;--violet:#7c3aed;--violet-pale:#f5f3ff;--blue:#2563eb;--blue-pale:#eff6ff;--radius:10px;--radius-lg:18px;--shadow-sm:0 1px 3px rgba(0, 0, 0, 0.08);--shadow-md:0 4px 16px rgba(0, 0, 0, 0.1);--shadow-lg:0 12px 40px rgba(0, 0, 0, 0.13);--font-display:"Playfair Display",Georgia,serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"DM Mono",monospace;--content-w:720px;--wide-w:1060px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.75;-webkit-font-smoothing:antialiased}img{max-width:100%;display:block}a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}.container{width:92%;max-width:var(--wide-w);margin-inline:auto}.content-col{width:100%;max-width:var(--content-w);margin-inline:auto}.breadcrumb{padding:1rem 0 0;font-size:.8rem;color:var(--ink-50)}.breadcrumb a{color:var(--ink-50)}.breadcrumb a:hover{color:var(--amber)}.breadcrumb span{margin:0 .35rem}.hero{padding:3rem 0 2.5rem;border-bottom:1px solid var(--ink-10)}.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem .9rem;font-size:.8rem;color:var(--ink-50);margin-bottom:1.25rem;align-items:center}.hero-badge{background:var(--amber-pale);color:#92400e;border:1px solid var(--amber-light);padding:.25rem .7rem;border-radius:50px;font-weight:600;font-size:.75rem}.hero h1{font-family:var(--font-display);font-size:clamp(2rem, 5vw, 3.2rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.1rem;max-width:820px}.hero h1 em{font-style:italic;color:var(--amber)}.hero-lead{font-size:1.15rem;color:var(--ink-80);max-width:640px;line-height:1.7;margin-bottom:1.5rem}.hero-stats{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}.stat-pill{background:var(--ink-10);border-radius:50px;padding:.45rem 1rem;font-size:.82rem;font-weight:600;color:var(--ink-80);display:flex;align-items:center;gap:.35rem}.stat-pill strong{color:var(--ink)}.article-image{width:100%;border-radius:var(--radius-lg);margin:1.75rem 0;overflow:hidden;border:1px solid var(--ink-20)}.article-image img{width:100%;height:auto;display:block}.article-image figcaption{font-size:.8rem;color:var(--ink-50);padding:.65rem 1rem;background:var(--ink-10)}.hero-image{border-radius:var(--radius-lg);overflow:hidden;margin-top:2rem;border:1px solid var(--ink-20);max-width:var(--wide-w)}.hero-image img{width:100%;height:auto;display:block}.article-layout{display:grid;grid-template-columns:1fr 260px;gap:3rem;align-items:start;padding:2.5rem 0 4rem}.toc-sidebar{position:sticky;top:80px;background:var(--ink-10);border-radius:var(--radius-lg);padding:1.4rem 1.5rem;font-size:.85rem}.toc-sidebar h2,.toc-sidebar h3{font-family:var(--font-mono);font-size:.75rem;font-weight:500;color:var(--ink-50);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}.toc-list{list-style:none;display:flex;flex-direction:column;gap:.1rem}.toc-list a{display:block;color:var(--ink-80);padding:.35rem .5rem;border-radius:6px;line-height:1.4;transition:background .15s,color .15s}.toc-list a:hover{background:var(--white);color:var(--amber);text-decoration:none}.toc-cta{margin-top:1.25rem;display:block;background:var(--amber);color:var(--ink);font-weight:700;font-size:.84rem;text-align:center;padding:.65rem 1rem;border-radius:8px;transition:background .2s}.toc-cta:hover{background:#d97706;text-decoration:none}.toc-inline{background:var(--ink-10);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:2.5rem;display:none}.toc-inline h2,.toc-inline h3{font-family:var(--font-mono);font-size:.75rem;font-weight:500;color:var(--ink-50);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}.toc-inline ol{padding-left:1.2rem;display:flex;flex-direction:column;gap:.25rem}.toc-inline ol li a{color:var(--ink-80);font-size:.9rem}.toc-inline ol li a:hover{color:var(--amber)}.article-body h2{font-family:var(--font-display);font-size:clamp(1.45rem, 3vw, 1.9rem);font-weight:700;color:var(--ink);margin:3rem 0 1rem;letter-spacing:-.01em;line-height:1.25;scroll-margin-top:90px}.article-body h3{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ink);margin:2rem 0 .75rem;scroll-margin-top:90px}.article-body p{color:var(--ink-80);font-size:1.02rem;margin-bottom:1.25rem}.article-body ol,.article-body ul{padding-left:1.4rem;margin-bottom:1.25rem;color:var(--ink-80)}.article-body li{margin-bottom:.5rem;font-size:1rem}.article-body strong{color:var(--ink);font-weight:600}.article-body a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}.article-body a:hover{color:var(--amber)}.article-body .lead-p{font-size:1.1rem;color:var(--ink-80)}.section-stamp{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber);color:var(--ink);font-family:var(--font-mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .8rem;border-radius:50px;margin-bottom:.6rem}.callout{border-radius:var(--radius-lg);padding:1.4rem 1.6rem;margin:2rem 0;border-left:4px solid}.callout-tip{background:var(--amber-pale);border-color:var(--amber)}.callout-tip .callout-title{color:#92400e}.callout-info{background:var(--blue-pale);border-color:var(--blue)}.callout-info .callout-title{color:var(--blue)}.callout-teal{background:var(--teal-pale);border-color:var(--teal)}.callout-teal .callout-title{color:var(--teal)}.callout-violet{background:var(--violet-pale);border-color:var(--violet)}.callout-violet .callout-title{color:var(--violet)}.callout-title{font-weight:700;font-size:.9rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}.callout p{margin-bottom:0;font-size:.95rem}.callout ul{margin-bottom:0}.wheel-card{border:1.5px solid var(--ink-20);border-radius:var(--radius-lg);overflow:hidden;margin:1.75rem 0}.wheel-card-header{background:var(--ink);color:var(--white);padding:1rem 1.4rem;display:flex;align-items:center;gap:.7rem}.wheel-card-header .wc-icon{font-size:1.5rem;line-height:1}.wheel-card-header h3,.wheel-card-header h4{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--white);flex:1}.wheel-card-header .wc-badge{font-family:var(--font-mono);font-size:.68rem;color:var(--amber);background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);padding:.2rem .6rem;border-radius:50px;white-space:nowrap}.wheel-card-body{padding:1.3rem 1.4rem}.wheel-card-body p{font-size:.94rem;margin-bottom:1rem}.wheel-entries{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1rem}.wheel-entry{background:var(--ink-10);border:1px solid var(--ink-20);border-radius:6px;padding:.3rem .7rem;font-size:.82rem;font-family:var(--font-mono);color:var(--ink-80)}.wheel-pro-tip{background:var(--amber-pale);border:1px solid var(--amber-light);border-radius:8px;padding:.75rem 1rem;font-size:.85rem;color:#78350f}.wheel-pro-tip strong{color:#92400e}.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}.stat-card{background:var(--ink);border-radius:var(--radius-lg);padding:1.4rem 1.2rem;text-align:center}.stat-card .stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--amber);line-height:1;display:block}.stat-card .stat-label{font-size:.8rem;color:#a8a29e;margin-top:.4rem;line-height:1.4}.internal-links{background:var(--ink-10);border-radius:var(--radius-lg);padding:1.5rem;margin:2.5rem 0}.internal-links-title{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-50);margin-bottom:1rem}.il-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}.il-card{background:var(--white);border-radius:10px;padding:.9rem 1rem;display:flex;align-items:flex-start;gap:.6rem;border:1px solid var(--ink-20);transition:border-color .2s,box-shadow .2s,transform .15s;text-decoration:none!important}.il-card:hover{border-color:var(--amber);box-shadow:var(--shadow-md);transform:translateY(-2px)}.il-card .il-icon{font-size:1.2rem;flex-shrink:0;margin-top:.05rem}.il-card .il-text{display:flex;flex-direction:column;gap:.15rem}.il-card .il-label{font-size:.83rem;font-weight:600;color:var(--ink);line-height:1.3}.il-card .il-meta{font-size:.73rem;color:var(--ink-50)}.step-list{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem}.step-list li{display:flex;gap:1rem;align-items:flex-start}.step-num{flex-shrink:0;width:32px;height:32px;background:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--ink);margin-top:.15rem}.step-text{flex:1;font-size:.97rem;color:var(--ink-80)}.step-text strong{color:var(--ink)}.quote-block{border-left:3px solid var(--amber);padding:1rem 1.5rem;margin:2rem 0;background:var(--amber-pale);border-radius:0 var(--radius) var(--radius) 0}.quote-block p{font-style:italic;font-size:1.05rem;color:var(--ink-80);margin-bottom:.5rem}.quote-block cite{font-size:.8rem;color:var(--ink-50);font-style:normal}.sample-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:1.5rem 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--ink-20)}.sample-table th{background:var(--ink);color:var(--amber);padding:.75rem 1rem;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.03em}.sample-table td{padding:.75rem 1rem;border-bottom:1px solid var(--ink-10);color:var(--ink-80);vertical-align:top}.sample-table tr:last-child td{border-bottom:none}.sample-table tr:nth-child(2n) td{background:var(--ink-10)}.sample-table .day-col{font-weight:700;color:var(--ink);white-space:nowrap}.tag{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.73rem;font-weight:600;margin:.1rem}.tag-meal{background:#fef3c7;color:#92400e}.tag-work{background:#eff6ff;color:#1d4ed8}.tag-fit{background:#f0fdfa;color:#0f766e}.tag-self{background:#f5f3ff;color:#6d28d9}.faq-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1.25rem}.faq-item{border:1.5px solid var(--ink-20);border-radius:var(--radius-lg);overflow:hidden}.faq-q{width:100%;background:0 0;border:none;text-align:left;cursor:pointer;padding:1.1rem 1.4rem;font-family:var(--font-body);font-size:.97rem;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:1rem}.faq-a{padding:0 1.4rem 1.2rem;font-size:.95rem;color:var(--ink-80);border-top:1px solid var(--ink-10);padding-top:1rem}.faq-a p{margin-bottom:.75rem}.faq-a p:last-child{margin-bottom:0}.cta-banner{background:var(--ink);border-radius:var(--radius-lg);padding:2.5rem 2rem;text-align:center;margin:3rem 0}.cta-banner .cta-icon{font-size:2.5rem;margin-bottom:.75rem}.cta-banner h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--white);margin-bottom:.6rem}.cta-banner p{color:#a8a29e;font-size:.95rem;margin-bottom:1.5rem}.cta-btn{display:inline-block;background:var(--amber);color:var(--ink);font-weight:700;font-size:1rem;padding:.85rem 2rem;border-radius:50px;transition:background .2s,transform .15s}.cta-btn:hover{background:#d97706;transform:translateY(-2px);text-decoration:none;color:var(--ink)}.takeaway-box{background:var(--amber-pale);border:1.5px solid var(--amber-light);border-radius:var(--radius-lg);padding:1.75rem 2rem;margin:2.5rem 0}.takeaway-box h3{font-family:var(--font-display);font-size:1.2rem;color:#78350f;margin-bottom:1rem}.takeaway-box ul{color:#78350f;padding-left:1.3rem}.takeaway-box li{margin-bottom:.5rem}.share-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--ink-20);border-bottom:1px solid var(--ink-20);margin:2rem 0;font-size:.85rem;color:var(--ink-50)}.share-btn{background:var(--ink-10);color:var(--ink-80);border:none;padding:.4rem .9rem;border-radius:50px;font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}.share-btn:hover{background:var(--amber);color:var(--ink);text-decoration:none}.related-section{padding:2.5rem 0 4rem;border-top:1px solid var(--ink-20)}.related-section h2{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--ink);margin-bottom:1.5rem}.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}.related-card{border:1.5px solid var(--ink-20);border-radius:var(--radius-lg);padding:1.25rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s,transform .15s;text-decoration:none!important}.related-card:hover{border-color:var(--amber);box-shadow:var(--shadow-md);transform:translateY(-3px)}.related-card .rc-tag{font-size:.73rem;color:var(--ink-50);font-weight:600}.related-card .rc-title{font-size:.95rem;font-weight:600;color:var(--ink);line-height:1.4}.related-card .rc-meta{font-size:.78rem;color:var(--amber);font-weight:600}@media (max-width:900px){.article-layout{grid-template-columns:1fr}.toc-sidebar{display:none}.toc-inline{display:block}.il-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr;gap:.75rem}}@media (max-width:640px){.hero h1{font-size:1.85rem}.hero-lead{font-size:1rem}.related-grid{grid-template-columns:1fr}.sample-table{font-size:.78rem}.sample-table td,.sample-table th{padding:.6rem .75rem}.cta-banner{padding:1.75rem 1.25rem}.cta-banner h3{font-size:1.3rem}.wheel-card-body{padding:1.1rem}.wheel-card-header{padding:.9rem 1.1rem}.article-body h2{font-size:1.4rem}}@media (max-width:420px){.hero{padding:2rem 0 2rem}.hero h1{font-size:1.65rem}.hero-stats{gap:.5rem}.stat-pill{font-size:.75rem;padding:.35rem .75rem}}.scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--amber);color:var(--ink);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow-lg);display:none;align-items:center;justify-content:center;z-index:200}.scroll-top.visible{display:flex}.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--amber);z-index:999;width:0%}@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.hero h1{animation:fadeUp .55s ease both}.hero-lead{animation:fadeUp .55s .1s ease both}.hero-stats{animation:fadeUp .55s .2s ease both}</style>
+</head>
+  
+  <body>
+    <div
+      class="progress-bar"
+      id="progressBar"
+      role="progressbar"
+      aria-valuenow="0"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks" />
+
+    <main>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/blogs">Blogs</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Spin Wheel Weekly Planner</span>
+        </nav>
+      </div>
+
+      <section class="hero">
+        <div class="container">
+          <div class="content-col">
+            <div class="hero-meta">
+              <span class="hero-badge">💡 Productivity Guide</span>
+              <span>📅 Updated November 24, 2026</span>
+              <span>⏱ 12 min read</span>
+              <span>📂 Ideas &amp; Lifestyle</span>
+            </div>
+
+            <h1>
+              How to Turn a <em>Spin Wheel</em> Into a Weekly Planner<br />(Meals,
+              Workouts, Tasks &amp; More)
+            </h1>
+
+            <p class="hero-lead">
+              Nobody runs out of good options for dinner, exercise, or what to
+              tackle first at work. What people run out of is the energy to keep
+              choosing between them. This guide walks through a five-wheel
+              system that removes the choosing — while leaving you in full
+              control of what's actually on the wheel.
+            </p>
+
+            <div class="hero-stats">
+              <div class="stat-pill">
+                ✅ <strong>Last reviewed:</strong>&nbsp;November 24, 2026
+              </div>
+              <div class="stat-pill">
+                🎡 <strong>Free tool</strong>&nbsp;— no sign-up needed
+              </div>
+              <div class="stat-pill">
+                📱 <strong>Works on</strong>&nbsp;any device
+              </div>
+            </div>
+          </div>
+
+          <figure class="hero-image">
+            <img
+              src="/eng-day-picker-wheel.webp"
+              alt="A colorful spin wheel divided into labeled sections for meals, workouts, tasks, self-care, and weekend plans, illustrating a weekly planning system"
+              loading="eager"
+              width="1200"
+              height="600"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="article-layout">
+          <article class="article-body" id="article">
+            <div class="toc-inline" aria-label="Table of contents">
+              <h2>📋 Table of Contents</h2>
+              <ol>
+                <li>
+                  <a href="#why-it-works"
+                    >Why a Spin Wheel Works for Weekly Planning</a
+                  >
+                </li>
+                <li><a href="#meals">Meal Planning</a></li>
+                <li><a href="#workouts">Workout &amp; Fitness Planning</a></li>
+                <li><a href="#tasks">Task &amp; Work Planning</a></li>
+                <li><a href="#self-care">Self-Care &amp; Downtime</a></li>
+                <li><a href="#system">Building Your Five-Wheel System</a></li>
+                <li><a href="#sample-week">Sample Week at a Glance</a></li>
+                <li>
+                  <a href="#mistakes"
+                    >Mistakes That Undermine a Planning Wheel</a
+                  >
+                </li>
+                <li><a href="#faq">Frequently Asked Questions</a></li>
+              </ol>
+            </div>
+
+            <p class="lead-p">
+              Ask most people why their week fell apart and they'll blame a lack
+              of time. Look closer and it's usually a lack of decisions made in
+              advance. Every unplanned dinner, unplanned workout, and unplanned
+              work block is a fresh decision demanded of a brain that's already
+              spent most of its daily decision-making budget by 10 a.m.
+            </p>
+            <p>
+              A spin wheel fixes this by moving the decision earlier — to a calm
+              Sunday afternoon instead of a frazzled Tuesday evening. You choose
+              the pool of acceptable options once. The wheel picks from that
+              pool every time after. You never decide twice.
+            </p>
+            <p>
+              If you haven't used a spin wheel for anything beyond picking a
+              name out of a hat, it's worth skimming
+              <a
+                href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+                >what a spin wheel tool actually is and how it generates a
+                result</a
+              >
+              first. Understanding that each entry has a genuinely equal chance
+              makes everything in this guide click faster.
+            </p>
+
+            <div class="stats-row" role="list">
+              <div class="stat-card" role="listitem">
+                <span class="stat-num">35+</span>
+                <div class="stat-label">
+                  everyday decisions the average adult makes about food alone —
+                  most of them avoidable with a pre-built wheel
+                </div>
+              </div>
+              <div class="stat-card" role="listitem">
+                <span class="stat-num">5</span>
+                <div class="stat-label">
+                  wheels needed to cover an entire week of meals, movement,
+                  work, and downtime
+                </div>
+              </div>
+              <div class="stat-card" role="listitem">
+                <span class="stat-num">$0</span>
+                <div class="stat-label">
+                  cost to build, save, and reuse every wheel — no account, no
+                  app download, ever
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 1 -->
+            <div id="why-it-works">
+              <div class="section-stamp">🧠 The Why</div>
+              <h2>Why a Spin Wheel Works for Weekly Planning</h2>
+
+              <p>
+                Planning advice usually assumes the problem is a lack of
+                structure — that with a better template or a fancier app, the
+                indecision would disappear. In practice, the culprit is usually
+                simpler:
+                <strong
+                  >choosing is tiring, and tired brains choose badly</strong
+                >.
+              </p>
+              <p>
+                Researchers describe this as decision fatigue — the tendency for
+                judgment to get worse the more choices a person has already made
+                that day. By the time you're standing in front of the fridge at
+                6 p.m., you've likely made hundreds of smaller decisions
+                already, and "what's for dinner" lands on an exhausted brain
+                that reaches for the path of least resistance — often takeout,
+                or nothing at all.
+              </p>
+
+              <div class="callout callout-info">
+                <div class="callout-title">📖 Go Deeper</div>
+                <p>
+                  For more on the science, see our piece on
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                    >the psychology behind random decision making</a
+                  >, which covers why outsourcing low-stakes choices to a random
+                  tool is a legitimate way to protect mental energy, not a
+                  shortcut around effort.
+                </p>
+              </div>
+
+              <h3>The Rule That Makes the Whole System Work</h3>
+              <p>
+                <strong
+                  >Only put entries on the wheel you'd be genuinely glad to land
+                  on.</strong
+                >
+                This is the entire foundation. A wheel loaded with obligations
+                you secretly want to avoid turns into something to be gamed or
+                ignored. A wheel loaded only with pre-approved options turns
+                into something you trust — because there's no bad outcome
+                possible.
+              </p>
+
+              <figure class="article-image">
+                <img
+                  src="/eng-food-picker-wheel.webp"
+                  alt="A person sitting at a kitchen table on a Sunday afternoon writing meal and task ideas onto sticky notes before adding them to a spin wheel"
+                  loading="lazy"
+                  width="1000"
+                  height="560"
+                />
+                <figcaption>
+                  Building your wheels once, on a calm Sunday, is what makes the
+                  rest of the week effortless.
+                </figcaption>
+              </figure>
+
+              <div class="callout callout-tip">
+                <div class="callout-title">💡 Pro Tip</div>
+                <p>
+                  Bookmark each finished wheel as its own link. A "Meals Wheel,"
+                  a "Workouts Wheel," and a "Tasks Wheel" living in one browser
+                  folder means your whole planning system is one tap away, on
+                  any device, without ever creating an account.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div id="meals">
+              <div class="section-stamp">🍽️ Part 1</div>
+              <h2>Meal Planning with a Spin Wheel</h2>
+
+              <p>
+                "What do you want for dinner?" is one of the most repeated — and
+                least enjoyed — questions in any household. Food alone accounts
+                for dozens of small decisions a day: what to buy, what to cook,
+                what to skip, what to reheat. A dedicated meal wheel collapses
+                all of that into a three-second spin.
+              </p>
+              <p>
+                Build it once, ideally on a Sunday when you're not hungry or
+                rushed, and trust it for the week that follows.
+              </p>
+
+              <h3>Building Your Meal Wheel Step by Step</h3>
+              <ul class="step-list" role="list">
+                <li>
+                  <div class="step-num">1</div>
+                  <div class="step-text">
+                    <strong>List meals your household actually enjoys.</strong>
+                    Resist adding "healthy" options nobody will cook. Aim for
+                    10–18 entries — enough range to feel varied, few enough that
+                    nothing is forgotten.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">2</div>
+                  <div class="step-text">
+                    <strong>Mix in a couple of wildcards.</strong> Entries like
+                    "Order in," "Breakfast for dinner," or "Fridge clear-out
+                    night" cover the nights you simply don't have the energy to
+                    cook from scratch.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">3</div>
+                  <div class="step-text">
+                    <strong>Spin five times on Sunday.</strong> Those results
+                    become Monday through Friday's dinners — decided, done, no
+                    renegotiating mid-week.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">4</div>
+                  <div class="step-text">
+                    <strong>Post the results somewhere visible</strong> — a
+                    whiteboard, a shared note, a magnet on the fridge — so
+                    nobody has to ask "wait, what was Wednesday again?"
+                  </div>
+                </li>
+              </ul>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">🍽️</div>
+                  <h3>Ready-to-Use: Weekly Dinner Wheel</h3>
+                  <span class="wc-badge">14 entries · ~15 mins to set up</span>
+                </div>
+                <div class="wheel-card-body">
+                  <p>Paste these straight into the free tool to get started:</p>
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">Pasta Bolognese</span>
+                    <span class="wheel-entry">Stir-fry &amp; Rice</span>
+                    <span class="wheel-entry">Grilled Chicken Salad</span>
+                    <span class="wheel-entry">Homemade Pizza</span>
+                    <span class="wheel-entry">Veggie Curry &amp; Naan</span>
+                    <span class="wheel-entry">Taco Night</span>
+                    <span class="wheel-entry">Salmon &amp; Greens</span>
+                    <span class="wheel-entry">Soup &amp; Crusty Bread</span>
+                    <span class="wheel-entry">Shakshuka</span>
+                    <span class="wheel-entry">Homemade Burgers</span>
+                    <span class="wheel-entry">Roast Chicken</span>
+                    <span class="wheel-entry">Takeaway Pick</span>
+                    <span class="wheel-entry">Breakfast for Dinner</span>
+                    <span class="wheel-entry">Fridge Clear-Out</span>
+                  </div>
+                  <div class="wheel-pro-tip">
+                    <strong>💡 Pro tip:</strong> Build a second, smaller wheel
+                    with just four or five "low-effort" meals for the nights
+                    when a full dinner isn't realistic. Keeping both wheels
+                    bookmarked means you always land on something you can
+                    actually make.
+                  </div>
+                </div>
+              </div>
+
+              <h3>Beyond Dinner: Breakfasts, Lunches &amp; Kids' Meals</h3>
+              <p>
+                The same approach works for every meal slot. A breakfast wheel
+                with six to eight entries (overnight oats, eggs, a yoghurt bowl,
+                avocado toast, a smoothie, cereal, or leftovers) removes one
+                more decision from the part of the day when willpower is usually
+                at its highest — worth protecting.
+              </p>
+              <p>
+                Households with picky eaters often get the most out of a "kids'
+                lunch wheel." Letting a child spin it themselves tends to
+                increase how willingly they accept the result — a dynamic
+                explored further in our guide to
+                <a
+                  href="https://spinthewheelsonline.com/blogs/family-game-night-wheel-spinner"
+                  >family-friendly wheel activities</a
+                >, where shared ownership of the spin turns a potential argument
+                into a game everyone wants to play.
+              </p>
+            </div>
+
+            <div class="internal-links" aria-label="Related reading">
+              <div class="internal-links-title">🔗 Related Reading</div>
+              <div class="il-grid">
+                <a
+                  href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                  class="il-card"
+                >
+                  <span class="il-icon">🧠</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >The Psychology Behind Random Decision Making</span
+                    >
+                    <span class="il-meta">7 min read · Science</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+                  class="il-card"
+                >
+                  <span class="il-icon">💡</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >10 Best Uses of a Random Wheel Spinner</span
+                    >
+                    <span class="il-meta">10 min read · Ideas</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/family-game-night-wheel-spinner"
+                  class="il-card"
+                >
+                  <span class="il-icon">🎉</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >Fun Family Game Night Ideas Using a Wheel</span
+                    >
+                    <span class="il-meta">6 min read · Family</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+                  class="il-card"
+                >
+                  <span class="il-icon">📖</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >What Is a Spin the Wheel Tool? (Complete Guide)</span
+                    >
+                    <span class="il-meta">8 min read · Beginner</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div id="workouts">
+              <div class="section-stamp">💪 Part 2</div>
+              <h2>Workout &amp; Fitness Planning with a Spin Wheel</h2>
+
+              <p>
+                What derails most fitness routines isn't a lack of motivation —
+                it's standing in workout gear with no clear plan and no energy
+                left to make one. A fitness wheel solves both problems at once:
+                it keeps sessions varied, and it removes the decision entirely.
+              </p>
+
+              <div class="quote-block">
+                <p>
+                  A community member who tried this for four months described
+                  putting eight workout types on a wheel and simply spinning
+                  each morning — noting that the missing piece was never
+                  motivation, but the daily choice itself.
+                </p>
+                <cite>— Community feedback, 2026</cite>
+              </div>
+
+              <h3>A Three-Wheel Fitness System</h3>
+              <p>
+                Rather than one large fitness wheel, three smaller, linked
+                wheels give you real variety without the randomness becoming an
+                excuse to always pick the easiest option.
+              </p>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">🏃</div>
+                  <h3>Wheel 1: Workout Type</h3>
+                  <span class="wc-badge">Spin once per session</span>
+                </div>
+                <div class="wheel-card-body">
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">HIIT (20 min)</span>
+                    <span class="wheel-entry">Strength Training</span>
+                    <span class="wheel-entry">Yoga Flow</span>
+                    <span class="wheel-entry">Long Walk / Hike</span>
+                    <span class="wheel-entry">Swim</span>
+                    <span class="wheel-entry">Cycling</span>
+                    <span class="wheel-entry">Pilates</span>
+                    <span class="wheel-entry">Active Rest Day</span>
+                  </div>
+                  <div class="wheel-pro-tip">
+                    <strong>💡 Note:</strong> Keep "Active Rest Day" on the
+                    wheel as a legitimate entry, not an escape hatch. Recovery
+                    is part of training, and removing guilt from rest is a win
+                    in itself.
+                  </div>
+                </div>
+              </div>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">⏱️</div>
+                  <h3>Wheel 2: Duration</h3>
+                  <span class="wc-badge">Spin once per session</span>
+                </div>
+                <div class="wheel-card-body">
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">20 minutes</span>
+                    <span class="wheel-entry">30 minutes</span>
+                    <span class="wheel-entry">45 minutes</span>
+                    <span class="wheel-entry">60 minutes</span>
+                  </div>
+                  <div class="wheel-pro-tip">
+                    <strong>💡 Pro tip:</strong> Short on time? Temporarily hide
+                    the longer entries before you spin — the tool lets you
+                    disable entries without deleting them.
+                  </div>
+                </div>
+              </div>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">🎯</div>
+                  <h3>Wheel 3: Focus Area (Strength Days)</h3>
+                  <span class="wc-badge"
+                    >Only spin when Wheel 1 = Strength</span
+                  >
+                </div>
+                <div class="wheel-card-body">
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">Upper Body Push</span>
+                    <span class="wheel-entry">Upper Body Pull</span>
+                    <span class="wheel-entry">Lower Body</span>
+                    <span class="wheel-entry">Core &amp; Stability</span>
+                    <span class="wheel-entry">Full Body</span>
+                  </div>
+                </div>
+              </div>
+
+              <figure class="article-image">
+                <img
+                  src="/eng-sport-picker-wheel.webp"
+                  alt="A phone screen showing a spin wheel labeled with workout types like HIIT, yoga, and cycling, resting on a gym bag next to running shoes"
+                  loading="lazy"
+                  width="1000"
+                  height="560"
+                />
+                <figcaption>
+                  Spin before you second-guess — the fitness wheel removes the
+                  "what should I actually do today" pause.
+                </figcaption>
+              </figure>
+
+              <h3>A Morning Habit Wheel</h3>
+              <p>
+                Fitness isn't limited to structured workouts. A morning routine
+                wheel — journalling, a ten-minute stretch, a cold shower,
+                meditation, reading, or a short walk — keeps a pre-work ritual
+                feeling fresh instead of robotic. Spin it each morning and
+                commit to whichever single habit lands.
+              </p>
+              <p>
+                This reframe helps people who tend to abandon habit streaks
+                after one missed day. Instead of tracking an unbroken chain,
+                every morning is simply one independent spin — which removes the
+                all-or-nothing pressure that usually kills the habit in the
+                first place.
+              </p>
+            </div>
+
+            <!-- Section 4 -->
+            <div id="tasks">
+              <div class="section-stamp">✅ Part 3</div>
+              <h2>Task &amp; Work Planning with a Spin Wheel</h2>
+
+              <p>
+                Procrastination rarely comes from not wanting to work — it comes
+                from the cost of picking where to start. You open your task
+                list, scan for the "right" first item, don't find one, and
+                forty-five minutes later you've reorganized the list three times
+                without touching a single task on it.
+              </p>
+              <p>A spin wheel interrupts that loop before it starts.</p>
+
+              <div class="callout callout-teal">
+                <div class="callout-title">💼 For Remote Teams</div>
+                <p>
+                  Task wheels work well for distributed teams too — visible,
+                  fair, and mildly fun. See
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+                    >how remote teams use spin wheels for decisions</a
+                  >
+                  for task allocation, icebreaker pickers, and retrospective
+                  topic ideas.
+                </p>
+              </div>
+
+              <h3>The Daily Task Wheel Method</h3>
+              <p>
+                At the start of a work block, load the wheel with today's
+                actionable tasks (five to ten items — beyond that, none of them
+                get real focus). Spin, then work on whatever lands for one full
+                Pomodoro (25 minutes). Spin again for the next block.
+              </p>
+
+              <ul class="step-list" role="list">
+                <li>
+                  <div class="step-num">1</div>
+                  <div class="step-text">
+                    <strong>Add today's actionable items only</strong> — not
+                    your entire backlog. If a task is vague ("work on project"),
+                    break it into one concrete next action first.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">2</div>
+                  <div class="step-text">
+                    <strong>Spin at the start of each Pomodoro.</strong> The
+                    result is your focus for the next 25 minutes — no
+                    negotiating, no "but this one feels more urgent."
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">3</div>
+                  <div class="step-text">
+                    <strong>Remove tasks as you finish them.</strong> A
+                    shrinking wheel is a satisfying, visible measure of progress
+                    through the day.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">4</div>
+                  <div class="step-text">
+                    <strong>For quick binary calls</strong> — "reply now or
+                    batch it later?" — pair this with the
+                    <a
+                      href="https://spinthewheelsonline.com/blogs/yes-no-wheel-when-to-use"
+                      >Yes or No Wheel</a
+                    >, built specifically for two-option decisions.
+                  </div>
+                </li>
+              </ul>
+
+              <h3>A Weekly Work-Rhythm Wheel</h3>
+              <p>
+                Beyond daily Pomodoros, a weekly task-category wheel prevents
+                you from accidentally spending three days on one type of work
+                while everything else stalls. Load it with categories like Deep
+                Work, Admin, Emails, Creative, Meetings Prep, and Learning, then
+                spin at the start of each half-day to set that block's focus.
+              </p>
+
+              <div class="callout callout-tip">
+                <div class="callout-title">💡 Pair With a Name Picker</div>
+                <p>
+                  Running a team or classroom? A
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+                    >name picker wheel</a
+                  >
+                  alongside your task wheel randomly assigns work to team
+                  members — visible, fair, and it skips the awkward "who wants
+                  this one?" silence.
+                </p>
+              </div>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">📋</div>
+                  <h3>Ready-to-Use: Weekly Work Rhythm Wheel</h3>
+                  <span class="wc-badge">Spin each half-day</span>
+                </div>
+                <div class="wheel-card-body">
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">Deep Work Block</span>
+                    <span class="wheel-entry">Email &amp; Comms</span>
+                    <span class="wheel-entry">Creative / Brainstorm</span>
+                    <span class="wheel-entry">Admin &amp; Logistics</span>
+                    <span class="wheel-entry">Learning / Research</span>
+                    <span class="wheel-entry">Review &amp; Edit</span>
+                    <span class="wheel-entry">Planning &amp; Strategy</span>
+                    <span class="wheel-entry">Meetings Prep</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div id="self-care">
+              <div class="section-stamp">🌿 Part 4</div>
+              <h2>Self-Care &amp; Downtime: The Category Everyone Skips</h2>
+
+              <p>
+                Most weekly planning systems treat rest and hobbies as
+                whatever's left over once everything else is done — which
+                usually means they never happen at all.
+              </p>
+              <p>
+                A dedicated self-care wheel treats personal time with the same
+                weight as meals and workouts. Once it's spun, the result isn't
+                optional or "if there's time" — it's already decided, the same
+                as any other commitment on the calendar.
+              </p>
+
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">🌿</div>
+                  <h3>Self-Care &amp; Evening Wind-Down Wheel</h3>
+                  <span class="wc-badge">Spin each evening</span>
+                </div>
+                <div class="wheel-card-body">
+                  <div class="wheel-entries">
+                    <span class="wheel-entry">30-min Reading</span>
+                    <span class="wheel-entry">Evening Walk</span>
+                    <span class="wheel-entry">Journalling</span>
+                    <span class="wheel-entry">Call a Friend</span>
+                    <span class="wheel-entry">Guided Meditation</span>
+                    <span class="wheel-entry">Sketch / Draw</span>
+                    <span class="wheel-entry">No-Screens Hour</span>
+                    <span class="wheel-entry">Hobby Project</span>
+                    <span class="wheel-entry">Long Bath / Shower</span>
+                    <span class="wheel-entry">Podcast + Stretch</span>
+                  </div>
+                  <div class="wheel-pro-tip">
+                    <strong>💡 Note:</strong> A wheel loaded with journalling
+                    prompts is genuinely useful for anyone who freezes at a
+                    blank page. Spin, then write about whatever comes up — a
+                    specific prompt opens more than a generic "write how you
+                    feel" ever does.
+                  </div>
+                </div>
+              </div>
+
+              <figure class="article-image">
+                <img
+                  src="/eng-month-picker-wheel.webp"
+                  alt="A cozy evening scene with a cup of tea, an open journal, and a phone showing a spin wheel of self-care activities on a soft blanket"
+                  loading="lazy"
+                  width="1000"
+                  height="560"
+                />
+                <figcaption>
+                  Evening self-care deserves the same pre-decided treatment as
+                  dinner.
+                </figcaption>
+              </figure>
+
+              <div class="callout callout-violet">
+                <div class="callout-title">🎂 Weekend Wheels</div>
+                <p>
+                  The same principle extends to weekends and social plans. See
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/spin-wheel-birthday-party-ideas"
+                    >spin wheel ideas for birthdays and celebrations</a
+                  >
+                  for dozens of ready-to-use activity setups that double as
+                  regular weekend inspiration.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div id="system">
+              <div class="section-stamp">🗓️ Part 5</div>
+              <h2>Building Your Five-Wheel Weekly System</h2>
+
+              <p>
+                The real value isn't in any single wheel — it's in a small set
+                of saved wheels that together cover the whole week. Here's the
+                complete setup.
+              </p>
+
+              <h3>Your Five Core Wheels</h3>
+              <div class="wheel-card">
+                <div class="wheel-card-header">
+                  <div class="wc-icon">🗂️</div>
+                  <h3>The Full Weekly System</h3>
+                  <span class="wc-badge"
+                    >5 wheels · ~40 min one-time setup</span
+                  >
+                </div>
+                <div class="wheel-card-body">
+                  <ul
+                    style="
+                      list-style: none;
+                      padding: 0;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 0.75rem;
+                    "
+                  >
+                    <li
+                      style="
+                        display: flex;
+                        gap: 0.75rem;
+                        align-items: flex-start;
+                      "
+                    >
+                      <span style="font-size: 1.2rem">🍽️</span>
+                      <div>
+                        <strong>Meal Wheel</strong> — 12–16 dinners plus a
+                        handful of lunches and wildcards. Spin Sunday to set the
+                        week.
+                      </div>
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 0.75rem;
+                        align-items: flex-start;
+                      "
+                    >
+                      <span style="font-size: 1.2rem">💪</span>
+                      <div>
+                        <strong>Fitness Wheel</strong> — workout type, duration,
+                        and focus area as three linked wheels. Spin each morning
+                        you exercise.
+                      </div>
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 0.75rem;
+                        align-items: flex-start;
+                      "
+                    >
+                      <span style="font-size: 1.2rem">✅</span>
+                      <div>
+                        <strong>Task Wheel</strong> — today's actionable items.
+                        Spin at the start of every Pomodoro block.
+                      </div>
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 0.75rem;
+                        align-items: flex-start;
+                      "
+                    >
+                      <span style="font-size: 1.2rem">🌿</span>
+                      <div>
+                        <strong>Self-Care Wheel</strong> — 8–12 evening
+                        activities. Spin after dinner most nights.
+                      </div>
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 0.75rem;
+                        align-items: flex-start;
+                      "
+                    >
+                      <span style="font-size: 1.2rem">🎉</span>
+                      <div>
+                        <strong>Weekend Wheel</strong> — outings, social plans,
+                        or errands. Spin Friday evening to set the weekend.
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3>Saving and Accessing Your Wheels</h3>
+              <p>
+                The free tool at
+                <a href="https://spinthewheelsonline.com/"
+                  >spinthewheelsonline</a
+                >
+                generates a unique, shareable link for every wheel you build.
+                Save all five as bookmarks — ideally in a single "Planning"
+                folder — and the entire system is one tap away on any device.
+              </p>
+              <p>
+                You can also share these links with household members or
+                teammates so everyone spins from the same pre-approved list.
+                This matters most for meal and weekend wheels, since it removes
+                the "I didn't choose this" objection when the options were
+                agreed on ahead of time.
+              </p>
+
+              <div class="callout callout-info">
+                <div class="callout-title">🔬 A Note on Fairness</div>
+                <p>
+                  If you're wondering whether the wheel quietly favors certain
+                  entries over time, it doesn't. Our piece on
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                    >whether a digital spin wheel is truly random</a
+                  >
+                  breaks down the underlying number generator in plain language
+                  — every entry keeps an equal chance on every spin, independent
+                  of what came up before.
+                </p>
+              </div>
+
+              <h3>What to Do When You Disagree With the Spin</h3>
+              <p>
+                This will happen, and it's useful information when it does. A
+                spin result that makes you think "ugh, not that" is a signal the
+                entry probably doesn't belong on the wheel. Remove it. The wheel
+                should only ever hold options you're genuinely willing to act
+                on.
+              </p>
+              <p>
+                On the flip side, if you notice you keep hoping for something
+                that rarely comes up, add it a second time to raise its odds.
+                The tool supports weighted entries, so you could give "Rest Day"
+                one slot and "HIIT" two if that better matches your current
+                goals.
+              </p>
+            </div>
+
+            <!-- Section 7 -->
+            <div id="sample-week">
+              <div class="section-stamp">📅 At a Glance</div>
+              <h2>Sample Week: What a Spin-Planned Week Looks Like</h2>
+              <p>
+                Here's one realistic output from all five wheels for a single
+                week:
+              </p>
+
+              <div style="overflow-x: auto">
+                <table
+                  class="sample-table"
+                  aria-label="Sample spin-planned week"
+                >
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>🍽️ Meal</th>
+                      <th>💪 Workout</th>
+                      <th>✅ Work Focus</th>
+                      <th>🌿 Evening</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="day-col">Monday</td>
+                      <td><span class="tag tag-meal">Veggie Curry</span></td>
+                      <td><span class="tag tag-fit">HIIT 30 min</span></td>
+                      <td><span class="tag tag-work">Deep Work</span></td>
+                      <td><span class="tag tag-self">Journalling</span></td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Tuesday</td>
+                      <td><span class="tag tag-meal">Stir-fry</span></td>
+                      <td><span class="tag tag-fit">Upper Body</span></td>
+                      <td>
+                        <span class="tag tag-work">Email &amp; Comms</span>
+                      </td>
+                      <td><span class="tag tag-self">Reading 30 min</span></td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Wednesday</td>
+                      <td><span class="tag tag-meal">Pasta Bolognese</span></td>
+                      <td><span class="tag tag-fit">Active Rest</span></td>
+                      <td><span class="tag tag-work">Creative Block</span></td>
+                      <td><span class="tag tag-self">Call a Friend</span></td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Thursday</td>
+                      <td>
+                        <span class="tag tag-meal">Salmon &amp; Greens</span>
+                      </td>
+                      <td><span class="tag tag-fit">Yoga 45 min</span></td>
+                      <td><span class="tag tag-work">Admin</span></td>
+                      <td><span class="tag tag-self">No-Screens Hour</span></td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Friday</td>
+                      <td><span class="tag tag-meal">Takeaway</span></td>
+                      <td><span class="tag tag-fit">Cycling 60 min</span></td>
+                      <td>
+                        <span class="tag tag-work">Review &amp; Edit</span>
+                      </td>
+                      <td><span class="tag tag-self">Hobby Project</span></td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Saturday</td>
+                      <td><span class="tag tag-meal">Homemade Pizza</span></td>
+                      <td><span class="tag tag-fit">Long Walk</span></td>
+                      <td><span class="tag tag-self">Weekend Mode</span></td>
+                      <td>
+                        <span class="tag tag-self">Podcast &amp; Stretch</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="day-col">Sunday</td>
+                      <td><span class="tag tag-meal">Roast Chicken</span></td>
+                      <td><span class="tag tag-fit">Pilates 30 min</span></td>
+                      <td><span class="tag tag-work">Planning Day</span></td>
+                      <td>
+                        <span class="tag tag-self">Bath + Early Night</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p
+                style="
+                  font-size: 0.85rem;
+                  color: var(--ink-50);
+                  margin-top: 0.5rem;
+                "
+              >
+                * This is one example output. Every spin produces a different
+                week — that's the point.
+              </p>
+            </div>
+
+            <!-- New section: common mistakes -->
+            <div id="mistakes">
+              <div class="section-stamp">⚠️ Before You Start</div>
+              <h2>Mistakes That Undermine a Planning Wheel</h2>
+              <p>
+                Most people who try this and give up after a week fall into one
+                of a few avoidable traps. Watch for these before you build your
+                first wheel.
+              </p>
+              <ul>
+                <li>
+                  <strong
+                    >Adding "should" options instead of "want" options.</strong
+                  >
+                  A wheel padded with kale salads you never actually eat
+                  produces spins you dread. Only add what you'd choose yourself
+                  on a good day.
+                </li>
+                <li>
+                  <strong>Making one giant wheel for everything.</strong>
+                  Mixing meals, tasks, and self-care on a single wheel produces
+                  confusing, low-relevance results. Keep each wheel scoped to
+                  one category.
+                </li>
+                <li>
+                  <strong>Never editing the wheel.</strong> A wheel is a living
+                  list, not a one-time setup. Swap in new entries every couple
+                  of months, and remove anything that consistently gets skipped.
+                </li>
+                <li>
+                  <strong>Treating the result as optional.</strong> The whole
+                  benefit disappears if you spin and then second-guess the
+                  outcome anyway. If you don't trust yourself to follow through,
+                  the entry probably shouldn't be on the wheel.
+                </li>
+              </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-banner">
+              <div class="cta-icon">🎡</div>
+              <h3>Ready to Spin Your Week?</h3>
+              <p>
+                No sign-up. No download. Works on any device. Build your first
+                planning wheel now — free, forever.
+              </p>
+              <a href="https://spinthewheelsonline.com/" class="cta-btn"
+                >Open Spin the Wheel — Free →</a
+              >
+            </div>
+
+            <div class="internal-links" aria-label="More related guides">
+              <div class="internal-links-title">🔗 More Guides You'll Want</div>
+              <div class="il-grid">
+                <a
+                  href="https://spinthewheelsonline.com/blogs/yes-no-wheel-when-to-use"
+                  class="il-card"
+                >
+                  <span class="il-icon">✅</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >Yes or No Wheel — When to Use It and Why It Helps</span
+                    >
+                    <span class="il-meta">4 min read · Feature Guide</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+                  class="il-card"
+                >
+                  <span class="il-icon">💼</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >How Remote Teams Use Spin Wheels for Decisions</span
+                    >
+                    <span class="il-meta">5 min read · Business</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+                  class="il-card"
+                >
+                  <span class="il-icon">👤</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >10 Creative Ways to Use a Name Picker Wheel</span
+                    >
+                    <span class="il-meta">6 min read · Guide</span>
+                  </div>
+                </a>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                  class="il-card"
+                >
+                  <span class="il-icon">🔬</span>
+                  <div class="il-text">
+                    <span class="il-label"
+                      >Is a Digital Spin Wheel Truly Random? The Science</span
+                    >
+                    <span class="il-meta">6 min read · Science</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["workout-wheel","chore-wheel","dinner-wheel","day-picker-wheel","month-picker-wheel","sport-picker-wheel","music-genre-wheel"]} ctaCategorySlug={"food-and-lifestyle"} ctaCategoryName={"Food & Lifestyle"} />
+
+        <div id="faq">
+              <div class="section-stamp">❓ FAQ</div>
+              <h2>Frequently Asked Questions</h2>
+
+              <div class="faq-list" role="list">
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    How many entries should each planning wheel have?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      For meal wheels, 10–16 entries is the sweet spot — enough
+                      variety to feel genuinely random without becoming
+                      unmanageable. Fitness wheels work well with 6–8 workout
+                      types. Task wheels should stick to that day's actual items
+                      (5–10 max). Self-care wheels do best with 8–12 options,
+                      enough to avoid repetition without feeling forced.
+                    </p>
+                    <p>
+                      The general rule: enough variety to surprise you, few
+                      enough that every option is something you'd actually do.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    Do I need to rebuild my wheels every week?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      No — reuse them. Save each wheel as a bookmarked link and
+                      return to it in one click. Refresh the task wheel daily
+                      since tasks change, but meal, fitness, and self-care
+                      wheels can stay the same for months, updated only when you
+                      want new options.
+                    </p>
+                    <p>
+                      A good rhythm: review your meal and fitness wheels every
+                      8–10 weeks and swap in three or four fresh entries.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    What if I spin and can't actually do the result (e.g.
+                    missing ingredients)?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      Spin again, then update the wheel. A result you can't
+                      follow through on is a sign the entry wasn't ready to be
+                      there in the first place. For meals, only include dishes
+                      you already have or can easily get the ingredients for. If
+                      something needs a special shopping trip, move it to a
+                      separate "weekend meals" wheel instead.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    How is this different from just using a to-do list or
+                    planner app?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      A to-do list tells you what needs doing — it doesn't
+                      remove the decision of which item to start with. Most
+                      productivity apps run into exactly this problem: you open
+                      one, see fifteen tasks, and spend ten minutes reorganizing
+                      instead of working. A spin wheel forces a start. It's a
+                      commitment device, not another list to manage.
+                    </p>
+                    <p>
+                      More on this in our piece on
+                      <a
+                        href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                        >the psychology behind random decision making</a
+                      >.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    Is spinning for important decisions a good idea?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      This works best when every option on the wheel is already
+                      pre-approved and roughly equivalent — meals, workouts,
+                      tasks of similar priority, evening activities. For
+                      high-stakes or irreversible decisions — career moves,
+                      major purchases, relationships — don't outsource the call
+                      to a random tool.
+                    </p>
+                    <p>
+                      A simple test: if every option on the wheel would be fine,
+                      spin. If landing on the "wrong" one would genuinely hurt
+                      you, don't. Our
+                      <a
+                        href="https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers"
+                        >comparison of spin wheels vs. other random pickers</a
+                      >
+                      covers this in more depth.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                  <div class="faq-q">
+                    Can I use this with my family or partner?
+                  </div>
+                  <div class="faq-a">
+                    <p>
+                      Yes, and it tends to work especially well. Share your meal
+                      or activity wheel link with your partner and spin it
+                      together each Sunday. Because everyone agreed to the
+                      entries in advance, the result stands without being
+                      contested. Kids in particular tend to enjoy spinning — it
+                      reframes "what's for dinner?" as a small game instead of a
+                      negotiation.
+                    </p>
+                    <p>
+                      See our guide to
+                      <a
+                        href="https://spinthewheelsonline.com/blogs/family-game-night-wheel-spinner"
+                        >family wheel spinner ideas</a
+                      >
+                      for activity, game night, and chore-assignment wheels for
+                      all ages.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="takeaway-box">
+              <h3>✅ Key Takeaways</h3>
+              <ul>
+                <li>
+                  A spin wheel solves decision fatigue, not decision-making —
+                  pre-load it with options you already approve, then commit to
+                  the result.
+                </li>
+                <li>
+                  Build five wheels: meals, fitness, tasks, self-care, and
+                  weekend. Bookmark each for one-click access all week.
+                </li>
+                <li>
+                  Spin the meal wheel on Sunday, the task wheel at the start of
+                  each Pomodoro, and the self-care wheel each evening.
+                </li>
+                <li>
+                  A "not that" reaction to a spin result is a signal to remove
+                  the entry, not to override the spin.
+                </li>
+                <li>
+                  Share household wheels with family or teammates — shared spins
+                  mean shared buy-in, with no arguments afterward.
+                </li>
+                <li>
+                  Explore more:
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                    >the psychology of random decisions</a
+                  >,
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+                    >10 best spin wheel uses</a
+                  >, and
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+                    >spin wheels for remote teams</a
+                  >.
+                </li>
+              </ul>
+            </div>
+
+
+        <BlogAuthorBox />
+
+            <div class="share-bar">
+              <span>Enjoyed this guide? Share it:</span>
+              <a
+                href="https://twitter.com/intent/tweet?text=How+to+Turn+a+Spin+Wheel+Into+a+Weekly+Planner&url=https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks"
+                class="share-btn"
+                target="_blank"
+                rel="noopener"
+                >🐦 Twitter</a
+              >
+              <button class="share-btn" id="copyLinkBtn">🔗 Copy Link</button>
+            </div>
+          </article>
+
+          <aside class="toc-sidebar" aria-label="Table of contents">
+            <h2>📋 Contents</h2>
+            <ul class="toc-list" role="list">
+              <li><a href="#why-it-works">Why It Works</a></li>
+              <li><a href="#meals">🍽️ Meal Planning</a></li>
+              <li><a href="#workouts">💪 Workouts &amp; Fitness</a></li>
+              <li><a href="#tasks">✅ Task &amp; Work Planning</a></li>
+              <li><a href="#self-care">🌿 Self-Care &amp; Downtime</a></li>
+              <li><a href="#system">🗓️ Your Five-Wheel System</a></li>
+              <li><a href="#sample-week">📅 Sample Week</a></li>
+              <li><a href="#mistakes">⚠️ Common Mistakes</a></li>
+              <li><a href="#faq">❓ FAQ</a></li>
+            </ul>
+            <a href="https://spinthewheelsonline.com/" class="toc-cta"
+              >🎡 Open Free Tool →</a
+            >
+          </aside>
+        </div>
+
+        <section class="related-section" aria-labelledby="related-heading">
+          <h2 id="related-heading">📚 All Related Articles</h2>
+          <div class="related-grid">
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+              class="related-card"
+            >
+              <span class="rc-tag">📖 Complete Guide</span>
+              <span class="rc-title"
+                >What Is a Spin the Wheel Tool and How Does It Work?</span
+              >
+              <span class="rc-meta">8 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+              class="related-card"
+            >
+              <span class="rc-tag">💡 Ideas Guide</span>
+              <span class="rc-title"
+                >10 Best Uses of a Random Wheel Spinner You Haven't Thought
+                Of</span
+              >
+              <span class="rc-meta">10 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+              class="related-card"
+            >
+              <span class="rc-tag">🧠 Psychology</span>
+              <span class="rc-title"
+                >The Psychology Behind Random Decision Making — And Why It
+                Works</span
+              >
+              <span class="rc-meta">7 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/yes-no-wheel-when-to-use"
+              class="related-card"
+            >
+              <span class="rc-tag">✅ Feature Guide</span>
+              <span class="rc-title"
+                >Yes or No Wheel — When to Use It and Why It Actually
+                Helps</span
+              >
+              <span class="rc-meta">4 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/family-game-night-wheel-spinner"
+              class="related-card"
+            >
+              <span class="rc-tag">🎉 Family Fun</span>
+              <span class="rc-title"
+                >Fun Family Game Night Ideas Using a Free Online Wheel
+                Spinner</span
+              >
+              <span class="rc-meta">6 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+              class="related-card"
+            >
+              <span class="rc-tag">💼 Business</span>
+              <span class="rc-title"
+                >How Remote Teams Use Spin the Wheel for Decisions &amp; Team
+                Building</span
+              >
+              <span class="rc-meta">5 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+              class="related-card"
+            >
+              <span class="rc-tag">👤 Name Picker</span>
+              <span class="rc-title"
+                >Top 10 Creative Ways to Use a Name Picker Wheel at Work &amp;
+                School</span
+              >
+              <span class="rc-meta">6 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers"
+              class="related-card"
+            >
+              <span class="rc-tag">📊 Comparison</span>
+              <span class="rc-title"
+                >Spin the Wheel vs. Other Random Pickers — Which One Should You
+                Use?</span
+              >
+              <span class="rc-meta">11 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+              class="related-card"
+            >
+              <span class="rc-tag">🔬 Science</span>
+              <span class="rc-title"
+                >Is a Digital Spin Wheel Truly Random? Here's What the Science
+                Says</span
+              >
+              <span class="rc-meta">6 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-birthday-party-ideas"
+              class="related-card"
+            >
+              <span class="rc-tag">🎂 Party Guide</span>
+              <span class="rc-title"
+                >Spin the Wheel Ideas for Birthday Parties &amp; Baby
+                Showers</span
+              >
+              <span class="rc-meta">6 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/streamers-use-spin-wheel"
+              class="related-card"
+            >
+              <span class="rc-tag">📺 Streaming</span>
+              <span class="rc-title"
+                >How Streamers &amp; YouTubers Use Wheel Spinners to Engage
+                Audiences</span
+              >
+              <span class="rc-meta">5 min read →</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway"
+              class="related-card"
+            >
+              <span class="rc-tag">🎁 Complete Guide</span>
+              <span class="rc-title"
+                >How to Pick a Random Winner for Giveaways Online
+                (Step-by-Step)</span
+              >
+              <span class="rc-meta">10 min read →</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks" />
+
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top">
+      ↑
+    </button>
+
+    <script is:inline>
+      window.addEventListener("scroll", () => {
+        const doc = document.documentElement;
+        const scrolled =
+          (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+        const btn = document.getElementById("scrollTop");
+        if (window.scrollY > 400) btn.classList.add("visible");
+        else btn.classList.remove("visible");
+      });
+
+      document.getElementById("scrollTop").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      const copyBtn = document.getElementById("copyLinkBtn");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(window.location.href);
+          copyBtn.textContent = "✅ Copied!";
+          setTimeout(() => (copyBtn.textContent = "🔗 Copy Link"), 2000);
+        });
+      }
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

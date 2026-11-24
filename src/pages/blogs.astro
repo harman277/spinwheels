@@ -1,0 +1,370 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import { SITE_URL, SITE_NAME, REVIEWED_ISO, ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+const UPDATED = "Nov 24, 2026";
+const UPDATED_ISO = REVIEWED_ISO;
+
+const featured = {
+  slug: "spin-the-wheel-tool",
+  cat: "ideas",
+  title: "How Spin the Wheel Works: Fair Odds, Uses & Free Setup",
+  min: 8
+};
+
+const articles = [
+  { slug: "spin-wheel-classroom-activities", cat: "education", tag: "🏫 Teacher's Guide", color: "#166534", icon: "🏫", g: ["#14532d", "#166534", "#15803d"], glow: "rgba(74,222,128,0.25)", min: 9,
+    title: "How Teachers Use Spin the Wheel in Classrooms (2026)",
+    excerpt: "Why picking students at random lifts participation, with 10 practical activity ideas for different subjects and the reasoning behind why it works." },
+  { slug: "how-to-run-online-giveaway", cat: "giveaway", tag: "🎁 Complete Guide", color: "#c2410c", icon: "🎁", g: ["#7c2d12", "#c2410c", "#ea580c"], glow: "rgba(251,146,60,0.3)", min: 10,
+    title: "How to Pick a Random Winner for Giveaways Online (Step-by-Step)",
+    excerpt: "A step-by-step guide to running a fair online giveaway, from choosing a tool to announcing the winner live. Covers Instagram, YouTube, Twitch, email, and school draws." },
+  { slug: "best-uses-random-wheel-spinner", cat: "ideas", tag: "💡 Ideas Guide", color: "#6d28d9", icon: "💡", g: ["#4c1d95", "#6d28d9", "#7c3aed"], glow: "rgba(167,139,250,0.3)", min: 10,
+    title: "10 Best Uses of a Random Wheel Spinner You Haven't Thought Of",
+    excerpt: "Ten less obvious uses for a wheel spinner, from creative writing prompts and travel planning to journaling and social media scheduling." },
+  { slug: "spin-wheel-vs-other-random-pickers", cat: "comparison", tag: "📊 Comparison", color: "#1d4ed8", icon: "📊", g: ["#0f172a", "#1e293b", "#0f2a3a"], glow: "rgba(29,78,216,0.25)", min: 11,
+    title: "Spin the Wheel vs. Other Random Pickers — Which One Should You Use?",
+    excerpt: "A side-by-side comparison of spin wheels, coin flips, dice rollers, number generators, and list pickers, with an 11-criteria table to help you choose." },
+  { slug: "how-to-use-spin-wheel-classroom-examples", cat: "education", tag: "📋 Classroom How-To", color: "#d97706", icon: "📋", g: ["#1c1408", "#2d1f05", "#0f1f0a"], glow: "rgba(217,119,6,0.3)", min: 11,
+    title: "20+ Classroom Spin Wheel Activities & Examples (Free)",
+    excerpt: "More than 20 classroom activity setups with exact wheel entries for English, math, science, languages, history, and geography, plus reusable teacher configs." },
+  { slug: "family-game-night-wheel-spinner", cat: "events", tag: "🎉 Family Fun", color: "#be185d", icon: "🎉", g: ["#831843", "#be185d", "#db2777"], glow: "rgba(251,113,133,0.3)", min: 6,
+    title: "Fun Family Game Night Ideas Using a Free Online Wheel Spinner",
+    excerpt: "Ways to use a wheel on family game night: activity selectors, team pickers, forfeit wheels, and dinner deciders, with ideas for different ages." },
+  { slug: "spin-wheel-team-building", cat: "ideas", tag: "💼 Business", color: "#0891b2", icon: "💼", g: ["#164e63", "#0e7490", "#0891b2"], glow: "rgba(103,232,249,0.2)", min: 5,
+    title: "How Remote Teams Use Spin the Wheel for Decisions & Team Building",
+    excerpt: "How distributed teams use wheels for task assignment, icebreakers, and retrospective topics so that turns are shared more fairly." },
+  { slug: "psychology-random-decision-making", cat: "science", tag: "🧠 Psychology", color: "#4338ca", icon: "🧠", g: ["#1e1b4b", "#3730a3", "#4338ca"], glow: "rgba(129,140,248,0.25)", min: 7,
+    title: "The Psychology Behind Random Decision Making — And Why It Works",
+    excerpt: "Why decisions made at random can be easier to accept: decision fatigue, handing a choice to a neutral process, and how a wheel reduces bias in groups." },
+  { slug: "school-raffle-spin-wheel", cat: "education", tag: "🎟️ School Events", color: "#16a34a", icon: "🎟️", g: ["#14532d", "#15803d", "#16a34a"], glow: "rgba(74,222,128,0.2)", min: 5,
+    title: "How to Run a School Raffle or Prize Draw Using a Free Spin Wheel",
+    excerpt: "A step-by-step guide for teachers and event coordinators, from preparing entries to running the live draw in front of parents." },
+  { slug: "yes-no-wheel-when-to-use", cat: "ideas", tag: "✅ Feature Guide", color: "#0d9488", icon: "✅", g: ["#134e4a", "#0f766e", "#0d9488"], glow: "rgba(45,212,191,0.25)", min: 4,
+    title: "Yes or No Wheel — When to Use It and Why It Actually Helps",
+    excerpt: "When a yes/no wheel is useful, how your own reaction to the result shows what you wanted, and when a custom wheel is the better choice." },
+  { slug: "spin-wheel-birthday-party-ideas", cat: "events", tag: "🎂 Party Guide", color: "#b45309", icon: "🎂", g: ["#78350f", "#b45309", "#d97706"], glow: "rgba(252,211,77,0.25)", min: 6,
+    title: "Spin the Wheel Ideas for Birthday Parties & Baby Showers",
+    excerpt: "Activity selectors, gift games, truth-or-dare spinners, and theme pickers for birthdays, baby showers, and other celebrations." },
+  { slug: "streamers-use-spin-wheel", cat: "streaming", tag: "📺 Streaming", color: "#9333ea", icon: "📺", g: ["#3b0764", "#6d28d9", "#9333ea"], glow: "rgba(192,132,252,0.25)", min: 5,
+    title: "Spin Wheels for Streamers & YouTubers | Challenge Guide",
+    excerpt: "Challenge wheels, subscriber giveaways, game-mode selectors, and OBS ?embed=1 overlays: how Twitch and YouTube creators involve chat." },
+  { slug: "name-picker-wheel-work-school", cat: "ideas", tag: "👤 Name Picker", color: "#2563eb", icon: "👤", g: ["#1e3a5f", "#1d4ed8", "#2563eb"], glow: "rgba(96,165,250,0.25)", min: 6,
+    title: "Top 10 Creative Ways to Use a Name Picker Wheel at Work & School",
+    excerpt: "Ten ways teams and teachers use name pickers beyond the usual class draw: presentations, mentoring pairs, project groups, and surprise spotlights." },
+  { slug: "is-spin-wheel-truly-random", cat: "science", tag: "🔬 Science", color: "#0d9488", icon: "🔬", g: ["#0f172a", "#1e3a2a", "#0f3a3a"], glow: "rgba(52,211,153,0.18)", min: 6,
+    title: "Is a Digital Spin Wheel Truly Random? Science Proof",
+    excerpt: "A plain-English look at Web Cryptography randomness (crypto.getRandomValues), rejection sampling, and what makes a digital wheel truly fair." },
+  { slug: "what-to-eat-tonight-spin-wheel-dinner-decision", cat: "lifestyle", tag: "🍽️ Lifestyle", color: "#b91c1c", icon: "🍽️", g: ["#7f1d1d", "#b91c1c", "#ef4444"], glow: "rgba(252,165,165,0.25)", min: 5,
+    title: "What's for Dinner Tonight? End Debates With a Wheel",
+    excerpt: "How to build a dinner decision wheel with cuisine categories and dietary filters, and why a random pick ends the 'what should we eat?' loop." },
+  { slug: "how-to-use-spin-wheel-plan-week-meals-workouts-tasks", cat: "lifestyle", tag: "📅 Productivity", color: "#059669", icon: "📅", g: ["#064e3b", "#065f46", "#059669"], glow: "rgba(110,231,183,0.25)", min: 7,
+    title: "How to Use a Spin Wheel to Plan Your Week (Meals, Workouts, Tasks)",
+    excerpt: "How to use a wheel to choose workouts, rotate meals, and pick the next task so planning a weekly routine takes less effort." },
+  { slug: "date-night-roulette-spin-wheel-ideas-couples", cat: "lifestyle", tag: "💑 Couples", color: "#c026d3", icon: "💑", g: ["#4a044e", "#86198f", "#c026d3"], glow: "rgba(240,171,252,0.25)", min: 6,
+    title: "Date Night Roulette: 20 Spin Wheel Ideas for Couples",
+    excerpt: "Twenty wheel setups for couples, from cozy nights in and outings to restaurant choices, movie genres, and small challenges." },
+  { slug: "how-students-use-spin-wheels-study-revision-focus", cat: "students", tag: "📚 Student Guide", color: "#3b82f6", icon: "📚", g: ["#1e3a5f", "#1e40af", "#3b82f6"], glow: "rgba(147,197,253,0.25)", min: 6,
+    title: "How Students Use Spin Wheels for Study Sessions, Revision & Focus",
+    excerpt: "Study techniques built around a wheel: topic roulette, activity breaks between study blocks, random quiz questions, and subject switching." },
+  { slug: "spin-wheel-language-learning-vocabulary-verbs-conversation", cat: "students", tag: "🗣️ Language Learning", color: "#65a30d", icon: "🗣️", g: ["#1a2e05", "#3f6212", "#65a30d"], glow: "rgba(163,230,53,0.22)", min: 7,
+    title: "Spin Wheel Ideas for Language Learning & Vocabulary",
+    excerpt: "Vocabulary wheels, verb conjugation spinners, conversation topic pickers, and timed speaking challenges for solo learners and classrooms." },
+  { slug: "hr-spin-wheel-employee-recognition-office-events", cat: "workplace", tag: "🏆 HR & People Ops", color: "#d97706", icon: "🏆", g: ["#1c1917", "#44403c", "#78716c"], glow: "rgba(217,119,6,0.28)", min: 6,
+    title: "HR Spin Wheels for Employee Recognition & Events",
+    excerpt: "How people teams use wheels for recognition reveals, spot-bonus draws, team lunch choices, and all-hands icebreakers." },
+  { slug: "spin-wheel-icebreakers-onboarding", cat: "workplace", tag: "🤝 Onboarding", color: "#1d4ed8", icon: "🤝", g: ["#0c2340", "#1e3a5f", "#1d4ed8"], glow: "rgba(96,165,250,0.22)", min: 5,
+    title: "Spin Wheel Icebreakers for New Employee Onboarding",
+    excerpt: "Icebreaker formats for new-hire orientation, remote onboarding calls, and team introductions, with ready-to-paste wheel entries." },
+  { slug: "best-wheel-of-names-alternatives-free-spinner-tools", cat: "comparison", tag: "📊 Alternatives", color: "#b45309", icon: "⚖️", g: ["#78350f", "#b45309", "#d97706"], glow: "rgba(245,158,11,0.25)", min: 12,
+    title: "10 Best Wheel of Names Alternatives & Free Spinners",
+    excerpt: "Candid hands-on comparison of 10 Wheel of Names alternatives across weighted odds, image slices, school privacy, embeds, and speed." },
+  { slug: "sports-gaming-spin-wheel-challenges-nfl-nba-pokemon-fortnite", cat: "streaming", tag: "🎮 Sports & Gaming", color: "#7c3aed", icon: "🎮", g: ["#2e1065", "#5b21b6", "#7c3aed"], glow: "rgba(167,139,250,0.25)", min: 13,
+    title: "Sports & Gaming Spin Wheel Challenges: NFL, NBA, Roblox",
+    excerpt: "Madden 32-team rebuilds, NBA 2K Blacktop drafts, MLB 13-run pools, EA FC rebuilds, Monotype Nuzlockes, Fortnite drops, and Dandy's World runs." },
+  { slug: "random-number-bingo-raffle-wheel-complete-guide", cat: "giveaway", tag: "🔢 Numbers & Bingo", color: "#0369a1", icon: "🔢", g: ["#0c4a6e", "#0369a1", "#0284c7"], glow: "rgba(56,189,248,0.25)", min: 12,
+    title: "Random Number, Bingo 1–75 & Raffle Wheel Complete Guide",
+    excerpt: "How to choose the right numeric range (1–5 to 1–100), run US 75-ball and UK 90-ball Bingo, set up 100-square pools, and log CSV draws." }
+];
+
+const total = articles.length + 1;
+const topics = new Set(articles.map((a) => a.cat).concat([featured.cat])).size;
+const blogHubUrl = `${SITE_URL}/blogs`;
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 }, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` } },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, publisher: { "@id": `${SITE_URL}/#organization` } },
+    {
+      "@type": "CollectionPage",
+      "@id": `${blogHubUrl}#webpage`,
+      name: "Spin The Wheels Online Blog",
+      description: "Practical guides for using a random picker wheel in classrooms, giveaways, team meetings, study sessions, and everyday decisions.",
+      url: blogHubUrl,
+      inLanguage: "en",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      breadcrumb: { "@id": `${blogHubUrl}#breadcrumbs` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: total,
+        itemListElement: [featured, ...articles].map((a, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_URL}/blogs/${a.slug}`,
+          name: a.title
+        }))
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${blogHubUrl}#breadcrumbs`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: blogHubUrl }
+      ]
+    }
+  ]
+}).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Wheel Guides &amp; Ideas – SpinTheWheelsOnline Blog</title>
+  <meta name="description" content="Practical guides for using a random picker wheel in classrooms, giveaways, team meetings, study sessions, and everyday decisions. Reviewed and updated regularly." />
+  <link rel="canonical" href={blogHubUrl} />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+  <meta name="author" content={SITE_NAME} />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" /></noscript>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Spin Wheel Guides & Ideas – Spin The Wheels Online Blog" />
+  <meta property="og:description" content="Practical guides for using a random picker wheel in classrooms, giveaways, team meetings, study sessions, and everyday decisions." />
+  <meta property="og:url" content={blogHubUrl} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:image" content={`${SITE_URL}/eng-spin-the-wheel-picker.webp`} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json" set:html={schemaJson} />
+  <AnalyticsHead enableAds={true} />
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+
+  <style is:inline>
+    :root{--ink:#0d0b07;--paper:#faf8f3;--cream:#f2ede3;--amber:#d97706;--gold:#f59e0b;--ember:#b45309;--red:#dc2626;--muted:#6b7280;--border:#e5e0d5;--white:#ffffff;--font-display:"Playfair Display",Georgia,serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"DM Mono",monospace}
+    #prog{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,var(--amber),var(--gold),var(--red));width:0%;transition:width .1s linear}
+    .blogs-hero{background:var(--ink);overflow:hidden;position:relative;padding:clamp(48px,8vw,88px) clamp(16px,5vw,32px) 0}
+    .blogs-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(217,119,6,.22) 0,transparent 55%),radial-gradient(ellipse at 90% 20%,rgba(220,38,38,.15) 0,transparent 50%)}
+    .hero-inner{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+    .blogs-hero .hero-title{font-family:var(--font-display);font-size:clamp(36px,7vw,76px);font-weight:900;line-height:1.05;color:#fff;margin-bottom:20px;letter-spacing:-.02em}
+    .blogs-hero .hero-title .line2{color:transparent;-webkit-text-stroke:1px rgba(245,158,11,0.7);font-style:italic}
+    .hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.72);max-width:600px;margin-bottom:32px;line-height:1.7}
+    .hero-meta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:clamp(32px,5vw,52px)}
+    .hero-stat{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.65)}
+    .hero-stat strong{color:var(--gold);font-size:20px;font-weight:800}
+    .hero-stat-sep{color:rgba(255,255,255,.2);font-size:20px}
+    .filter-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .filter-inner{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,32px);display:flex;align-items:center;gap:8px;overflow-x:auto;height:56px}
+    .filter-btn{flex-shrink:0;background:transparent;border:1.5px solid var(--border);font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 16px;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .filter-btn:hover{border-color:var(--amber);color:var(--ember)}
+    .filter-btn.active{background:var(--ink);border-color:var(--ink);color:#fff}
+    .main-wrap{max-width:1320px;margin:0 auto;padding:clamp(32px,5vw,60px) clamp(16px,4vw,32px)}
+    .intro-block{max-width:860px;margin-bottom:clamp(32px,5vw,52px)}
+    .intro-block h2{font-family:var(--font-display);font-size:clamp(22px,3.5vw,28px);font-weight:800;margin-bottom:12px}
+    .intro-block p{font-size:15.5px;color:#374151;margin-bottom:12px;line-height:1.75}
+    .intro-block p a{color:var(--ember);font-weight:600;border-bottom:1px dashed rgba(180,83,9,.5)}
+    .start-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .start-links a{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;color:#111827}
+    .start-links a:hover{border-color:var(--amber)}
+    .section-label{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+    .section-label h2{font-family:var(--font-display);font-size:clamp(22px,3.5vw,28px);font-weight:800;color:var(--ink)}
+    .count-pill{background:var(--ember);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;font-family:var(--font-mono)}
+    .featured-card{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border-radius:20px;overflow:hidden;margin-bottom:clamp(32px,5vw,52px);border:1px solid var(--border);box-shadow:0 4px 30px rgba(0,0,0,.07);color:inherit;text-decoration:none}
+    .fc-thumb{position:relative;overflow:hidden;min-height:280px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0d0b07 0,#1c1408 40%,#2d1f05 100%)}
+    .fc-thumb-icon{font-size:84px}
+    .fc-body{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;justify-content:center}
+    .fc-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 12px;border-radius:20px;margin-bottom:16px;width:fit-content;background:#fef3c7;color:#92400e}
+    .fc-title{font-family:var(--font-display);font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.25;margin-bottom:14px;color:var(--ink)}
+    .fc-excerpt{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:20px}
+    .fc-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:20px;font-family:var(--font-mono)}
+    .read-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;padding:12px 24px;border-radius:10px;width:fit-content}
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:clamp(16px,2.5vw,24px)}
+    .blogs-card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:transform .24s,box-shadow .24s}
+    .blogs-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.1)}
+    .card-thumb{position:relative;height:180px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .thumb-icon{font-size:52px;position:relative;z-index:1}
+    .time-badge{position:absolute;top:12px;right:12px;background:rgba(13,11,7,.7);color:#fff;font-family:var(--font-mono);font-size:10.5px;padding:4px 10px;border-radius:20px}
+    .card-body{padding:20px;display:flex;flex-direction:column;flex:1}
+    .card-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:#374151}
+    .card-title{font-family:var(--font-display);font-size:18px;font-weight:800;line-height:1.3;margin-bottom:10px;color:var(--ink)}
+    .card-title a{color:inherit;text-decoration:none}
+    .card-excerpt{font-size:13.8px;color:var(--muted);line-height:1.68;margin-bottom:16px;flex:1}
+    .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+    .card-date{font-size:11.5px;color:var(--muted);font-family:var(--font-mono)}
+    .card-btn{font-size:12.5px;font-weight:700;color:var(--ember);text-decoration:none}
+    .newsletter-strip{background:var(--ink);border-radius:20px;padding:clamp(28px,5vw,48px);margin-top:56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;color:#fff}
+    .nl-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ember);color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none}
+    @media(max-width:900px){.featured-card,.newsletter-strip{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div id="prog"></div>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs" />
+
+  <section class="blogs-hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span>●</span> SpinTheWheelsOnline blog</div>
+      <h1 class="hero-title">Ideas. Guides.<br /><span class="line2">Real Examples.</span></h1>
+      <p class="hero-sub">Practical articles for teachers, streamers, event planners, and anyone who wants a faster, fairer way to decide. Each guide includes example setups you can copy straight into the wheel.</p>
+      <div class="hero-meta-row">
+        <div class="hero-stat"><strong>{total}</strong> Articles</div>
+        <span class="hero-stat-sep">·</span>
+        <div class="hero-stat"><strong>{topics}</strong> Topics</div>
+        <span class="hero-stat-sep">·</span>
+        <div class="hero-stat"><strong>{UPDATED}</strong> Last updated</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="filter-wrap">
+    <div class="filter-inner" role="group" aria-label="Filter articles by topic">
+      <button type="button" class="filter-btn active" data-filter="all">All Topics</button>
+      <button type="button" class="filter-btn" data-filter="education">🏫 Education</button>
+      <button type="button" class="filter-btn" data-filter="giveaway">🎁 Giveaways</button>
+      <button type="button" class="filter-btn" data-filter="ideas">💡 Ideas &amp; Uses</button>
+      <button type="button" class="filter-btn" data-filter="comparison">📊 Comparisons</button>
+      <button type="button" class="filter-btn" data-filter="events">🎉 Events</button>
+      <button type="button" class="filter-btn" data-filter="science">🔬 Science</button>
+      <button type="button" class="filter-btn" data-filter="streaming">📺 Streaming</button>
+      <button type="button" class="filter-btn" data-filter="lifestyle">🍽️ Lifestyle</button>
+      <button type="button" class="filter-btn" data-filter="students">🎓 Students</button>
+      <button type="button" class="filter-btn" data-filter="workplace">🏢 Workplace &amp; HR</button>
+    </div>
+  </div>
+
+  <main class="main-wrap">
+    <section class="intro-block">
+      <h2>About these guides</h2>
+      <p>
+        A random picker wheel is simple to use, but it works best when set up for a specific situation. Each article here is written around one—such as a classroom activity, an online giveaway, a team meeting, a study session, or a family dinner decision—and includes example entries you can paste straight into the <a href="/">wheel of names</a>.
+      </p>
+      <p>
+        Every guide here is written and checked by <a href="/about">Harman S. &amp; Editorial Review</a> against the live wheel settings. Major content refreshes and tool updates are listed on the <a href="/changelog">changelog</a>. If you spot a mistake or want a topic covered, email us at <a href="mailto:spinthewheelsonline@gmail.com">spinthewheelsonline@gmail.com</a>.
+      </p>
+      <div class="start-links">
+        <a href={`/blogs/${featured.slug}`}>New to the tool? Start here</a>
+        <a href="/blogs/spin-wheel-classroom-activities">I'm a teacher</a>
+        <a href="/blogs/how-to-run-online-giveaway">I'm running a giveaway</a>
+        <a href="/blogs/is-spin-wheel-truly-random">Is it really random?</a>
+        <a href="/blogs/best-wheel-of-names-alternatives-free-spinner-tools">Wheel of Names Alternatives</a>
+      </div>
+      <div class="start-links" style="margin-top: 12px;" aria-label="Jump to Spin Wheel Category Hubs">
+        <a href="/category/quick-decisions">⚡ Quick Decisions</a>
+        <a href="/category/names-and-classrooms">👤 Names &amp; Classrooms</a>
+        <a href="/category/numbers-and-math">🔢 Numbers &amp; Math</a>
+        <a href="/category/giveaways-and-events">🎁 Giveaways &amp; Events</a>
+        <a href="/category/food-and-lifestyle">🍽️ Food &amp; Lifestyle</a>
+        <a href="/category/party-and-games">🎉 Party &amp; Games</a>
+        <a href="/category/gaming-and-pop-culture">🎮 Gaming &amp; Pop Culture</a>
+        <a href="/category/geography-and-knowledge">🌍 Geography &amp; Knowledge</a>
+        <a href="/tools">🔎 All 69 Wheels</a>
+      </div>
+    </section>
+
+    <div class="section-label"><h2>⭐ Start here</h2></div>
+    <a href={`/blogs/${featured.slug}`} class="featured-card">
+      <div class="fc-thumb"><div class="fc-thumb-icon" aria-hidden="true">🎡</div></div>
+      <div class="fc-body">
+        <div class="fc-tag">💡 Complete Guide</div>
+        <h3 class="fc-title">{featured.title}</h3>
+        <p class="fc-excerpt">A plain-English explanation of how spin wheel tools work: how they pick a fair result with Web Cryptography, what makes a draw unbiased, and where wheels work best.</p>
+        <div class="fc-meta">
+          <span>📅 Updated <time datetime={UPDATED_ISO}>{UPDATED}</time></span>
+          <span>⏱ {featured.min} min read</span>
+          <span>📖 Beginner friendly</span>
+        </div>
+        <div class="read-btn">Read article →</div>
+      </div>
+    </a>
+
+    <div class="section-label" style="margin-top: 40px;">
+      <h2>📚 More articles</h2>
+      <span class="count-pill" id="visible-count" aria-live="polite">{articles.length} articles</span>
+    </div>
+
+    <section class="cards-grid" id="grid" aria-label="Blog articles">
+      {articles.map((a) => (
+        <article class="blogs-card" data-cat={a.cat}>
+          <div class="card-thumb" style={`background:linear-gradient(135deg, ${a.g[0]}, ${a.g[1]}, ${a.g[2]});`}>
+            <span class="time-badge">⏱ {a.min} min</span>
+            <span class="thumb-icon" aria-hidden="true">{a.icon}</span>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">{a.tag}</p>
+            <h3 class="card-title"><a href={`/blogs/${a.slug}`}>{a.title}</a></h3>
+            <p class="card-excerpt">{a.excerpt}</p>
+            <footer class="card-footer">
+              <span class="card-date">Updated <time datetime={UPDATED_ISO}>{UPDATED}</time></span>
+              <a class="card-btn" href={`/blogs/${a.slug}`}>Read more →</a>
+            </footer>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <div class="newsletter-strip">
+      <div>
+        <h3 style="font-family:var(--font-display); font-size:26px; margin-bottom:8px;">🎡 Try the free spin wheel</h3>
+        <p style="color:rgba(255,255,255,0.75); margin:0;">No sign-up and no download. Works on phones, tablets, Chromebooks, and smartboards.</p>
+      </div>
+      <a href="/" class="nl-cta">Open the wheel →</a>
+    </div>
+  </main>
+
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs" />
+  <script src={ASSETS.jsHref} defer></script>
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll(".filter-btn");
+      var cards = document.querySelectorAll(".blogs-card");
+      var pill = document.getElementById("visible-count");
+      btns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          btns.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          var filter = btn.dataset.filter;
+          var count = 0;
+          cards.forEach(function (card) {
+            var match = filter === "all" || card.dataset.cat === filter;
+            card.style.display = match ? "" : "none";
+            if (match) count++;
+          });
+          if (pill) pill.textContent = count + " article" + (count === 1 ? "" : "s");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

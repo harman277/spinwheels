@@ -1,0 +1,31 @@
+---
+import { LANGUAGES } from "../data/i18n.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import WheelApp from "../components/WheelApp.astro";
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { slug: string }; props: { langCode: string; wheelSlug: string } }> = [];
+
+  // 1. All 69 canonical English specialized wheels (`/:slug`)
+  for (const slug of Object.keys(SPECIALIZED_WHEELS)) {
+    paths.push({
+      params: { slug },
+      props: { langCode: "en", wheelSlug: slug }
+    });
+  }
+
+  // 2. All 34 non-English language hubs (`/:langCode`) — 19 indexable + 15 fallback noindex
+  for (const code of Object.keys(LANGUAGES)) {
+    if (code === "en") continue;
+    paths.push({
+      params: { slug: code },
+      props: { langCode: code, wheelSlug: "" }
+    });
+  }
+
+  return paths;
+}
+
+const { langCode, wheelSlug } = Astro.props;
+---
+<WheelApp langCode={langCode} slug={wheelSlug} />

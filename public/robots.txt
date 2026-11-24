@@ -1,0 +1,102 @@
+# Default Search & Web Access Policy
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /pinterest-30922.html
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+# Primary Search Engines (Google, Bing uncapped, Seznam)
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /pinterest-30922.html
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /pinterest-30922.html
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+User-agent: SeznamBot
+Allow: /
+Disallow: /api/
+Disallow: /pinterest-30922.html
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+# AI Search & Citation Crawlers (Allowed for live search discovery & citations)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /*?w=
+Disallow: /*?embed=
+Disallow: /*?q=
+
+# AI Model Training Crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Commercial SEO Scrapers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+Sitemap: https://spinthewheelsonline.com/sitemap-index.xml

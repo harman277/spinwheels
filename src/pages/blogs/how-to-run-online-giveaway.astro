@@ -1,0 +1,659 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>How to Pick a Giveaway Winner Fairly | Complete Guide</title>
+    <meta name="description" content="Run transparent social giveaways on Instagram, YouTube &amp; Twitch. Clean entries, set weighted raffle tickets, record draws &amp; announce winners fairly." />
+    <meta
+      name="keywords"
+      content="online giveaway wheel, giveaway spinner, raffle wheel online, contest winner picker, giveaway draw wheel, random winner generator, prize wheel spinner, free giveaway tool"
+    />
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="How to Pick a Giveaway Winner Fairly: A Step-by-Step Guide" />
+    <meta
+      property="og:description"
+      content="A transparent method for choosing a random giveaway winner your audience will trust, from entry cleanup to the announcement post."
+    />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway"
+    />
+    <meta property="og:image" content="https://spinthewheelsonline.com/eng-spin-the-wheel-picker.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta
+      property="og:image:alt"
+      content="Phone screen showing a colourful spin wheel with usernames, mid-spin, for a social media giveaway"
+    />
+    <meta property="article:published_time" content="2026-08-16T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-11-24T00:00:00+00:00" />
+    <meta property="article:section" content="Giveaways" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to Pick a Giveaway Winner Fairly: A Step-by-Step Guide" />
+    <meta name="twitter:description" content="A transparent method for choosing a random giveaway winner your audience will trust, from entry cleanup to the announcement post." />
+
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway\",\n      \"name\": \"How to Pick a Giveaway Winner Fairly (2026 Guide)\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#breadcrumbs\"\n      },\n      \"speakable\": {\n        \"@type\": \"SpeakableSpecification\",\n        \"cssSelector\": [\n          \"h1\",\n          \".quick-answer\"\n        ]\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"How to Pick a Giveaway Winner Fairly\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#article\",\n      \"headline\": \"How to Pick a Giveaway Winner Fairly: A Step-by-Step Guide\",\n      \"description\": \"A step-by-step method for choosing a random giveaway winner fairly, covering rules, entry cleanup, weighted entries, recording the draw and announcing the result.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-spin-the-wheel-picker.webp\",\n      \"datePublished\": \"2026-08-16\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"articleSection\": \"Giveaways\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Is a spin wheel draw legally valid for a giveaway?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"A spin wheel is a method of random selection, but legal validity depends on how the whole promotion is run: written rules, eligibility terms, no payment required to enter unless local law allows it, and compliance with the platform's promotion guidelines. This guide is not legal advice, so check the rules where you and your entrants live.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How do I handle duplicate entries?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Follow your published rules. If the rules allow one entry per person, remove duplicates before the draw. If extra actions earn extra entries, add the person's name once for each entry earned, up to any cap you announced. Apply the same standard to every entrant.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"What if the winner does not respond?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"State a claim window in your rules before the draw, commonly 24 to 72 hours. If the winner does not respond in that time, announce the redraw publicly, remove the first winner from the list and spin again, recording the new spin as well.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How many entries can I use on a wheel?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Our wheel accepts up to 500 names or ticket numbers cleanly on screen. If your giveaway attracts thousands of rows, number your cleaned spreadsheet and use our Number Picker Wheel in batches or RANDBETWEEN to narrow down finalists, then spin the finalist wheel live.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Should I tell the winner before announcing publicly?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"For a live draw, the result is public the moment the wheel stops, so say in your rules that winners are subject to an eligibility check. For a recorded draw, post the video and announcement together, then contact the winner right away. Either way, the key is that the draw itself is shown.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I use the same method for a party or school raffle?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Use ticket numbers or names as entries, project the wheel on a screen so everyone can see it, and keep the rules simple and announced beforehand. Raffles that charge for tickets are regulated in many places, so check local rules first.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+
+    <style is:inline>:root{--brand:#2a5cff;--brand-dark:#1a3bcc;--brand-light:#eef2ff;--accent:#c2410c;--accent-soft:#fff4ef;--ink:#111827;--ink-mid:#374151;--ink-soft:#5b6472;--border:#e5e7eb;--surface:#f9fafb;--radius:12px;--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--serif:Georgia,"Times New Roman",serif}*,::after,::before{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}.wrap{max-width:760px;margin:0 auto;padding:0 20px}.breadcrumb{font-size:.85rem;color:var(--ink-soft);padding:18px 0 0}.breadcrumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}.breadcrumb li+li::before{content:"›";margin-right:6px}.breadcrumb a{color:var(--ink-soft)}a{color:var(--brand);text-underline-offset:3px}a:focus-visible,summary:focus-visible{outline:3px solid var(--brand);outline-offset:2px}h1{font-family:var(--serif);font-size:clamp(1.9rem, 5vw, 2.7rem);line-height:1.2;margin:22px 0 14px;letter-spacing:-.01em}h2{font-family:var(--serif);font-size:clamp(1.4rem, 3.4vw, 1.8rem);line-height:1.25;margin:52px 0 14px;scroll-margin-top:80px}h3{font-size:1.1rem;margin:28px 0 8px}p{margin:0 0 18px;color:var(--ink-mid)}ol,ul{margin:0 0 18px 22px;padding:0;color:var(--ink-mid)}li{margin-bottom:8px}.lede{font-size:1.1rem;color:var(--ink-mid)}.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--ink-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 0;margin:18px 0 28px}figure{margin:28px 0}figure img{width:100%;height:auto;border-radius:16px;display:block}figcaption{font-size:.82rem;color:var(--ink-soft);text-align:center;margin-top:8px}.quick-answer{background:var(--brand-light);border-left:4px solid var(--brand);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin:0 0 28px}.quick-answer h2{font-size:1rem;font-family:var(--sans);margin:0 0 8px;color:var(--brand-dark)}.quick-answer p{margin:0 0 10px;color:var(--ink)}.quick-answer p:last-child{margin-bottom:0}details.toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin:0 0 8px}details.toc summary{cursor:pointer;font-weight:700}details.toc ol{margin:12px 0 4px 20px}.note{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:24px 0}.note p{margin:0;color:var(--ink)}.note p+p{margin-top:10px}.sample{background:var(--surface);border:1px dashed #9ca3af;border-radius:var(--radius);padding:16px 20px;margin:20px 0;font-size:.95rem}.sample p{margin:0;color:var(--ink)}.table-scroll{overflow-x:auto;margin:22px 0}table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:560px}caption{text-align:left;font-weight:700;padding-bottom:8px}td,th{text-align:left;padding:10px 12px;border:1px solid var(--border);vertical-align:top;color:var(--ink-mid)}th{background:var(--surface);color:var(--ink)}.steps{list-style:none;margin:20px 0;counter-reset:step}.steps li{counter-increment:step;position:relative;padding-left:48px;margin-bottom:18px}.steps li::before{content:counter(step);position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}.steps strong{display:block;color:var(--ink)}.faq details{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;padding:0 18px}.faq summary{cursor:pointer;font-weight:600;padding:16px 0;color:var(--ink)}.faq details[open] summary{color:var(--brand-dark)}.faq details p{padding-bottom:6px}.takeaways{background:var(--brand-light);border-radius:var(--radius);padding:22px 26px;margin:40px 0 24px}.takeaways h2{margin:0 0 10px;font-size:1.25rem}.takeaways ul{margin-bottom:0}.cta{background:var(--brand);color:#fff;border-radius:18px;padding:30px 24px;text-align:center;margin:36px 0}.cta h2{margin:0 0 8px;font-size:1.4rem;color:#fff}.cta p{color:rgba(255,255,255,.92)}.cta a{display:inline-block;background:#fff;color:var(--brand-dark);font-weight:700;padding:12px 28px;border-radius:999px;text-decoration:none}.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:16px 0 60px}.related a{display:block;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.93rem}.related a span{display:block;font-weight:400;font-size:.82rem;color:var(--ink-soft);margin-top:2px}.related a:hover{border-color:var(--brand)}</style>
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+  <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-spin-the-wheel-picker.webp" />
+      <AnalyticsHead enableAds={true} />
+  </head>
+
+  <body>
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/how-to-run-online-giveaway" />
+
+    <main id="main" class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li aria-current="page">How to Pick a Giveaway Winner Fairly</li>
+        </ol>
+      </nav>
+
+      <article>
+        <header>
+          <h1>How to Pick a Giveaway Winner Fairly: A Step-by-Step Guide for 2026</h1>
+          <p class="lede">
+            Choosing the winner is the part of a giveaway people scrutinise most. One unclear
+            moment, such as a name appearing from nowhere or an entry list nobody saw, is enough to
+            start a "rigged" thread in your comments. This guide shows a simple, repeatable way to
+            run the draw so anyone can see it was fair.
+          </p>
+          <div class="meta">
+            <span>9 min read</span>
+            <span>Category: Giveaways</span>
+            <span>Updated <time datetime="2026-11-24">November 24, 2026</time></span>
+          </div>
+        </header>
+
+        <figure>
+          <img
+            src="/eng-spin-the-wheel-picker.webp"
+            alt="Phone screen showing a colourful spin wheel with usernames, mid-spin, for a social media giveaway"
+            width="1200"
+            height="675"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+
+        <section class="quick-answer" aria-labelledby="qa-title">
+          <h2 id="qa-title">Quick answer</h2>
+          <p>
+            To pick a giveaway winner fairly: publish your rules before entries open, build one
+            clean entry list, <strong>show the full list on screen</strong>, pick the winner with a
+            random method such as a <a href="/">spin wheel</a> while recording, check the winner is
+            eligible, then post the video with your announcement.
+          </p>
+          <p>
+            Fairness is about two things: the selection is random, and other people can verify it.
+          </p>
+        </section>
+
+        <details class="toc" open>
+          <summary>In this guide</summary>
+          <ol>
+            <li><a href="#fair">What makes a draw fair</a></li>
+            <li><a href="#rules">Write your rules first</a></li>
+            <li><a href="#steps">The draw, step by step</a></li>
+            <li><a href="#entries">Collecting entries by platform</a></li>
+            <li><a href="#weighted">Weighted entries and the real odds</a></li>
+            <li><a href="#screening">Duplicates, bots and fake accounts</a></li>
+            <li><a href="#live">Live or recorded draw</a></li>
+            <li><a href="#platform-rules">Platform rules and legal basics</a></li>
+            <li><a href="#mistakes">Mistakes that hurt trust</a></li>
+            <li><a href="#announce">Announcing the winner</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ol>
+        </details>
+
+        <h2 id="fair">What makes a draw fair</h2>
+        <p>
+          People rarely doubt a winner because of the prize. They doubt the process. A draw that
+          holds up has four properties, and a wheel helps with the last two:
+        </p>
+        <ol>
+          <li>
+            <strong>Rules fixed in advance.</strong> Eligibility, entry methods, dates and what
+            counts as a valid entry are published before the first entry arrives.
+          </li>
+          <li>
+            <strong>A complete, honest list.</strong> Every valid entry is on it and nothing else
+            is.
+          </li>
+          <li>
+            <strong>Random selection.</strong> No person chooses the result. Each entry has a
+            known chance of winning. Our explainer on
+            <a href="/blogs/is-spin-wheel-truly-random">whether a digital spin wheel is truly random</a>
+            covers how that works.
+          </li>
+          <li>
+            <strong>A record anyone can check.</strong> A video of the full list and the spin
+            beats a screenshot, because a screenshot only shows the end.
+          </li>
+        </ol>
+        <p>
+          A wheel is useful here because the process is visible. The list sits on screen, the
+          slices are readable, and the result is not announced by a person but by a motion that
+          anyone can see slowing down. For more on why that visibility affects how people react,
+          see <a href="/blogs/psychology-random-decision-making">the psychology of random decision making</a>.
+        </p>
+
+        <h2 id="rules">Write your rules first</h2>
+        <p>
+          Most disputes can be settled by a sentence in your rules. Before entries open, put these
+          in the post or on a linked page:
+        </p>
+        <ul>
+          <li>The prize, its approximate value and who is providing it.</li>
+          <li>Start and end dates, with a time zone.</li>
+          <li>
+            Exactly how to enter, and whether bonus entries exist. If they do, how many and for
+            what.
+          </li>
+          <li>Who may enter: age limit, countries or regions, and anyone excluded.</li>
+          <li>How many winners, and how they will be selected (for example, "a random draw on a spin wheel, recorded and posted").</li>
+          <li>How and when the winner will be contacted, and how long they have to reply before a redraw.</li>
+          <li>That winners are subject to an eligibility check.</li>
+          <li>Any required platform wording (see the platform rules section below).</li>
+        </ul>
+        <div class="note">
+          <p>
+            <strong>Do not change the rules after entries open.</strong> If a mistake in the rules
+            forces a change, announce it publicly and say what changed and why.
+          </p>
+        </div>
+
+        <h2 id="steps">The draw, step by step</h2>
+        <ol class="steps">
+          <li>
+            <strong>Close entries and freeze the list</strong>
+            Note the exact closing time. Entries that arrive after it are not included. Save a
+            copy of the raw list before you touch it.
+          </li>
+          <li>
+            <strong>Clean the list</strong>
+            Remove duplicates, ineligible entries and obvious fake accounts according to your
+            published rules, and keep a short note of what you removed and why. See the screening
+            section below.
+          </li>
+          <li>
+            <strong>Load the wheel</strong>
+            Open the <a href="/">free spin wheel</a>, paste your entries one per line, and
+            check the count matches your list. Test one private spin first so nothing surprises
+            you on camera.
+          </li>
+          <li>
+            <strong>Start recording, then show the list</strong>
+            Begin a screen recording or livestream. Scroll through the loaded entries or show the
+            total count before you spin. This single step does more for trust than any other.
+          </li>
+          <li>
+            <strong>Spin once</strong>
+            Say the prize and the number of entries aloud, spin, and let it finish without
+            interruption. Do not spin again unless your published rules say how and why.
+          </li>
+          <li>
+            <strong>Check eligibility</strong>
+            Confirm that the winner met the entry requirements. If they did not, say so on camera,
+            remove that entry from the wheel and spin again. Show the second spin too.
+          </li>
+          <li>
+            <strong>Announce with proof</strong>
+            Post the winner's handle and the recording together, thank everyone who entered, and
+            restate the claim deadline. A template is in the announcement section below.
+          </li>
+          <li>
+            <strong>Deliver and report back</strong>
+            Send the prize, then add a short follow-up post saying it arrived. This closes the
+            loop for people who wondered whether the prize ever shipped.
+          </li>
+        </ol>
+        <p>
+          New to the tool? Start with our guide to
+          <a href="/blogs/spin-the-wheel-tool">what a spin the wheel tool is and how it works</a>.
+          For lists that are too long to read on a wheel, see the FAQ below for a spreadsheet
+          method.
+        </p>
+
+        <figure>
+          <img
+            src="/remove-after-spin.webp"
+            alt="Close-up of a laptop screen showing a text list of usernames being pasted into a spin wheel entry panel"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Pasting a cleaned entry list into the wheel, one name per line.</figcaption>
+        </figure>
+
+        <h2 id="entries">Collecting entries by platform</h2>
+        <p>
+          The draw is the same everywhere. What changes is how you gather the list, and what to
+          watch for.
+        </p>
+        <div class="table-scroll">
+          <table>
+            <caption>
+              Getting an entry list from common sources
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Source</th>
+                <th scope="col">How to build the list</th>
+                <th scope="col">Watch out for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Instagram or TikTok comments</th>
+                <td>
+                  Copy usernames from the comments, or use a comment-export tool that complies
+                  with the platform's terms.
+                </td>
+                <td>
+                  Never give a third-party tool your password. Multiple comments by one person.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">YouTube comments</th>
+                <td>
+                  Copy commenter names from the video, or use a tool that works through the
+                  platform's official interfaces.
+                </td>
+                <td>Entrants who did not meet a "subscribe" requirement.</td>
+              </tr>
+              <tr>
+                <th scope="row">Twitch or live chat</th>
+                <td>
+                  Ask viewers to type an entry word, then export the chat log. See
+                  <a href="/blogs/streamers-use-spin-wheel">how streamers use spin wheels</a>.
+                </td>
+                <td>Bots and repeated messages from the same account.</td>
+              </tr>
+              <tr>
+                <th scope="row">Email list or form</th>
+                <td>Export a CSV from your email provider or form tool and paste the names column.</td>
+                <td>
+                  Show names or initials only; never display full email addresses on camera.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Events, schools, offices</th>
+                <td>
+                  Use ticket numbers or names. See
+                  <a href="/blogs/school-raffle-spin-wheel">school raffles with a spin wheel</a>
+                  and <a href="/blogs/hr-spin-wheel-employee-recognition-office-events">office events</a>.
+                </td>
+                <td>Selling tickets can turn a draw into a regulated raffle in some places.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="weighted">Weighted entries and the real odds</h2>
+        <p>
+          If your rules reward extra actions, such as tagging a friend or sharing a post, you can
+          give those entrants proportionally higher odds. Either click the built-in <code>+</code> or
+          <code>-</code> weight controls beside an entrant's row (1x to 20x) to keep one clean label on
+          the wheel, or switch on duplicate entries and add their name once per earned ticket.
+        </p>
+        <p>
+          The odds are simple to calculate: an entrant's chance is their number of entries divided
+          by the total number of entries on the wheel. Here is a small example:
+        </p>
+        <div class="table-scroll">
+          <table>
+            <caption>
+              Example: four entrants, seven total entries
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Entrant</th>
+                <th scope="col">Entries earned</th>
+                <th scope="col">Chance of winning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Ana</td><td>1</td><td>1 in 7 (about 14.3%)</td></tr>
+              <tr><td>Ben</td><td>3</td><td>3 in 7 (about 42.9%)</td></tr>
+              <tr><td>Chloe</td><td>2</td><td>2 in 7 (about 28.6%)</td></tr>
+              <tr><td>Dev</td><td>1</td><td>1 in 7 (about 14.3%)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Three practical rules keep weighted entries fair:
+        </p>
+        <ul>
+          <li>
+            <strong>Announce the weighting before entries open</strong> so nobody discovers it
+            after the draw.
+          </li>
+          <li>
+            <strong>Cap the bonus.</strong> Without a cap, one person can earn dozens of entries
+            and a large audience may feel the draw is not worth entering.
+          </li>
+          <li>
+            <strong>Make bonus actions verifiable.</strong> You must be able to check that a
+            claimed share or tag really happened, or the bonus invites cheating.
+          </li>
+        </ul>
+        <p>
+          Many hosts skip weighting altogether for simplicity. One entry each is the easiest
+          system to defend.
+        </p>
+
+        <h2 id="screening">Duplicates, bots and fake accounts</h2>
+        <p>
+          A fair draw is only as fair as its list. Screen before you spin, never after, and apply
+          the same checks to every entry:
+        </p>
+        <ul>
+          <li>
+            <strong>Duplicates.</strong> Merge repeated names unless your rules award extra
+            entries for them.
+          </li>
+          <li>
+            <strong>Eligibility.</strong> Check region and age limits, and whether the entrant
+            completed every required step.
+          </li>
+          <li>
+            <strong>Suspicious accounts.</strong> Brand-new profiles with no posts or photos, or
+            accounts that all posted the same text, may be bots. Your rules should say you may
+            disqualify such entries.
+          </li>
+          <li>
+            <strong>Insiders.</strong> Exclude yourself, your employees and close family, and say
+            so in your rules.
+          </li>
+        </ul>
+        <p>
+          Keep a short log of removals. If someone challenges the result, "I removed 12 duplicates
+          and 3 accounts outside the eligible region, per the rules" is a strong reply.
+        </p>
+
+        <h2 id="live">Live or recorded draw</h2>
+        <p>
+          Both are valid. Choose based on audience size and how comfortable you are on camera.
+        </p>
+        <div class="table-scroll">
+          <table>
+            <caption>
+              Live draw compared with a recorded draw
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Factor</th>
+                <th scope="col">Live draw</th>
+                <th scope="col">Recorded draw</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Verification</th>
+                <td>Viewers watch it happen in real time</td>
+                <td>Viewers rely on an unedited video</td>
+              </tr>
+              <tr>
+                <th scope="row">Risk</th>
+                <td>No retakes if something goes wrong on camera</td>
+                <td>Can restart the recording, but must not cut the result</td>
+              </tr>
+              <tr>
+                <th scope="row">Preparation</th>
+                <td>Needs a prepared list and a tested wheel</td>
+                <td>Same list, less time pressure</td>
+              </tr>
+              <tr>
+                <th scope="row">Best for</th>
+                <td>Larger audiences, streamers, events</td>
+                <td>Smaller accounts, first giveaways, schools</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          If you record, post the footage without cuts between the list and the result. A
+          screenshot on its own is the weakest proof, because it shows nothing about how the name
+          was chosen.
+        </p>
+
+        <h2 id="platform-rules">Platform rules and legal basics</h2>
+        <p>
+          <strong>This section is general information, not legal advice.</strong> Giveaway law
+          differs by country and by state, so check the rules that apply to you and your
+          entrants.
+        </p>
+        <ul>
+          <li>
+            <strong>Platform terms.</strong> Instagram's promotion guidelines say you must make
+            clear that the promotion is not sponsored, endorsed or administered by Instagram, and
+            that each entrant releases Instagram from responsibility. They also say not to
+            encourage inaccurate tagging. Other platforms have their own wording, so read the
+            current guidelines of every platform you use.
+          </li>
+          <li>
+            <strong>Sponsored giveaways.</strong> If a brand supplies the prize or pays you, the
+            post is advertising. Disclose the relationship clearly, using a visible tag such as
+            #ad or the platform's paid-partnership label, and follow the advertising rules where
+            you live.
+          </li>
+          <li>
+            <strong>Do not charge to enter.</strong> In many places, combining a prize, chance and
+            a payment turns a free draw into a regulated lottery. Keep entry free unless you have
+            confirmed local rules.
+          </li>
+          <li>
+            <strong>Protect entrants' data.</strong> Use names and emails only for the giveaway.
+            Do not show private details on camera.
+          </li>
+          <li>
+            <strong>Minors.</strong> Set a minimum age in your rules and, if the winner might be
+            under 18, decide how a parent or guardian will receive the prize.
+          </li>
+        </ul>
+
+        <h2 id="mistakes">Mistakes that hurt trust</h2>
+        <ul>
+          <li>
+            <strong>Not showing the list.</strong> Without it nobody can tell whether the draw was
+            complete.
+          </li>
+          <li>
+            <strong>Screening after the spin.</strong> Removing entries once the result is known
+            looks like manipulation, even if you had good reasons.
+          </li>
+          <li>
+            <strong>Changing the rules midway.</strong> This is the quickest way to lose a
+            community's goodwill.
+          </li>
+          <li>
+            <strong>Deleting "rigged" comments.</strong> It confirms the suspicion. Reply calmly
+            and link to the full recording instead.
+          </li>
+          <li>
+            <strong>Announcing a winner without checking eligibility.</strong> If you must redraw
+            after the announcement, do it publicly, quickly and on camera.
+          </li>
+          <li>
+            <strong>Going silent after the draw.</strong> Never confirming the prize was delivered
+            leaves room for doubt.
+          </li>
+        </ul>
+
+        <h2 id="announce">Announcing the winner</h2>
+        <p>A good announcement is short, specific and includes proof. It should contain:</p>
+        <ul>
+          <li>The winner's handle, tagged.</li>
+          <li>The recording of the draw.</li>
+          <li>The prize, restated plainly.</li>
+          <li>The claim deadline and what happens if it passes.</li>
+          <li>A thank-you to everyone who entered.</li>
+          <li>Any platform disclaimer your rules require.</li>
+        </ul>
+        <div class="sample">
+          <p>
+            <strong>Sample:</strong> "The draw is done! From [number] valid entries, the random
+            spin chose @[username]. Congratulations, you've won [prize]. Please reply within 48
+            hours to claim it, or we'll redraw. Full unedited draw: [link]. Thank you to everyone
+            who entered. This giveaway is not sponsored, endorsed or administered by [platform]."
+          </p>
+        </div>
+        <p>
+          Hosting something in person? Take the same structure to a party with our
+          <a href="/blogs/spin-wheel-birthday-party-ideas">birthday party and baby shower wheel ideas</a>,
+          or pick names with a <a href="/random-name-generator">random name generator</a> or a
+          <a href="/blogs/name-picker-wheel-work-school">name picker wheel</a>.
+        </p>
+
+        <section class="cta" aria-labelledby="cta-title">
+          <h2 id="cta-title">Ready to run your draw?</h2>
+          <p>Paste your list into the free spin wheel, record the spin and announce with proof.</p>
+          <a href="/">Open the spin wheel</a>
+        </section>
+
+        <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["raffle-wheel","prize-wheel","randomizer-number-1-100","random-number-1-50","number-picker-wheel","wheel-of-names"]} ctaCategorySlug={"giveaways-and-events"} ctaCategoryName={"Giveaways & Events"} />
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq">
+          <details>
+            <summary>Is a spin wheel draw legally valid for a giveaway?</summary>
+            <p>
+              A spin wheel is a method of random selection, but legal validity depends on how the
+              whole promotion is run: written rules, eligibility terms, no payment required to
+              enter unless local law allows it, and compliance with the platform's promotion
+              guidelines. This guide is not legal advice, so check the rules where you and your
+              entrants live.
+            </p>
+          </details>
+          <details>
+            <summary>How do I handle duplicate entries?</summary>
+            <p>
+              Follow your published rules. If the rules allow one entry per person, remove
+              duplicates before the draw. If extra actions earn extra entries, add the person's
+              name once for each entry earned, up to any cap you announced. Apply the same standard
+              to every entrant.
+            </p>
+          </details>
+          <details>
+            <summary>What if the winner does not respond?</summary>
+            <p>
+              State a claim window in your rules before the draw, commonly 24 to 72 hours. If the
+              winner does not respond in that time, announce the redraw publicly, remove the first
+              winner from the list and spin again, recording the new spin as well.
+            </p>
+          </details>
+          <details>
+            <summary>How many entries can I use on a wheel?</summary>
+            <p>
+              Our wheel accepts up to 500 names or ticket numbers cleanly on screen. For thousands of
+              entries, number the rows in a spreadsheet and draw a random number instead, using a
+              <a href="/number-picker-wheel">number picker wheel</a> for batches or the
+              RANDBETWEEN formula in Excel or Google Sheets, then show the matching row on camera.
+            </p>
+          </details>
+          <details>
+            <summary>Should I tell the winner before announcing publicly?</summary>
+            <p>
+              For a live draw, the result is public the moment the wheel stops, so say in your
+              rules that winners are subject to an eligibility check. For a recorded draw, post
+              the video and announcement together, then contact the winner right away. Either way,
+              the key is that the draw itself is shown.
+            </p>
+          </details>
+          <details>
+            <summary>Can I use the same method for a party or school raffle?</summary>
+            <p>
+              Yes. Use ticket numbers or names as entries, project the wheel on a screen so
+              everyone can see it, and keep the rules simple and announced beforehand. Raffles
+              that charge for tickets are regulated in many places, so check local rules first.
+              Compare other options in our guide to
+              <a href="/blogs/spin-wheel-vs-other-random-pickers">spin wheels versus other random pickers</a>.
+            </p>
+          </details>
+        </div>
+
+        <section class="takeaways" aria-labelledby="takeaways-title">
+          <h2 id="takeaways-title">Key takeaways</h2>
+          <ul>
+            <li>Publish your rules before entries open and do not change them afterwards.</li>
+            <li>Clean the list before the draw, and keep a short log of what you removed.</li>
+            <li>Show the full list on camera, then spin once and record the whole thing.</li>
+            <li>Check eligibility after the spin, and redraw publicly if needed.</li>
+            <li>
+              Weighted entries must be announced up front, capped, and based on actions you can
+              verify.
+            </li>
+            <li>Announce with the video, then confirm delivery of the prize.</li>
+          </ul>
+        </section>
+
+        <p>
+          Need other randomisers for the same event? Browse the
+          <a href="/tools">full set of free wheel tools</a>, or see our ideas in
+          <a href="/blogs/best-uses-random-wheel-spinner">the best uses of a random wheel spinner</a>.
+        </p>
+
+
+        <BlogAuthorBox />
+
+        <h2>Keep reading</h2>
+        <nav class="related" aria-label="Related articles">
+          <a href="/blogs/streamers-use-spin-wheel"
+            >How Streamers Use Spin Wheels<span>Live giveaways</span></a
+          >
+          <a href="/blogs/school-raffle-spin-wheel"
+            >School Raffles With a Spin Wheel<span>Events and fundraisers</span></a
+          >
+          <a href="/blogs/is-spin-wheel-truly-random"
+            >Is a Spin Wheel Truly Random?<span>How the result is chosen</span></a
+          >
+          <a href="/blogs/spin-wheel-vs-other-random-pickers"
+            >Spin Wheel vs Other Random Pickers<span>Choosing a method</span></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/how-to-run-online-giveaway" />
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "spinthewheelsonline-astro",
+  "version": "5.0.0",
+  "type": "module",
+  "description": "Spin The Wheels Online — Astro 5 Static Edge + Cloudflare Pages",
+  "scripts": {
+    "dev": "astro dev",
+    "assets": "node scripts/build-assets.mjs",
+    "sitemaps": "node scripts/generate-sitemaps.mjs",
+    "build": "node scripts/build-assets.mjs && node scripts/generate-sitemaps.mjs && astro build",
+    "preview": "astro preview",
+    "verify": "node scripts/verify-astro-build.mjs",
+    "indexnow": "node scripts/submit-indexnow.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.7.10"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "terser": "^5.39.0",
+    "typescript": "^5.8.3"
+  }
+}

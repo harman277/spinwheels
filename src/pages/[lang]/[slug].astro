@@ -1,0 +1,28 @@
+---
+import SPECIALIZED_WHEELS from "../../data/specialized-wheels.js";
+import { INDEXABLE_LANGS } from "../../config/site";
+import WheelApp from "../../components/WheelApp.astro";
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { lang: string; slug: string }; props: { langCode: string; wheelSlug: string } }> = [];
+
+  // All 159 natively translated indexable localized wheel pages (`/:lang/:slug`)
+  for (const [slug, wheel] of Object.entries(SPECIALIZED_WHEELS as Record<string, any>)) {
+    const translations = wheel?.translations || {};
+    for (const [langCode, loc] of Object.entries(translations as Record<string, any>)) {
+      if (langCode === "en" || !INDEXABLE_LANGS.has(langCode)) continue;
+      if (loc && loc.name && loc.heroSubtitle && loc.items) {
+        paths.push({
+          params: { lang: langCode, slug },
+          props: { langCode, wheelSlug: slug }
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { langCode, wheelSlug } = Astro.props;
+---
+<WheelApp langCode={langCode} slug={wheelSlug} />

@@ -1,0 +1,165 @@
+# Spin The Wheels Online
+
+> Free, instant, privacy-first random wheel picker, wheel of names, decision spinner, and raffle generator powered by client-side Web Cryptography (`crypto.getRandomValues()`). Zero signup, zero tracking of wheel lists, up to 500 entries, custom per-slice weighting (1x–20x), elimination draws, ISO/IEC 18004 QR code sharing, and responsive iframe embedding.
+
+## Core Architecture & Features
+- **Cryptographic Randomness Engine**: Uses `window.crypto.getRandomValues()` with rejection sampling (`maxValid` ceiling modulo elimination) for unbiased floating-point angles — never naive `Math.random()`.
+- **100% Client-Side Privacy**: All wheel entries, spin history CSV exports, and custom themes run in-browser with per-route `localStorage` persistence; no entry lists are uploaded to servers.
+- **Weighted Probabilities & Elimination**: Per-slice weight controls (`1x` to `20x`), automatic *Remove Winner After Spin* mode for multi-winner draws, and configurable 2s–20s physics deceleration with mechanical tick & drum audio.
+- **Sharing & Embeds**: Stateless `?w=` share URLs, built-in ISO/IEC 18004 QR generator, and clean `?embed=1` iframe snippets for Notion, WordPress, Twitch, and classroom portals.
+
+## Core Pages & Documentation
+- [Home & Custom Spin Wheel](https://spinthewheelsonline.com/): Flagship customizable interactive spin wheel with presets, themes, weights, QR code export, and CSV history.
+- [All 69+ Spin Wheels Directory](https://spinthewheelsonline.com/tools): Filterable catalog of all 69 canonical specialized picker wheels across 8 categories.
+- [Blog & Strategy Guides](https://spinthewheelsonline.com/blogs): Index of 25 tutorials, comparisons, and research guides for teachers, creators, HR teams, gamers, and event hosts.
+- [About Us & Fair Play Engineering](https://spinthewheelsonline.com/about): Platform overview, cryptographic methodology, and editorial review standards.
+- [Changelog](https://spinthewheelsonline.com/changelog): Release history including Version 4.0.
+- [Contact & Support](https://spinthewheelsonline.com/contact): Inquiry and support form.
+- [Privacy Policy](https://spinthewheelsonline.com/privacy-policy): GDPR and CCPA privacy documentation.
+- [Terms and Conditions](https://spinthewheelsonline.com/terms-and-conditions): Platform terms of use.
+
+## 8 Topical Category Pillar Hubs
+- [Quick Decisions Wheels](https://spinthewheelsonline.com/category/quick-decisions): Binary Yes/No, Coin Flips, Picker Wheel, Weighted Decisions, Days & Months.
+- [Names & Classrooms Wheels](https://spinthewheelsonline.com/category/names-and-classrooms): Wheel of Names, Classroom Student Picker, Team Picker, Icebreakers & Presentation Order.
+- [Numbers & Math Wheels](https://spinthewheelsonline.com/category/numbers-and-math): Custom Number Picker, 1–5, 1–10, 1–16, 1–20 D20, 1–50, 1–75 Bingo & 1–100 wheels.
+- [Giveaways & Events Wheels](https://spinthewheelsonline.com/category/giveaways-and-events): Raffle Wheel, Weighted Prize Wheel, Fantasy Draft Order, Secret Santa & Gift Exchange.
+- [Food & Lifestyle Wheels](https://spinthewheelsonline.com/category/food-and-lifestyle): Food Picker, Dinner, Fast Food, Restaurants, Drinks/Coffee, Date Night, Workouts, Chores, Movies, Music & Zodiac.
+- [Party & Games Wheels](https://spinthewheelsonline.com/category/party-and-games): Truth or Dare, Would You Rather, Never Have I Ever, Charades, Twister Spinner, Spin the Bottle, Dice Roller, Tarot & Emojis.
+- [Gaming & Pop Culture Wheels](https://spinthewheelsonline.com/category/gaming-and-pop-culture): NFL, NBA Teams, NBA Players, MLB, Premier League, Pokémon, Fortnite Drop, Roblox, Dandy's World & Harry Potter.
+- [Geography & Knowledge Wheels](https://spinthewheelsonline.com/category/geography-and-knowledge): US 50 States, Countries, Country Names, World Flags, Guess the Country, Letters A–Z, Words, Languages, Planets & Animals.
+
+## Specialized Wheels by Category (69 Canonical Tools)
+
+### Quick Decisions (6)
+- [Yes or No Wheel](https://spinthewheelsonline.com/yes-no-wheel): Free 50/50 binary decision wheel with Yes/No/Maybe presets.
+- [Coin Flip Wheel](https://spinthewheelsonline.com/coin-flip-wheel): Virtual Heads or Tails toss spinner with exact 50/50 odds.
+- [Picker Wheel](https://spinthewheelsonline.com/picker-wheel): Custom choice & list randomizer for up to 500 entries.
+- [Decision Wheel](https://spinthewheelsonline.com/decision-wheel): Weighted decision maker wheel (1x–20x odds) to beat choice paralysis.
+- [Day Picker Wheel](https://spinthewheelsonline.com/day-picker-wheel): Random day of the week spinner (Monday to Sunday).
+- [Month Picker Wheel](https://spinthewheelsonline.com/month-picker-wheel): Random month selector from January to December.
+
+### Names & Classrooms (6)
+- [Wheel of Names](https://spinthewheelsonline.com/wheel-of-names): Free online Wheel of Names for classrooms, giveaways & teams.
+- [Random Name Generator Wheel](https://spinthewheelsonline.com/random-name-generator): Baby names, RPG characters, story protagonists & usernames.
+- [Classroom Name Picker](https://spinthewheelsonline.com/classroom-name-picker): Teacher smartboard student picker with FERPA-safe browser-local rosters.
+- [Team Picker Wheel](https://spinthewheelsonline.com/team-picker-wheel): Random balanced squad & classroom lab group generator.
+- [Icebreaker Question Wheel](https://spinthewheelsonline.com/icebreaker-question-wheel): Zoom standup, HR onboarding, and classroom warm-up question spinner.
+- [Presentation Order Wheel](https://spinthewheelsonline.com/presentation-order-wheel): Fair random speaker, Agile standup, and demo day turn-order picker.
+
+### Numbers & Math (8)
+- [Number Picker Wheel](https://spinthewheelsonline.com/number-picker-wheel): Custom random number spinner for 1–6, 1–10, 1–20, 1–50 & custom lists.
+- [Random Number 1 to 100](https://spinthewheelsonline.com/randomizer-number-1-100): Full 100-slice randomizer wheel for raffles & 100-square pools.
+- [Random Number 1 to 5](https://spinthewheelsonline.com/1-5-random-number-generator): Fast 5-slice wheel for 1–5 draws & group stations.
+- [Pick a Number Between 1 and 10](https://spinthewheelsonline.com/pick-a-number-between-1-and-10): Instant 1–10 wheel with Even/Odd filters.
+- [Number Generator 1 to 16](https://spinthewheelsonline.com/number-generator-1-to-16): 16-slice tournament bracket & Round of 16 seeder.
+- [Bingo Number Generator 1–75](https://spinthewheelsonline.com/bingo-number-generator-1-75): Official US B-I-N-G-O (B1–O75) & UK 90-Ball caller with no-repeat removal.
+- [Random Number 1 to 20](https://spinthewheelsonline.com/random-number-1-20): Virtual D20 RPG & 20-slice number picker wheel.
+- [Random Number 1 to 50](https://spinthewheelsonline.com/random-number-1-50): 50-slice raffle, lottery & classroom number wheel.
+
+### Giveaways & Events (5)
+- [Raffle Wheel](https://spinthewheelsonline.com/raffle-wheel): Transparent giveaway & charity winner spinner with CSV logs.
+- [Prize Wheel](https://spinthewheelsonline.com/prize-wheel): Weighted promotional booth & reward wheel (1x–20x probabilities).
+- [Secret Santa Wheel](https://spinthewheelsonline.com/secret-santa-wheel): Fair holiday Secret Santa name matching with winner elimination.
+- [Fantasy Draft Order Wheel](https://spinthewheelsonline.com/fantasy-draft-order-wheel): Fantasy football, NBA & MLB commissioner draft lottery wheel.
+- [Gift Exchange Wheel](https://spinthewheelsonline.com/gift-exchange-wheel): White Elephant & Yankee Swap party action rules wheel.
+
+### Food & Lifestyle (14)
+- [Food Picker Wheel](https://spinthewheelsonline.com/food-picker-wheel): Lunch, snacks & takeout cuisine randomizer.
+- [Dinner Wheel](https://spinthewheelsonline.com/dinner-wheel): End the nightly 'what should we eat for dinner?' debate.
+- [Fast Food Wheel](https://spinthewheelsonline.com/fast-food-wheel): Drive-thru chain & quick-service restaurant spinner.
+- [Restaurant Picker Wheel](https://spinthewheelsonline.com/restaurant-picker-wheel): Sit-down dining, weekend brunch & date-spot wheel.
+- [Drink & Coffee Picker Wheel](https://spinthewheelsonline.com/drink-picker-wheel): Coffee orders, boba milk teas, smoothies & zero-proof mocktails.
+- [Workout Wheel](https://spinthewheelsonline.com/workout-wheel): Bodyweight HIIT, core circuits & stretching drills wheel.
+- [Chore Wheel](https://spinthewheelsonline.com/chore-wheel): Fair roommate & kids household task assignment wheel.
+- [Date Night Wheel](https://spinthewheelsonline.com/date-night-wheel): Couples activity roulette for cozy nights & spontaneous outings.
+- [Color Picker Wheel](https://spinthewheelsonline.com/color-picker-wheel): Primary, pastel, neon & 3-marker art challenge color spinner.
+- [Sport Picker Wheel](https://spinthewheelsonline.com/sport-picker-wheel): Random PE & weekend athletics selector.
+- [Music Genre Wheel](https://spinthewheelsonline.com/music-genre-wheel): Playlist vibe & producer beat-challenge genre wheel.
+- [Movie Genre Wheel](https://spinthewheelsonline.com/movie-genre-wheel): Action, Sci-Fi, Thriller, Comedy & Animation film genre spinner.
+- [What to Watch Wheel](https://spinthewheelsonline.com/what-to-watch-wheel): Netflix, movie & TV watchlist randomizer.
+- [Zodiac Picker Wheel](https://spinthewheelsonline.com/zodiac-picker-wheel): All 12 zodiac signs with Fire, Earth, Air & Water presets.
+
+### Party & Games (9)
+- [Tarot Card Wheel](https://spinthewheelsonline.com/tarot-wheel): Major Arcana daily card & 3-card spread wheel.
+- [Truth or Dare Wheel](https://spinthewheelsonline.com/truth-or-dare-wheel): Classic 50/50, Party & Family-Safe prompt wheel.
+- [Would You Rather Wheel](https://spinthewheelsonline.com/would-you-rather-wheel): Party, classroom-safe & couples dilemma wheel.
+- [Never Have I Ever Wheel](https://spinthewheelsonline.com/never-have-i-ever-wheel): Clean party, college, family & travel confession wheel.
+- [Charades Word Wheel](https://spinthewheelsonline.com/charades-word-wheel): Acting & Pictionary word spinner with movies, actions & animals.
+- [Twister Spinner](https://spinthewheelsonline.com/twister-spinner): Official 16 limb-and-color digital Twister referee wheel.
+- [Dice Roller Wheel](https://spinthewheelsonline.com/dice-roller-wheel): Virtual D6, 2D6 Catan/Monopoly sums, D20 & Fate dice wheel.
+- [Spin the Bottle](https://spinthewheelsonline.com/spin-the-bottle): Virtual party turn & Truth/Dare hot-seat spinner.
+- [Emoji Picker Wheel](https://spinthewheelsonline.com/emoji-picker-wheel): Emoji Pictionary, 3-emoji flash stories & chat mood wheel.
+
+### Gaming & Pop Culture (10)
+- [Harry Potter Sorting Hat Wheel](https://spinthewheelsonline.com/harry-potter-sorting-hat-wheel): Hogwarts Houses, characters & spells wheel.
+- [Random Pokémon Generator](https://spinthewheelsonline.com/random-pokemon-generator): Starters, Eeveelutions, Legendaries & 18-Type Nuzlocke locks.
+- [Random NFL Team Generator](https://spinthewheelsonline.com/random-nfl-team-generator): All 32 NFL franchises with AFC & NFC presets.
+- [NBA Team Wheel](https://spinthewheelsonline.com/nba-team-wheel): All 30 NBA franchises with East & West conference filters.
+- [NBA Player Spin the Wheel](https://spinthewheelsonline.com/nba-player-spin-the-wheel): Modern superstars, All-Time GOATs & 2K Blacktop drafts.
+- [MLB Team Wheel](https://spinthewheelsonline.com/mlb-team-wheel): All 30 MLB baseball franchises with AL & NL presets.
+- [Premier League Team Wheel](https://spinthewheelsonline.com/premier-league-team-wheel): All 20 English Premier League clubs for EA FC & sweepstakes.
+- [Dandy's World Wheel Spinner](https://spinthewheelsonline.com/dandy-world-wheel-spinner): Roblox Dandy's World Toons, Trinkets & challenge modifiers.
+- [Fortnite Drop Wheel](https://spinthewheelsonline.com/fortnite-drop-wheel): Named map POIs, weapon restrictions & squad drop rules.
+- [Roblox Game Picker Wheel](https://spinthewheelsonline.com/roblox-game-picker-wheel): Trending Roblox Discover experiences across horror, PvP & chill genres.
+
+### Geography & Knowledge (10)
+- [Letter Picker Wheel](https://spinthewheelsonline.com/letter-picker-wheel): Random A–Z alphabet spinner for Scattergories & phonics.
+- [Random Word Generator Wheel](https://spinthewheelsonline.com/random-word-generator): Vocabulary drills, writing prompts & Pictionary decks.
+- [Language Picker Wheel](https://spinthewheelsonline.com/language-picker-wheel): Choose a language to learn or run polyglot drills.
+- [Planet Picker Wheel](https://spinthewheelsonline.com/planet-picker-wheel): Solar system planets, dwarf planets, moons & exoplanets.
+- [Animal Picker Wheel](https://spinthewheelsonline.com/animal-picker-wheel): Safari, ocean, bird & pet wildlife randomizer.
+- [US State Picker Wheel](https://spinthewheelsonline.com/us-state-picker-wheel): All 50 US states with regional West/Midwest/South/Northeast presets.
+- [Country Picker Wheel](https://spinthewheelsonline.com/country-picker-wheel): Global travel destinations & continental world wheel.
+- [Country Name Generator](https://spinthewheelsonline.com/country-name-generator): Sovereign nations worldwide for Model UN & geography bees.
+- [Random Flag Generator](https://spinthewheelsonline.com/random-flag-generator): World flag trivia & vexillology wheel.
+- [Guess the Country Game](https://spinthewheelsonline.com/guess-the-country): Landmark, cultural & expert geography trivia wheel.
+- [Brazil States Picker Wheel](https://spinthewheelsonline.com/brazil-state-picker-wheel): Random selector covering all 26 Brazilian states & Federal District.
+
+## Localized Editions (20 Indexable Hubs + Tier-1 Localized Tools)
+- [English](https://spinthewheelsonline.com/)
+- [Español](https://spinthewheelsonline.com/es)
+- [Deutsch](https://spinthewheelsonline.com/de)
+- [Français](https://spinthewheelsonline.com/fr)
+- [Italiano](https://spinthewheelsonline.com/it)
+- [Português](https://spinthewheelsonline.com/pt)
+- [Polski](https://spinthewheelsonline.com/pl)
+- [Tiếng Việt](https://spinthewheelsonline.com/vi)
+- [中文](https://spinthewheelsonline.com/zh)
+- [日本語](https://spinthewheelsonline.com/ja)
+- [한국어](https://spinthewheelsonline.com/ko)
+- [Nederlands](https://spinthewheelsonline.com/nl)
+- [Svenska](https://spinthewheelsonline.com/sv)
+- [Dansk](https://spinthewheelsonline.com/da)
+- [Norsk](https://spinthewheelsonline.com/no)
+- [Türkçe](https://spinthewheelsonline.com/tr)
+- [Русский](https://spinthewheelsonline.com/ru)
+- [العربية](https://spinthewheelsonline.com/ar)
+- [हिन्दी](https://spinthewheelsonline.com/hi)
+- [Bahasa Indonesia](https://spinthewheelsonline.com/id)
+
+## Blog Guides & Tutorials (25 Articles)
+- [What Is a Spin the Wheel Tool — and How Does It Work?](https://spinthewheelsonline.com/blogs/spin-the-wheel-tool)
+- [10 Best Wheel of Names Alternatives & Free Spinner Tools](https://spinthewheelsonline.com/blogs/best-wheel-of-names-alternatives-free-spinner-tools)
+- [Sports & Gaming Spin Wheel Challenges (NFL, NBA, Pokémon & Fortnite)](https://spinthewheelsonline.com/blogs/sports-gaming-spin-wheel-challenges-nfl-nba-pokemon-fortnite)
+- [Random Number, Bingo 1–75 & Raffle Wheel Complete Guide](https://spinthewheelsonline.com/blogs/random-number-bingo-raffle-wheel-complete-guide)
+- [How Teachers Use Spin the Wheel in Classrooms](https://spinthewheelsonline.com/blogs/spin-wheel-classroom-activities)
+- [How to Pick a Random Giveaway Winner Fairly](https://spinthewheelsonline.com/blogs/how-to-run-online-giveaway)
+- [Best Uses for a Random Wheel Spinner](https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner)
+- [Spin the Wheel vs. Other Random Pickers](https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers)
+- [Family Game Night Wheel Spinner Ideas](https://spinthewheelsonline.com/blogs/family-game-night-wheel-spinner)
+- [Classroom Spin Wheel Examples for Teachers](https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-classroom-examples)
+- [Spin Wheel Team Building Activities for Work](https://spinthewheelsonline.com/blogs/spin-wheel-team-building)
+- [The Psychology of Random Decision Making](https://spinthewheelsonline.com/blogs/psychology-random-decision-making)
+- [How to Run a Fair School Raffle with a Spin Wheel](https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel)
+- [Yes or No Wheel: When to Use a Binary Spinner](https://spinthewheelsonline.com/blogs/yes-no-wheel-when-to-use)
+- [Spin Wheel Birthday Party Games & Ideas](https://spinthewheelsonline.com/blogs/spin-wheel-birthday-party-ideas)
+- [How Live Streamers & Creators Use Spin Wheels](https://spinthewheelsonline.com/blogs/streamers-use-spin-wheel)
+- [Using a Name Picker Wheel for Work & School](https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school)
+- [Is a Digital Spin Wheel Truly Random? Cryptography Explained](https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random)
+- [What to Eat Tonight? Solving the Dinner Debate](https://spinthewheelsonline.com/blogs/what-to-eat-tonight-spin-wheel-dinner-decision)
+- [Plan Your Week: Meals, Workouts & Chores with a Spin Wheel](https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks)
+- [Date Night Roulette: Spin Wheel Ideas for Couples](https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples)
+- [How Students Use Spin Wheels for Study, Revision & Focus](https://spinthewheelsonline.com/blogs/how-students-use-spin-wheels-study-revision-focus)
+- [Spin Wheel for Language Learning: Vocabulary, Verbs & Conversation](https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation)
+- [HR Spin Wheel for Employee Recognition & Office Events](https://spinthewheelsonline.com/blogs/hr-spin-wheel-employee-recognition-office-events)
+- [Spin Wheel Icebreakers for Onboarding & New Hires](https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding)

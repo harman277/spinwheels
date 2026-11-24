@@ -1,0 +1,276 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../../data/specialized-wheels.js";
+import { CATEGORIES } from "../../data/categories.js";
+import { SITE_URL, SITE_NAME, REVIEWED_ISO, REVIEWED_TEXT, ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((category: any) => ({
+    params: { slug: category.slug },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props as { category: any };
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+const canonicalUrl = `${SITE_URL}/category/${category.slug}`;
+const ogImg = `${SITE_URL}/${category.ogImage || "eng-spin-the-wheel-picker.webp"}`;
+const totalWheelsCount = Object.keys(SPECIALIZED_WHEELS).length;
+
+const categoryWheels = Object.entries(SPECIALIZED_WHEELS as Record<string, any>)
+  .filter(([, w]) => w.category === category.name)
+  .map(([slug, w]) => ({ slug, ...w }));
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonicalUrl}#collection`,
+      url: canonicalUrl,
+      name: category.title,
+      description: category.description,
+      inLanguage: "en-US",
+      dateModified: REVIEWED_ISO,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      breadcrumb: { "@id": `${canonicalUrl}#breadcrumbs` },
+      speakable: { "@type": "SpeakableSpecification", cssSelector: [".hero-title", ".hero-subtitle", ".quick-answer-card"] },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: categoryWheels.length,
+        itemListElement: categoryWheels.map((w: any, idx: number) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: w.name,
+          url: `${SITE_URL}/${w.slug}`
+        }))
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      publisher: { "@id": `${SITE_URL}/#organization` }
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 },
+      contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumbs`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Tools", item: `${SITE_URL}/tools` },
+        { "@type": "ListItem", position: 3, name: category.name, item: canonicalUrl }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonicalUrl}#faq`,
+      mainEntity: category.faqs.map((f: any) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a }
+      }))
+    }
+  ]
+};
+const schemaJson = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{category.title}</title>
+  <meta name="description" content={category.description} />
+  <meta name="keywords" content={category.keywords} />
+  <meta name="author" content={SITE_NAME} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#F59E0B" />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/logo-192x192.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content={category.title} />
+  <meta property="og:description" content={category.description} />
+  <meta property="og:image" content={ogImg} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={category.title} />
+  <meta name="twitter:description" content={category.description} />
+  <meta name="twitter:image" content={ogImg} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+
+  <AnalyticsHead enableAds={true} />
+  <script type="application/ld+json" set:html={schemaJson} />
+</head>
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath={`/category/${category.slug}`} />
+
+  <main id="main-content" class="container" style="padding: 24px 20px 72px; max-width: 1200px; margin: 0 auto;">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb navigation" style="margin-bottom: 18px; font-size: 0.86rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+      <a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a>
+      <span aria-hidden="true">&rsaquo;</span>
+      <a href="/tools" style="color: var(--text-muted); text-decoration: none;">Tools</a>
+      <span aria-hidden="true">&rsaquo;</span>
+      <span style="color: var(--text-primary); font-weight: 700;" aria-current="page">{category.icon} {category.name} ({categoryWheels.length})</span>
+    </nav>
+
+    <section class="hero-section hero-compact" style="margin-bottom: 24px;">
+      <div style="display:inline-block; margin-bottom:10px;">
+        <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(245,158,11,0.12); color:#D97706; font-size:0.78rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:5px 14px; border-radius:999px; border:1px solid rgba(245,158,11,0.25);">
+          {category.icon} Category Hub &bull; {categoryWheels.length} Free Spin Wheels
+        </span>
+      </div>
+      <h1 class="hero-title">{category.h1}</h1>
+      <p class="hero-subtitle">{category.subtitle}</p>
+    </section>
+
+    <section class="snippet-summary-section" style="margin-bottom: 30px;" aria-label="Category overview">
+      <div class="quick-answer-card">
+        <p set:html={category.quickAnswer} />
+      </div>
+      <div class="trust-badges" aria-label="Category benefits">
+        <span class="trust-badge">✅ 100% Free Forever</span>
+        <span class="trust-badge">🔒 Web Cryptography Fair</span>
+        <span class="trust-badge">⚡ Up to 500 Custom Slices</span>
+        <span class="trust-badge">🚀 Zero Signup Required</span>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="catWheelsHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="catWheelsHeading">All {category.name} Spin Wheels ({categoryWheels.length})</h2>
+        <p class="section-subtitle">Click any pre-built wheel below to spin immediately or customize entries, weights, and themes.</p>
+      </div>
+      <div class="hub-wheels-grid">
+        {categoryWheels.map((w: any) => (
+          <a href={`/${w.slug}`} class="hub-wheel-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
+              <span class="hub-wheel-cat" style="margin-bottom:0;">{w.category}</span>
+              <span style="font-size:0.74rem; font-weight:700; color:var(--text-muted);">{w.items ? w.items.length : 0} slices</span>
+            </div>
+            <h3>{w.name}</h3>
+            <p>{w.description}</p>
+            <span class="hub-wheel-cta">Open {w.name} &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot slot="inContent" />
+
+    <section class="content-section" aria-labelledby="catGuideHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="catGuideHeading">{category.guideHeading || `How to Get the Most From ${category.name} Wheels`}</h2>
+        <p class="section-subtitle">{category.guideSubtitle || "Practical setup ideas, tool combinations, and browser-local fairness details."}</p>
+      </div>
+      <article class="card editorial-article">
+        {category.guideSections.map((sec: any, idx: number) => (
+          <div class={idx === 0 ? "" : "editorial-subsection"}>
+            <h3 style={idx === 0 ? "font-size:1.25rem;font-weight:800;color:var(--text-primary);margin-bottom:10px;" : undefined}>{sec.heading}</h3>
+            <p set:html={sec.body} />
+            {Array.isArray(sec.bullets) && sec.bullets.length > 0 && (
+              <ul class="editorial-bullets">
+                {sec.bullets.map((b: string) => <li set:html={b} />)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </article>
+    </section>
+
+    {Array.isArray(category.relatedBlogs) && category.relatedBlogs.length > 0 && (
+      <section class="content-section" aria-labelledby="catBlogsHeading">
+        <div class="section-header">
+          <h2 class="section-title" id="catBlogsHeading">Playbooks &amp; Guides for {category.name}</h2>
+          <p class="section-subtitle">Step-by-step templates and real-world strategies from our editorial team.</p>
+        </div>
+        <div class="related-blogs-grid">
+          {category.relatedBlogs.map((b: any) => (
+            <a href={`/blogs/${b.slug}`} class="related-blog-card">
+              <span class="rb-tag">{b.tag}</span>
+              <h3>{b.title}</h3>
+              <span class="rb-link">Read Guide &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <AdSlot slot="preFaq" />
+
+    <section class="content-section" aria-labelledby="catFaqHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="catFaqHeading">{category.name} Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        {category.faqs.map((faq: any) => (
+          <details class="faq-item">
+            <summary><span>{faq.q}</span></summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="otherCatsHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="otherCatsHeading">Explore All 8 Spin Wheel Categories</h2>
+        <p class="section-subtitle">Browse every wheel category or jump to the full searchable directory.</p>
+      </div>
+      <div class="cat-silo-strip">
+        {CATEGORIES.map((c: any) => (
+          <a href={`/category/${c.slug}`} class={`cat-silo-pill ${c.slug === category.slug ? "active" : ""}`}>
+            <span>{c.icon}</span> {c.name}
+          </a>
+        ))}
+        <a href="/tools" class="cat-silo-pill">🔎 All {totalWheelsCount} Tools</a>
+      </div>
+    </section>
+
+    <div class="eeat-card" role="complementary" aria-label="Editorial Note">
+      <div>
+        <strong>Editorial Note:</strong> Maintained and tested against live browser behavior by <a href="/about">Harman S. &amp; Editorial Review</a>.
+        Last reviewed <time datetime={REVIEWED_ISO}>{REVIEWED_TEXT}</time>.
+      </div>
+      <div class="eeat-badge">🛡️ Browser Web Cryptography &bull; 100% Client-Side</div>
+    </div>
+  </main>
+
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath={`/category/${category.slug}`} />
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

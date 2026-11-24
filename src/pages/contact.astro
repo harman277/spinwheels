@@ -1,0 +1,168 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import { SITE_URL, SITE_NAME, ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 }, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` } },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, publisher: { "@id": `${SITE_URL}/#organization` } },
+    { "@type": "ContactPage", "@id": `${SITE_URL}/contact#webpage`, name: "Contact Spin The Wheels Online", url: `${SITE_URL}/contact`, description: "Contact form and direct support information for Spin The Wheels Online.", inLanguage: "en", isPartOf: { "@id": `${SITE_URL}/#website` }, publisher: { "@id": `${SITE_URL}/#organization` }, breadcrumb: { "@id": `${SITE_URL}/contact#breadcrumbs` } },
+    { "@type": "BreadcrumbList", "@id": `${SITE_URL}/contact#breadcrumbs`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` }, { "@type": "ListItem", position: 2, name: "Contact Us", item: `${SITE_URL}/contact` }] }
+  ]
+}).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us – Spin The Wheels Online</title>
+  <meta name="description" content="Get in touch with the Spin The Wheels Online team for support, feature suggestions, bug reports, and dataset or translation corrections." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href={`${SITE_URL}/contact`} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={false} />
+  <script type="application/ld+json" set:html={schemaJson} />
+</head>
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/contact" />
+  <main class="container" style="max-width: 860px; padding: 48px 20px;">
+    <article class="card" style="padding: clamp(24px, 5vw, 44px);">
+      <h1 class="section-title" style="text-align: left; margin-bottom: 16px;">Contact <span>Our Team</span></h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px;">
+        Have a question about using our wheel spinner in your classroom, need to report an unexpected bug, or wish to suggest a new custom preset? We are here to help!
+      </p>
+
+      <div style="background-color: var(--bg-surface-elevated); border-left: 4px solid var(--accent-gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 18px 22px; margin-bottom: 32px;">
+        <h2 style="font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">📬 Direct Email Inquiries</h2>
+        <p style="font-size: 0.94rem; color: var(--text-secondary); margin-bottom: 6px;">
+          For direct assistance, reach us at:
+          <a href="mailto:spinthewheelsonline@gmail.com" style="font-weight: 700; color: var(--accent-gold-dark);">spinthewheelsonline@gmail.com</a>
+        </p>
+        <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">🕒 Typical Response Time: 24 to 48 business hours.</p>
+      </div>
+
+      <form id="contactForm" style="display:flex; flex-direction:column; gap:18px;">
+        <div>
+          <label for="name" style="display:block; font-weight:700; font-size:0.92rem; margin-bottom:6px;">Your Name *</label>
+          <input type="text" id="name" class="entry-input" style="width:100%;" placeholder="e.g. Jane Doe" required />
+        </div>
+        <div>
+          <label for="email" style="display:block; font-weight:700; font-size:0.92rem; margin-bottom:6px;">Your Email Address *</label>
+          <input type="email" id="email" class="entry-input" style="width:100%;" placeholder="name@example.com" required />
+        </div>
+        <div>
+          <label for="category" style="display:block; font-weight:700; font-size:0.92rem; margin-bottom:6px;">Topic / Category *</label>
+          <select id="category" class="setting-select" style="width:100%;">
+            <option value="General Inquiry">General Question / Feedback</option>
+            <option value="Classroom / School">Classroom &amp; Teacher Usage</option>
+            <option value="Bug Report">Technical Issue / Bug Report</option>
+            <option value="Feature Request">Request New Preset / Feature</option>
+            <option value="Privacy Request">Privacy / GDPR Data Request</option>
+            <option value="Partnership">Commercial / Partnership Inquiry</option>
+          </select>
+        </div>
+        <div>
+          <label for="subject" style="display:block; font-weight:700; font-size:0.92rem; margin-bottom:6px;">Subject *</label>
+          <input type="text" id="subject" class="entry-input" style="width:100%;" placeholder="Brief summary of your message..." required />
+        </div>
+        <div>
+          <label for="message" style="display:block; font-weight:700; font-size:0.92rem; margin-bottom:6px;">Message *</label>
+          <textarea id="message" class="bulk-textarea" style="min-height:140px;" placeholder="Please describe how we can assist you..." maxlength="1500" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self:flex-start; padding:12px 28px; font-size:1rem;">Send Message →</button>
+        <div id="formStatus" style="display:none; padding:14px; border-radius:var(--radius-md); font-size:0.9rem; font-weight:600;" role="alert"></div>
+      </form>
+
+      <div style="margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
+        <h2 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Helpful Details to Include</h2>
+        <ul style="margin-left: 20px; margin-bottom: 12px;">
+          <li><strong>Bug reports:</strong> Tell us the exact wheel URL (for example, <code>/country-picker-wheel</code>), your browser and device, and what you tapped right before the issue happened.</li>
+          <li><strong>Dataset or translation fixes:</strong> Let us know the specific team, country, preset, or phrase that needs correction so we can verify and update it quickly.</li>
+          <li><strong>Saved-list privacy note:</strong> Because custom wheels live strictly inside your own browser's <code>localStorage</code> and are never sent to our servers, we cannot view or recover lists cleared by browser resets—use <strong>Share Wheel</strong> to bookmark important lists as a URL.</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/contact" />
+  <script src={ASSETS.jsHref} defer></script>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function() {
+      var form = document.getElementById("contactForm");
+      var status = document.getElementById("formStatus");
+      if (!form || !status) return;
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var category = document.getElementById("category").value;
+        var subject = document.getElementById("subject").value.trim();
+        var message = document.getElementById("message").value.trim();
+        if (!name || !email || !subject || !message) { alert("Please fill out all required fields."); return; }
+        status.style.display = "block";
+        status.style.backgroundColor = "rgba(245,158,11,0.1)";
+        status.style.color = "var(--text-primary)";
+        status.textContent = "⏳ Sending your message to the support team...";
+        try {
+          var res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ name: name, email: email, subject: "[" + category + "] " + subject, message: message })
+          });
+          var data = await res.json();
+          if (data && data.success) {
+            status.style.backgroundColor = data.delivered ? "rgba(16,185,129,0.15)" : "rgba(245,158,11,0.15)";
+            status.style.color = data.delivered ? "#047857" : "var(--text-primary)";
+            status.textContent = (data.delivered ? "✅ " : "ℹ️ ") + data.message;
+            if (data.mailtoFallback) {
+              var ms = encodeURIComponent("[" + category + "] " + subject);
+              var mb = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nCategory: " + category + "\n\nMessage:\n" + message);
+              var wrap = document.createElement("div");
+              wrap.style.marginTop = "10px";
+              var link = document.createElement("a");
+              link.href = "mailto:spinthewheelsonline@gmail.com?subject=" + ms + "&body=" + mb;
+              link.className = "btn-primary";
+              link.style.display = "inline-block";
+              link.style.textDecoration = "none";
+              link.textContent = "📧 Send via Email App";
+              wrap.appendChild(link);
+              status.appendChild(wrap);
+            } else {
+              form.reset();
+            }
+            return;
+          }
+        } catch (err) {}
+        var ms2 = encodeURIComponent("[" + category + "] " + subject);
+        var mb2 = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nCategory: " + category + "\n\nMessage:\n" + message);
+        window.location.href = "mailto:spinthewheelsonline@gmail.com?subject=" + ms2 + "&body=" + mb2;
+        status.style.backgroundColor = "rgba(16,185,129,0.15)";
+        status.style.color = "#047857";
+        status.textContent = "✅ If your email client did not open automatically, please email spinthewheelsonline@gmail.com directly.";
+      });
+    });
+  </script>
+</body>
+</html>

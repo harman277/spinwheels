@@ -1,0 +1,124 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { SITE_URL, SITE_NAME, REVIEWED_ISO, ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+const wheelCount = Object.keys(SPECIALIZED_WHEELS).length;
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Person", "@id": `${SITE_URL}/about#harman`, name: "Harman S.", jobTitle: "Founder & Lead Engineer", url: `${SITE_URL}/about`, worksFor: { "@id": `${SITE_URL}/#organization` } },
+    { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL, founder: { "@id": `${SITE_URL}/about#harman` }, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 }, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` } },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, publisher: { "@id": `${SITE_URL}/#organization` } },
+    { "@type": "AboutPage", "@id": `${SITE_URL}/about#webpage`, name: "About Spin The Wheels Online", url: `${SITE_URL}/about`, description: "Learn about the engineering, Web Cryptography randomness testing, editorial standards, and privacy-first design behind Spin The Wheels Online.", dateModified: REVIEWED_ISO, inLanguage: "en", isPartOf: { "@id": `${SITE_URL}/#website` }, publisher: { "@id": `${SITE_URL}/#organization` }, breadcrumb: { "@id": `${SITE_URL}/about#breadcrumbs` } },
+    { "@type": "BreadcrumbList", "@id": `${SITE_URL}/about#breadcrumbs`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` }, { "@type": "ListItem", position: 2, name: "About Us", item: `${SITE_URL}/about` }] }
+  ]
+}).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us – Spin The Wheels Online</title>
+  <meta name="description" content="How Harman S. built Spin The Wheels Online around Web Cryptography randomness, how we verify our 69 wheel datasets, and our editorial standards." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href={`${SITE_URL}/about`} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`${SITE_URL}/about`} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:title" content="About Us – Spin The Wheels Online" />
+  <meta property="og:description" content="How Harman S. built Spin The Wheels Online around Web Cryptography randomness, how we verify our 69 wheel datasets, and our editorial standards." />
+  <meta property="og:image" content={`${SITE_URL}/eng-spin-the-wheel-picker.webp`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={true} />
+  <script type="application/ld+json" set:html={schemaJson} />
+</head>
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/about" />
+  <main class="container" style="max-width: 860px; padding: 48px 20px;">
+    <article class="card" style="padding: clamp(24px, 5vw, 44px);">
+      <h1 class="section-title" style="text-align: left; margin-bottom: 16px;">About <span>Spin The Wheels Online</span></h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">
+        <strong>Spin The Wheels Online</strong> started with a simple frustration: most free browser wheels either feel sluggish on school Chromebooks, bury basic weights behind logins, or flash noisy overlays right when a teacher or livestreamer tries to share their screen. Our goal is a fast, distraction-light spinner that loads in one click and settles choices out in the open where everyone can watch.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">🎯 Why We Built It This Way</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Whether a classroom needs to call on students without repeating the same three volunteers, a remote engineering team wants an unbiased standup order, or two roommates cannot settle on dinner, handing a low-stakes choice to a visible wheel removes the awkwardness. Nobody has to play "bad cop," and everyone watching sees the exact same spin settle in real time.
+      </p>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">
+        To keep the barrier to entry at zero, every wheel supports up to 500 entries, 1x–20x per-slice weight buttons, winner elimination, QR links, and CSV audit exports with no accounts, paywalls, or app downloads.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">🔬 How We Keep Spins Verifiably Fair</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Many casual web widgets pick winners with JavaScript's standard pseudo-random helper, <code>Math.random()</code>, or compute modulo remainders without rejecting biased upper ranges. Even when tiny biases are hard to spot in five spins, they matter in large raffles and classroom probability demos.
+      </p>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Instead, our wheel engine draws random values from the browser's <strong>Web Cryptography API</strong> (<code>window.crypto.getRandomValues()</code>) paired with rejection sampling. Every 1x entry starts with equal angular probability, and our automated test suite verifies uniformity across 10,000-trial runs before releases go live. Read the plain-English breakdown in <a href="/blogs/is-spin-wheel-truly-random">Is a Digital Spin Wheel Truly Random?</a> or review technical updates on the <a href="/changelog">Changelog</a>.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">👥 Who Runs &amp; Reviews the Site</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+        Spin The Wheels Online is independently built, tested, and maintained by <strong>Harman S.</strong> alongside our editorial contributors. Explore all <a href="/tools">{wheelCount} Free Spin Wheels</a>, browse our <a href="/category/names-and-classrooms">Classroom &amp; Name Pickers Hub</a>, or read our 25 hands-on usage guides in the <a href="/blogs">Blog</a>.
+      </p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 20px 0 28px;">
+        <div style="padding: 16px; border-radius: 12px; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.18);">
+          <strong style="display:block; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 4px;">Harman S.</strong>
+          <span style="font-size: 0.85rem; color: var(--accent-gold-dark); font-weight: 700; text-transform: uppercase;">Founder &amp; Lead Engineer</span>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 8px 0 0; line-height: 1.5;">Maintains the HTML5 Canvas wheel renderer, Web Cryptography entropy pipeline, Astro static edge architecture, and QA verification suite.</p>
+        </div>
+        <div style="padding: 16px; border-radius: 12px; background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.18);">
+          <strong style="display:block; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 4px;">Dataset &amp; Editorial Review</strong>
+          <span style="font-size: 0.85rem; color: #2563eb; font-weight: 700; text-transform: uppercase;">Verification &amp; Localization</span>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 8px 0 0; line-height: 1.5;">Audits reference lists (195 UN nations, 50 US states, 27 Brazilian federative units, pro sports leagues), classroom guides, and native translations.</p>
+        </div>
+      </div>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">✅ Editorial Standards, Accuracy &amp; Corrections</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Every specialized wheel and article is checked against how the live interface actually behaves: entry limits (500 entries per wheel), weight controls (1x to 20x buttons), local browser storage (no hidden accounts), and complete factual rosters. When leagues realign, maps update, or a reader flags an imprecise example, we update the dataset and log major changes on our <a href="/changelog">Changelog</a>. We never sell paid slice placement or alter spin odds for sponsors.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">🛡️ Privacy by Design</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        When you paste a student class roster or family dinner list into a wheel, your entries live strictly in your browser's local memory and <code>localStorage</code>—never uploaded to our database. Read full details in our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms &amp; Conditions</a>.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">💡 How the Site Stays Free</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Running global static edge delivery without charging teachers or creators a subscription fee is funded through privacy-compliant advertising slots via Google AdSense and direct user support. Ad containers are strictly excluded from clean projector/stream embeds (<code>?embed=1</code>), legal pages, and positioned well clear of interactive wheel controls.
+      </p>
+
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 32px 0 12px; color: var(--text-primary);">📬 Contact &amp; Feedback</h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+        Found a bug, outdated roster entry, or awkward translation? Use our <a href="/contact">Contact page</a> or email us directly at <a href="mailto:spinthewheelsonline@gmail.com">spinthewheelsonline@gmail.com</a>—every message is read by a real person.
+      </p>
+    </article>
+  </main>
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/about" />
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

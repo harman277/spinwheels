@@ -1,0 +1,82 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../../data/specialized-wheels.js";
+import { SITE_URL, ASSETS, INDEXABLE_LANG_LIST } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+
+export function getStaticPaths() {
+  return INDEXABLE_LANG_LIST.filter((c) => c !== "en").map((code) => ({
+    params: { lang: code },
+    props: { langCode: code }
+  }));
+}
+
+const { langCode } = Astro.props;
+const langObj = (LANGUAGES as any)[langCode] || (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any)[langCode] || (TRANSLATIONS as any).en;
+const uiChrome = getChrome(langCode);
+const isRtl = langCode === "ar" || langCode === "he";
+const canonicalUrl = `${SITE_URL}/${langCode}/tools`;
+const toolsTitle = `${t.metaTitle} – ${uiChrome.allTools || "Directory"}`;
+const wheelEntries = Object.entries(SPECIALIZED_WHEELS as Record<string, any>);
+---
+
+<!doctype html>
+<html lang={langCode} dir={isRtl ? "rtl" : "ltr"} data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{toolsTitle}</title>
+  <meta name="description" content={t.metaDesc} />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={false} />
+</head>
+<body>
+  <SiteHeader lang={langObj} t={t} chrome={uiChrome} currentPath={`/${langCode}/tools`} />
+  <main class="container" style="padding: 32px 20px 80px; max-width: 1240px; margin: 0 auto;">
+    <section class="hero-section" style="text-align: center; margin-bottom: 32px;">
+      <h1 class="hero-title">{uiChrome.allTools || "All Tools"} ({wheelEntries.length})</h1>
+      <p class="hero-subtitle">{t.heroSubtitle}</p>
+    </section>
+    <div class="tools-grid">
+      {wheelEntries.map(([slug, tool]) => {
+        const loc = tool.translations?.[langCode];
+        const hasLoc = Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+        const toolUrl = hasLoc ? `/${langCode}/${slug}` : `/${slug}`;
+        const displayName = hasLoc ? loc.name : tool.name;
+        const displayDesc = (hasLoc && loc.description) ? loc.description : tool.description;
+        return (
+          <article class="tool-card card">
+            <div>
+              <div class="tool-card-top">
+                <span class="tool-card-cat">{uiChrome.categories?.[tool.category] || tool.category}</span>
+                <span class="tool-card-count">{tool.items?.length || 0}</span>
+              </div>
+              <h2 class="tool-card-title"><a href={toolUrl}>{displayName}</a></h2>
+              <p class="tool-card-desc">{displayDesc.slice(0, 128)}&hellip;</p>
+            </div>
+            <a href={toolUrl} class="btn btn-primary tool-card-cta">
+              <span>{uiChrome.openWheelCta || "Open Wheel"}</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </main>
+  <WheelModals lang={langObj} t={t} chrome={uiChrome} />
+  <CookieBanner lang={langObj} chrome={uiChrome} />
+  <SiteFooter lang={langObj} chrome={uiChrome} currentPath={`/${langCode}/tools`} />
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

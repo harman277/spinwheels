@@ -1,0 +1,134 @@
+---
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { INDEXABLE_LANGS } from "../config/site";
+import LanguageModal from "./LanguageModal.astro";
+
+interface Props {
+  lang?: any;
+  chrome?: any;
+  currentSlug?: string;
+  currentPath?: string;
+}
+
+const { lang, chrome, currentSlug = "", currentPath = "" } = Astro.props;
+const footerLang = lang?.code || "en";
+const uiChrome = chrome || getChrome(footerLang);
+const hasIndexableFooter = INDEXABLE_LANGS.has(footerLang);
+const totalFooterWheels = Object.keys(SPECIALIZED_WHEELS).length || 69;
+
+const getToolUrl = (slug: string) => {
+  if (footerLang === "en") return `/${slug}`;
+  const loc = hasIndexableFooter ? (SPECIALIZED_WHEELS as any)[slug]?.translations?.[footerLang] : null;
+  return loc && loc.name && loc.heroSubtitle && loc.items ? `/${footerLang}/${slug}` : `/${slug}`;
+};
+
+const getToolLabel = (slug: string, fallback: string) => {
+  if (footerLang === "en") return fallback;
+  const loc = hasIndexableFooter ? (SPECIALIZED_WHEELS as any)[slug]?.translations?.[footerLang] : null;
+  return loc && loc.name && loc.heroSubtitle && loc.items ? loc.name : fallback;
+};
+
+const catLabel = (enName: string, fallback: string) => uiChrome.categories?.[enName] || fallback;
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href={footerLang !== "en" && hasIndexableFooter ? `/${footerLang}` : "/"} aria-label="SpinTheWheelsOnline Home">
+          <img src="/favicon.ico" alt="Logo" width="24" height="24" loading="lazy" />
+          <span>spinthewheelsonline</span>
+        </a>
+        <p>{uiChrome.footerTagline}</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>{uiChrome.popularWheelsCol}</h3>
+        <ul>
+          <li><a href={getToolUrl("wheel-of-names")}>{getToolLabel("wheel-of-names", "Wheel of Names")}</a></li>
+          <li><a href={getToolUrl("yes-no-wheel")}>{getToolLabel("yes-no-wheel", "Yes or No Wheel")}</a></li>
+          <li><a href={getToolUrl("picker-wheel")}>{getToolLabel("picker-wheel", "Picker Wheel")}</a></li>
+          <li><a href={getToolUrl("decision-wheel")}>{getToolLabel("decision-wheel", "Decision Wheel")}</a></li>
+          <li><a href={getToolUrl("raffle-wheel")}>{getToolLabel("raffle-wheel", "Raffle & Giveaway Wheel")}</a></li>
+          <li><a href={getToolUrl("prize-wheel")}>{getToolLabel("prize-wheel", "Prize Wheel")}</a></li>
+          <li><a href={getToolUrl("dinner-wheel")}>{getToolLabel("dinner-wheel", "Dinner & Food Wheel")}</a></li>
+          <li><a href={getToolUrl("twister-spinner")}>{getToolLabel("twister-spinner", "Twister Spinner")}</a></li>
+          <li><a href={getToolUrl("number-picker-wheel")}>{getToolLabel("number-picker-wheel", "Number Picker Wheel")}</a></li>
+          <li><a href={getToolUrl("truth-or-dare-wheel")}>{getToolLabel("truth-or-dare-wheel", "Truth or Dare Wheel")}</a></li>
+          <li><a href={getToolUrl("dice-roller-wheel")}>{getToolLabel("dice-roller-wheel", "Dice Roller Wheel")}</a></li>
+          <li><a href="/tools">{(uiChrome.viewAllWheels || "View All {count}+ Wheels").replace("{count}", String(totalFooterWheels))} &rarr;</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>{uiChrome.resourcesCol}</h3>
+        <ul>
+          <li><a href="/blogs">{uiChrome.blogAndGuides}</a></li>
+          <li><a href="/blogs/spin-the-wheel-tool">{uiChrome.howWheelsWork}</a></li>
+          <li><a href="/blogs/spin-wheel-classroom-activities">{uiChrome.classroomIdeas}</a></li>
+          <li><a href="/blogs/how-to-run-online-giveaway">{uiChrome.howGiveaways}</a></li>
+          <li><a href="/blogs/is-spin-wheel-truly-random">{uiChrome.isWheelFair}</a></li>
+          <li><a href="/changelog">{uiChrome.changelogLink}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>{uiChrome.trustLegalCol}</h3>
+        <ul>
+          <li><a href="/about">{uiChrome.aboutTeam}</a></li>
+          <li><a href="/contact">{uiChrome.contactSupport}</a></li>
+          <li><a href="/privacy-policy">{uiChrome.privacyPolicy}</a></li>
+          <li><a href="/terms-and-conditions">{uiChrome.termsOfService}</a></li>
+          <li><a href="/sitemap.xml">{uiChrome.xmlSitemap}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border-color); padding: 16px 0; text-align:center; font-size:0.84rem; color:var(--text-muted); line-height: 2.1;">
+      <strong style="color:var(--text-primary); display:block; margin-bottom:4px;">{uiChrome.wheelCategoriesLabel}</strong>
+      <a href="/category/quick-decisions" style="margin:0 7px;">⚡ {catLabel("Decisions & Yes/No", "Quick Decisions")}</a> ·
+      <a href="/category/names-and-classrooms" style="margin:0 7px;">👤 {catLabel("Names, Classrooms & Teams", "Names & Classrooms")}</a> ·
+      <a href="/category/numbers-and-math" style="margin:0 7px;">🔢 {catLabel("Numbers, Counting & Math", "Numbers & Math")}</a> ·
+      <a href="/category/giveaways-and-events" style="margin:0 7px;">🎁 {catLabel("Raffles, Giveaways & Prizes", "Giveaways & Events")}</a> ·
+      <a href="/category/food-and-lifestyle" style="margin:0 7px;">🍽️ {catLabel("Food, Restaurants & Lifestyle", "Food & Lifestyle")}</a> ·
+      <a href="/category/party-and-games" style="margin:0 7px;">🎉 {catLabel("Party Games & Social Icebreakers", "Party & Games")}</a> ·
+      <a href="/category/gaming-and-pop-culture" style="margin:0 7px;">🎮 {catLabel("Sports, Gaming & Pop Culture", "Gaming & Pop Culture")}</a> ·
+      <a href="/category/geography-and-knowledge" style="margin:0 7px;">🌍 {catLabel("Geography, Culture & Trivia", "Geography & Knowledge")}</a>
+    </div>
+
+    <div style="border-top:1px solid var(--border-color); padding: 20px 0; text-align:center; font-size:0.84rem; color:var(--text-muted); line-height: 2.2;">
+      <strong style="color:var(--text-primary); display:block; margin-bottom:6px;">{uiChrome.localizedEditionsLabel}</strong>
+      <a href="/" style="margin:0 5px;">🇺🇸 English</a> ·
+      <a href="/es" style="margin:0 5px;">🇪🇸 Español</a> ·
+      <a href="/de" style="margin:0 5px;">🇩🇪 Deutsch</a> ·
+      <a href="/fr" style="margin:0 5px;">🇫🇷 Français</a> ·
+      <a href="/it" style="margin:0 5px;">🇮🇹 Italiano</a> ·
+      <a href="/pt" style="margin:0 5px;">🇧🇷 Português</a> ·
+      <a href="/ja" style="margin:0 5px;">🇯🇵 日本語</a> ·
+      <a href="/ko" style="margin:0 5px;">🇰🇷 한국어</a> ·
+      <a href="/nl" style="margin:0 5px;">🇳🇱 Nederlands</a> ·
+      <a href="/sv" style="margin:0 5px;">🇸🇪 Svenska</a> ·
+      <a href="/da" style="margin:0 5px;">🇩🇰 Dansk</a> ·
+      <a href="/no" style="margin:0 5px;">🇳🇴 Norsk</a> ·
+      <a href="/pl" style="margin:0 5px;">🇵🇱 Polski</a> ·
+      <a href="/vi" style="margin:0 5px;">🇻🇳 Tiếng Việt</a> ·
+      <a href="/zh" style="margin:0 5px;">🇨🇳 简体中文</a> ·
+      <a href="/tr" style="margin:0 5px;">🇹🇷 Türkçe</a> ·
+      <a href="/ru" style="margin:0 5px;">🇷🇺 Русский</a> ·
+      <a href="/ar" style="margin:0 5px;">🇸🇦 العربية</a> ·
+      <a href="/hi" style="margin:0 5px;">🇮🇳 हिन्दी</a> ·
+      <a href="/id" style="margin:0 5px;">🇮🇩 Bahasa Indonesia</a>
+      <button type="button" onclick="if(window.stwol && window.stwol.openLanguageModal) window.stwol.openLanguageModal();" style="margin-left:8px; color:var(--accent-gold-dark); font-weight:700; text-decoration:underline;">
+        + All 35 Languages
+      </button>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 spinthewheelsonline.com. All rights reserved. Cryptographically random decision tool.</p>
+      <p style="font-size:0.8rem;">Developed with privacy in mind. Data never leaves your device.</p>
+    </div>
+  </div>
+</footer>
+
+<LanguageModal lang={lang} chrome={uiChrome} currentSlug={currentSlug} currentPath={currentPath} />

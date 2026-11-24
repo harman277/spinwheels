@@ -1,0 +1,149 @@
+---
+import { LANGUAGES } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { INDEXABLE_LANGS } from "../config/site";
+
+interface Props {
+  lang?: any;
+  chrome?: any;
+  currentSlug?: string;
+  currentPath?: string;
+}
+
+const { lang, chrome, currentSlug = "", currentPath = "" } = Astro.props;
+const modalCurrentLang = lang?.code || "en";
+const currentLangObj = (LANGUAGES as any)[modalCurrentLang] || { name: "English", flag: "🇺🇸", code: "en" };
+const uiChrome = chrome || getChrome(modalCurrentLang);
+
+const hasLocalizedWheel = (slug: string, targetCode: string) => {
+  if (targetCode === "en") return true;
+  if (!INDEXABLE_LANGS.has(targetCode)) return false;
+  const loc = (SPECIALIZED_WHEELS as any)[slug]?.translations?.[targetCode];
+  return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+};
+
+const getModalLangLink = (targetCode: string) => {
+  if (currentSlug) {
+    if (targetCode === "en") return `/${currentSlug}`;
+    return hasLocalizedWheel(currentSlug, targetCode) ? `/${targetCode}/${currentSlug}` : `/${targetCode}`;
+  }
+  if (currentPath && (currentPath.endsWith("/tools") || currentPath === "/tools")) {
+    return targetCode === "en" ? "/tools" : (INDEXABLE_LANGS.has(targetCode) ? `/${targetCode}/tools` : `/${targetCode}`);
+  }
+  return targetCode === "en" ? "/" : `/${targetCode}`;
+};
+
+const isModalTargetIndexable = (targetCode: string) => {
+  if (!INDEXABLE_LANGS.has(targetCode)) return false;
+  if (currentSlug) {
+    if (targetCode === "en") return true;
+    const w = (SPECIALIZED_WHEELS as any)[currentSlug];
+    const loc = w?.translations?.[targetCode];
+    return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+  }
+  if (currentPath && (currentPath.endsWith("/tools") || currentPath === "/tools")) {
+    return targetCode === "en";
+  }
+  return true;
+};
+
+const allLangValues = Object.values(LANGUAGES) as any[];
+---
+
+<!-- Multilingual First-Visit Welcome & Language Selector Modal -->
+<div class="lang-modal-overlay" id="langModalOverlay" role="dialog" aria-modal="true" aria-labelledby="langModalTitle" aria-hidden="true">
+  <div class="lang-modal-dialog" role="document">
+    <button class="lang-modal-close" type="button" onclick="window.stwol.closeLanguagePopup()" aria-label="Close language selector" title="Close">
+      &times;
+    </button>
+
+    <div class="lang-modal-header">
+      <span class="lang-modal-icon" aria-hidden="true">🌐</span>
+      <h2 class="lang-modal-title" id="langModalTitle">{uiChrome.chooseLanguageTitle || "Choose Your Language"}</h2>
+      <p class="lang-modal-subtitle">
+        {uiChrome.chooseLanguageSubtitle || "Select your preferred language. You can change this anytime from the menu."}
+      </p>
+    </div>
+
+    <!-- Smart Browser Language Detection Suggestion Banner -->
+    <div class="lang-suggest-banner" id="langSuggestBanner" role="region" aria-live="polite">
+      <div class="lang-suggest-text">
+        <span aria-hidden="true">💡</span>
+        <span id="langSuggestMsg">{uiChrome.detectedLangLabel || "Detected language available:"}</span>
+      </div>
+      <button type="button" class="lang-suggest-btn" id="langSuggestBtn">
+        {uiChrome.switchNow || "Switch Now"} &rarr;
+      </button>
+    </div>
+
+    <!-- Real-time Filter Search Box -->
+    <div class="lang-modal-search-box">
+      <label for="langSearchInput" class="sr-only">{uiChrome.language || "Search language"}</label>
+      <input
+        type="search"
+        id="langSearchInput"
+        class="lang-search-input"
+        placeholder={uiChrome.searchLangPlaceholder || "🔍 Search language or country..."}
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        oninput="window.stwol.filterLanguages(this.value)"
+      />
+    </div>
+
+    <!-- 35 Languages Grid -->
+    <div class="lang-modal-grid" id="langModalGrid" role="list" aria-label="Available languages">
+      {allLangValues.map((l) => {
+        const isCurrent = modalCurrentLang === l.code;
+        const modalHref = getModalLangLink(l.code);
+        const canCrawl = isModalTargetIndexable(l.code);
+        return canCrawl ? (
+          <a
+            class={`lang-card ${isCurrent ? "active" : ""}`}
+            href={modalHref}
+            data-lang-name={l.name}
+            data-lang-code={l.code}
+            data-lang-label={l.label || l.name}
+            onclick={`window.stwol.chooseLanguage('${l.code}')`}
+            role="listitem"
+            aria-label={`${l.name} (${l.code.toUpperCase()})`}
+          >
+            <span class="lang-flag" aria-hidden="true">{l.flag}</span>
+            <div class="lang-info">
+              <span class="lang-name">{l.name}</span>
+              <span class="lang-code">{l.code.toUpperCase()}</span>
+            </div>
+            {isCurrent && <span class="lang-current-badge">{uiChrome.activeBadge || "Active"}</span>}
+          </a>
+        ) : (
+          <button
+            type="button"
+            class={`lang-card ${isCurrent ? "active" : ""}`}
+            data-href={modalHref}
+            data-lang-name={l.name}
+            data-lang-code={l.code}
+            data-lang-label={l.label || l.name}
+            onclick={`window.stwol.navigateLanguage('${l.code}', '${modalHref}')`}
+            role="listitem"
+            aria-label={`${l.name} (${l.code.toUpperCase()})`}
+          >
+            <span class="lang-flag" aria-hidden="true">{l.flag}</span>
+            <div class="lang-info">
+              <span class="lang-name">{l.name}</span>
+              <span class="lang-code">{l.code.toUpperCase()}</span>
+            </div>
+            {isCurrent && <span class="lang-current-badge">{uiChrome.activeBadge || "Active"}</span>}
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- Footer Action -->
+    <div class="lang-modal-footer">
+      <button class="lang-continue-btn" type="button" onclick="window.stwol.closeLanguagePopup()">
+        {(uiChrome.continueIn || "Continue in {lang}").replace("{lang}", currentLangObj.name)} &rarr;
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1250 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Spin Wheel Ideas for Language Learning &amp; Vocabulary</title>
+
+    <meta name="description" content="Master vocabulary, verb conjugations, pronunciation drills, and conversation prompts with 20+ spin wheel setups for ESL teachers and self-learners." />
+    <meta
+      name="keywords"
+      content="language learning spin wheel, esl vocabulary spinner, verb conjugation wheel, conversation starter wheel, mfl classroom wheel"
+    />
+
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation"
+    />
+
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Harman S., Spin The Wheels Online" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" /></noscript>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Spin Wheel Ideas for Language Learning"
+    />
+    <meta
+      property="og:description"
+      content="20+ ready-to-use spin wheel setups for vocabulary, verbs, and conversation practice."
+    />
+    <meta
+      property="og:image"
+      content="https://spinthewheelsonline.com/eng-language-picker-wheel.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation"
+    />
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Language Learning with Spin Wheels" />
+    <meta
+      name="twitter:description"
+      content="Make vocabulary and conversation practice active using a spin wheel."
+    />
+
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation\",\n      \"name\": \"Spin Wheel Ideas for Language Learning & Vocabulary\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#breadcrumbs\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Spin Wheel Language Learning Vocabulary Verbs Conversation\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#article\",\n      \"headline\": \"Spin Wheel Ideas for Language Learning: Vocabulary, Verbs & Conversation Practice\",\n      \"description\": \"20+ ready-to-use spin wheel setups for language teachers and self-learners.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-language-picker-wheel.webp\",\n      \"datePublished\": \"2026-10-15\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I use the spin wheel for any language, not just European ones?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. The wheel displays whatever text you type in, including Arabic, Japanese, Korean, Mandarin, or Hindi script, as long as your device supports the characters, which modern devices do.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Is the spin wheel actually random?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes — each entry has an equal mathematical chance on every spin. Enable 'remove after spin' to stop entries repeating within a session.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How many entries can I add to a language wheel?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Up to 500 entries load cleanly per wheel—plenty for an entire textbook unit. For active speaking drills, many teachers load 15 to 20 items per session and turn on 'Remove Winner After Spin' for full coverage.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I use it for one-to-one tutoring sessions?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes — share your screen so the student sees the wheel spin live. Because the wheel picks the topic, the session feels less like the tutor is choosing what to test.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+
+    <!-- ================= ADSENSE ================= -->
+    <style is:inline>*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}:root{--cream:#faf8f4;--warm-white:#f5f2ec;--ink:#1a1714;--ink-soft:#3d3830;--ink-muted:#7a7060;--rule:#e8e2d9;--accent:#d4500a;--accent-lt:#f4e4d8;--accent2:#2e6b52;--accent2-lt:#d8ede6;--accent3:#4a3080;--accent3-lt:#e8e2f5;--yellow:#f0c14b;--yellow-lt:#fdf6dc;--font-head:"Playfair Display",Georgia,serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"DM Mono",monospace;--max-w:780px;--max-w-wide:1100px;--radius:10px;--shadow-sm:0 2px 8px rgba(26, 23, 20, 0.07);--shadow-md:0 6px 24px rgba(26, 23, 20, 0.1)}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.72;font-weight:400;-webkit-font-smoothing:antialiased}img{max-width:100%;display:block;border-radius:var(--radius)}.breadcrumb{max-width:var(--max-w-wide);margin:0 auto;padding:14px 24px 0;font-size:.8rem;color:var(--ink-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--ink-muted);text-decoration:none}.breadcrumb a:hover{color:var(--accent);text-decoration:underline}.breadcrumb span{opacity:.5}.article-wrap{max-width:var(--max-w-wide);margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr 240px;grid-template-areas:"header header" "body sidebar";gap:0 48px;align-items:start}@media (max-width:960px){.article-wrap{grid-template-columns:1fr;grid-template-areas:"header" "body"}}.article-header{grid-area:header;padding:40px 0 36px;border-bottom:1.5px solid var(--rule);margin-bottom:44px}.article-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent-lt);color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:20px}.article-title{font-family:var(--font-head);font-size:clamp(1.9rem, 4vw, 2.9rem);font-weight:900;line-height:1.18;color:var(--ink);margin-bottom:18px;max-width:720px}.article-title em{color:var(--accent);font-style:italic}.article-deck{font-size:1.08rem;color:var(--ink-soft);max-width:680px;line-height:1.65;margin-bottom:24px}.article-meta{display:flex;align-items:center;flex-wrap:wrap;gap:18px;font-size:.82rem;color:var(--ink-muted)}.article-meta span{display:flex;align-items:center;gap:5px}.updated-badge{background:var(--accent2-lt);color:var(--accent2);font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:100px;margin-top:12px;display:inline-block}.hero-figure{margin:28px 0 0}.hero-figure figcaption{font-size:.78rem;color:var(--ink-muted);margin-top:8px}.article-body{grid-area:body;min-width:0}.sidebar{grid-area:sidebar;position:sticky;top:24px}.toc-box{background:var(--warm-white);border:1.5px solid var(--rule);border-radius:var(--radius);padding:22px 20px;margin-bottom:24px}.toc-title{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:14px}.toc-list{list-style:none}.toc-list li{margin-bottom:8px}.toc-list a{font-size:.82rem;color:var(--ink-soft);text-decoration:none;line-height:1.4;display:block;padding-left:10px;border-left:2px solid transparent;transition:border-color .2s,color .2s}.toc-list a:hover{color:var(--accent);border-color:var(--accent)}.toc-list a.active{color:var(--accent);border-color:var(--accent);font-weight:600}.try-box{background:var(--ink);color:#fff;border-radius:var(--radius);padding:22px 20px;text-align:center}.try-box .try-icon{font-size:2rem;margin-bottom:8px}.try-box p{font-size:.82rem;color:#c4bdb0;line-height:1.5;margin-bottom:14px}.try-box a{display:block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:100px;font-weight:700;font-size:.84rem;transition:background .2s}.try-box a:hover{background:#b84008}.toc-mobile{display:none;background:var(--warm-white);border:1.5px solid var(--rule);border-radius:var(--radius);margin-bottom:36px;overflow:hidden}.toc-mobile-toggle{width:100%;background:0 0;border:none;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--font-body);font-size:.88rem;font-weight:600;color:var(--ink)}.toc-mobile-toggle .arrow{transition:transform .25s}.toc-mobile-toggle.open .arrow{transform:rotate(180deg)}.toc-mobile-content{display:none;padding:0 20px 16px}.toc-mobile-content.open{display:block}.toc-mobile-content ol{padding-left:18px;font-size:.88rem;color:var(--ink-soft)}.toc-mobile-content ol li{margin-bottom:8px}.toc-mobile-content ol a{color:var(--accent);text-decoration:none}.toc-mobile-content ol a:hover{text-decoration:underline}@media (max-width:960px){.toc-mobile{display:block}.sidebar{display:none}}.prose{font-size:1rem;color:var(--ink-soft)}.prose p{margin-bottom:1.4em}.prose h2{font-family:var(--font-head);font-size:clamp(1.35rem, 2.5vw, 1.7rem);font-weight:700;color:var(--ink);margin:2.6em 0 .75em;line-height:1.25;border-top:2px solid var(--accent);padding-top:20px}.prose h2:first-child{margin-top:0}.prose h3{font-family:var(--font-head);font-size:1.18rem;font-weight:700;color:var(--ink);margin:2em 0 .6em;line-height:1.3}.prose a{color:var(--accent);font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--accent-lt);transition:border-color .2s}.prose a:hover{border-color:var(--accent)}.prose ol,.prose ul{padding-left:22px;margin-bottom:1.4em}.prose li{margin-bottom:.55em}.prose strong{font-weight:600;color:var(--ink)}figure{margin:28px 0}figure img{width:100%;height:auto}figure figcaption{font-size:.78rem;color:var(--ink-muted);margin-top:8px}.callout{display:flex;gap:14px;background:var(--yellow-lt);border-left:4px solid var(--yellow);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin:28px 0;font-size:.94rem;line-height:1.6;color:var(--ink-soft)}.callout-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}.callout strong{color:var(--ink);display:block;margin-bottom:4px}.tip-box{background:var(--accent2-lt);border-left:4px solid var(--accent2);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin:28px 0;font-size:.92rem;color:var(--ink-soft)}.tip-box strong{color:var(--accent2)}.info-box{background:var(--accent3-lt);border-left:4px solid var(--accent3);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin:28px 0;font-size:.92rem;color:var(--ink-soft)}.info-box strong{color:var(--accent3)}.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}.stat-card{background:var(--warm-white);border:1.5px solid var(--rule);border-radius:var(--radius);padding:20px 16px;text-align:center}.stat-number{font-family:var(--font-head);font-size:2rem;font-weight:900;color:var(--accent);display:block;line-height:1;margin-bottom:6px}.stat-label{font-size:.78rem;color:var(--ink-muted);line-height:1.4}@media (max-width:540px){.stats-row{grid-template-columns:1fr;gap:10px}.stat-card{display:flex;align-items:center;gap:16px;text-align:left;padding:16px}.stat-number{font-size:1.6rem;margin-bottom:0;white-space:nowrap}}.ideas-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}@media (max-width:620px){.ideas-grid{grid-template-columns:1fr}}.idea-card{background:var(--warm-white);border:1.5px solid var(--rule);border-radius:var(--radius);padding:22px 20px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s}.idea-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}.idea-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px}.idea-card.c1::before{background:var(--accent)}.idea-card.c2::before{background:var(--accent2)}.idea-card.c3::before{background:var(--accent3)}.idea-card.c4::before{background:var(--yellow)}.idea-num{font-family:var(--font-mono);font-size:.72rem;font-weight:500;color:var(--ink-muted);margin-bottom:10px;letter-spacing:.04em}.idea-card h3{font-size:1rem;font-weight:700;color:var(--ink);margin:0 0 8px;font-family:var(--font-body);line-height:1.3}.idea-card p{font-size:.86rem;color:var(--ink-muted);margin:0 0 12px;line-height:1.55}.idea-wheel-label{font-size:.76rem;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:4px}.idea-entries{display:flex;flex-wrap:wrap;gap:6px}.entry-tag{font-size:.72rem;background:var(--rule);color:var(--ink-soft);padding:3px 9px;border-radius:100px;font-family:var(--font-mono)}.subject-section{margin:28px 0}.subject-card{border:1.5px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;transition:box-shadow .2s}.subject-card:hover{box-shadow:var(--shadow-sm)}.subject-toggle{width:100%;background:var(--warm-white);border:none;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--font-body);font-size:.96rem;font-weight:600;color:var(--ink);text-align:left;gap:12px}.subject-toggle .s-icon{font-size:1.1rem;flex-shrink:0}.subject-toggle .s-arrow{transition:transform .25s;color:var(--ink-muted);flex-shrink:0}.subject-toggle.open .s-arrow{transform:rotate(180deg)}.subject-body{display:none;padding:6px 20px 20px;font-size:.9rem;color:var(--ink-soft);background:var(--cream);line-height:1.65}.subject-body.open{display:block}.subject-body ul{padding-left:20px;margin-top:10px}.subject-body li{margin-bottom:.5em}.subject-body strong{color:var(--ink)}.wheel-sample{background:var(--warm-white);border:1.5px dashed var(--rule);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:.82rem}.wheel-sample strong{display:block;margin-bottom:6px;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)}.cta-banner{background:var(--ink);color:#fff;border-radius:14px;padding:36px 32px;text-align:center;margin:48px 0;position:relative;overflow:hidden}.cta-banner::before{content:"🎡";position:absolute;font-size:9rem;opacity:.06;right:-20px;top:-20px;pointer-events:none}.cta-banner h3{font-family:var(--font-head);font-size:1.5rem;margin-bottom:10px;color:#fff}.cta-banner p{color:#c4bdb0;font-size:.92rem;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto}.cta-banner a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 30px;border-radius:100px;font-weight:700;font-size:.94rem;transition:background .2s,transform .15s}.cta-banner a:hover{background:#b84008;transform:translateY(-2px)}.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0}@media (max-width:580px){.related-grid{grid-template-columns:1fr}}.related-card{background:var(--warm-white);border:1.5px solid var(--rule);border-radius:var(--radius);padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:box-shadow .2s,transform .2s}.related-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}.related-card .r-tag{font-size:.72rem;font-weight:700;color:var(--ink-muted);letter-spacing:.06em;text-transform:uppercase}.related-card .r-title{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.35}.related-card .r-meta{font-size:.76rem;color:var(--ink-muted)}.related-card:hover .r-title{color:var(--accent)}details.faq-item{border:1.5px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;background:var(--warm-white)}details.faq-item summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:.96rem;font-weight:600;color:var(--ink);gap:12px}details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary::after{content:"▾";color:var(--ink-muted);font-size:.9rem;flex-shrink:0;transition:transform .25s}details.faq-item[open] summary::after{transform:rotate(180deg)}details.faq-item .faq-a{padding:6px 20px 20px;font-size:.92rem;color:var(--ink-soft);background:var(--cream);line-height:1.68}details.faq-item .faq-a a{color:var(--accent);font-weight:500;text-decoration:none;border-bottom:1px solid var(--accent-lt)}details.faq-item .faq-a a:hover{border-color:var(--accent)}.takeaways{background:var(--accent-lt);border:1.5px solid #e8c8b0;border-radius:var(--radius);padding:24px 26px;margin:40px 0}.takeaways h3,.takeaways h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}.takeaways ul{padding-left:20px}.takeaways li{font-size:.92rem;color:var(--ink-soft);margin-bottom:.6em}.takeaways li strong{color:var(--ink)}.all-articles{margin:40px 0 0}.all-articles h3{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:16px;padding-bottom:10px;border-bottom:1.5px solid var(--rule)}.article-list{list-style:none}.article-list li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:.88rem}.article-list li:last-child{border-bottom:none}.article-list li span{color:var(--ink-muted);font-size:.76rem;white-space:nowrap;flex-shrink:0}.article-list a{color:var(--ink-soft);text-decoration:none;font-weight:500}.article-list a:hover{color:var(--accent)}.share-row{display:flex;align-items:center;gap:12px;margin:40px 0 32px;flex-wrap:wrap}.share-label{font-size:.82rem;font-weight:600;color:var(--ink-muted)}.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;border:1.5px solid var(--rule);color:var(--ink-soft);background:var(--warm-white);cursor:pointer;transition:border-color .2s,color .2s}.share-btn:hover{border-color:var(--accent);color:var(--accent)}#scrollTop{position:fixed;bottom:24px;right:24px;background:var(--ink);color:#fff;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;box-shadow:var(--shadow-md);z-index:50}#scrollTop.visible{opacity:1;transform:translateY(0)}#scrollTop:hover{background:var(--accent)}#readingProgress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0%;z-index:200;transition:width .1s linear}.section-divider{border:none;border-top:1.5px solid var(--rule);margin:48px 0}.emoji-header{font-size:1.4rem;margin-right:6px}@media (max-width:400px){.article-wrap{padding:0 16px 60px}.breadcrumb{padding:12px 16px 0}.cta-banner{padding:28px 20px}}</style>
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+
+    <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-language-picker-wheel.webp" />
+      <AnalyticsHead enableAds={true} />
+  </head>
+  <body>
+    <div id="readingProgress"></div>
+    <button id="scrollTop" aria-label="Back to top">↑</button>
+
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation" />
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/blogs">Blogs</a>
+      <span>›</span>
+      <span>Spin Wheel Ideas for Language Learning</span>
+    </div>
+
+    <!-- ARTICLE WRAP -->
+    <div class="article-wrap">
+      <!-- HEADER -->
+      <header class="article-header">
+        <div class="article-tag">🌐 Language Learning · Teacher's Guide</div>
+        <h1 class="article-title">
+          Spin Wheel Ideas for Language Learning:
+          <em>Vocabulary, Verbs & Conversation Practice</em>
+        </h1>
+        <p class="article-deck">
+          20+ ready-to-use spin wheel setups for language teachers and
+          self-learners — vocabulary drills, verb conjugation roulette,
+          pronunciation practice, and speaking activities that force real,
+          unscripted recall.
+        </p>
+        <div class="article-meta">
+          <span>⏱ 12 min read</span>
+          <span>📂 Education · MFL</span>
+        </div>
+        <span class="updated-badge">✅ Last reviewed: November 24, 2026</span>
+
+        <figure class="hero-figure">
+          <img
+            src="/eng-language-picker-wheel.webp"
+            alt="Illustration of a spin wheel filled with vocabulary words being used in a language classroom"
+            width="1400"
+            height="700"
+            loading="eager"
+          />
+          <figcaption>
+            A well-built wheel turns repetitive vocabulary and grammar drills
+            into something learners actually look forward to.
+          </figcaption>
+        </figure>
+      </header>
+
+      <!-- ARTICLE BODY -->
+      <main class="article-body" id="mainContent">
+        <!-- MOBILE TOC -->
+        <div class="toc-mobile">
+          <button class="toc-mobile-toggle" id="tocMobileToggle">
+            📋 Table of Contents <span class="arrow">▾</span>
+          </button>
+          <div class="toc-mobile-content" id="tocMobileContent">
+            <ol>
+              <li>
+                <a href="#why-spin-wheel-works"
+                  >Why a Spin Wheel Works for Language Learning</a
+                >
+              </li>
+              <li><a href="#vocabulary">Vocabulary Building Wheels</a></li>
+              <li><a href="#verbs">Verb Conjugation & Grammar Roulette</a></li>
+              <li><a href="#conversation">Conversation Starter Wheels</a></li>
+              <li>
+                <a href="#pronunciation">Pronunciation & Listening Practice</a>
+              </li>
+              <li><a href="#by-level">Wheel Ideas by Proficiency Level</a></li>
+              <li><a href="#self-learners">Ideas for Self-Learners</a></li>
+              <li><a href="#setup">How to Set Up Your Language Wheel</a></li>
+              <li><a href="#faq">Frequently Asked Questions</a></li>
+              <li><a href="#conclusion">Final Thoughts</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- PROSE -->
+        <div class="prose">
+          <p>
+            Most vocabulary practice fails for a boring reason: the learner
+            knows what's coming. A worksheet with twenty words in order, a
+            flashcard deck that always starts the same way, a "go around the
+            room" question round — the brain can coast through all of these on
+            recognition alone, without ever doing the harder work of pulling a
+            word or a verb form out of memory under a bit of pressure.
+          </p>
+          <p>
+            A spin wheel breaks that. Nobody — including the teacher — knows
+            what's coming next. That small dose of unpredictability is enough to
+            shift a drill from passive to active, and it works whether you're
+            running a classroom of thirty or quizzing yourself alone at a
+            kitchen table.
+          </p>
+          <p>
+            This guide collects
+            <strong>20+ specific spin wheel setups</strong> for language
+            learning — vocabulary, verbs, pronunciation, and conversation — with
+            exact entries you can copy in, ideas sorted by proficiency level,
+            and a section for self-learners studying without a classroom at all.
+            If you've never built a wheel before, our
+            <a href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+              >quick guide to what a spin the wheel tool is</a
+            >
+            covers the basics in under two minutes.
+          </p>
+
+          <div class="callout">
+            <span class="callout-icon">💡</span>
+            <div>
+              <strong>The short version</strong>
+              A spin wheel forces retrieval instead of recognition. Not knowing
+              what's coming next is what makes a drill feel like a game instead
+              of a chore — and it's also what makes it work better.
+            </div>
+          </div>
+
+          <!-- SECTION 1 -->
+          <h2 id="why-spin-wheel-works">
+            <span class="emoji-header">🧠</span>Why a Spin Wheel Works for
+            Language Learning
+          </h2>
+          <p>
+            Language acquisition depends heavily on retrieval practice —
+            actively pulling a word, a form, or a structure out of memory,
+            rather than just recognising it when you see it. That's the gap
+            between "I understand this when I read it" and "I can actually use
+            this when I need it," and it's the gap most self-study routines
+            never close.
+          </p>
+          <p>
+            A wheel forces retrieval because the learner genuinely doesn't know
+            what's about to land. There's no way to pre-load an answer the way
+            you can when you know question six is always about colours. For a
+            deeper look at why randomized selection changes how people engage
+            with a task, see
+            <a
+              href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+              >the psychology behind random decision making</a
+            >.
+          </p>
+
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-number">20+</span>
+              <span class="stat-label"
+                >Ready-to-use wheel configurations in this guide</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">3</span>
+              <span class="stat-label"
+                >Proficiency bands covered, A1 through C2</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">&lt;2min</span>
+              <span class="stat-label"
+                >Time to build and start using any wheel here</span
+              >
+            </div>
+          </div>
+
+          <p>
+            There's a group-dynamics angle too. When a wheel could land on
+            anyone, everyone in the room stays quietly engaged, mentally
+            rehearsing an answer, because it might be their turn next. That's a
+            different kind of attention than passively waiting through a fixed
+            order — and it's one reason teachers who try a vocabulary wheel for
+            a single lesson often keep using it for the rest of term.
+          </p>
+
+          <!-- SECTION 2 -->
+          <h2 id="vocabulary">
+            <span class="emoji-header">📚</span>Vocabulary Building Wheels
+          </h2>
+          <p>
+            Vocabulary is where repetition gets tedious fastest — and where a
+            wheel earns its keep fastest too. Six setups to try:
+          </p>
+
+          <div class="ideas-grid">
+            <div class="idea-card c1">
+              <div class="idea-num">01 / VOCABULARY</div>
+              <h3>Definition on the Spot</h3>
+              <p>
+                Load target words. Whoever the spin lands on defines the word
+                from memory, no notes.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">ephemeral</span
+                ><span class="entry-tag">tenacious</span
+                ><span class="entry-tag">meticulous</span
+                ><span class="entry-tag">benevolent</span>
+              </div>
+            </div>
+            <div class="idea-card c2">
+              <div class="idea-num">02 / VOCABULARY</div>
+              <h3>Translate Under Pressure</h3>
+              <p>
+                Load words in the target language. The player has five seconds
+                to give the translation.
+              </p>
+              <span class="idea-wheel-label"
+                >🎡 Example entries (Spanish → English):</span
+              >
+              <div class="idea-entries">
+                <span class="entry-tag">madrugada</span
+                ><span class="entry-tag">vergüenza</span
+                ><span class="entry-tag">sobremesa</span>
+              </div>
+            </div>
+            <div class="idea-card c3">
+              <div class="idea-num">03 / VOCABULARY</div>
+              <h3>Use It in a Sentence</h3>
+              <p>
+                The wheel picks a word; the player builds one original, correct
+                sentence with it in 30 seconds.
+              </p>
+              <span class="idea-wheel-label">🎡 Level up:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Add a time limit</span
+                ><span class="entry-tag">Require two sentences</span>
+              </div>
+            </div>
+            <div class="idea-card c4">
+              <div class="idea-num">04 / VOCABULARY</div>
+              <h3>Category Blast</h3>
+              <p>
+                Load semantic categories. The wheel picks one; the group has 60
+                seconds to name as many items as possible.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Kitchen items</span
+                ><span class="entry-tag">Body parts</span
+                ><span class="entry-tag">Emotions</span>
+              </div>
+            </div>
+            <div class="idea-card c1">
+              <div class="idea-num">05 / VOCABULARY</div>
+              <h3>Synonym Swap</h3>
+              <p>
+                Load common words; the player gives a synonym or antonym in the
+                same language.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">happy</span
+                ><span class="entry-tag">big</span
+                ><span class="entry-tag">difficult</span>
+              </div>
+            </div>
+            <div class="idea-card c2">
+              <div class="idea-num">06 / VOCABULARY</div>
+              <h3>Word of the Day Picker</h3>
+              <p>
+                Pre-load a week's vocabulary list. Spin each morning to pick
+                that day's focus word.
+              </p>
+              <span class="idea-wheel-label">🎡 Works well for:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Weekly wordlists</span
+                ><span class="entry-tag">Exam vocab sets</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <strong>💚 Tip:</strong> Turn on "remove after spin" for vocabulary
+            wheels so every word gets covered before anything repeats. Useful
+            for exam revision where full coverage matters more than repetition
+            of the easy words.
+          </div>
+
+          <!-- SECTION 3 -->
+          <h2 id="verbs">
+            <span class="emoji-header">🔀</span>Verb Conjugation & Grammar
+            Roulette
+          </h2>
+          <p>
+            Conjugation punishes rote memorisation the moment it's tested out of
+            sequence — which is exactly the situation a wheel creates on
+            purpose. Four setups worth building:
+          </p>
+          <div class="ideas-grid">
+            <div class="idea-card c3">
+              <div class="idea-num">07 / GRAMMAR</div>
+              <h3>Tense Roulette</h3>
+              <p>
+                Load tenses onto the wheel. Announce a verb, spin, and the
+                player conjugates it in whatever tense lands.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries (French):</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Présent</span
+                ><span class="entry-tag">Passé composé</span
+                ><span class="entry-tag">Imparfait</span
+                ><span class="entry-tag">Futur simple</span>
+              </div>
+            </div>
+            <div class="idea-card c4">
+              <div class="idea-num">08 / GRAMMAR</div>
+              <h3>Subject + Verb Double Spin</h3>
+              <p>
+                Build two wheels — subjects on one, verbs on the other. Spin
+                both; the player conjugates on the fly.
+              </p>
+              <span class="idea-wheel-label">🎡 Wheel A (subjects):</span>
+              <div class="idea-entries">
+                <span class="entry-tag">je / io / ich</span
+                ><span class="entry-tag">tu</span
+                ><span class="entry-tag">nous</span
+                ><span class="entry-tag">vous</span>
+              </div>
+            </div>
+            <div class="idea-card c1">
+              <div class="idea-num">09 / GRAMMAR</div>
+              <h3>Irregular Verb Spotlight</h3>
+              <p>
+                Load the most common irregular verbs. Spin picks one; the player
+                gives all forms in a chosen tense from memory.
+              </p>
+              <span class="idea-wheel-label"
+                >🎡 Example entries (Spanish):</span
+              >
+              <div class="idea-entries">
+                <span class="entry-tag">ser</span
+                ><span class="entry-tag">tener</span
+                ><span class="entry-tag">ir</span
+                ><span class="entry-tag">hacer</span>
+              </div>
+            </div>
+            <div class="idea-card c2">
+              <div class="idea-num">10 / GRAMMAR</div>
+              <h3>Structure Roulette</h3>
+              <p>
+                Load a grammar structure; the player builds two original example
+                sentences with it.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries (German):</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Accusative case</span
+                ><span class="entry-tag">Separable verbs</span
+                ><span class="entry-tag">Passive voice</span>
+              </div>
+            </div>
+          </div>
+          <p>
+            Classes juggling more than one target language can add a "language
+            roulette" wheel that decides which language the conjugation has to
+            be in — a genuinely difficult but effective way to keep advanced
+            groups on their toes.
+          </p>
+
+          <div class="info-box">
+            <strong>ℹ️ Worth knowing:</strong> Mixing related-but-distinct items
+            together — different tenses, different verbs — rather than drilling
+            one at a time is called interleaved practice. It tends to feel
+            harder in the moment than blocked, repetitive drilling, but produces
+            sturdier long-term recall. A wheel is one of the easiest ways to
+            interleave a drill without extra planning.
+          </div>
+
+          <figure>
+            <img
+              src="/eng-letter-picker-wheel.webp"
+              alt="Illustration of two spin wheels side by side, one labelled with pronouns and one with verbs, representing a double-spin verb conjugation activity"
+              width="1200"
+              height="600"
+              loading="lazy"
+            />
+            <figcaption>
+              Two wheels spun together — one for the subject, one for the verb —
+              add genuine unpredictability to conjugation drills.
+            </figcaption>
+          </figure>
+
+          <!-- SECTION 4 -->
+          <h2 id="conversation">
+            <span class="emoji-header">💬</span>Conversation Starter Wheels
+          </h2>
+          <p>
+            Speaking is the skill most learners struggle with longest, and it's
+            rarely a vocabulary problem — it's that real conversation is
+            unscripted, and most classroom speaking practice isn't. A
+            conversation wheel is a safe way to practice the unscripted part.
+          </p>
+          <div class="ideas-grid">
+            <div class="idea-card c4">
+              <div class="idea-num">11 / SPEAKING</div>
+              <h3>Topic Spinner</h3>
+              <p>
+                Load topics; the player speaks for 60–90 seconds on whatever
+                lands, no prep, no notes.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">My weekend</span
+                ><span class="entry-tag">Favourite food</span
+                ><span class="entry-tag">My future plans</span>
+              </div>
+            </div>
+            <div class="idea-card c1">
+              <div class="idea-num">12 / SPEAKING</div>
+              <h3>Opinion Roulette</h3>
+              <p>
+                Load thought-provoking questions. The player answers with an
+                opinion and at least one reason — good debate prep.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Should school be free?</span
+                ><span class="entry-tag">Is social media harmful?</span>
+              </div>
+            </div>
+            <div class="idea-card c2">
+              <div class="idea-num">13 / SPEAKING</div>
+              <h3>Role-Play Scenario Selector</h3>
+              <p>
+                Load classic exam-style scenarios; two students spin together
+                and improvise a two-minute dialogue on whatever lands.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">At the doctor's</span
+                ><span class="entry-tag">Job interview</span
+                ><span class="entry-tag">Restaurant complaint</span>
+              </div>
+            </div>
+            <div class="idea-card c3">
+              <div class="idea-num">14 / SPEAKING</div>
+              <h3>Constraint Wheel</h3>
+              <p>
+                Instead of topics, load constraints — "no fillers," "speak only
+                in questions" — to add playful difficulty to any pair
+                conversation.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Speak in questions only</span
+                ><span class="entry-tag">Use a metaphor</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <span class="callout-icon">🎯</span>
+            <div>
+              <strong>Double-spin combo</strong>
+              Pair the conversation wheel with a name-picker wheel — first spin
+              picks the topic, second picks who speaks. Because everyone could
+              be picked for the topic already on screen, the whole group ends up
+              rehearsing it in their head, not just the person who's eventually
+              chosen.
+            </div>
+          </div>
+
+          <!-- CTA BANNER -->
+          <div class="cta-banner">
+            <h3>🎡 Build Your Language Wheel in 60 Seconds</h3>
+            <p>
+              Free, browser-based, no sign-up. Type your vocabulary, verbs, or
+              topics — and spin.
+            </p>
+            <a href="https://spinthewheelsonline.com/"
+              >Open Spin the Wheel — Free →</a
+            >
+          </div>
+
+          <!-- SECTION 5 -->
+          <h2 id="pronunciation">
+            <span class="emoji-header">🎙️</span>Pronunciation & Listening
+            Practice
+          </h2>
+          <p>
+            Pronunciation tends to get squeezed out of language curricula, but
+            it's one of the most practically important skills for actually being
+            understood. A wheel gives it a low-stakes, slightly gamified format
+            instead of an isolated drill nobody enjoys.
+          </p>
+          <div class="ideas-grid">
+            <div class="idea-card c1">
+              <div class="idea-num">15 / PRONUNCIATION</div>
+              <h3>Minimal Pairs Roulette</h3>
+              <p>
+                Load word pairs that differ by a single sound. The wheel picks
+                one; the player pronounces it and uses it in context.
+              </p>
+              <span class="idea-wheel-label"
+                >🎡 Example entries (English learners):</span
+              >
+              <div class="idea-entries">
+                <span class="entry-tag">ship / sheep</span
+                ><span class="entry-tag">bit / beat</span
+                ><span class="entry-tag">think / sink</span>
+              </div>
+            </div>
+            <div class="idea-card c2">
+              <div class="idea-num">16 / PRONUNCIATION</div>
+              <h3>Tongue Twister Spinner</h3>
+              <p>
+                Load short, phonetically tricky phrases. The player says it
+                clearly three times, faster each time.
+              </p>
+              <span class="idea-wheel-label">🎡 Good for:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">French nasal vowels</span
+                ><span class="entry-tag">Spanish r/rr</span
+                ><span class="entry-tag">English th sounds</span>
+              </div>
+            </div>
+            <div class="idea-card c3">
+              <div class="idea-num">17 / LISTENING</div>
+              <h3>Listen & Summarise Wheel</h3>
+              <p>
+                Load media types. The wheel picks one; play a short clip of that
+                type, then summarise it in the target language.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">News headline</span
+                ><span class="entry-tag">Song verse</span
+                ><span class="entry-tag">Weather forecast</span>
+              </div>
+            </div>
+            <div class="idea-card c4">
+              <div class="idea-num">18 / PRONUNCIATION</div>
+              <h3>Stress Pattern Challenge</h3>
+              <p>
+                Load multi-syllable words; the player identifies and
+                demonstrates the stress pattern, clapping the stressed syllable.
+              </p>
+              <span class="idea-wheel-label">🎡 Pairs well with:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Academic vocabulary</span
+                ><span class="entry-tag">False friends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 6 -->
+          <h2 id="by-level">
+            <span class="emoji-header">📊</span>Wheel Ideas by Proficiency Level
+          </h2>
+          <p>
+            The randomisation works the same at every level — the content
+            shouldn't. Here's a breakdown by CEFR band:
+          </p>
+
+          <div class="subject-section">
+            <div class="subject-card">
+              <button class="subject-toggle" data-target="s-a1">
+                <span class="s-icon">🌱</span><span>A1–A2 — Beginner</span
+                ><span class="s-arrow">▾</span>
+              </button>
+              <div class="subject-body" id="s-a1">
+                <p>
+                  Keep entries simple and high-frequency — the goal is
+                  automaticity with core vocabulary, not complexity.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Numbers wheel:</strong> Spin picks a number; the
+                    student says it aloud.
+                  </li>
+                  <li>
+                    <strong>Colours and shapes:</strong> Spin picks a category;
+                    the student names five items in it.
+                  </li>
+                  <li>
+                    <strong>Greetings roulette:</strong> Spin picks a time or
+                    situation; the student gives the right greeting.
+                  </li>
+                  <li>
+                    <strong>Simple question wheel:</strong> Spin picks a
+                    question word; the student forms a basic question with it.
+                  </li>
+                </ul>
+                <div class="wheel-sample">
+                  <strong>🎡 Sample A1 Wheel</strong>
+                  uno · dos · tres · rojo · azul · gato · casa · familia ·
+                  gracias
+                </div>
+              </div>
+            </div>
+            <div class="subject-card">
+              <button class="subject-toggle" data-target="s-b1">
+                <span class="s-icon">🌿</span><span>B1–B2 — Intermediate</span
+                ><span class="s-arrow">▾</span>
+              </button>
+              <div class="subject-body" id="s-b1">
+                <p>
+                  Intermediate learners need to bridge knowing a grammar rule
+                  and applying it spontaneously — a wheel is well suited to
+                  exactly that gap.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Tense conversion:</strong> Say a sentence in the
+                    present; the student converts it when a tense lands.
+                  </li>
+                  <li>
+                    <strong>Phrasal verb roulette:</strong> Spin picks a phrasal
+                    verb; the student explains and illustrates it.
+                  </li>
+                  <li>
+                    <strong>Compare and contrast:</strong> Spin picks a topic;
+                    the student compares two things using comparative
+                    structures.
+                  </li>
+                  <li>
+                    <strong>Connective wheel:</strong> Spin picks a connective;
+                    the student builds a sentence around it.
+                  </li>
+                </ul>
+                <div class="wheel-sample">
+                  <strong>🎡 Sample B1 Wheel</strong>
+                  However · Despite · Although · In contrast · As a result ·
+                  Therefore
+                </div>
+              </div>
+            </div>
+            <div class="subject-card">
+              <button class="subject-toggle" data-target="s-c1">
+                <span class="s-icon">🌳</span><span>C1–C2 — Advanced</span
+                ><span class="s-arrow">▾</span>
+              </button>
+              <div class="subject-body" id="s-c1">
+                <p>
+                  Advanced learners plateau when they stop being challenged.
+                  Push for precision and nuance, not just accuracy.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Register shift:</strong> Spin picks a register
+                    (formal, colloquial, academic); the student rewrites a
+                    sentence in it.
+                  </li>
+                  <li>
+                    <strong>Idiom wheel:</strong> Spin picks an idiom; the
+                    student explains it and gives a plausible context.
+                  </li>
+                  <li>
+                    <strong>False friends challenge:</strong> Spin picks a word
+                    that looks similar across languages but isn't; the student
+                    explains the trap.
+                  </li>
+                  <li>
+                    <strong>Discourse marker wheel:</strong> Spin picks an
+                    advanced connective or hedge; the student builds a
+                    mini-argument with it.
+                  </li>
+                </ul>
+                <div class="wheel-sample">
+                  <strong>🎡 Sample C1 Wheel</strong>
+                  Bite the bullet · Under the weather · Hit the nail on the head
+                  · Read between the lines
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="section-divider" />
+
+          <!-- SECTION 7 -->
+          <h2 id="self-learners">
+            <span class="emoji-header">🏠</span>Spin Wheel Ideas for
+            Self-Learners
+          </h2>
+          <p>
+            You don't need a classroom for this to be useful. Solo learners —
+            using apps, textbooks, or a tutor — can use a wheel to add structure
+            and variety to independent study that would otherwise drift toward
+            the same one or two easy habits.
+          </p>
+          <div class="ideas-grid">
+            <div class="idea-card c2">
+              <div class="idea-num">19 / SOLO STUDY</div>
+              <h3>Study Method Selector</h3>
+              <p>
+                Unsure how to spend your next 30 minutes? Build a wheel of study
+                methods and let it decide — removes the decision fatigue that
+                often ends in "just one more video."
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Flashcard review</span
+                ><span class="entry-tag">Write a paragraph</span
+                ><span class="entry-tag">Shadow a clip</span>
+              </div>
+            </div>
+            <div class="idea-card c3">
+              <div class="idea-num">20 / SOLO STUDY</div>
+              <h3>Writing Prompt Wheel</h3>
+              <p>
+                Load journalling prompts; spin picks your topic for a 10-minute
+                free-write in the target language — no editing, just output.
+              </p>
+              <span class="idea-wheel-label">🎡 Example entries:</span>
+              <div class="idea-entries">
+                <span class="entry-tag">Describe your room</span
+                ><span class="entry-tag">Invent a character</span
+                ><span class="entry-tag">A letter of complaint</span>
+              </div>
+            </div>
+          </div>
+          <p>
+            More creative, non-obvious ways to use a wheel — including for
+            personal projects beyond language study — are covered in
+            <a
+              href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+              >10 best uses of a random wheel spinner you haven't thought of</a
+            >.
+          </p>
+
+          <!-- SECTION 8 -->
+          <h2 id="setup">
+            <span class="emoji-header">⚙️</span>How to Set Up Your Language
+            Learning Wheel
+          </h2>
+          <ol>
+            <li>
+              <strong
+                >Open
+                <a href="https://spinthewheelsonline.com/"
+                  >spinthewheelsonline.com</a
+                ></strong
+              >
+              in any browser — no download or sign-up.
+            </li>
+            <li>
+              <strong>Clear the default entries</strong> and paste in your
+              vocabulary, tenses, or topics.
+            </li>
+            <li>
+              <strong>Turn on "remove after spin"</strong> if you want full
+              coverage before anything repeats.
+            </li>
+            <li>
+              <strong>Bookmark the link</strong> — the wheel's content lives in
+              the URL, ready instantly next session.
+            </li>
+            <li>
+              <strong>Project it</strong> for a classroom, or run it from your
+              own device for 1:1 and solo study.
+            </li>
+          </ol>
+          <div class="tip-box">
+            <strong>💚 Organisation tip:</strong> Keep a simple list of
+            bookmarked wheel links by name — "Unit 4 Vocab," "Tense Roulette,"
+            "Speaking Topics." Switching between them mid-lesson takes seconds
+            and nothing needs re-typing.
+          </div>
+          <p>
+            For classroom-specific setup — interactive whiteboards, managing
+            "remove after spin" across multiple classes — see the full
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-classroom-activities"
+              >teacher's guide to using spin the wheel in the classroom</a
+            >. For activities needing random student selection alongside your
+            content wheel, a
+            <a
+              href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+              >name picker wheel</a
+            >
+            running in a second tab covers that.
+          </p>
+
+          <hr class="section-divider" />
+
+          <h3>🔗 More Guides You'll Find Useful</h3>
+          <div class="related-grid">
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-classroom-activities"
+              class="related-card"
+            >
+              <span class="r-tag">🏫 Teacher's Guide</span>
+              <span class="r-title"
+                >How Teachers Can Use Spin the Wheel to Make Classes More
+                Fun</span
+              >
+              <span class="r-meta">9 min read</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-classroom-examples"
+              class="related-card"
+            >
+              <span class="r-tag">📋 With Examples</span>
+              <span class="r-title"
+                >How to Use a Spin Wheel for Classroom Activities</span
+              >
+              <span class="r-meta">11 min read</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+              class="related-card"
+            >
+              <span class="r-tag">🧠 Psychology</span>
+              <span class="r-title"
+                >The Psychology Behind Random Decision Making</span
+              >
+              <span class="r-meta">7 min read</span>
+            </a>
+            <a
+              href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+              class="related-card"
+            >
+              <span class="r-tag">👤 Name Picker</span>
+              <span class="r-title"
+                >Top 10 Creative Ways to Use a Name Picker Wheel</span
+              >
+              <span class="r-meta">6 min read</span>
+            </a>
+          </div>
+
+          <hr class="section-divider" />
+
+          <!-- FAQ -->
+          <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["language-picker-wheel","letter-picker-wheel","random-word-generator","country-picker-wheel","brazil-state-picker-wheel","charades-word-wheel","emoji-picker-wheel"]} ctaCategorySlug={"geography-and-knowledge"} ctaCategoryName={"Geography & Knowledge"} />
+
+        <h2 id="faq">
+            <span class="emoji-header">❓</span>Frequently Asked Questions
+          </h2>
+          <div class="faq">
+            <details class="faq-item">
+              <summary>
+                Can I use the spin wheel for any language, not just European
+                ones?
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Yes. The wheel displays whatever text you type in — Arabic,
+                  Japanese, Korean, Mandarin, Hindi, or anything else — as long
+                  as your device supports the script, which modern devices do.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>
+                Is the spin wheel actually random, or will it repeat the same
+                entries?
+              </summary>
+              <div class="faq-a">
+                <p>
+                  It's genuinely random — every entry has an equal chance on
+                  each spin. To stop repeats within one session, turn on "remove
+                  after spin." See
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                    >is a digital spin wheel truly random?</a
+                  >
+                  for the full explanation.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>How many entries can I add to a language wheel?</summary>
+              <div class="faq-a">
+                <p>
+                  Up to 500 vocabulary or verb entries fit cleanly per wheel—more than enough for a full syllabus unit. For live speaking drills, 15–20 items with "remove after spin" keeps pace brisk without repeats.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Can I use it for one-to-one tutoring sessions?</summary>
+              <div class="faq-a">
+                <p>
+                  Yes — share your screen so the student sees it spin live.
+                  Because the wheel picks the topic rather than the tutor,
+                  sessions tend to feel less like being tested and more like a
+                  game.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>
+                What's the best way to use it for exam preparation?
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Build wheels directly from your syllabus vocabulary and
+                  grammar structures, and use "remove after spin" for systematic
+                  coverage. For speaking exams, load the wheel with the actual
+                  task types that appear on the paper so practice mirrors the
+                  real format. See
+                  <a
+                    href="https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-classroom-examples"
+                    >how to use a spin wheel for classroom activities</a
+                  >
+                  for the full setup.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>
+                Can students use it at home for independent study?
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Yes — share the saved link to a pre-built wheel and students
+                  can self-quiz independently, including on mobile. Some
+                  teachers set a weekly "homework wheel" that picks the
+                  independent practice activity for the week.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- KEY TAKEAWAYS -->
+          <div class="takeaways">
+            <h3>✅ Key Takeaways</h3>
+            <ul>
+              <li>
+                A spin wheel forces <strong>active retrieval</strong> instead of
+                passive recognition — the difference that actually consolidates
+                vocabulary and grammar.
+              </li>
+              <li>
+                <strong>Vocabulary wheels</strong> work best with "remove after
+                spin" for full coverage before repeats.
+              </li>
+              <li>
+                <strong>Conjugation wheels</strong> gain power from
+                double-spinning — one wheel for the verb, one for the subject or
+                tense.
+              </li>
+              <li>
+                <strong>Conversation wheels</strong> simulate the
+                unpredictability of real speech, which is what builds actual
+                fluency.
+              </li>
+              <li>
+                The same tool scales from a classroom of thirty to a single
+                self-learner — free, at
+                <a href="https://spinthewheelsonline.com/"
+                  >spinthewheelsonline.com</a
+                >.
+              </li>
+            </ul>
+          </div>
+
+          <!-- CONCLUSION -->
+          <h2 id="conclusion">
+            <span class="emoji-header">🏁</span>Final Thoughts
+          </h2>
+          <p>
+            Progress in a language mostly comes down to how much active, varied
+            practice a learner actually gets — not the quality of any one
+            resource. A spin wheel doesn't replace a textbook or a tutor, but it
+            makes the practice you already have more frequent, more active, and
+            easier to keep up over months rather than weeks.
+          </p>
+          <p>
+            Build one wheel today — vocabulary, verbs, or conversation topics —
+            and use it once. Most teachers and self-learners who try that end up
+            building a second one within the week.
+          </p>
+
+          <figure>
+            <img
+              src="/eng-emoji-picker-wheel.webp"
+              alt="Illustration of a student happily speaking while looking at a spin wheel on a laptop screen"
+              width="1200"
+              height="630"
+              loading="lazy"
+            />
+            <figcaption>
+              Consistent, active practice — not any single resource — is what
+              actually moves fluency forward.
+            </figcaption>
+          </figure>
+
+
+        <BlogAuthorBox />
+
+          <div class="share-row">
+            <span class="share-label">Helpful? Share with a colleague:</span>
+            <a
+              href="https://twitter.com/intent/tweet?text=Spin+Wheel+Ideas+for+Language+Learning&url=https://spinthewheelsonline.com/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation"
+              target="_blank"
+              rel="noopener"
+              class="share-btn"
+              >🐦 Twitter</a
+            >
+            <button class="share-btn" id="copy-link-btn">🔗 Copy Link</button>
+          </div>
+
+          <div class="cta-banner">
+            <h3>🎡 Try It in Your Language Lesson Today</h3>
+            <p>
+              Add your vocabulary, verbs, or conversation topics and spin in
+              under 60 seconds. Free forever.
+            </p>
+            <a href="https://spinthewheelsonline.com/">Open Spin the Wheel →</a>
+          </div>
+
+          <div class="all-articles">
+            <h3>📚 All Related Articles</h3>
+            <ul class="article-list">
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+                  >What Is a Spin the Wheel Tool?</a
+                ><span>📖 Guide · 8 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/spin-wheel-classroom-activities"
+                  >How Teachers Can Use Spin the Wheel</a
+                ><span>🏫 Education · 9 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/how-to-use-spin-wheel-classroom-examples"
+                  >How to Use a Spin Wheel for Classroom Activities</a
+                ><span>📋 How-To · 11 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                  >The Psychology Behind Random Decision Making</a
+                ><span>🧠 Science · 7 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+                  >Creative Ways to Use a Name Picker Wheel</a
+                ><span>👤 Guide · 6 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+                  >10 Best Uses of a Random Wheel Spinner</a
+                ><span>💡 Ideas · 10 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers"
+                  >Spin the Wheel vs. Other Random Pickers</a
+                ><span>📊 Comparison · 11 min</span>
+              </li>
+              <li>
+                <a
+                  href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                  >Is a Digital Spin Wheel Truly Random?</a
+                ><span>🔬 Science · 6 min</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="toc-box">
+          <div class="toc-title">📋 Table of Contents</div>
+          <ul class="toc-list" id="tocList">
+            <li><a href="#why-spin-wheel-works">Why It Works</a></li>
+            <li><a href="#vocabulary">Vocabulary Wheels</a></li>
+            <li><a href="#verbs">Verb Conjugation & Grammar</a></li>
+            <li><a href="#conversation">Conversation Starters</a></li>
+            <li><a href="#pronunciation">Pronunciation & Listening</a></li>
+            <li><a href="#by-level">By Proficiency Level</a></li>
+            <li><a href="#self-learners">For Self-Learners</a></li>
+            <li><a href="#setup">How to Set Up</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#conclusion">Final Thoughts</a></li>
+          </ul>
+        </div>
+        <div class="try-box">
+          <div class="try-icon">🎡</div>
+          <p>Free spin wheel tool. Works on any device.</p>
+          <a href="https://spinthewheelsonline.com/">Open Free Tool →</a>
+        </div>
+      </aside>
+    </div>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/spin-wheel-language-learning-vocabulary-verbs-conversation" />
+
+    <script is:inline>
+      // MOBILE TOC
+      const tocMobileToggle = document.getElementById("tocMobileToggle");
+      const tocMobileContent = document.getElementById("tocMobileContent");
+      tocMobileToggle.addEventListener("click", () => {
+        tocMobileContent.classList.toggle("open");
+        tocMobileToggle.classList.toggle("open");
+      });
+
+      // SUBJECT ACCORDIONS
+      document.querySelectorAll(".subject-toggle").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = document.getElementById(btn.dataset.target);
+          const isOpen = target.classList.contains("open");
+          document
+            .querySelectorAll(".subject-body")
+            .forEach((b) => b.classList.remove("open"));
+          document
+            .querySelectorAll(".subject-toggle")
+            .forEach((b) => b.classList.remove("open"));
+          if (!isOpen) {
+            target.classList.add("open");
+            btn.classList.add("open");
+          }
+        });
+      });
+
+      // READING PROGRESS + SCROLL TOP
+      const progress = document.getElementById("readingProgress");
+      const scrollBtn = document.getElementById("scrollTop");
+      window.addEventListener("scroll", () => {
+        const doc = document.documentElement;
+        const scrolled = doc.scrollTop;
+        const total = doc.scrollHeight - doc.clientHeight;
+        progress.style.width = (scrolled / total) * 100 + "%";
+        scrollBtn.classList.toggle("visible", scrolled > 400);
+      });
+      scrollBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      // ACTIVE TOC HIGHLIGHT
+      const sections = document.querySelectorAll("h2[id]");
+      const tocLinks = document.querySelectorAll("#tocList a");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(
+                `#tocList a[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      // COPY LINK
+      document
+        .getElementById("copy-link-btn")
+        .addEventListener("click", function () {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            this.textContent = "✅ Copied!";
+            setTimeout(() => (this.textContent = "🔗 Copy Link"), 2000);
+          });
+        });
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

@@ -1,0 +1,1135 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Spin Wheel Icebreakers for New-Hire Onboarding</title>
+
+    <meta name="description" content="Field-tested onboarding playbook for HR teams: six ready-to-paste icebreaker wheels, Zoom facilitator scripts, and standup warm-up templates." />
+    <meta
+      name="keywords"
+      content="icebreaker spin wheel, employee onboarding spinner, team intro questions wheel, remote onboarding icebreakers, meeting warmup wheel"
+    />
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding"
+    />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" /></noscript>
+
+    <!-- ================= ADSENSE ================= -->
+    <style is:inline>:root{--bg:#0f1117;--bg2:#161921;--bg3:#1e2230;--border:rgba(255, 255, 255, 0.08);--border2:rgba(255, 255, 255, 0.14);--text:#e8eaf0;--text-muted:#8a90a0;--text-soft:#b0b8cc;--accent:#6c63ff;--accent2:#a78bfa;--accent3:#38bdf8;--green:#34d399;--amber:#fbbf24;--rose:#f87171;--radius:14px;--radius-sm:8px;--shadow:0 4px 24px rgba(0, 0, 0, 0.45);--font-body:"DM Sans",sans-serif;--font-display:"DM Serif Display",serif;--max-w:760px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;-webkit-font-smoothing:antialiased}a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;display:block;border-radius:var(--radius)}#back-top{position:fixed;bottom:22px;right:22px;z-index:99;background:var(--accent);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(108,99,255,.5);opacity:0;pointer-events:none;transition:opacity .3s}#back-top.visible{opacity:1;pointer-events:auto}.breadcrumb{max-width:var(--max-w);margin:0 auto;padding:20px 24px 0;font-size:.82rem;color:var(--text-muted)}.breadcrumb a{color:var(--text-muted)}.breadcrumb a:hover{color:var(--accent2)}.breadcrumb span{margin:0 6px}.article-wrap{max-width:var(--max-w);margin:0 auto;padding:32px 24px 80px}.hero-emoji{font-size:2.4rem;line-height:1;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:6px}.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.badge{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.78rem;color:var(--text-soft);font-weight:500}.badge.purple{border-color:rgba(108,99,255,.4);color:var(--accent2);background:rgba(108,99,255,.1)}.badge.blue{border-color:rgba(56,189,248,.4);color:var(--accent3);background:rgba(56,189,248,.08)}h1{font-family:var(--font-display);font-size:clamp(1.9rem, 5vw, 2.8rem);line-height:1.2;color:#fff;margin-bottom:18px}h1 em{font-style:italic;color:var(--accent2)}.hero-intro{font-size:1.08rem;color:var(--text-soft);line-height:1.8;margin-bottom:24px;border-left:3px solid var(--accent);padding-left:16px}.hero-image{margin-bottom:32px}.hero-image figcaption{font-size:.78rem;color:var(--text-muted);margin-top:8px;text-align:center}.meta-row{display:flex;flex-wrap:wrap;gap:16px;font-size:.82rem;color:var(--text-muted);padding-bottom:28px;border-bottom:1px solid var(--border);margin-bottom:36px}.meta-row span{display:flex;align-items:center;gap:5px}.toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:44px}.toc-title{font-weight:700;font-size:.9rem;margin-bottom:14px;color:var(--text-soft);letter-spacing:.05em;text-transform:uppercase}.toc ol{padding-left:18px}.toc li{margin-bottom:6px}.toc a{color:var(--text-soft);font-size:.9rem;transition:color .2s}.toc a:hover{color:var(--accent2);text-decoration:none}h2{font-family:var(--font-display);font-size:clamp(1.35rem, 4vw, 1.75rem);color:#fff;margin:52px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border);scroll-margin-top:80px}h3{font-size:1.1rem;font-weight:700;color:var(--text);margin:28px 0 10px;scroll-margin-top:80px}p{margin-bottom:16px;color:var(--text-soft)}strong{color:var(--text);font-weight:600}ol,ul{padding-left:22px;margin-bottom:16px}li{margin-bottom:8px;color:var(--text-soft)}li strong{color:var(--text)}figure{margin:28px 0}figure img{width:100%;height:auto}figure figcaption{font-size:.78rem;color:var(--text-muted);margin-top:8px;text-align:center}.info-box{border-radius:var(--radius);padding:20px 22px;margin:28px 0;border-left:4px solid}.info-box.purple{background:rgba(108,99,255,.08);border-color:var(--accent)}.info-box.blue{background:rgba(56,189,248,.08);border-color:var(--accent3)}.info-box.green{background:rgba(52,211,153,.08);border-color:var(--green)}.info-box.amber{background:rgba(251,191,36,.08);border-color:var(--amber)}.info-box-label{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}.info-box.purple .info-box-label{color:var(--accent2)}.info-box.blue .info-box-label{color:var(--accent3)}.info-box.green .info-box-label{color:var(--green)}.info-box.amber .info-box-label{color:var(--amber)}.info-box p:last-child{margin-bottom:0}.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0}.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .2s}.feature-card:hover{border-color:var(--border2)}.feature-icon{font-size:1.6rem;margin-bottom:10px}.feature-num{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}.feature-card h3,.feature-card h4{font-size:.95rem;color:var(--text);margin-bottom:6px;font-weight:700}.feature-card p{font-size:.85rem;color:var(--text-muted);margin-bottom:0}.wheel-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:20px 0}.wheel-box-title{font-weight:700;font-size:.95rem;color:#fff;display:flex;align-items:center;gap:8px;margin-bottom:14px}.wheel-tag{font-size:.7rem;padding:2px 8px;border-radius:10px;background:rgba(108,99,255,.2);color:var(--accent2);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.wheel-entries{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;list-style:none;padding:0}.wheel-entries li{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 12px;font-size:.85rem;color:var(--text-soft);margin:0}.wheel-entries li::before{content:"🎡 "}.table-wrap{overflow-x:auto;margin:20px 0;border-radius:var(--radius);border:1px solid var(--border)}table{width:100%;border-collapse:collapse;font-size:.88rem}thead{background:var(--bg3)}th{padding:12px 16px;text-align:left;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);white-space:nowrap}td{padding:11px 16px;color:var(--text-soft);border-bottom:1px solid var(--border);vertical-align:top}tr:last-child td{border-bottom:none}tr:nth-child(2n) td{background:rgba(255,255,255,.025)}.check{color:var(--green);font-size:1rem}.cross{color:var(--rose);font-size:1rem}.internal-links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:28px 0}.internal-link-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:4px}.internal-link-card:hover{border-color:var(--border2);transform:translateY(-2px);text-decoration:none}.ilc-label{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}.ilc-title{font-size:.9rem;color:#fff;font-weight:600;line-height:1.4}.ilc-meta{font-size:.78rem;color:var(--text-muted)}.wheel-cta{background:linear-gradient(135deg,rgba(108,99,255,.15) 0,rgba(56,189,248,.08) 100%);border:1px solid rgba(108,99,255,.3);border-radius:var(--radius);padding:28px 28px;text-align:center;margin:40px 0}.wheel-cta h3{font-size:1.15rem;color:#fff;margin-bottom:8px;font-family:var(--font-display);font-weight:400}.wheel-cta p{font-size:.9rem;color:var(--text-muted);margin-bottom:18px}.btn{display:inline-block;background:var(--accent);color:#fff!important;font-weight:700;padding:12px 28px;border-radius:24px;font-size:.9rem;transition:background .2s,transform .15s;text-decoration:none!important}.btn:hover{background:var(--accent2);transform:translateY(-1px)}.btn.outline{background:0 0;border:2px solid var(--accent);color:var(--accent2)!important;margin-left:8px}.btn.outline:hover{background:rgba(108,99,255,.12)}.faq{margin:12px 0}details.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;background:var(--bg2)}details.faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;font-size:.95rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:12px}details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary::after{content:"+";color:var(--text-muted);font-size:1.1rem;flex-shrink:0;transition:transform .3s}details.faq-item[open] summary::after{content:"×";color:var(--accent2);transform:rotate(0)}details.faq-item .faq-a{padding:4px 20px 18px;color:var(--text-soft);font-size:.92rem;line-height:1.7;border-top:1px solid var(--border);padding-top:14px}details.faq-item .faq-a p{margin-bottom:8px}details.faq-item .faq-a p:last-child{margin-bottom:0}details.faq-item .faq-a a{color:var(--accent2)}.related-section{margin-top:48px}.related-section h3{font-size:1rem;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}.related-list{list-style:none;padding:0}.related-list li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}.related-list li:last-child{border-bottom:none}.related-num{font-size:.78rem;font-weight:700;color:var(--text-muted);min-width:22px;padding-top:2px}.related-list a{color:var(--text);font-size:.9rem;font-weight:600;line-height:1.4}.related-list a:hover{color:var(--accent2);text-decoration:none}.related-meta{font-size:.78rem;color:var(--text-muted);margin-top:2px}.takeaways{background:var(--bg2);border:1px solid rgba(52,211,153,.25);border-radius:var(--radius);padding:22px 24px;margin:36px 0}.takeaways-title{font-weight:700;color:var(--green);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}.takeaways ul{padding-left:18px}.takeaways li{color:var(--text-soft);font-size:.9rem;margin-bottom:8px}.takeaways li:last-child{margin-bottom:0}.share-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--border);font-size:.85rem;color:var(--text-muted)}.share-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text-soft);padding:6px 14px;border-radius:20px;font-size:.8rem;cursor:pointer;font-family:var(--font-body);transition:border-color .2s,color .2s}.share-btn:hover{border-color:var(--border2);color:#fff}.tools-strip{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:36px 0}.tools-strip-title{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:14px}.tools-strip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}.tool-chip{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-size:.85rem;color:var(--text-soft);transition:border-color .2s,color .2s}.tool-chip:hover{border-color:var(--border2);color:#fff;text-decoration:none}@media (max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}h2{margin-top:40px}}@media (max-width:520px){.article-wrap{padding:24px 16px 60px}.breadcrumb{padding:16px 16px 0}.feature-grid{grid-template-columns:1fr}.btn.outline{margin-left:0;margin-top:8px}.wheel-cta{padding:22px 18px}h1{font-size:1.7rem}.toc{padding:18px 16px}.wheel-cta .btn-row{display:flex;flex-direction:column;align-items:center;gap:8px}}</style>
+
+    <!-- Schema Markup -->
+    <meta property="og:url" content="https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding" />
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding\",\n      \"name\": \"Spin Wheel Icebreakers for New-Hire Onboarding\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#breadcrumbs\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Spin Wheel Icebreakers Onboarding\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#article\",\n      \"headline\": \"Spin Wheel Icebreakers for Onboarding: A 2026 Playbook for HR Teams\",\n      \"description\": \"A practical, field-tested playbook for using a spin wheel in new-hire onboarding — six ready-made wheel setups, a facilitator script, and the mistakes that quietly kill the exercise.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-team-picker-wheel.webp\",\n      \"datePublished\": \"2026-11-21\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Does a spin wheel actually work for a 40-person onboarding cohort?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"It works, but the format has to change. For large cohorts, use a simultaneous-response wheel like a 'this or that' spinner, where everyone answers each spin at once instead of waiting for a turn. Split into breakout groups of eight to ten for anything that requires individual answers.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Is a digital spin wheel actually random?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. The outcome is chosen before the spin animation starts using the browser's Web Cryptography API (window.crypto.getRandomValues) with rejection sampling, so click timing cannot steer the landing slice.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"What if a new hire lands on a question they don't want to answer?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Build a 'pass, spin again' entry into the wheel from the start. It gives anyone a quiet way out without singling them out, and it costs nothing to include.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I weight certain entries so they come up more often?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes — click the '+' weight button beside any prompt (1x to 20x) to scale its probability cleanly without duplicating labels, or enable duplicate entries if preferred.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+
+    <meta property="og:image" content="https://spinthewheelsonline.com/eng-team-picker-wheel.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spin Wheel Icebreakers for Onboarding: A 2026 Playbook for HR Teams" />
+    <meta name="twitter:description" content="Field-tested onboarding playbook for HR teams: six ready-to-paste icebreaker wheels, Zoom facilitator scripts, and standup warm-up templates." />
+    <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-team-picker-wheel.webp" />
+      <AnalyticsHead enableAds={true} />
+  </head>
+
+  <body>
+    <!-- Back to top -->
+    <button id="back-top" aria-label="Back to top">↑</button>
+
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/spin-wheel-icebreakers-onboarding" />
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/blogs">Blogs</a>
+      <span>›</span>
+      Spin Wheel Icebreakers for Onboarding
+    </div>
+
+    <!-- Article -->
+    <main class="article-wrap">
+      <!-- Hero -->
+      <div class="hero-emoji">🧊🎡👋🏢💡</div>
+      <div class="badge-row">
+        <span class="badge purple">💼 HR &amp; Onboarding</span>
+        <span class="badge blue">🎉 Team Building</span>
+        <span class="badge">⏱ 11 min read</span>
+      </div>
+
+      <h1>
+        Spin Wheel <em>Icebreakers</em> for Onboarding — A 2026 Playbook for HR
+        Teams
+      </h1>
+
+      <p class="hero-intro">
+        A new hire's first meeting is the one everyone in the room has done a
+        hundred times and the new person has done zero times. This is a working
+        playbook — not a listicle — for closing that gap with a spin wheel: six
+        wheel setups you can copy directly, a short script for running the room,
+        and the specific ways this exercise goes wrong.
+      </p>
+
+      <figure class="hero-image">
+        <img
+          src="/eng-team-picker-wheel.webp"
+          alt="Illustration of a spin wheel used during a new employee onboarding session, with a small team gathered around a laptop"
+          width="1400"
+          height="700"
+          loading="eager"
+        />
+        <figcaption>
+          A spin wheel gives a first-day introduction a shared, visible focal
+          point instead of an awkward go-around.
+        </figcaption>
+      </figure>
+
+      <div class="meta-row">
+        <span>✅ Updated November 24, 2026</span>
+        <span>·</span>
+        <span>📂 HR &amp; Onboarding</span>
+      </div>
+
+      <div class="info-box purple">
+        <div class="info-box-label">💡 New to spin wheels?</div>
+        <p>
+          If you haven't used one of these before, start with
+          <a href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+            >What Is a Spin the Wheel Tool and How Does It Work?</a
+          >
+          for the short version of how the randomization works and how to build
+          your first wheel. Then come back here for the onboarding- specific
+          setups.
+        </p>
+      </div>
+
+      <!-- ToC -->
+      <nav class="toc" aria-label="Table of contents">
+        <div class="toc-title">📋 In This Guide</div>
+        <ol>
+          <li>
+            <a href="#problem">1. What Actually Goes Wrong in Day-One Intros</a>
+          </li>
+          <li>
+            <a href="#why-wheel"
+              >2. Why Handing the Decision to a Wheel Helps</a
+            >
+          </li>
+          <li>
+            <a href="#wheels">3. Six Wheel Setups You Can Copy Right Now</a>
+          </li>
+          <li><a href="#matching">4. Matching a Wheel to the Room</a></li>
+          <li><a href="#remote">5. Running It on a Video Call</a></li>
+          <li>
+            <a href="#script"
+              >6. A Facilitator's Script (What to Actually Say)</a
+            >
+          </li>
+          <li><a href="#mistakes">7. The Mistakes That Quietly Kill It</a></li>
+          <li>
+            <a href="#setup">8. Setting Up Your Wheel in Under 3 Minutes</a>
+          </li>
+          <li>
+            <a href="#measuring">9. How to Tell If It's Actually Working</a>
+          </li>
+          <li><a href="#faq">10. Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <!-- Section 1 -->
+      <h2 id="problem">1. What Actually Goes Wrong in Day-One Intros</h2>
+
+      <p>
+        Watch a typical first-day round of introductions and you'll notice the
+        same failure pattern almost every time. The facilitator says "let's go
+        around and share something fun about yourself," and there's a beat of
+        silence before the first brave (or nearest) person starts. By the third
+        or fourth person, the answers have collapsed into the same three
+        templates — a hobby, a pet, a hometown — because everyone is quietly
+        copying the format set by whoever went first.
+      </p>
+
+      <p>
+        The new hire, meanwhile, is doing three things at once: trying to
+        remember a dozen new names, trying to read the room's sense of humor,
+        and trying to figure out what "fun fact" even means in a context where
+        they don't yet know what's considered normal here. That's a lot of
+        cognitive load for one exercise that's supposed to be relaxing.
+      </p>
+
+      <p>
+        There's also a quieter problem: who picks who goes next. If a manager
+        points at people, it can feel like being called on in class. If it's
+        left open, the same two or three confident people jump in every time and
+        the quiet ones — often including the new hire — never get pulled in.
+        Neither pattern is anyone's fault. It's just what happens when a human
+        has to make a selection decision in real time in front of the group.
+      </p>
+
+      <p>
+        A spin wheel doesn't fix the content problem on its own — you still need
+        decent questions — but it removes the selection problem entirely, and it
+        breaks the copy-the-previous-answer pattern because each spin can land
+        on a genuinely different prompt.
+      </p>
+
+      <!-- Section 2 -->
+      <h2 id="why-wheel">2. Why Handing the Decision to a Wheel Helps</h2>
+
+      <p>
+        The mechanism is simple and it shows up in plenty of group settings
+        beyond onboarding — the same logic is behind why
+        <a
+          href="https://spinthewheelsonline.com/blogs/spin-wheel-classroom-activities"
+          >teachers use it to call on students</a
+        >
+        and why
+        <a href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+          >remote teams use it for lightweight decisions</a
+        >. When the outcome comes from a visibly neutral process, people accept
+        it faster and with less second-guessing than when a person chooses.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎭</div>
+          <div class="feature-num">Reason 01</div>
+          <h3>No one is "called on"</h3>
+          <p>
+            The wheel picks, not the facilitator — which matters most for a new
+            hire who doesn't yet know the room's social rules.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎲</div>
+          <div class="feature-num">Reason 02</div>
+          <h3>Breaks the copy pattern</h3>
+          <p>
+            Going in a fixed order lets everyone anchor on the first answer. A
+            random spin means the next question can be unrelated to the last
+            one.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <div class="feature-num">Reason 03</div>
+          <h3>Naturally paces the room</h3>
+          <p>
+            One spin, one question, one answer. It's a built-in timer that stops
+            any single person from running long.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔁</div>
+          <div class="feature-num">Reason 04</div>
+          <h3>Reusable with zero rebuild</h3>
+          <p>
+            Build the wheel once, bookmark the link, and every future new hire
+            gets the same setup with no prep required.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        For the underlying research on why people trust and cooperate with
+        randomized processes more readily than human-made ones, see our piece on
+        <a
+          href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+          >the psychology behind random decision making</a
+        >
+        — it's written for group facilitation generally, but every point in it
+        maps directly onto a first-day intro round.
+      </p>
+
+      <figure>
+        <img
+          src="/add-names-to-wheels.webp"
+          alt="In-office conference room and remote video participants sharing an interactive icebreaker spin wheel"
+          width="1200"
+          height="600"
+          loading="lazy"
+        />
+        <figcaption>
+          The same wheel setup works whether the room is physical, remote, or
+          split between both.
+        </figcaption>
+      </figure>
+
+      <!-- Section 3 -->
+      <h2 id="wheels">3. Six Wheel Setups You Can Copy Right Now</h2>
+
+      <p>
+        These are ready to paste into a wheel on
+        <a href="https://spinthewheelsonline.com/">spinthewheelsonline.com</a>.
+        Each one is built for a different moment in the onboarding timeline —
+        pick the one that matches where your new hire actually is, not
+        necessarily the first one on the list.
+      </p>
+
+      <h3>🎡 Wheel 1 — First-Day Question Spinner</h3>
+      <p>
+        One wheel, one spin per person. Turn on
+        <strong>"remove after spin"</strong> so no question repeats during the
+        session.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>What's a job you had before this one that nobody would guess?</li>
+          <li>What's a small thing that instantly puts you in a good mood?</li>
+          <li>What's something you're weirdly good at outside of work?</li>
+          <li>What's the last thing you got way too into?</li>
+          <li>
+            If you had a free Tuesday, what would you actually do with it?
+          </li>
+          <li>What's a place you'd go back to in a heartbeat?</li>
+          <li>What's on your desk or desktop that says something about you?</li>
+          <li>What's a skill you're currently trying to pick up?</li>
+          <li>Dogs, cats, or "I have opinions about neither"?</li>
+          <li>
+            What's a show or podcast you've told three people to watch/listen to
+            this year?
+          </li>
+          <li>What's your go-to order at a coffee shop?</li>
+          <li>What's something you learned recently that surprised you?</li>
+        </ul>
+      </div>
+
+      <h3>🎡 Wheel 2 — Structured Self-Intro Prompts</h3>
+      <p>
+        This wheel doesn't pick a question — it picks a format for each person's
+        30-second intro, so everyone gives roughly the same amount of
+        information without it sounding scripted.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>Name, role, and how you actually spend your weekends</li>
+          <li>Name, role, and where you grew up</li>
+          <li>Name, role, and what you wanted to be as a kid</li>
+          <li>Name, role, and the last thing you binged</li>
+          <li>Name, role, and your first-ever job</li>
+          <li>Name, role, and something most people don't know about you</li>
+          <li>Name, role, and what made you laugh recently</li>
+          <li>Name, role, and one thing you're learning right now</li>
+        </ul>
+      </div>
+
+      <h3>🎡 Wheel 3 — Category Picker for "Two Truths, One Lie"</h3>
+      <p>
+        Everyone prepares two truths and a lie, but the wheel decides which
+        category they have to draw from — which stops people from defaulting to
+        the same safe answer every time. Works for groups of four to twenty.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>Travel</li>
+          <li>Childhood</li>
+          <li>Work &amp; career</li>
+          <li>Hobbies &amp; skills</li>
+          <li>Food</li>
+          <li>Brushes with fame</li>
+          <li>Awards or achievements</li>
+          <li>Odd fears or pet peeves</li>
+        </ul>
+      </div>
+      <div class="info-box green">
+        <div class="info-box-label">✅ Facilitator tip</div>
+        <p>
+          Give everyone sixty seconds to think after the category lands, before
+          anyone shares. Without a pause, whoever's up first is improvising
+          while everyone else gets prep time — which isn't fair and usually
+          shows.
+        </p>
+      </div>
+
+      <h3>🎡 Wheel 4 — Simultaneous "This or That" Round</h3>
+      <p>
+        Best for larger groups. Spin, everyone answers at once (thumbs up or
+        down on a call, raised hands in a room), no individual prep needed. New
+        hires learn how the team actually works faster than any handbook would
+        tell them.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>Camera on or camera off?</li>
+          <li>Written brief or a quick call?</li>
+          <li>Reply right away or batch messages later?</li>
+          <li>Plan the day or wing it?</li>
+          <li>Meetings in the morning or afternoon?</li>
+          <li>Work from a café or from home?</li>
+          <li>Deep focus blocks or constant check-ins?</li>
+          <li>Big team energy or small-group energy?</li>
+        </ul>
+      </div>
+
+      <h3>🎡 Wheel 5 — "Ask an Expert" Finder</h3>
+      <p>
+        Put every current team member's name on one wheel and a set of topics on
+        a second. Spin both — that person shares a real tip or story on that
+        topic. This is the one that actually surfaces the knowledge that usually
+        only lives in people's heads.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Topic Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>The shortcut nobody tells new people about</li>
+          <li>A mistake you learned the most from</li>
+          <li>A tool the team underuses</li>
+          <li>Something you wish someone told you in week one</li>
+          <li>An unwritten rule that actually matters here</li>
+          <li>Who helped you most when you were new</li>
+          <li>The strangest request you've ever gotten from a client</li>
+          <li>An underrated resource most people skip</li>
+        </ul>
+      </div>
+
+      <h3>🎡 Wheel 6 — First-Week Wrap-Up Draw</h3>
+      <p>
+        Run this at the end of week one, and let the new hire spin it
+        themselves. After a week of being told what to do, handing them the spin
+        for something good is a small but real shift in who's in control.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">
+          Wheel Entries <span class="wheel-tag">Copy + Paste</span>
+        </div>
+        <ul class="wheel-entries">
+          <li>Team lunch — you pick the place</li>
+          <li>Leave an hour early on Friday</li>
+          <li>15 minutes with the founder or a senior leader</li>
+          <li>Pick next week's team activity</li>
+          <li>A small learning-budget top-up</li>
+          <li>Run a 10-minute "teach us something" session</li>
+          <li>Work from wherever you want for a day</li>
+          <li>Team trivia or a short game session</li>
+        </ul>
+      </div>
+
+      <!-- Internal links grid -->
+      <div style="margin: 28px 0">
+        <h3
+          style="
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+          "
+        >
+          🔗 Related Guides
+        </h3>
+        <div class="internal-links-grid">
+          <a
+            href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+            class="internal-link-card"
+          >
+            <span class="ilc-label">💼 Remote Teams</span>
+            <span class="ilc-title"
+              >How Remote Teams Use Spin the Wheel for Decisions</span
+            >
+            <span class="ilc-meta">5 min read →</span>
+          </a>
+          <a
+            href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+            class="internal-link-card"
+          >
+            <span class="ilc-label">👤 Name Picker</span>
+            <span class="ilc-title"
+              >10 Creative Ways to Use a Name Picker Wheel at Work</span
+            >
+            <span class="ilc-meta">6 min read →</span>
+          </a>
+          <a
+            href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+            class="internal-link-card"
+          >
+            <span class="ilc-label">🧠 Psychology</span>
+            <span class="ilc-title"
+              >Why Random Decision Making Works — The Science</span
+            >
+            <span class="ilc-meta">8 min read →</span>
+          </a>
+          <a
+            href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+            class="internal-link-card"
+          >
+            <span class="ilc-label">💡 Ideas</span>
+            <span class="ilc-title"
+              >10 Best Uses of a Random Wheel Spinner</span
+            >
+            <span class="ilc-meta">6 min read →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <h2 id="matching">4. Matching a Wheel to the Room</h2>
+      <p>
+        Not every setup fits every moment. This is the quick-reference version —
+        match your scenario to the wheel above before you build anything.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Use This Wheel</th>
+              <th>Group Size</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>First-day team intro</strong></td>
+              <td>Wheel 1 — Question Spinner</td>
+              <td>4–12</td>
+              <td>10–15 min</td>
+            </tr>
+            <tr>
+              <td><strong>All-hands welcome</strong></td>
+              <td>Wheel 4 — This or That</td>
+              <td>12–50+</td>
+              <td>5–8 min</td>
+            </tr>
+            <tr>
+              <td><strong>1:1 with the hiring manager</strong></td>
+              <td>Wheel 2 — Structured Intro</td>
+              <td>2</td>
+              <td>5 min</td>
+            </tr>
+            <tr>
+              <td><strong>Week 2–4 check-in</strong></td>
+              <td>Wheel 5 — Ask an Expert</td>
+              <td>6–15</td>
+              <td>15–20 min</td>
+            </tr>
+            <tr>
+              <td><strong>Cross-team mixer</strong></td>
+              <td>Wheel 3 — Two Truths, One Lie</td>
+              <td>Mixed groups</td>
+              <td>15–25 min</td>
+            </tr>
+            <tr>
+              <td><strong>End of week one</strong></td>
+              <td>Wheel 6 — Wrap-Up Draw</td>
+              <td>Any</td>
+              <td>5 min</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 5 -->
+      <h2 id="remote">5. Running It on a Video Call</h2>
+      <p>
+        Remote onboarding has one problem in-person doesn't: the new hire is
+        meeting a grid of faces that already have history with each other, and
+        they can't read any of the physical-room cues that normally fill in the
+        gaps. A shared screen with a wheel on it gives the call something to
+        look at besides a face — which takes real pressure off everyone.
+      </p>
+      <ol>
+        <li>
+          <strong>Load the wheel before the call starts.</strong> Nothing kills
+          momentum like building it live while people watch.
+        </li>
+        <li>
+          <strong>Screen-share the tab</strong> the moment intros start — Zoom,
+          Teams, and Meet all pass the spin animation through cleanly.
+        </li>
+        <li>
+          <strong>Share desktop audio if your platform allows it.</strong> The
+          tick as the wheel slows adds real suspense even through a screen.
+        </li>
+        <li>
+          <strong>Turn on "remove after spin"</strong> for anything where each
+          person or question should only come up once.
+        </li>
+        <li>
+          <strong>Bookmark the wheel's URL.</strong> The setup lives in the
+          link, so the next session takes zero rebuild time.
+        </li>
+      </ol>
+      <div class="info-box blue">
+        <div class="info-box-label">🌍 Hybrid sessions</div>
+        <p>
+          If some people are in the room and some are remote, project the wheel
+          on the room's screen <em>and</em> share it on the call at the same
+          time. Both groups watching the same spin land is a small detail, but
+          it's the difference between "the remote people joined" and everyone
+          actually being in the same activity.
+        </p>
+      </div>
+
+      <!-- Section 6 -->
+      <h2 id="script">6. A Facilitator's Script (What to Actually Say)</h2>
+      <p>
+        The wheel does the picking, but someone still has to open and close the
+        exercise. Here's a script you can adapt rather than winging it cold.
+      </p>
+      <div class="wheel-box">
+        <div class="wheel-box-title">🎙 Opening</div>
+        <p style="color: var(--text-soft); margin-bottom: 0">
+          "We're going to do a quick round with this wheel instead of going in
+          order — it'll land on someone at random, they answer whatever question
+          it picks, and then we spin again. If you land on something you'd
+          rather skip, there's a pass option — just say pass and we'll spin
+          again, no explanation needed."
+        </p>
+      </div>
+      <div class="wheel-box">
+        <div class="wheel-box-title">🎙 During</div>
+        <p style="color: var(--text-soft); margin-bottom: 0">
+          Spin, read the result out loud, and give the person a beat before they
+          have to answer — even two seconds of silence feels longer than it is.
+          If the room's low-energy, answer a question yourself first to reset
+          the tone.
+        </p>
+      </div>
+      <div class="wheel-box">
+        <div class="wheel-box-title">🎙 Closing</div>
+        <p style="color: var(--text-soft); margin-bottom: 0">
+          "That's everyone — thanks for playing along. [New hire], anything you
+          heard that you want to follow up on later? That's usually a better way
+          to build on this than anything I could plan."
+        </p>
+      </div>
+
+      <!-- Section 7 -->
+      <h2 id="mistakes">7. The Mistakes That Quietly Kill It</h2>
+      <div class="feature-grid">
+        <div
+          class="feature-card"
+          style="border-color: rgba(52, 211, 153, 0.25)"
+        >
+          <div class="feature-icon">✅</div>
+          <h3>Do: state the "no re-spins" rule upfront</h3>
+          <p>
+            Saying it once, before the first spin, prevents anyone from quietly
+            lobbying for a redo later.
+          </p>
+        </div>
+        <div
+          class="feature-card"
+          style="border-color: rgba(52, 211, 153, 0.25)"
+        >
+          <div class="feature-icon">✅</div>
+          <h3>Do: let the new hire go first</h3>
+          <p>
+            Handing them the first spin signals the team is genuinely making
+            room, not just going through motions.
+          </p>
+        </div>
+        <div
+          class="feature-card"
+          style="border-color: rgba(52, 211, 153, 0.25)"
+        >
+          <div class="feature-icon">✅</div>
+          <h3>Do: build in a pass option</h3>
+          <p>
+            One "pass, spin again" entry respects whatever reason someone has
+            for skipping, without needing to know it.
+          </p>
+        </div>
+        <div
+          class="feature-card"
+          style="border-color: rgba(248, 113, 113, 0.25)"
+        >
+          <div class="feature-icon">❌</div>
+          <h3>Don't: reach for personal topics</h3>
+          <p>
+            Family, health, religion, and relationships create discomfort in a
+            professional first meeting — keep it light.
+          </p>
+        </div>
+        <div
+          class="feature-card"
+          style="border-color: rgba(248, 113, 113, 0.25)"
+        >
+          <div class="feature-icon">❌</div>
+          <h3>Don't: run it past 15 minutes</h3>
+          <p>
+            The exercise that people enjoy at ten minutes is the one people
+            dread at twenty-five. Time-box it.
+          </p>
+        </div>
+        <div
+          class="feature-card"
+          style="border-color: rgba(248, 113, 113, 0.25)"
+        >
+          <div class="feature-icon">❌</div>
+          <h3>Don't: skip it for senior hires</h3>
+          <p>
+            Experienced hires get left out of icebreakers under the assumption
+            they don't need one — they usually enjoy it more, not less.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 8 -->
+      <h2 id="setup">8. Setting Up Your Wheel in Under 3 Minutes</h2>
+      <ol>
+        <li>
+          <strong>Open spinthewheelsonline.com</strong> — no account, works in
+          any browser on any device.
+        </li>
+        <li>
+          <strong>Paste one of the entry lists above</strong> into the entry
+          panel — they load instantly, no reformatting needed.
+        </li>
+        <li>
+          <strong>Turn on "remove after spin"</strong> for question or name
+          wheels where repeats would kill the energy.
+        </li>
+        <li>
+          <strong>Bookmark the URL</strong> — the wheel's state lives in the
+          link, so it's ready every time with no rebuild.
+        </li>
+        <li>
+          <strong>Build one wheel per moment</strong> — day one, week two, week
+          four — and save each as its own bookmark.
+        </li>
+      </ol>
+      <div class="info-box purple">
+        <div class="info-box-label">⏱ For HR teams running this often</div>
+        <p>
+          Set aside fifteen minutes once to build all six wheels above and save
+          them in a shared bookmarks folder. Whoever's running the next new-hire
+          session just opens the right link — no facilitator dependency, no
+          rebuilding from scratch.
+        </p>
+      </div>
+
+      <h3>How This Compares to Other Icebreaker Formats</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Neutral selection</th>
+              <th>Scales up</th>
+              <th>Remote-friendly</th>
+              <th>Zero prep after setup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎡 <strong>Spin wheel</strong></td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+            </tr>
+            <tr>
+              <td>⬆️ Go around the table</td>
+              <td class="cross">✘</td>
+              <td class="cross">✘</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+            </tr>
+            <tr>
+              <td>🃏 Printed question cards</td>
+              <td class="check">✔</td>
+              <td class="cross">✘</td>
+              <td class="cross">✘</td>
+              <td class="cross">✘</td>
+            </tr>
+            <tr>
+              <td>🤝 Open volunteering</td>
+              <td class="cross">✘</td>
+              <td class="cross">✘</td>
+              <td class="cross">✘</td>
+              <td class="check">✔</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        For a broader comparison of random-selection tools beyond onboarding,
+        see
+        <a
+          href="https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers"
+          >Spin the Wheel vs. other random pickers</a
+        >.
+      </p>
+
+      <div class="tools-strip">
+        <div class="tools-strip-title">
+          🔗 More Free Tools for Your Onboarding Kit
+        </div>
+        <div class="tools-strip-grid">
+          <a href="https://spinthewheelsonline.com/" class="tool-chip"
+            >🎡 Spin the Wheel</a
+          >
+          <a
+            href="https://spinthewheelsonline.com/yes-no-wheel"
+            class="tool-chip"
+            >✅ Yes or No Wheel</a
+          >
+          <a
+            href="https://spinthewheelsonline.com/number-picker-wheel"
+            class="tool-chip"
+            >🔢 Number Picker</a
+          >
+          <a
+            href="https://spinthewheelsonline.com/letter-picker-wheel"
+            class="tool-chip"
+            >🔤 Letter Picker</a
+          >
+          <a
+            href="https://spinthewheelsonline.com/emoji-picker-wheel"
+            class="tool-chip"
+            >😀 Emoji Picker</a
+          >
+        </div>
+      </div>
+
+      <!-- Section 9 -->
+      <h2 id="measuring">9. How to Tell If It's Actually Working</h2>
+      <p>
+        You don't need a survey to know whether this is landing. A few informal
+        signals are usually enough:
+      </p>
+      <ul>
+        <li>
+          People are still talking to each other after the wheel exercise ends,
+          unprompted.
+        </li>
+        <li>
+          The new hire references something from the round later that week — a
+          name, a joke, a shared interest.
+        </li>
+        <li>
+          Veterans engage instead of visibly waiting for their turn to be over.
+        </li>
+        <li>
+          The next new hire's session doesn't need you to explain the format
+          twice.
+        </li>
+      </ul>
+      <p>
+        If none of that is happening after a couple of sessions, the wheel
+        probably isn't the problem — it's usually the questions being too
+        generic, the group being too large for the format, or the exercise
+        running too long. Adjust those before dropping the tool altogether.
+      </p>
+
+      <figure>
+        <img
+          src="/explore-other-tools.webp"
+          alt="Illustration of a small team celebrating around a laptop showing a spin wheel, representing a successful first week for a new employee"
+          width="1200"
+          height="630"
+          loading="lazy"
+        />
+        <figcaption>
+          A first week that ends on a genuinely good note tends to stick.
+        </figcaption>
+      </figure>
+
+      <!-- Final CTA -->
+      <div class="wheel-cta">
+        <h3>🎡 Build Your First Onboarding Wheel</h3>
+        <p>Free, no sign-up, ready in under three minutes.</p>
+        <div class="btn-row">
+          <a href="https://spinthewheelsonline.com/" class="btn"
+            >Open Free Wheel Spinner →</a
+          >
+          <a
+            href="https://spinthewheelsonline.com/yes-no-wheel"
+            class="btn outline"
+            >Try the Yes/No Wheel</a
+          >
+        </div>
+      </div>
+
+      <!-- Section 10 — FAQ -->
+      <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["icebreaker-question-wheel","presentation-order-wheel","team-picker-wheel","would-you-rather-wheel","wheel-of-names"]} ctaCategorySlug={"names-and-classrooms"} ctaCategoryName={"Names & Classrooms"} />
+
+        <h2 id="faq">10. Frequently Asked Questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Does this work for a 40-person onboarding cohort?</summary>
+          <div class="faq-a">
+            <p>
+              Yes, with a format change. Use a simultaneous-response wheel
+              (Wheel 4 above) so everyone answers each spin at once instead of
+              waiting for individual turns. For anything needing one-on-one
+              answers, split into breakout groups of eight to ten.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Is a digital spin wheel actually random?</summary>
+          <div class="faq-a">
+            <p>
+              Yes — every spin calls your browser's Web Cryptography API (<code>crypto.getRandomValues()</code>) with rejection sampling before the wheel animation begins, so nobody timing a click can steer the outcome. See
+              <a
+                href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                >is a digital spin wheel truly random?</a
+              >
+              for the full technical explanation.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            What if someone lands on a question they'd rather not answer?
+          </summary>
+          <div class="faq-a">
+            <p>
+              Build a "pass, spin again" entry into the wheel from the start.
+              It's a quiet, built-in way out that doesn't single anyone out or
+              require an explanation.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Does it work for a 1:1 onboarding meeting with a manager?
+          </summary>
+          <div class="faq-a">
+            <p>
+              It works particularly well there — it takes the "interview" feel
+              out of a manager asking questions one after another. Use Wheel 2
+              and have the manager answer their own spins too; that reciprocity
+              is what actually builds rapport, more than the questions
+              themselves.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I make certain questions come up more often?</summary>
+          <div class="faq-a">
+            <p>
+              Yes — click the <code>+</code> or <code>-</code> weight button beside any question (1x to 20x) to scale its odds without duplicating labels, or toggle duplicate entries if you want separate slices.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work on mobile?</summary>
+          <div class="faq-a">
+            <p>
+              Yes — spinthewheelsonline.com runs on any device with no install.
+              Facilitators usually run it from a laptop and share their screen,
+              but it works fine from a phone too.
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Key Takeaways -->
+      <div class="takeaways">
+        <div class="takeaways-title">✅ Key Takeaways</div>
+        <ul>
+          <li>
+            Day-one intros fail less because of bad questions and more because
+            of who has to decide who goes next — a wheel removes that decision
+            entirely.
+          </li>
+          <li>
+            Six ready-made wheel setups are included above: a question spinner,
+            a structured intro prompt, a two-truths category picker, a
+            this-or-that round, an ask-an-expert finder, and a week-one wrap-up
+            draw.
+          </li>
+          <li>
+            The same setup works in person, on a video call, or split across
+            both.
+          </li>
+          <li>
+            A pass option, a 15-minute time box, and light (not personal)
+            questions are what keep it appropriate for a professional setting.
+          </li>
+          <li>
+            Explore more in
+            <a
+              href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+              >team building with spin wheels</a
+            >,
+            <a
+              href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+              >name picker wheels at work</a
+            >, and
+            <a
+              href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+              >the psychology of random decision making</a
+            >.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Share -->
+
+        <BlogAuthorBox />
+
+      <div class="share-row">
+        <span>Found this helpful? Share it:</span>
+        <a
+          href="https://twitter.com/intent/tweet?text=Spin+Wheel+Icebreakers+for+Onboarding&url=https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding"
+          target="_blank"
+          rel="noopener"
+        >
+          <button class="share-btn">🐦 Twitter</button>
+        </a>
+        <a
+          href="https://linkedin.com/shareArticle?mini=true&url=https://spinthewheelsonline.com/blogs/spin-wheel-icebreakers-onboarding"
+          target="_blank"
+          rel="noopener"
+        >
+          <button class="share-btn">💼 LinkedIn</button>
+        </a>
+        <button class="share-btn" id="copy-link-btn">🔗 Copy Link</button>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-section">
+        <h3>📚 Related Articles</h3>
+        <ul class="related-list">
+          <li>
+            <span class="related-num">1</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/spin-the-wheel-tool"
+                >What Is a Spin the Wheel Tool? Complete Guide 2026</a
+              >
+              <div class="related-meta">📖 Guide · 8 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">2</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/spin-wheel-team-building"
+                >How Remote Teams Use Spin the Wheel for Decisions</a
+              >
+              <div class="related-meta">💼 Remote Teams · 5 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">3</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/name-picker-wheel-work-school"
+                >10 Creative Ways to Use a Name Picker Wheel at Work &amp;
+                School</a
+              >
+              <div class="related-meta">👤 Name Picker · 6 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">4</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/psychology-random-decision-making"
+                >The Psychology Behind Random Decision Making — Why It Works</a
+              >
+              <div class="related-meta">🧠 Science · 8 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">5</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/best-uses-random-wheel-spinner"
+                >10 Best Uses of a Random Wheel Spinner You Haven't Thought
+                Of</a
+              >
+              <div class="related-meta">💡 Ideas · 6 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">6</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/spin-wheel-vs-other-random-pickers"
+                >Spin the Wheel vs. Other Random Pickers — Which Should You
+                Use?</a
+              >
+              <div class="related-meta">📊 Comparison · 7 min read</div>
+            </div>
+          </li>
+          <li>
+            <span class="related-num">7</span>
+            <div>
+              <a
+                href="https://spinthewheelsonline.com/blogs/is-spin-wheel-truly-random"
+                >Is a Digital Spin Wheel Truly Random? Here's What the Science
+                Says</a
+              >
+              <div class="related-meta">🔬 Science · 6 min read</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/spin-wheel-icebreakers-onboarding" />
+
+    <script is:inline>
+      // Back to top
+      const btn = document.getElementById("back-top");
+      window.addEventListener("scroll", () => {
+        btn.classList.toggle("visible", window.scrollY > 400);
+      });
+      btn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      // Copy link button
+      document
+        .getElementById("copy-link-btn")
+        .addEventListener("click", function () {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            this.textContent = "✅ Copied!";
+            setTimeout(() => (this.textContent = "🔗 Copy Link"), 2000);
+          });
+        });
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How to Run a Fair School Raffle Using a Spin Wheel</title>
+    <meta name="description" content="Step-by-step guide for teachers &amp; PTA organizers running transparent school raffles, ticket number draws, and weighted prize wheels live for parents." />
+    <link rel="icon" href="/favicon.ico?v=1" />
+    <meta
+      name="keywords"
+      content="school raffle spin wheel, prize draw free tool, school fundraiser random picker, how to run school raffle, fair prize draw 2026, random winner school event"
+    />
+    <meta name="author" content="Harman S., Spin The Wheels Online" />
+    <meta
+      property="og:title"
+      content="School Raffle Draws: A Fair, Transparent Way to Pick Winners (2026)"
+    />
+    <meta
+      property="og:description"
+      content="Ticket setup, weighted entries, and a smooth draw day — a practical, no-nonsense guide to running a fair school raffle with a free spin wheel."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel"
+    />
+    <meta
+      property="og:image"
+      content="https://spinthewheelsonline.com/eng-number-picker-wheel.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel"
+    />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel\",\n      \"name\": \"How to Run a Fair School Raffle Using a Spin Wheel\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#breadcrumbs\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"School Raffle Spin Wheel\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#article\",\n      \"headline\": \"School Raffle Draws: A Fair, Transparent Way to Pick Winners\",\n      \"description\": \"A practical guide to running a fair, transparent school raffle or prize draw with a free spin wheel — ticket setup, weighted entries, and a smooth draw day.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-number-picker-wheel.webp\",\n      \"datePublished\": \"2026-10-15\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can parents verify the school raffle draw was fair?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes — run the draw live in front of an audience, screen-record it, share the wheel link beforehand so the entry list can be checked, and have an independent staff member verify entries before the spin.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How do I stop the same student winning twice?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Turn on the remove-after-spin setting before the first draw so each winning entry is automatically taken out of the wheel.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" /></noscript>
+    <style is:inline>:root{--red:#e8391b;--red-dark:#c42e13;--gold:#f5a623;--dark:#111827;--text:#1f2937;--muted:#6b7280;--bg:#f9f8f5;--border:#e5e7eb;--card:#fff;--sidebar:#f3f2ef;--green:#16a34a;--blue:#1d4ed8;--amber:#d97706}*,::after,::before{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{font-family:Lora,Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:16px;overflow-x:hidden}img{max-width:100%;height:auto;display:block;border-radius:12px}a{color:var(--red);text-decoration:none}a:hover{text-decoration:underline}#read-progress{position:fixed;top:0;left:0;height:3px;background:var(--red);z-index:9999;width:0%;transition:width .1s}#back-top{position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);width:clamp(38px,5vw,46px);height:clamp(38px,5vw,46px);border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;font-size:clamp(16px, 2.5vw, 20px);display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(232,57,27,.4);transition:transform .2s;z-index:100}#back-top.show{display:flex}#back-top:hover{transform:translateY(-3px)}.breadcrumb-bar{background:#fff;border-bottom:1px solid var(--border)}.bc-inner{max-width:1240px;margin:0 auto;padding:9px clamp(14px,4vw,24px);font-family:"DM Sans",sans-serif;font-size:clamp(11.5px, 1.5vw, 13px);color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:2px}.bc-inner a{color:var(--red)}.bc-sep{margin:0 5px;color:#d1d5db}.post-hero{background:linear-gradient(135deg,#1a0a00 0,#7c2d12 45%,#1a1a00 100%);color:#fff;padding:clamp(36px,7vw,64px) clamp(16px,5vw,24px) clamp(32px,6vw,52px);text-align:center;position:relative;overflow:hidden}.post-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 22% 48%,rgba(217,119,6,.28),transparent 55%),radial-gradient(ellipse at 82% 24%,rgba(232,57,27,.2),transparent 50%)}.hero-tag{display:inline-block;background:var(--amber);color:#fff;font-family:"DM Sans",sans-serif;font-size:clamp(10px, 1.3vw, 11.5px);font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:5px clamp(12px,2vw,16px);border-radius:20px;margin-bottom:clamp(12px,2.5vw,20px);position:relative}.post-hero h1{font-family:"Playfair Display",serif;font-size:clamp(22px, 5vw, 48px);font-weight:900;max-width:900px;margin:0 auto clamp(12px,2.5vw,18px);line-height:1.16;position:relative}.post-hero h1 em{color:var(--gold);font-style:normal}.hero-sub{font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2.2vw, 17px);color:rgba(255,255,255,.72);max-width:680px;margin:0 auto clamp(18px,3vw,28px);position:relative}.post-meta{display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,18px);font-family:"DM Sans",sans-serif;font-size:clamp(11.5px, 1.5vw, 13px);color:rgba(255,255,255,.55);flex-wrap:wrap;position:relative}.meta-dot{color:rgba(255,255,255,.25)}.updated-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:clamp(11px, 1.4vw, 12px);font-weight:600;padding:5px 13px;border-radius:20px;margin-top:clamp(10px,2vw,16px);position:relative}.layout{max-width:1240px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(14px,4vw,24px) clamp(40px,6vw,60px);display:grid;grid-template-columns:1fr 330px;gap:clamp(24px,4vw,44px);align-items:start}article{background:var(--card);border-radius:14px;padding:clamp(20px,5vw,44px) clamp(18px,5vw,48px);box-shadow:0 1px 4px rgba(0,0,0,.06);min-width:0}.toc{background:#fafaf8;border:1px solid var(--border);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:clamp(14px,3vw,22px) clamp(16px,3vw,26px);margin-bottom:clamp(24px,4vw,38px)}.toc-title{font-family:"DM Sans",sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:14px;font-weight:600}.toc ol{padding-left:18px;display:flex;flex-direction:column;gap:7px}.toc li{font-family:"DM Sans",sans-serif;font-size:clamp(13px, 1.6vw, 14px)}.toc a{color:var(--red);transition:color .15s}.toc a:hover{color:var(--red-dark)}article h2{font-family:"Playfair Display",serif;font-size:clamp(20px, 3.5vw, 26px);font-weight:800;color:var(--dark);margin:clamp(28px,5vw,44px) 0 clamp(10px,2vw,16px);padding-bottom:10px;border-bottom:2px solid #ede9e0;scroll-margin-top:20px;line-height:1.25}article h3{font-family:"DM Sans",sans-serif;font-size:clamp(16px, 2.5vw, 19px);font-weight:700;color:var(--dark);margin:clamp(18px,3vw,28px) 0 10px}article p{margin-bottom:18px;color:#2d3748;font-size:clamp(15px, 2vw, 16.5px)}article ol,article ul{padding-left:clamp(16px,3vw,22px);margin-bottom:18px;display:flex;flex-direction:column;gap:9px}article li{font-size:clamp(14.5px, 2vw, 16px);color:#2d3748;line-height:1.75}article strong{color:var(--dark)}.ilink{color:var(--red);font-weight:600;border-bottom:1px dashed rgba(232,57,27,.5);transition:border-color .2s}.ilink:hover{border-bottom-style:solid;text-decoration:none}figure.ai-image{margin:30px 0}figure.ai-image figcaption{font-family:"DM Sans",sans-serif;font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}.step-list{list-style:none!important;padding:0!important;counter-reset:steps}.step-list li{counter-increment:steps;display:flex;gap:clamp(12px,2.5vw,16px);padding:clamp(14px,2.5vw,20px) 0;border-bottom:1px solid #ede9e0}.step-list li:last-child{border:none}.step-num{width:clamp(32px,4.5vw,42px);height:clamp(32px,4.5vw,42px);background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"DM Sans",sans-serif;font-weight:700;font-size:clamp(13px, 1.8vw, 16px);flex-shrink:0;margin-top:2px}.step-num::before{content:counter(steps)}.step-body strong{display:block;font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2vw, 16px);font-weight:700;margin-bottom:6px;color:var(--dark)}.step-body p{font-size:clamp(13px, 1.8vw, 14.5px);color:#4b5563;margin:0}.step-body ul{font-size:clamp(13px, 1.8vw, 14.5px);color:#4b5563;margin-top:8px}.idea-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}.idea-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:clamp(14px,2.5vw,20px);transition:transform .2s,box-shadow .2s;border-top:3px solid var(--amber)}.idea-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.09)}.idea-num{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:6px}.idea-card h3,.idea-card h4{font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2vw, 15.5px);font-weight:700;color:var(--dark);margin-bottom:6px;line-height:1.3}.idea-card p{font-size:clamp(13px, 1.8vw, 14px);color:var(--muted);margin:0}.idea-emoji{font-size:clamp(22px, 3.5vw, 28px);margin-bottom:8px}.box{border-radius:10px;padding:clamp(14px,3vw,20px) clamp(16px,3vw,24px);margin:26px 0}.box-tip{background:#fef9ec;border:1px solid #fde68a;border-left:4px solid var(--gold)}.box-info{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--blue)}.box-success{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--green)}.box-amber{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid var(--amber)}.box-warn{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #f97316}.box-label{font-family:"DM Sans",sans-serif;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;gap:6px}.box-tip .box-label{color:#92400e}.box-info .box-label{color:#1e40af}.box-success .box-label{color:#166534}.box-amber .box-label{color:#92400e}.box-warn .box-label{color:#9a3412}.box p{margin:0;font-size:clamp(14px, 2vw, 15.5px)}.box ul{margin:0;font-size:clamp(13.5px, 2vw, 15px);padding-left:18px;display:flex;flex-direction:column;gap:7px}.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2vw,14px);margin:28px 0}.stat-box{background:var(--dark);color:#fff;border-radius:10px;padding:clamp(14px,2.5vw,20px);text-align:center}.stat-num{font-family:"Playfair Display",serif;font-size:clamp(22px, 4vw, 30px);font-weight:800;color:var(--gold);display:block}.stat-label{font-family:"DM Sans",sans-serif;font-size:clamp(11px, 1.4vw, 12.5px);color:rgba(255,255,255,.6);margin-top:4px;display:block}.uc-list{list-style:none!important;padding:0!important}.uc-list li{display:flex;align-items:flex-start;gap:clamp(10px,2vw,14px);padding:clamp(10px,2vw,14px) 0;border-bottom:1px solid var(--border)}.uc-list li:last-child{border:none}.uc-icon{width:clamp(34px,5vw,40px);height:clamp(34px,5vw,40px);border-radius:10px;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(15px, 2.5vw, 18px);flex-shrink:0}.uc-body strong{display:block;font-family:"DM Sans",sans-serif;font-size:clamp(13.5px, 2vw, 15px);font-weight:700;margin-bottom:3px;color:var(--dark)}.uc-body span{font-size:clamp(13px, 1.8vw, 14px);color:var(--muted)}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.07)}.comp-table{width:100%;border-collapse:collapse;font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 14px);min-width:400px}.comp-table th{background:var(--dark);color:#fff;padding:clamp(10px,2vw,13px) clamp(10px,2vw,16px);text-align:left;font-weight:600;white-space:nowrap}.comp-table td{padding:clamp(9px,1.8vw,12px) clamp(10px,2vw,16px);border-bottom:1px solid var(--border);vertical-align:top}.comp-table tr:last-child td{border:none}.comp-table tr:nth-child(2n) td{background:#fafaf8}.article-related{background:linear-gradient(135deg,#fffbeb,#fff7ed);border:1px solid #fde68a;border-radius:12px;padding:clamp(18px,3.5vw,26px) clamp(16px,3.5vw,30px);margin:40px 0}.article-related h3{font-family:"Playfair Display",serif;font-size:clamp(17px, 2.5vw, 20px);margin-bottom:18px;color:var(--dark)}.ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ar-card{background:#fff;border:1px solid var(--border);border-radius:9px;padding:clamp(12px,2vw,14px) clamp(12px,2vw,16px);display:block;transition:box-shadow .2s,transform .2s}.ar-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.1);transform:translateY(-2px);text-decoration:none}.ar-tag{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:5px}.ar-title{font-family:"DM Sans",sans-serif;font-size:clamp(13px, 1.8vw, 14px);font-weight:600;color:var(--dark);line-height:1.4}.ar-read{font-size:12px;color:var(--muted);margin-top:6px;font-family:"DM Sans",sans-serif}.cta-block{background:linear-gradient(135deg,var(--dark) 0,#7c2d12 100%);color:#fff;border-radius:14px;padding:clamp(24px,4.5vw,36px) clamp(20px,4.5vw,40px);text-align:center;margin:40px 0}.cta-block h3{font-family:"Playfair Display",serif;font-size:clamp(19px, 3vw, 24px);margin-bottom:10px;color:#fff}.cta-block p{font-family:"DM Sans",sans-serif;font-size:clamp(13.5px, 1.9vw, 15px);color:rgba(255,255,255,.7);margin-bottom:22px}.cta-btn{display:inline-block;background:var(--red);color:#fff;font-family:"DM Sans",sans-serif;font-weight:700;font-size:clamp(13.5px, 2vw, 15px);padding:clamp(10px,1.8vw,13px) clamp(22px,3.5vw,32px);border-radius:9px;text-decoration:none;transition:background .2s,transform .2s}.cta-btn:hover{background:var(--red-dark);transform:translateY(-2px);text-decoration:none}.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden}.faq-q{font-family:"DM Sans",sans-serif;font-size:clamp(14px, 2vw, 15.5px);font-weight:600;padding:clamp(13px,2.5vw,16px) clamp(14px,2.5vw,20px);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;color:var(--dark);user-select:none;transition:background .15s}.faq-q:hover{background:#fafaf8}.faq-icon{font-size:20px;transition:transform .3s;color:var(--red);flex-shrink:0;margin-left:12px}.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 clamp(14px,2.5vw,20px);font-size:clamp(13.5px, 1.9vw, 15px);color:#4b5563;line-height:1.75}.faq-item.open .faq-a{max-height:500px;padding:4px clamp(14px,2.5vw,20px) 18px}.faq-item.open .faq-icon{transform:rotate(45deg)}.share-row{display:flex;align-items:center;gap:10px;margin-top:32px;flex-wrap:wrap}.share-label{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--muted)}.share-btn{display:inline-flex;align-items:center;gap:7px;padding:clamp(7px,1.2vw,8px) clamp(12px,2vw,16px);border-radius:8px;font-family:"DM Sans",sans-serif;font-size:clamp(12px, 1.5vw, 13px);font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s,transform .2s}.share-btn:hover{opacity:.85;transform:translateY(-1px);text-decoration:none}.s-twitter{background:#1da1f2;color:#fff}.s-copy{background:var(--sidebar);color:var(--dark);border:1px solid var(--border)}.sidebar{display:flex;flex-direction:column;gap:24px;position:sticky;top:84px;min-width:0}.s-card{background:var(--card);border-radius:12px;padding:clamp(16px,3vw,22px) clamp(14px,3vw,20px);box-shadow:0 1px 4px rgba(0,0,0,.06);border:1px solid var(--border)}.s-title{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding-bottom:12px;border-bottom:2px solid var(--border);margin-bottom:16px}.s-cta{background:linear-gradient(135deg,var(--red) 0,#c62828 100%);color:#fff;border-radius:12px;padding:clamp(18px,3vw,24px) clamp(14px,3vw,20px);text-align:center;border:none;box-shadow:0 4px 20px rgba(232,57,27,.3)}.s-cta h3{font-family:"Playfair Display",serif;font-size:clamp(16px, 2.5vw, 18px);margin-bottom:8px}.s-cta p{font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 13.5px);color:rgba(255,255,255,.8);margin-bottom:18px}.s-cta a{display:block;background:#fff;color:var(--red);font-family:"DM Sans",sans-serif;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;text-decoration:none;transition:transform .2s}.s-cta a:hover{transform:scale(1.03);text-decoration:none}.related-post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}.related-post:last-child{border:none;padding-bottom:0}.rp-num{width:32px;height:32px;border-radius:7px;background:var(--sidebar);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--red);flex-shrink:0;margin-top:2px}.rp-body a{font-family:"DM Sans",sans-serif;font-size:clamp(12.5px, 1.8vw, 13.5px);font-weight:600;color:var(--dark);line-height:1.4;display:block;margin-bottom:3px;transition:color .2s}.rp-body a:hover{color:var(--red);text-decoration:none}.rp-meta{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--muted)}@media (max-width:1100px){.layout{grid-template-columns:1fr 280px}}@media (max-width:960px){.layout{grid-template-columns:1fr}.sidebar{position:static}.idea-grid{grid-template-columns:1fr 1fr}.ar-grid{grid-template-columns:1fr 1fr}.stat-strip{grid-template-columns:repeat(3,1fr)}}@media (max-width:680px){article{padding:clamp(18px,4vw,26px) clamp(14px,4vw,20px)}.idea-grid{grid-template-columns:1fr}.ar-grid{grid-template-columns:1fr}.stat-strip{grid-template-columns:1fr 1fr}}@media (max-width:480px){.stat-strip{grid-template-columns:1fr}}@media (min-width:1400px){.bc-inner,.layout{max-width:1380px}.layout{grid-template-columns:1fr 360px}}@media print{#back-top,#read-progress,.cta-block,.share-row{display:none!important}.layout{grid-template-columns:1fr}article{box-shadow:none;padding:0}body{font-size:12pt}a{color:inherit;text-decoration:underline}}</style>
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="School Raffle Draws: A Fair, Transparent Way to Pick Winners (2026)" />
+    <meta name="twitter:description" content="Ticket setup, weighted entries, and a smooth draw day — a practical, no-nonsense guide to running a fair school raffle with a free spin wheel." />
+    <meta name="twitter:image" content="https://spinthewheelsonline.com/eng-number-picker-wheel.webp" />
+      <AnalyticsHead enableAds={true} />
+  </head>
+  <body>
+    <div id="read-progress"></div>
+    <button
+      id="back-top"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/school-raffle-spin-wheel" />
+
+    <div class="breadcrumb-bar">
+      <div class="bc-inner">
+        <a href="/">Home</a><span class="bc-sep">›</span>
+        <a href="/blogs">Blogs</a><span class="bc-sep">›</span>
+        School Raffle Draws: A Fair, Transparent Way to Pick Winners
+      </div>
+    </div>
+
+    <div class="post-hero">
+      <div class="hero-tag">🎟️ School Events · Fundraising · 2026</div>
+      <h1>
+        School Raffle Draws: A <em>Fair, Transparent</em> Way to
+        <em>Pick Winners</em>
+      </h1>
+      <p class="hero-sub">
+        No hat, no hidden shuffling, no "trust us." A step-by-step guide to
+        running a school raffle or prize draw that every student can watch,
+        every parent can verify, and nobody can argue with.
+      </p>
+      <div class="post-meta">
+        <span>⏱ 8 min read</span><span class="meta-dot">·</span>
+        <span>📂 School Events</span>
+      </div>
+      <div class="updated-badge">✅ Last reviewed: November 24, 2026</div>
+    </div>
+
+    <div class="layout">
+      <article>
+        <div class="toc">
+          <div class="toc-title">📋 Table of Contents</div>
+          <ol>
+            <li>
+              <a href="#why-wheel"
+                >Why a Spin Wheel Beats a Hat Full of Tickets</a
+              >
+            </li>
+            <li>
+              <a href="#before"
+                >Three Things to Decide Before You Build the Wheel</a
+              >
+            </li>
+            <li>
+              <a href="#setup">Setting Up Your Raffle Wheel, Step by Step</a>
+            </li>
+            <li>
+              <a href="#weighted">Handling Multi-Ticket and Weighted Entries</a>
+            </li>
+            <li><a href="#draw-day">Running the Live Draw Like an Event</a></li>
+            <li><a href="#multiple-prizes">Managing More Than One Prize</a></li>
+            <li>
+              <a href="#raffle-types"
+                >Six Raffle Formats Schools Actually Use</a
+              >
+            </li>
+            <li>
+              <a href="#tips">Lessons From Schools That Do This Every Term</a>
+            </li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ol>
+        </div>
+
+        <p>
+          There's a particular kind of grumbling that follows almost every
+          school raffle: was the hat shuffled properly? Did the same three
+          families always seem to win? Is there any record of who actually
+          entered? Most of the time nothing dishonest happened — but a draw
+          nobody could watch closely enough to trust leaves room for doubt, and
+          doubt is corrosive to something that's supposed to be a fun, community
+          moment.
+        </p>
+        <p>
+          A free spin wheel, projected on a screen for everyone to see, removes
+          that doubt almost entirely. It's visible from every seat in the hall.
+          It's provably random rather than "probably fine." It builds genuine
+          suspense as it slows down. And it costs nothing to run — no software,
+          no printing, no login.
+        </p>
+        <p>
+          This guide walks through the whole process — planning, setup, the live
+          draw, and handling multiple prizes — so your next raffle is both fun
+          to watch and impossible to argue with.
+        </p>
+
+        <figure class="ai-image">
+          <img
+            src="/eng-number-picker-wheel.webp"
+            alt="Illustration of a school hall with students watching a large colorful spinning prize wheel projected on a screen, festive raffle atmosphere"
+            loading="lazy"
+            width="1200"
+            height="675"
+          />
+          <figcaption>
+            Projecting the raffle wheel live lets students and parents watch every ticket spin unfold together.
+          </figcaption>
+        </figure>
+
+        <div class="box box-tip">
+          <div class="box-label">💡 New to spin wheel tools?</div>
+          <p>
+            If you haven't used one before, our
+            <a href="/blogs/spin-the-wheel-tool" class="ilink"
+              >quick guide to spin wheel tools</a
+            >
+            covers the basics of setup and randomness in under five minutes —
+            worth a skim before your first school event.
+          </p>
+        </div>
+
+        <h2 id="why-wheel">1. Why a Spin Wheel Beats a Hat Full of Tickets</h2>
+        <p>
+          A hat draw has been the default for decades, but it has real,
+          practical limits: only the person holding the hat can see the tickets
+          get mixed, most of the room is too far away to actually watch anything
+          happen, and there's no way to replay the moment if anyone questions it
+          later.
+        </p>
+        <p>A spin wheel fixes each of those at once:</p>
+
+        <ul class="uc-list">
+          <li>
+            <div class="uc-icon">👁️</div>
+            <div class="uc-body">
+              <strong>The whole room can see it</strong
+              ><span
+                >Project it on a hall screen and every student watches the same
+                draw happen in real time — nobody's craning their neck to see a
+                hand in a bag.</span
+              >
+            </div>
+          </li>
+          <li>
+            <div class="uc-icon">🔒</div>
+            <div class="uc-body">
+              <strong>Nobody can tilt the result</strong
+              ><span
+                >The outcome is set by the browser the instant the spin starts,
+                before the animation even plays — the person clicking has no way
+                to influence where it lands. More on the mechanics in
+                <a href="/blogs/is-spin-wheel-truly-random" class="ilink"
+                  >is a spin wheel truly random</a
+                >.</span
+              >
+            </div>
+          </li>
+          <li>
+            <div class="uc-icon">🎊</div>
+            <div class="uc-body">
+              <strong>It's genuinely exciting to watch</strong
+              ><span
+                >The slowing tick as the wheel decelerates builds real suspense
+                — a quiet, held-breath moment a hand reaching into a hat just
+                doesn't produce.</span
+              >
+            </div>
+          </li>
+          <li>
+            <div class="uc-icon">📋</div>
+            <div class="uc-body">
+              <strong>You can record it and prove it</strong
+              ><span
+                >Screen-record the draw and you've got a permanent record anyone
+                can watch afterward — parents who missed it, students who want a
+                replay, or anyone who has a question later.</span
+              >
+            </div>
+          </li>
+          <li>
+            <div class="uc-icon">💰</div>
+            <div class="uc-body">
+              <strong>Costs nothing to run</strong
+              ><span
+                >No printed tickets, no box, no bag. Just a browser and your
+                list of entrants — every pound the raffle raises stays in the
+                fundraiser.</span
+              >
+            </div>
+          </li>
+        </ul>
+
+        <h2 id="before">
+          2. Three Things to Decide Before You Build the Wheel
+        </h2>
+        <p>Get these settled first and the setup itself takes minutes.</p>
+
+        <h3>Who's entering, and how?</h3>
+        <p>
+          Decide whether it's open to the whole school, one year group, or
+          families too. Then decide how entries are earned — bought tickets,
+          merit points, event participation, or simply being present. This
+          decides how you'll build the wheel.
+        </p>
+        <h3>What are the prizes, and in what order?</h3>
+        <p>
+          List prizes from smallest to biggest. Save the headline prize for last
+          — it's what keeps the room's attention through every earlier spin.
+        </p>
+        <h3>Does everyone get equal odds?</h3>
+        <p>
+          A simple draw gives everyone one entry. A fundraising raffle with
+          multiple tickets per family needs weighted entries instead — covered
+          in Section 4.
+        </p>
+
+        <div class="box box-warn">
+          <div class="box-label">⚠️ A note on regulations</div>
+          <p>
+            A raffle that involves selling tickets can fall under your country's
+            gambling or lottery regulations — in the UK, for instance, that's
+            typically the Gambling Act 2005. Check with your school's
+            administration before running a paid-ticket raffle. This guide
+            covers the draw mechanism, not local compliance.
+          </p>
+        </div>
+
+        <h2 id="setup">3. Setting Up Your Raffle Wheel, Step by Step</h2>
+
+        <ul class="step-list">
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Open the wheel on your draw device</strong>
+              <p>
+                Go to <a href="/" class="ilink">spinthewheelsonline.com</a> on
+                whichever laptop will be connected to the projector on draw day
+                — building and drawing on the same device saves you rebuilding
+                it later.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Add every entrant's name or ticket number</strong>
+              <p>
+                Type or paste each name into the wheel. For numbered raffles,
+                enter ticket numbers instead — the wheel works the same either
+                way.
+              </p>
+              <ul>
+                <li>Small draws: type names directly</li>
+                <li>Larger draws: paste in bulk from a spreadsheet column</li>
+                <li>
+                  Double-check the count matches your confirmed entrant list
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Turn on "remove after spin" for multiple prizes</strong>
+              <p>
+                This drops each winner off the wheel automatically once they're
+                drawn, so nobody can win twice in the same session.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Bookmark or save the wheel URL</strong>
+              <p>
+                This preserves your whole setup — names, settings, everything —
+                so it reloads exactly as built, with nothing to re-enter on the
+                day.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Test the projector display beforehand</strong>
+              <p>
+                Check fullscreen mode looks right on your hall screen, and
+                confirm the ticking sound is audible — it's a big part of what
+                makes the draw feel exciting. Do this the day before, not five
+                minutes before.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Set up screen recording (worth doing)</strong>
+              <p>
+                Windows: Win + G. Mac: Cmd + Shift + 5. Start recording before
+                you open the wheel so the full entry list is captured too.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <h2 id="weighted">4. Handling Multi-Ticket and Weighted Entries</h2>
+        <p>
+          When families buy more than one ticket, each one should count as an
+          equal extra chance. The fix is simple:
+          <strong>enter a name once for every ticket they hold.</strong>
+        </p>
+
+        <div class="box box-amber">
+          <div class="box-label">📋 Example</div>
+          <p>
+            The Ahmed family bought 5 tickets, the Ortiz family bought 1. Add
+            "Ahmed" five times and "Ortiz" once. The odds now match the tickets
+            sold exactly — the wheel's randomness handles the rest.
+          </p>
+        </div>
+
+        <h3>Doing this at scale</h3>
+        <p>
+          For a large raffle, it's faster to enter ticket numbers instead of
+          names. If you sold tickets 001–300, add all 300 numbers to the wheel,
+          then match the winning number to your sales ledger. No repeated typing
+          needed.
+        </p>
+
+        <div class="table-scroll">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Raffle Type</th>
+                <th>Wheel Entry Method</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🎯 Equal chance</td>
+                <td>One name per student</td>
+                <td>Classroom draws, attendance prizes, merit draws</td>
+              </tr>
+              <tr>
+                <td>🎟️ Multi-ticket, named</td>
+                <td>Weight set via + button (1x–20x) or repeated entries</td>
+                <td>Small named-ticket fundraisers</td>
+              </tr>
+              <tr>
+                <td>🔢 Numbered tickets</td>
+                <td>All sold numbers entered</td>
+                <td>Fetes, large fundraising raffles</td>
+              </tr>
+              <tr>
+                <td>⭐ Merit-weighted</td>
+                <td>Scaled with + button per merit tier</td>
+                <td>End-of-term reward draws</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="draw-day">5. Running the Live Draw Like an Event</h2>
+
+        <ul class="step-list">
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Show the full entry list first</strong>
+              <p>
+                Scroll through the wheel before the first spin so everyone can
+                see all entries are there. State the total count out loud for
+                numbered raffles.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Let a student or parent press spin</strong>
+              <p>
+                Someone outside the organising team clicking the button removes
+                any perception that the operator could be timing the result —
+                and gives that person a nice moment in front of their peers.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Don't talk over the ticking</strong>
+              <p>
+                The slowing wheel is doing the engagement work on its own. Let
+                the room sit with it.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Announce the winner and give them a moment</strong>
+              <p>
+                Read the name or number clearly, repeat it, and pause. Don't
+                rush straight to the next spin.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>Show the removal, then move on</strong>
+              <p>
+                With remove-after-spin on, point out that the winning name has
+                disappeared before spinning again — visible proof no one wins
+                twice.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <figure class="ai-image">
+          <img
+            src="/bulk-names.webp"
+            alt="A student excitedly pointing at a prize wheel that has just stopped spinning on a school hall screen, classmates cheering in the background, warm celebratory illustration style"
+            loading="lazy"
+            width="1200"
+            height="675"
+          />
+          <figcaption>
+            Enabling remove-after-spin prevents duplicate wins cleanly across multi-prize raffle rounds.
+          </figcaption>
+        </figure>
+
+        <h2 id="multiple-prizes">6. Managing More Than One Prize</h2>
+
+        <h3>Option A: One wheel, several spins (simplest)</h3>
+        <p>
+          Turn on remove-after-spin and draw smallest prize to biggest from the
+          same wheel. The pool shrinks with each spin, which naturally raises
+          the tension as you approach the final prize.
+        </p>
+        <h3>Option B: A separate wheel per prize group</h3>
+        <p>
+          Useful if different year groups have different prize pools — build and
+          bookmark a wheel for each so you can switch between them without
+          rebuilding anything mid-event.
+        </p>
+        <h3>Option C: Name wheel + prize wheel combo</h3>
+        <p>
+          Spin one wheel to pick a student, then a second to assign them a
+          random prize from a roughly equal set. Works well at classroom level —
+          see our
+          <a href="/blogs/best-uses-random-wheel-spinner" class="ilink"
+            >guide to creative uses of a random wheel</a
+          >
+          for more on this format.
+        </p>
+
+        <h2 id="raffle-types">7. Six Raffle Formats Schools Actually Use</h2>
+
+        <div class="idea-grid">
+          <div class="idea-card">
+            <div class="idea-emoji">📚</div>
+            <div class="idea-num">Format 01</div>
+            <h3>Reading Challenge Draw</h3>
+            <p>
+              One entry per book read during a reading month — draw held in
+              assembly, entries visibly tied to effort.
+            </p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-emoji">⭐</div>
+            <div class="idea-num">Format 02</div>
+            <h3>Merit Point Term Draw</h3>
+            <p>
+              Every house or merit point earned that term becomes an entry — a
+              motivating milestone the whole term builds toward.
+            </p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-emoji">🎪</div>
+            <div class="idea-num">Format 03</div>
+            <h3>Summer Fete Grand Draw</h3>
+            <p>
+              Numbered tickets sold all day, drawn live on stage at closing — no
+              personal data needed, just ticket numbers.
+            </p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-emoji">🏆</div>
+            <div class="idea-num">Format 04</div>
+            <h3>Sports Day Participation Draw</h3>
+            <p>
+              Every participant gets one entry regardless of placing — rewards
+              showing up, not just winning.
+            </p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-emoji">🎨</div>
+            <div class="idea-num">Format 05</div>
+            <h3>Competition "Highly Commended" Draw</h3>
+            <p>
+              A separate wheel among non-winning entries gives everyone who
+              entered a genuine second shot.
+            </p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-emoji">🍰</div>
+            <div class="idea-num">Format 06</div>
+            <h3>Weekly Classroom Reward Draw</h3>
+            <p>
+              Replaces a teacher's manual pick with a wheel among anyone who
+              earned a commendation that week — fair, fast, no favouritism
+              disputes.
+            </p>
+          </div>
+        </div>
+
+        <div class="article-related">
+          <h3>🔗 Related Guides</h3>
+          <div class="ar-grid">
+            <a href="/blogs/how-to-run-online-giveaway" class="ar-card"
+              ><div class="ar-tag">🎁 Giveaways</div>
+              <div class="ar-title">
+                How to Pick a Random Winner for Online Giveaways
+              </div>
+              <div class="ar-read">6 min read →</div></a
+            >
+            <a href="/blogs/spin-wheel-classroom-activities" class="ar-card"
+              ><div class="ar-tag">🏫 Education</div>
+              <div class="ar-title">
+                How to Use a Spin Wheel for Classroom Activities
+              </div>
+              <div class="ar-read">10 min read →</div></a
+            >
+            <a href="/blogs/is-spin-wheel-truly-random" class="ar-card"
+              ><div class="ar-tag">🔬 Science</div>
+              <div class="ar-title">Is a Digital Spin Wheel Truly Random?</div>
+              <div class="ar-read">6 min read →</div></a
+            >
+            <a href="/blogs/psychology-random-decision-making" class="ar-card"
+              ><div class="ar-tag">🧠 Psychology</div>
+              <div class="ar-title">Why Random Decisions Feel Fair</div>
+              <div class="ar-read">9 min read →</div></a
+            >
+          </div>
+        </div>
+
+        <h2 id="tips">8. Lessons From Schools That Do This Every Term</h2>
+        <ul>
+          <li>
+            <strong>Verify your entry count before the draw.</strong> Count
+            confirmed entrants, count wheel entries, make sure they match, and
+            say the total out loud before spinning.
+          </li>
+          <li>
+            <strong
+              >Use first name + initial for anything recorded or shared.</strong
+            >
+            "Emma T." rather than a full name protects privacy in a video or
+            social post while staying identifiable in the room.
+          </li>
+          <li>
+            <strong>Only enter ticket numbers that were actually sold.</strong>
+            Not your full print run — keep a sold-ticket ledger to check the
+            winning number against.
+          </li>
+          <li>
+            <strong>Have an independent colleague check the entry list.</strong>
+            A two-minute check against the original register heads off any later
+            dispute.
+          </li>
+          <li>
+            <strong>Tell students the rules in advance.</strong> A quick
+            assembly mention the week before builds anticipation and sets
+            expectations.
+          </li>
+          <li>
+            <strong>Record every draw as a habit.</strong> "Here's the video"
+            beats "trust us" every time a question comes up later.
+          </li>
+          <li>
+            <strong>Build and test the wheel the night before.</strong> Not five
+            minutes before assembly — technical hiccups in front of 300 students
+            are avoidable.
+          </li>
+        </ul>
+
+        <div class="cta-block">
+          <h3>🎡 Ready to Build Your Raffle Wheel?</h3>
+          <p>
+            Set it up in under two minutes — no account, no cost, no download.
+            Works on any laptop, tablet, or classroom screen.
+          </p>
+          <a href="/" class="cta-btn">Open Free Wheel Spinner →</a>
+        </div>
+
+        <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["raffle-wheel","prize-wheel","bingo-number-generator-1-75","random-number-1-50","randomizer-number-1-100","classroom-name-picker"]} ctaCategorySlug={"giveaways-and-events"} ctaCategoryName={"Giveaways & Events"} />
+
+        <h2 id="faq">9. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can parents verify the draw was fair?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">
+            Yes — run it live in front of an audience, record it, share the
+            wheel link beforehand so the entry list can be checked
+            independently, and have a staff member not involved in organising
+            verify the entries first. Any combination of these gives parents
+            something concrete rather than just reassurance.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What stops the same student winning twice?<span class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Turn on "remove after spin" before your first draw. Each winning
+            entry is automatically taken off the wheel the moment it's drawn, so
+            a repeat win in the same session isn't possible. Show the audience
+            the name disappearing before you spin again.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How many entries can the wheel hold?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">
+            Up to 500 entries load cleanly per wheel—plenty for a class of 25 or a mid-sized PTA ticket pool. If a whole-school fundraiser sells more than 500 tickets, use Bulk Paste in numbered 500-ticket batches (first spin selects the batch, second spin picks the winning ticket inside that batch) to keep every slice crisp and legible.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does clicking the spin button affect the result?<span
+              class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            No. The outcome is set the instant the spin starts, before the
+            animation plays — the timing of the click makes no difference.
+            That's exactly why it's worth letting a student or parent do the
+            clicking: it visibly proves the operator has no control over where
+            it lands.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What if a winning student is absent on draw day?<span
+              class="faq-icon"
+              >+</span
+            >
+          </div>
+          <div class="faq-a">
+            Decide this before the draw and announce it in advance — either
+            their entry stays in and they collect the prize on return, or absent
+            students are excluded from that day's draw. Either rule is fine as
+            long as it's set and communicated ahead of time, not decided on the
+            spot.
+          </div>
+        </div>
+
+        <h2 id="conclusion">10. Conclusion</h2>
+        <p>
+          A school raffle should be simple to run and fun to watch — and the
+          draw itself is where that either holds together or falls apart. A
+          projected spin wheel makes the process visible to everyone, keeps the
+          result provably random, and leaves you with a recording if anyone ever
+          asks how it went. The hat-and-tickets method got schools this far, but
+          once a hall full of students has watched a wheel tick down to a
+          winner, it's hard to go back.
+        </p>
+        <p>
+          Build your wheel at
+          <a href="/" class="ilink">spinthewheelsonline.com</a>
+          before your next event — it takes two minutes, costs nothing, and
+          makes draw day something students actually look forward to.
+        </p>
+
+        <div class="box box-success">
+          <div class="box-label">✅ Draw Day Checklist</div>
+          <ul>
+            <li>Entries verified against your confirmed entrant list</li>
+            <li>"Remove after spin" enabled for multi-prize draws</li>
+            <li>Wheel bookmarked and loaded on the draw device</li>
+            <li>Projector display tested, fullscreen confirmed</li>
+            <li>Audio routed to hall speakers</li>
+            <li>Screen recording ready before the wheel opens</li>
+            <li>Independent staff member has checked the entry list</li>
+            <li>Student or parent lined up to click spin</li>
+            <li>Prizes ordered smallest to biggest</li>
+          </ul>
+        </div>
+
+
+        <BlogAuthorBox />
+
+        <div class="share-row">
+          <span class="share-label">Found this helpful? Share it:</span>
+          <a
+            href="https://twitter.com/intent/tweet?text=School+Raffle+Draws%3A+A+Fair%2C+Transparent+Way+to+Pick+Winners&url=https://spinthewheelsonline.com/blogs/school-raffle-spin-wheel"
+            target="_blank"
+            class="share-btn s-twitter"
+            >🐦 Twitter</a
+          >
+          <button class="share-btn s-copy" onclick="copyLink()">
+            🔗 Copy Link
+          </button>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="s-cta">
+          <h3>🎡 Build Your Raffle Wheel</h3>
+          <p>
+            Set up your school prize draw in under 2 minutes. Free forever — no
+            account, no download.
+          </p>
+          <a href="/">Open Free Wheel Spinner →</a>
+        </div>
+
+        <div class="s-card">
+          <div class="s-title">📚 Related Articles</div>
+          <div class="related-post">
+            <div class="rp-num">1</div>
+            <div class="rp-body">
+              <a href="/blogs/how-to-run-online-giveaway"
+                >How to Pick a Fair Random Winner for Giveaways</a
+              >
+              <div class="rp-meta">🎁 Giveaways · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">2</div>
+            <div class="rp-body">
+              <a href="/blogs/spin-wheel-classroom-activities"
+                >Spin Wheel for Classroom Activities</a
+              >
+              <div class="rp-meta">🏫 Education · 10 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">3</div>
+            <div class="rp-body">
+              <a href="/blogs/is-spin-wheel-truly-random"
+                >Is a Digital Spin Wheel Truly Random?</a
+              >
+              <div class="rp-meta">🔬 Science · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">4</div>
+            <div class="rp-body">
+              <a href="/blogs/spin-the-wheel-tool"
+                >What Is a Spin the Wheel Tool?</a
+              >
+              <div class="rp-meta">📖 Guide · 8 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">5</div>
+            <div class="rp-body">
+              <a href="/blogs/psychology-random-decision-making"
+                >Why Random Decisions Feel Fair</a
+              >
+              <div class="rp-meta">🧠 Science · 9 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">6</div>
+            <div class="rp-body">
+              <a href="/blogs/best-uses-random-wheel-spinner"
+                >10 Best Uses of a Random Wheel Spinner</a
+              >
+              <div class="rp-meta">💡 Ideas · 6 min read</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">7</div>
+            <div class="rp-body">
+              <a href="/blogs/spin-wheel-vs-other-random-pickers"
+                >Spin Wheel vs. Other Random Pickers</a
+              >
+              <div class="rp-meta">📊 Comparison · 7 min read</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <div class="s-title">🔗 More Free Tools</div>
+          <div class="related-post">
+            <div class="rp-num">🎡</div>
+            <div class="rp-body">
+              <a href="/">Spin the Wheel</a>
+              <div class="rp-meta">Custom random wheel spinner</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🪙</div>
+            <div class="rp-body">
+              <a href="/yes-no-wheel">Yes or No Wheel</a>
+              <div class="rp-meta">Instant binary decisions</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🔢</div>
+            <div class="rp-body">
+              <a href="/number-picker-wheel">Number Picker Wheel</a>
+              <div class="rp-meta">Random number generator</div>
+            </div>
+          </div>
+          <div class="related-post">
+            <div class="rp-num">🔤</div>
+            <div class="rp-body">
+              <a href="/letter-picker-wheel">Letter Picker Wheel</a>
+              <div class="rp-meta">Random letter selector</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/school-raffle-spin-wheel" />
+
+    <script is:inline>
+      function toggleFaq(el) {
+        var item = el.parentElement,
+          wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(function (i) {
+          i.classList.remove("open");
+        });
+        if (!wasOpen) item.classList.add("open");
+      }
+      function copyLink() {
+        var btn = event.currentTarget;
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(function () {
+            btn.textContent = "✅ Copied!";
+            setTimeout(function () {
+              btn.textContent = "🔗 Copy Link";
+            }, 2500);
+          })
+          .catch(function () {
+            btn.textContent = "❌ Try again";
+            setTimeout(function () {
+              btn.textContent = "🔗 Copy Link";
+            }, 2000);
+          });
+      }
+      window.addEventListener("scroll", function () {
+        var bar = document.getElementById("read-progress"),
+          scrollTop = window.scrollY,
+          docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width =
+          (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+        document
+          .getElementById("back-top")
+          .classList.toggle("show", scrollTop > 500);
+      });
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var id = a.getAttribute("href").slice(1),
+            target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            window.scrollTo({
+              top: target.getBoundingClientRect().top + window.scrollY - 20,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

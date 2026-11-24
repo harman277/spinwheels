@@ -1,0 +1,68 @@
+# Cloudflare Pages Static Edge 301 Redirects (Zero Cold Starts)
+# Canonical /en deduplication
+/en / 301
+/en/ / 301
+/en/tools /tools 301
+/en/privacy /privacy-policy 301
+/en/terms /terms-and-conditions 301
+/privacy /privacy-policy 301
+/terms /terms-and-conditions 301
+
+# Canonical /en/:slug -> /:slug
+/en/:slug /:slug 301
+
+# All 46 Canonical Search Aliases & Legacy Clone Consolidation
+/wheelofnames /wheel-of-names 301
+/wheel-of-names-online /wheel-of-names 301
+/random-name-picker /wheel-of-names 301
+/name-wheel /wheel-of-names 301
+/pickerwheel /picker-wheel 301
+/random-picker-wheel /picker-wheel 301
+/spinner-wheel /picker-wheel 301
+/random-wheel /picker-wheel 301
+/decision-roulette /decision-wheel 301
+/giveaway-wheel /raffle-wheel 301
+/prize-spinner /prize-wheel 301
+/what-to-eat-wheel /dinner-wheel 301
+/food-wheel /dinner-wheel 301
+/movie-picker-wheel /what-to-watch-wheel 301
+/word-picker-wheel /random-word-generator 301
+/twister-wheel /twister-spinner 301
+/dice-wheel /dice-roller-wheel 301
+/who-does-the-chores /chore-wheel 301
+/hogwarts-house-wheel /harry-potter-sorting-hat-wheel 301
+/classroom-student-picker /classroom-name-picker 301
+/giveaway-winner-picker /raffle-wheel 301
+/pokemon-picker-wheel /random-pokemon-generator 301
+/random-number-picker /number-picker-wheel 301
+/bingo-wheel /bingo-number-generator-1-75 301
+/bingo-caller /bingo-number-generator-1-75 301
+/draft-order-wheel /fantasy-draft-order-wheel 301
+/white-elephant-wheel /gift-exchange-wheel 301
+/fast-food-spinner /fast-food-wheel 301
+/restaurant-wheel /restaurant-picker-wheel 301
+/coffee-wheel /drink-picker-wheel 301
+/would-you-rather-spinner /would-you-rather-wheel 301
+/never-have-i-ever-spinner /never-have-i-ever-wheel 301
+/charades-wheel /charades-word-wheel 301
+/nba-teams-wheel /nba-team-wheel 301
+/random-nba-team-generator /nba-team-wheel 301
+/mlb-teams-wheel /mlb-team-wheel 301
+/random-mlb-team-generator /mlb-team-wheel 301
+/premier-league-wheel /premier-league-team-wheel 301
+/icebreaker-wheel /icebreaker-question-wheel 301
+/standup-wheel /presentation-order-wheel 301
+/d20-wheel /random-number-1-20 301
+/nba-teams-spin-the-wheel /nba-team-wheel 301
+/dandy's-world-wheel-spinner /dandy-world-wheel-spinner 301
+/country-wheel /country-picker-wheel 301
+/wheel-of-countries /country-picker-wheel 301
+/random-country-wheel /country-picker-wheel 301
+/random-country-generator /country-picker-wheel 301
+/planet-wheel /planet-picker-wheel 301
+/pick-a-planet /planet-picker-wheel 301
+/month-wheel /month-picker-wheel 301
+/animal-wheel /animal-picker-wheel 301
+/flag-wheel /random-flag-generator 301
+/zodiac-wheel /zodiac-picker-wheel 301
+/emoji-name-picker /emoji-picker-wheel 301

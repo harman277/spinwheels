@@ -1,0 +1,1124 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../../data/i18n.js";
+import { getChrome } from "../../data/i18n-chrome.js";
+import { ASSETS } from "../../config/site";
+import AnalyticsHead from "../../components/AnalyticsHead.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import WheelModals from "../../components/WheelModals.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import BlogWheelCta from "../../components/BlogWheelCta.astro";
+import BlogAuthorBox from "../../components/BlogAuthorBox.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Night Roulette: 20 Spin Wheel Ideas for Couples</title>
+    <meta name="description" content="Discover 20 fun date night wheel ideas for couples—restaurants, cozy nights in, movie picks, music vibes, and playful prompts with quick setup rules." />
+    <meta
+      name="keywords"
+      content="date night wheel, couples date roulette, date night spin wheel ideas, romantic activity spinner, stay at home date wheel"
+    />
+    <link
+      rel="canonical"
+      href="https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Spin The Wheels Online" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Date Night Wheel: 20 Spin Wheel Ideas for Couples"
+    />
+    <meta
+      property="og:description"
+      content="20 date night wheel setups for couples, with the exact entries to add and simple ground rules that keep it fun."
+    />
+    <meta
+      property="og:url"
+      content="https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples"
+    />
+    <meta
+      property="og:image"
+      content="https://spinthewheelsonline.com/eng-movie-picker-wheel.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2026-08-16" />
+    <meta property="article:modified_time" content="2026-11-24T00:00:00+00:00" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Date Night Wheel: 20 Spin Wheel Ideas for Couples"
+    />
+    <meta
+      name="twitter:description"
+      content="20 date night wheel setups for couples, with the exact entries to add."
+    />
+    <meta
+      name="twitter:image"
+      content="https://spinthewheelsonline.com/eng-movie-picker-wheel.webp"
+    />
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;600;700&display=swap" /></noscript>
+
+    <!-- Single JSON-LD graph. FAQ text matches the visible FAQ exactly. -->
+    <script type="application/ld+json" set:html={"{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://spinthewheelsonline.com/#organization\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"logo\": {\n        \"@type\": \"ImageObject\",\n        \"url\": \"https://spinthewheelsonline.com/logo-512x512.png\",\n        \"width\": 512,\n        \"height\": 512\n      },\n      \"contactPoint\": {\n        \"@type\": \"ContactPoint\",\n        \"contactType\": \"customer support\",\n        \"email\": \"spinthewheelsonline@gmail.com\",\n        \"url\": \"https://spinthewheelsonline.com/contact\"\n      }\n    },\n    {\n      \"@type\": \"Person\",\n      \"@id\": \"https://spinthewheelsonline.com/#harman\",\n      \"name\": \"Harman S.\",\n      \"jobTitle\": \"Founder & Lead Engineer\",\n      \"url\": \"https://spinthewheelsonline.com/about\",\n      \"worksFor\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://spinthewheelsonline.com/#website\",\n      \"name\": \"Spin The Wheels Online\",\n      \"url\": \"https://spinthewheelsonline.com\",\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#webpage\",\n      \"url\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples\",\n      \"name\": \"Date Night Roulette: 20 Spin Wheel Ideas for Couples\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://spinthewheelsonline.com/#website\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"breadcrumb\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#breadcrumbs\"\n      },\n      \"speakable\": {\n        \"@type\": \"SpeakableSpecification\",\n        \"cssSelector\": [\n          \"h1\",\n          \".quick-answer\"\n        ]\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#breadcrumbs\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://spinthewheelsonline.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Blog\",\n          \"item\": \"https://spinthewheelsonline.com/blogs\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Date Night Wheel Ideas for Couples\",\n          \"item\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"BlogPosting\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#article\",\n      \"headline\": \"Date Night Wheel: 20 Spin Wheel Ideas for Couples\",\n      \"description\": \"20 date night wheel setups for couples, with the exact entries to add and simple ground rules that keep it fun.\",\n      \"image\": \"https://spinthewheelsonline.com/eng-movie-picker-wheel.webp\",\n      \"datePublished\": \"2026-08-16\",\n      \"dateModified\": \"2026-11-24\",\n      \"inLanguage\": \"en\",\n      \"author\": {\n        \"@id\": \"https://spinthewheelsonline.com/#harman\"\n      },\n      \"publisher\": {\n        \"@id\": \"https://spinthewheelsonline.com/#organization\"\n      },\n      \"mainEntityOfPage\": {\n        \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#webpage\"\n      }\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://spinthewheelsonline.com/blogs/date-night-roulette-spin-wheel-ideas-couples#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How many entries should I put on a date night wheel?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"For most date night decisions, 6 to 12 entries works best: enough variety to feel worth spinning, few enough that every option is one you both want. Bucket list and habit wheels can hold 20 to 30 entries.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"What if one of us doesn't like what the wheel picks?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Only add options you are both genuinely fine with. If you want an escape hatch, agree on one veto each per session before spinning, and treat the spin after a veto as final.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can we use separate wheels for different decisions in one night?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Build one wheel for the activity and another for food, save both as bookmarks, and spin each in turn. Every wheel you build has its own shareable link.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can we use a spin wheel for a long-distance relationship?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. Share the wheel link over a video call and spin together. Good entries include a movie to watch in sync, a recipe to cook on camera, an online game, or a conversation prompt.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Are there other wheels that work well for couples?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes. A Yes or No wheel handles quick go or no-go calls, a coin flip wheel settles a tie between two options, and a number picker can decide who goes first or who pays.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Do we need an account to build a date night wheel?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"No. You can build, spin and share a wheel by link without creating an account.\"\n          }\n        }\n      ]\n    }\n  ]\n}"} />
+
+    <style is:inline>:root{--rose:#d6304c;--rose-light:#fce8eb;--rose-mid:#f5c0c9;--plum:#6b2d5e;--plum-light:#f3e8f1;--gold:#8a6212;--gold-light:#fdf3e3;--ink:#1a1523;--ink-soft:#3d2e4a;--muted:#6b5f75;--surface:#fdfafc;--card:#fff;--border:#eedde6;--border-soft:#f5eaf0;--radius-sm:8px;--radius:14px;--radius-lg:22px;--shadow-sm:0 1px 4px rgba(107, 45, 94, 0.07);--shadow:0 4px 18px rgba(107, 45, 94, 0.1);--max-w:780px;--font-body:"DM Sans",system-ui,sans-serif;--font-head:"Playfair Display",Georgia,serif}*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--surface);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}a{color:var(--rose);text-decoration:none}a:hover{color:var(--plum);text-decoration:underline}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--plum);outline-offset:2px}.callout a,.faq-a a,li a,p a{font-weight:600;text-decoration:underline;text-underline-offset:3px}.breadcrumb{max-width:var(--max-w);margin:20px auto 0;padding:0 24px;font-size:.8rem;color:var(--muted)}.breadcrumb ol{list-style:none;display:flex;gap:6px;flex-wrap:wrap}.breadcrumb li+li::before{content:"›";margin-right:6px}.breadcrumb a{color:var(--muted);font-weight:400;text-decoration:none}main{max-width:var(--max-w);margin:0 auto;padding:28px 24px 80px}.hero-badge{display:inline-block;background:var(--rose-light);color:var(--rose);border:1px solid var(--rose-mid);border-radius:50px;font-size:.75rem;font-weight:700;padding:4px 12px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}h1{font-family:var(--font-head);font-size:clamp(2rem, 5vw, 2.8rem);font-weight:700;line-height:1.18;margin-bottom:20px;letter-spacing:-.02em}h1 em{color:var(--rose);font-style:italic}.hero-intro{font-size:1.08rem;color:var(--ink-soft);border-left:3px solid var(--rose);padding-left:16px;margin-bottom:22px}.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.82rem;color:var(--muted);margin-bottom:26px;padding-bottom:22px;border-bottom:1px solid var(--border-soft)}figure.article-figure{margin:8px 0 28px}.article-img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow)}figcaption{font-size:.8rem;color:var(--muted);margin-top:8px;text-align:center}.quick-answer{background:var(--gold-light);border-left:4px solid var(--gold);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:26px}.callout-title,.quick-answer .label{font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;color:var(--gold)}.quick-answer p{margin:0;font-size:.97rem}.toc{background:var(--plum-light);border:1px solid #dbc7d6;border-radius:var(--radius);padding:20px 24px;margin:28px 0}.toc summary{font-weight:700;font-size:.85rem;color:var(--plum);text-transform:uppercase;letter-spacing:.07em;cursor:pointer}.toc ol{padding-left:18px;margin-top:12px}.toc li{margin-bottom:5px;font-size:.92rem}.toc a{color:var(--plum);font-weight:600}h2{font-family:var(--font-head);font-size:clamp(1.45rem, 3.5vw, 1.85rem);font-weight:700;margin:50px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--rose-light);line-height:1.25;scroll-margin-top:76px}h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;color:var(--ink);margin:0 0 10px}p{margin-bottom:16px}ol,ul{padding-left:22px;margin-bottom:16px}li{margin-bottom:7px}strong{font-weight:700}.idea-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin:22px 0;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}.idea-card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--rose)}.idea-num{font-size:.72rem;font-weight:700;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}.badge{background:var(--rose-light);border-radius:50px;padding:2px 10px;font-size:.7rem}.wheel-entries{background:var(--rose-light);border-radius:var(--radius-sm);padding:12px 14px;margin-top:12px;font-size:.85rem;color:var(--ink-soft)}.wheel-entries strong{color:var(--plum);display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}.entry-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;list-style:none;padding:0}.entry-tags li{background:#fff;border:1px solid var(--rose-mid);border-radius:50px;padding:2px 10px;font-size:.78rem;color:var(--plum);font-weight:600;margin:0}.idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}.idea-grid .idea-card{margin:0}.callout{border-radius:var(--radius);padding:18px 20px;margin:26px 0;font-size:.93rem;line-height:1.62}.callout-info{background:var(--plum-light);border-left:4px solid var(--plum)}.callout-info .callout-title{color:var(--plum)}.callout-tip{background:var(--gold-light);border-left:4px solid var(--gold)}.table-wrap{overflow-x:auto;margin:22px 0;border-radius:var(--radius);border:1px solid var(--border)}table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}thead{background:var(--plum);color:#fff}th{padding:12px 14px;text-align:left;font-size:.82rem}tbody tr:nth-child(2n){background:var(--rose-light)}td{padding:10px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top}tr:last-child td{border-bottom:none}.related-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin:34px 0}.more h2,.related-box h2{font-family:var(--font-body);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border:0;margin:0 0 14px;padding:0}.related-links{display:flex;flex-direction:column;gap:8px}.related-link{display:block;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--border-soft);text-decoration:none!important;color:var(--ink);font-weight:600;font-size:.92rem}.related-link span{display:block;font-size:.78rem;font-weight:400;color:var(--muted)}.related-link:hover{background:var(--rose-light)}.faq-item{border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}.faq-item summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.97rem;font-weight:600;background:#fff}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary::after{content:"+";flex-shrink:0;width:22px;height:22px;background:var(--rose-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rose);transition:transform .25s}.faq-item[open] summary::after{transform:rotate(45deg)}.faq-item[open] summary{border-bottom:1px solid var(--border-soft)}.faq-a{font-size:.93rem;color:var(--ink-soft);padding:14px 18px 18px}.cta-block{background:linear-gradient(135deg,var(--plum) 0,#b0223f 100%);border-radius:var(--radius-lg);padding:34px 30px;text-align:center;color:#fff;margin:42px 0}.cta-block h2{font-size:1.5rem;color:#fff;border:0;margin:0 0 10px;padding:0}.cta-block p{color:rgba(255,255,255,.9);margin-bottom:20px}.cta-btn{display:inline-block;background:#fff;color:var(--plum)!important;font-weight:700;padding:13px 30px;border-radius:50px;text-decoration:none!important}.takeaways{background:var(--card);border:2px solid var(--rose);border-radius:var(--radius-lg);padding:24px 28px;margin:34px 0}.takeaways h2{font-size:1.15rem;color:var(--rose);border:0;margin:0 0 12px;padding:0}.share-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:18px 0;border-top:1px solid var(--border-soft)}.share-btn{display:inline-block;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--ink-soft);cursor:pointer;background:var(--card);font-family:inherit;text-decoration:none}.tools-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0 30px}.tool-pill{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;text-align:center;font-size:.85rem;font-weight:600;color:var(--ink-soft);text-decoration:none!important}.tool-pill:hover{background:var(--rose-light)}.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}.art-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow-sm);text-decoration:none!important;color:var(--ink)}.art-card span{display:block;font-size:.74rem;font-weight:700;color:var(--rose);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}.art-card strong{font-size:.9rem;line-height:1.4;display:block}.back-top{position:fixed;bottom:24px;right:24px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--plum);color:#fff;border:none;cursor:pointer;font-size:1.1rem;opacity:0;pointer-events:none;transition:opacity .2s}.back-top.visible{opacity:1;pointer-events:auto}@media (max-width:700px){main{padding:20px 16px 60px}.idea-grid{grid-template-columns:1fr}.breadcrumb{padding:0 16px}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
+    <link rel="stylesheet" href={ASSETS.cssHref} />
+    <AnalyticsHead enableAds={true} />
+  </head>
+  <body>
+    <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/blogs/date-night-roulette-spin-wheel-ideas-couples" />
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blogs">Blog</a></li>
+        <li aria-current="page">Date Night Wheel Ideas</li>
+      </ol>
+    </nav>
+
+    <main>
+      <article>
+        <header>
+          <div class="hero-badge">💕 Couples &amp; Relationships · 2026 Guide</div>
+          <h1>Date Night Roulette: <em>20 Spin Wheel Ideas</em> for Couples</h1>
+          <p class="hero-intro">
+            No more standing in the kitchen at 7pm asking "so what do you want
+            to do?" These 20 wheel setups cover dinner, outings, cosy nights in
+            and the conversations long-term couples stop having by accident,
+            each with the exact entries to add.
+          </p>
+          <div class="meta-row">
+            <span>⏱ 11 min read</span>
+            <span>📂 Couples &amp; Fun</span>
+            <span
+              >🔄 Updated
+              <time datetime="2026-10-24">October 24, 2026</time></span
+            >
+          </div>
+        </header>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/eng-movie-picker-wheel.webp"
+            alt="A couple at a small kitchen table at night, laughing as they look at a colourful spin wheel on a phone between them"
+            width="1200"
+            height="675"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption>
+            Letting the wheel decide turns a stuck decision into the first fun
+            moment of the night.
+          </figcaption>
+        </figure>
+
+        <div class="quick-answer">
+          <div class="label">Quick answer</div>
+          <p>
+            A date night wheel works when you both add options you would be
+            happy with and agree the rules before spinning. Start with a
+            6 to 12 entry wheel for food or activities, spin together, and treat
+            the result as final. Build one free in under a minute with the
+            <a href="/">spin the wheel tool</a>, no account needed.
+          </p>
+        </div>
+
+        <details class="toc" open>
+          <summary>Table of contents</summary>
+          <ol>
+            <li><a href="#why-spin">Why a wheel beats "you choose"</a></li>
+            <li><a href="#setup">Building your first date night wheel</a></li>
+            <li><a href="#rules">Ground rules that keep it fun</a></li>
+            <li><a href="#dinner">Dinner &amp; food ideas (1–4)</a></li>
+            <li><a href="#adventure">Outings &amp; adventure ideas (5–8)</a></li>
+            <li><a href="#home">At-home date ideas (9–13)</a></li>
+            <li><a href="#romantic">Romantic &amp; playful ideas (14–17)</a></li>
+            <li><a href="#bonding">Bonding &amp; growth ideas (18–20)</a></li>
+            <li><a href="#variations">Budget, long-distance and busy-week variations</a></li>
+            <li><a href="#all20">All 20 ideas at a glance</a></li>
+            <li><a href="#tips">Making it a habit</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+          </ol>
+        </details>
+
+        <p>
+          Most couples do not struggle to have a good time together. They
+          struggle to get past the ten minutes of "I don't mind, what do you
+          want?" that happens before the good time can start. By the time
+          someone gives in and picks last week's restaurant, some of the
+          evening's energy is already gone.
+        </p>
+        <p>
+          A spin wheel fixes that specific problem, not the whole relationship.
+          You are not outsourcing your taste to an algorithm. You both add
+          options you would be glad to do, and chance picks between them. The
+          deciding gets easier, and the spin becomes a small shared moment
+          before the date has even started.
+        </p>
+
+        <h2 id="why-spin">Why a Wheel Beats "You Choose"</h2>
+        <p>
+          The core issue is rarely indecision. It is that neither person wants
+          to be the one whose preference "won." Picking a restaurant feels
+          small until you are the one who picked it and it turns out to be
+          crowded, or bland, or not what your partner was in the mood for.
+          Handing the outcome to a neutral third party, even a digital wheel,
+          lifts the ownership of the result off both of you.
+        </p>
+        <p>
+          This only works because you pre-filtered the options. The wheel is
+          not making the decision; it is finishing one you had mostly made. For
+          more on why handing small choices to chance feels good rather than
+          careless, read
+          <a href="/blogs/psychology-random-decision-making">the psychology behind random decision making</a>.
+        </p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">💡 It is not only for couples</div>
+          The same mechanic works for
+          <a href="/blogs/family-game-night-wheel-spinner">family game nights</a>,
+          <a href="/blogs/spin-wheel-birthday-party-ideas">birthday parties</a>
+          and
+          <a href="/blogs/spin-wheel-team-building">team decisions</a>.
+          Couples tend to get the most consistent use from it because their
+          decisions repeat every week.
+        </div>
+
+        <h2 id="setup">Building Your First Date Night Wheel</h2>
+        <ol>
+          <li>
+            <strong>Open the tool.</strong> Go to the
+            <a href="/">free spin wheel</a> on either phone. No account is
+            needed.
+          </li>
+          <li>
+            <strong>Add entries together.</strong> Take turns suggesting
+            options so the wheel represents both of you, not just whoever
+            typed.
+          </li>
+          <li>
+            <strong>Save the link.</strong> Each wheel has its own shareable
+            link, so bookmark it instead of rebuilding it every week.
+          </li>
+          <li>
+            <strong>Agree the rule before you spin.</strong> Is the result
+            final, or does each person get one veto? Decide before you see the
+            outcome.
+          </li>
+          <li>
+            <strong>Spin together.</strong> Watching it land is most of the
+            fun. Do not spin alone and just announce the result.
+          </li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">🔮 Pro tip</div>
+          For quick mid-date calls like "dessert or not?" or "your place or
+          mine?", the <a href="/yes-no-wheel">Yes or No wheel</a> is faster
+          than a custom wheel, and when two options are genuinely equal the
+          <a href="/coin-flip-wheel">coin flip wheel</a> settles it. Our
+          guide to
+          <a href="/blogs/yes-no-wheel-when-to-use">when to use a Yes or No wheel</a>
+          explains when the simpler format is the better call.
+        </div>
+
+        <h2 id="rules">Ground Rules That Keep It Fun</h2>
+        <p>
+          A date wheel is a game between two people who care about each other,
+          so a few rules protect that.
+        </p>
+        <ul>
+          <li>
+            <strong>Both people approve every entry.</strong> If either of you
+            hesitates on an option, leave it off. A wheel is only fair if
+            every slice is a yes.
+          </li>
+          <li>
+            <strong>Personal or physical entries are opt-in.</strong> For the
+            forfeit, conversation and gesture wheels, each person should be
+            able to remove anything that feels uncomfortable, with no
+            explanation needed.
+          </li>
+          <li>
+            <strong>Keep money in view.</strong> Add a rough budget note to
+            expensive entries (a getaway, a splurge dinner) so a spin never
+            lands on something one of you was quietly dreading paying for.
+          </li>
+          <li>
+            <strong>Allow a pass, not a punishment.</strong> One veto per
+            session is enough. Using it should never be treated as spoiling
+            the evening.
+          </li>
+        </ul>
+
+        <h2 id="dinner">Dinner &amp; Food Ideas</h2>
+        <p>
+          Food is the most common source of date night stalling. These four
+          wheels remove it before it starts. If you only want a quick starter,
+          the <a href="/food-picker-wheel">food picker wheel</a> has a
+          ready-made list, and our guide to
+          <a href="/blogs/what-to-eat-tonight-spin-wheel-dinner-decision">deciding what to eat tonight with a wheel</a>
+          shows how to tailor it.
+        </p>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/eng-food-picker-wheel.webp"
+            alt="Overhead view of a couple's hands over a restaurant table, one holding a phone showing a spin wheel, with plates and candles around"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 01 <span class="badge">🍽️ Dinner</span></div>
+          <h3>The Restaurant Roulette Wheel</h3>
+          <p>
+            Add every restaurant you both enjoy, plus two or three you have
+            been meaning to try. Spin on Saturday afternoon so there is time to
+            book. A good habit: whoever argued against the result says
+            afterward whether the food was actually good.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>The sushi place</li>
+              <li>Corner Italian</li>
+              <li>Taco spot</li>
+              <li>New ramen bar</li>
+              <li>Greek mezze</li>
+              <li>The curry house</li>
+              <li>Steakhouse splurge</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 02 <span class="badge">🌍 Cuisine</span></div>
+          <h3>The Cuisine Category Wheel</h3>
+          <p>
+            Spin for the type of food, then race each other to find the
+            best-rated local option in that category. It turns choosing dinner
+            into a small game. Add one cuisine neither of you has tried to keep
+            it interesting.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Japanese</li>
+              <li>Mexican</li>
+              <li>Indian</li>
+              <li>Mediterranean</li>
+              <li>Korean BBQ</li>
+              <li>Thai</li>
+              <li>Peruvian</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 03 <span class="badge">🍳 Cook together</span></div>
+          <h3>The Cook-Together Wheel</h3>
+          <p>
+            Skip the restaurant and let the wheel pick what you cook. Shop for
+            it together, put music on and treat a weeknight like an event. Add
+            a sentimental entry such as "recreate a meal from our last trip."
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Homemade ramen</li>
+              <li>Pasta from scratch</li>
+              <li>Dumplings</li>
+              <li>Steak night</li>
+              <li>Fish tacos</li>
+              <li>Sushi rolls</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 04 <span class="badge">🍷 Drinks</span></div>
+          <h3>The Drinks &amp; Bar Night Wheel</h3>
+          <p>
+            Spin for the bar, the drink style or the whole vibe of the evening.
+            Add a "stay in, make cocktails or mocktails at home" wildcard for
+            nights neither of you really wants to leave the sofa, and keep
+            alcohol-free options on the wheel so it works for both of you.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Rooftop bar</li>
+              <li>Wine bar</li>
+              <li>Craft cocktails</li>
+              <li>Brewery or taproom</li>
+              <li>Mocktail night</li>
+              <li>Stay in and mix drinks</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="related-box" aria-labelledby="rel1">
+          <h2 id="rel1">🔗 Related guides</h2>
+          <div class="related-links">
+            <a class="related-link" href="/blogs/best-uses-random-wheel-spinner">
+              10 Creative Ways to Use a Spin Wheel (Not Just Giveaways)
+              <span>Ideas guide</span>
+            </a>
+            <a class="related-link" href="/blogs/how-to-use-spin-wheel-plan-week-meals-workouts-tasks">
+              Plan Your Week of Meals, Workouts and Tasks With a Wheel
+              <span>Productivity guide</span>
+            </a>
+            <a class="related-link" href="/blogs/family-game-night-wheel-spinner">
+              Family Game Night Ideas Using a Wheel Spinner
+              <span>Family fun</span>
+            </a>
+          </div>
+        </aside>
+
+        <h2 id="adventure">Outings &amp; Adventure Ideas</h2>
+        <p>
+          These wheels are for when you actually want to leave the house. They
+          suit longer evenings and weekend afternoons.
+        </p>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/eng-music-picker-wheel.webp"
+            alt="A couple walking hand in hand along a coastal path at golden hour, both smiling"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="idea-grid">
+          <div class="idea-card">
+            <div class="idea-num">Idea 05 <span class="badge">🎭 Activities</span></div>
+            <h3>The Local Adventure Wheel</h3>
+            <p>
+              Everything fun nearby: museums, escape rooms, bowling, pottery,
+              live gigs. Include the things you have meant to try for months
+              but never booked.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Escape room</li>
+                <li>Art gallery</li>
+                <li>Mini golf</li>
+                <li>Pottery class</li>
+                <li>Comedy club</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 06 <span class="badge">🌿 Outdoors</span></div>
+            <h3>The Outdoor Outing Wheel</h3>
+            <p>
+              For couples who want outdoor time but never agree on what kind.
+              Add a weather backup, such as a museum, for rainy days.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Sunset walk</li>
+                <li>Picnic in the park</li>
+                <li>Kayaking</li>
+                <li>Farmers market</li>
+                <li>Spontaneous drive</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 07 <span class="badge">✈️ Weekend</span></div>
+            <h3>The Weekend Getaway Wheel</h3>
+            <p>
+              Load mini-break ideas you have both mentioned and spin a month
+              ahead so there is time to book. Our
+              <a href="/country-picker-wheel">country picker wheel</a> is a
+              fun option for bigger, dreamier trips.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Coastal cottage</li>
+                <li>City break somewhere new</li>
+                <li>Mountain cabin</li>
+                <li>Countryside stay</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 08 <span class="badge">🎟️ Events</span></div>
+            <h3>The Live Events Wheel</h3>
+            <p>
+              Load what is coming up in your city, such as concerts, theatre,
+              sport and exhibitions, and spin monthly. Pair it with the
+              <a href="/month-picker-wheel">month picker wheel</a> to
+              choose which month gets the big night out.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Live concert</li>
+                <li>Theatre</li>
+                <li>Sporting event</li>
+                <li>Stand-up comedy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="home">At-Home Date Ideas</h2>
+        <p>
+          Not every date needs to leave the house. These wheels make staying in
+          feel deliberate rather than default.
+        </p>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/eng-zodiac-picker-wheel.webp"
+            alt="A cosy living room at night with a couple under a blanket on the sofa facing a TV and a popcorn bowl on the table"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 09 <span class="badge">🎬 Movies</span></div>
+          <h3>The Movie Night Wheel</h3>
+          <p>
+            The "what should we watch" argument, solved. Spin for a genre with
+            the <a href="/movie-genre-wheel">movie genre wheel</a>, or load
+            titles from your shared watchlist and remove each one once watched
+            so the queue actually shrinks.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries (by genre)</strong>
+            <ul class="entry-tags">
+              <li>Thriller</li>
+              <li>Romantic comedy</li>
+              <li>Action</li>
+              <li>Foreign language film</li>
+              <li>Documentary</li>
+              <li>Animated</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 10 <span class="badge">🎮 Games</span></div>
+          <h3>The Couples Game Night Wheel</h3>
+          <p>
+            Load every board, card and video game you own and spin, so nobody's
+            favorite wins by default. Our
+            <a href="/blogs/family-game-night-wheel-spinner">game night guide</a>
+            has more setups that work just as well for two.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Catan</li>
+              <li>Codenames</li>
+              <li>Scrabble</li>
+              <li>Mario Kart</li>
+              <li>Chess</li>
+              <li>Puzzle night</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 11 <span class="badge">🍿 Theme night</span></div>
+          <h3>The Theme Night Wheel</h3>
+          <p>
+            Spin for a themed evening and commit to it. 90s night means an old
+            playlist and throwback snacks; Italian night means candles and
+            homemade pasta. The commitment makes it memorable, not the budget.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>90s nostalgia night</li>
+              <li>Italian night in</li>
+              <li>Spa night</li>
+              <li>Karaoke night in</li>
+              <li>Picnic on the living room floor</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 12 <span class="badge">📚 Learning</span></div>
+          <h3>The Learn Something Together Wheel</h3>
+          <p>
+            Pick a skill and spend an evening learning it together with
+            tutorials or an online class. Let the wheel choose the topic so
+            neither of you has to be the one who suggests it.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Cocktail or mocktail making</li>
+              <li>Photography basics</li>
+              <li>A new recipe technique</li>
+              <li>20 words of a new language</li>
+              <li>Coffee tasting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 13 <span class="badge">🎵 Playlist</span></div>
+          <h3>The Couples Playlist Wheel</h3>
+          <p>
+            Spin for the evening's music era or mood with the
+            <a href="/music-genre-wheel">music genre wheel</a>, then each
+            pick one song from that category for a shared playlist. It is a
+            gentle way to learn what the other person listens to alone.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>2000s indie</li>
+              <li>Classic soul</li>
+              <li>Jazz</li>
+              <li>Genre of your first concert</li>
+              <li>Film soundtracks</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 id="romantic">Romantic &amp; Playful Ideas</h2>
+        <p>
+          These add surprise to the more affectionate side of date night. They
+          land best when you have both contributed entries equally and
+          approved every one.
+        </p>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/eng-yes-no-wheel.webp"
+            alt="Close-up of a couple's hands across a candlelit table, one person mid-laugh, soft warm lighting behind"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="idea-grid">
+          <div class="idea-card">
+            <div class="idea-num">Idea 14 <span class="badge">💌 Appreciation</span></div>
+            <h3>The Love Notes Wheel</h3>
+            <p>
+              Each person adds 8 to 10 genuine appreciation lines. Spin during
+              dinner and whoever it lands on reads their entry aloud.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Something I love about your laugh</li>
+                <li>My favorite memory of us</li>
+                <li>A quality I admire in you</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 15 <span class="badge">🎲 Forfeits</span></div>
+            <h3>The Couple Forfeits Wheel</h3>
+            <p>
+              Play any game and the loser spins the forfeit wheel. Add only
+              forfeits you have both agreed are fair game, which is what keeps
+              it fun instead of awkward.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Five-minute shoulder rub</li>
+                <li>Make breakfast tomorrow</li>
+                <li>Pick the next date</li>
+                <li>Free veto for the other</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 16 <span class="badge">💬 Conversation</span></div>
+            <h3>The Deep Conversation Wheel</h3>
+            <p>
+              Long-term couples often stop asking each other new questions.
+              Spin, answer, swap. Either of you can pass on a prompt and spin
+              again.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Something you've never told me</li>
+                <li>Your biggest current dream</li>
+                <li>Something to try together</li>
+                <li>A moment you felt really understood</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="idea-card">
+            <div class="idea-num">Idea 17 <span class="badge">💐 Surprises</span></div>
+            <h3>The Surprise Gesture Wheel</h3>
+            <p>
+              Small gestures that take little effort. Spin once a week and do
+              what it says before the next date, which favors small consistency
+              over the occasional grand gesture.
+            </p>
+            <div class="wheel-entries">
+              <strong>Example entries</strong>
+              <ul class="entry-tags">
+                <li>Leave a note they'll find</li>
+                <li>Order their favorite food unannounced</li>
+                <li>Plan the whole next date</li>
+                <li>Cook their comfort meal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="bonding">Bonding &amp; Growth Ideas</h2>
+        <p>
+          The last three are less about one evening and more about building
+          something ongoing. Many couples return to these most once they try
+          them.
+        </p>
+
+        <figure class="article-figure">
+          <img
+            class="article-img"
+            src="/explore-other-tools.webp"
+            alt="A couple sitting on the floor at home with notebooks and sticky notes, pointing at a shared list or vision board"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 18 <span class="badge">📋 Bucket list</span></div>
+          <h3>The Couples Bucket List Wheel</h3>
+          <p>
+            Each of you writes 10 things you want to experience together, any
+            size. Pool them into one wheel and spin monthly to choose the next
+            one you are actually committing to, so the list stops being a
+            someday list.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>See the northern lights</li>
+              <li>Learn to dance together</li>
+              <li>Run a 5K as a team</li>
+              <li>Road trip with no GPS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 19 <span class="badge">🌱 Habits</span></div>
+          <h3>The Shared Habits Wheel</h3>
+          <p>
+            Load habits you have discussed but never started, such as morning
+            walks or a screen-free evening. Spin at the start of the month and
+            try just that one for 30 days. Randomness removes the "which one do
+            we start with" stall.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Morning walk together</li>
+              <li>No phones after 9pm</li>
+              <li>New recipe weekly</li>
+              <li>One screen-free evening a week</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-num">Idea 20 <span class="badge">🎯 Goals</span></div>
+          <h3>The "What Are We Working On?" Wheel</h3>
+          <p>
+            Add shared goals you have both mentioned: a savings target, a home
+            project, a decluttering job. Spin on Sunday evening to pick one
+            thing to make progress on that week, and use the
+            <a href="/day-picker-wheel">day picker wheel</a> to choose which
+            day you tackle it.
+          </p>
+          <div class="wheel-entries">
+            <strong>Example entries</strong>
+            <ul class="entry-tags">
+              <li>Start the savings plan</li>
+              <li>Sort the spare room</li>
+              <li>Research that trip</li>
+              <li>Set up a weekly budget chat</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 id="variations">Budget, Long-Distance and Busy-Week Variations</h2>
+        <p>
+          The same wheels can be bent to fit your real life instead of an
+          ideal one.
+        </p>
+        <ul>
+          <li>
+            <strong>On a tight budget:</strong> build every wheel from free or
+            cheap entries (a sunset walk, a cook-together night, a library
+            visit, a home theme night) so any result is affordable.
+          </li>
+          <li>
+            <strong>Long distance:</strong> share the wheel link on a video
+            call and spin together. Good entries are a movie to start in sync,
+            a recipe to cook on camera, an online game, or a conversation
+            prompt.
+          </li>
+          <li>
+            <strong>Busy weeks with little time:</strong> add a duration to
+            each entry, such as "20-minute walk" or "one episode and tea," so
+            the wheel fits the evening you actually have.
+          </li>
+          <li>
+            <strong>Mixed tastes:</strong> use two wheels, one built by each of
+            you, and alternate whose wheel gets spun each week.
+          </li>
+        </ul>
+
+        <h2 id="all20">All 20 Ideas at a Glance</h2>
+        <div class="table-wrap">
+          <table>
+            <caption style="position: absolute; left: -9999px">
+              Twenty date night wheel ideas with category and best time to use
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Wheel</th>
+                <th scope="col">Category</th>
+                <th scope="col">Best used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Restaurant Roulette</td><td>Dinner</td><td>Start of date night</td></tr>
+              <tr><td>2</td><td>Cuisine Category</td><td>Dinner</td><td>When you want to explore</td></tr>
+              <tr><td>3</td><td>Cook Together</td><td>Dinner</td><td>Weeknights</td></tr>
+              <tr><td>4</td><td>Drinks &amp; Bar Night</td><td>Dinner</td><td>Friday nights</td></tr>
+              <tr><td>5</td><td>Local Adventure</td><td>Outings</td><td>Weekend mornings</td></tr>
+              <tr><td>6</td><td>Outdoor Outing</td><td>Outings</td><td>Sunny days</td></tr>
+              <tr><td>7</td><td>Weekend Getaway</td><td>Travel</td><td>Monthly planning</td></tr>
+              <tr><td>8</td><td>Live Events</td><td>Events</td><td>Start of the month</td></tr>
+              <tr><td>9</td><td>Movie Night</td><td>At home</td><td>Cosy evenings</td></tr>
+              <tr><td>10</td><td>Couples Game Night</td><td>At home</td><td>Any evening</td></tr>
+              <tr><td>11</td><td>Theme Night</td><td>At home</td><td>Special occasions</td></tr>
+              <tr><td>12</td><td>Learn Together</td><td>At home</td><td>Midweek</td></tr>
+              <tr><td>13</td><td>Couples Playlist</td><td>At home</td><td>Background to any date</td></tr>
+              <tr><td>14</td><td>Love Notes</td><td>Romantic</td><td>Over dinner</td></tr>
+              <tr><td>15</td><td>Couple Forfeits</td><td>Romantic</td><td>After a game</td></tr>
+              <tr><td>16</td><td>Deep Conversation</td><td>Romantic</td><td>Long evenings</td></tr>
+              <tr><td>17</td><td>Surprise Gestures</td><td>Romantic</td><td>Weekly ritual</td></tr>
+              <tr><td>18</td><td>Bucket List</td><td>Growth</td><td>Monthly</td></tr>
+              <tr><td>19</td><td>Shared Habits</td><td>Growth</td><td>Start of the month</td></tr>
+              <tr><td>20</td><td>What Are We Working On?</td><td>Growth</td><td>Sunday evenings</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="cta-block" aria-label="Build your wheel">
+          <h2>🎡 Build Your First Date Night Wheel</h2>
+          <p>Free, no sign-up, works on any device. Done in under a minute.</p>
+          <a class="cta-btn" href="/">Open Spin the Wheel →</a>
+        </aside>
+
+        <h2 id="tips">Making It a Habit</h2>
+        <p>
+          The details that decide whether this becomes a weekly ritual or a
+          one-off you forget:
+        </p>
+        <ul>
+          <li>
+            <strong>Both of you add entries.</strong> Spend five minutes adding
+            options together before the first spin.
+          </li>
+          <li>
+            <strong>Save and reuse your wheels.</strong> A bookmarked wheel
+            means the next date night starts with a spin, not a debate, and you
+            can refine the entries over time.
+          </li>
+          <li>
+            <strong>Set the veto rule before spinning.</strong> Agreeing after
+            you see the result only reopens the argument.
+          </li>
+          <li>
+            <strong>Remove used entries for ordered decisions.</strong> If you
+            are deciding who plans the next three dates, take each result off
+            the wheel so everyone gets a turn.
+          </li>
+          <li>
+            <strong>Keep one "decide together" wildcard.</strong> It leaves a
+            little room for spontaneity inside the system.
+          </li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">🔬 Worth knowing</div>
+          If you wonder whether anyone can steer the result, read our
+          explanation of
+          <a href="/blogs/is-spin-wheel-truly-random">whether a digital spin wheel is truly random</a>.
+          To see how a wheel compares with other pickers, see
+          <a href="/blogs/spin-wheel-vs-other-random-pickers">spin the wheel vs. other random pickers</a>.
+        </div>
+
+        <AdSlot slot="inContent" />
+<BlogWheelCta ctaWheelSlugs={["date-night-wheel","restaurant-picker-wheel","what-to-watch-wheel","movie-genre-wheel","music-genre-wheel","would-you-rather-wheel","zodiac-picker-wheel"]} ctaCategorySlug={"food-and-lifestyle"} ctaCategoryName={"Food & Lifestyle"} />
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>How many entries should I put on a date night wheel?</summary>
+          <div class="faq-a">
+            For most date night decisions, 6 to 12 entries works best: enough
+            variety to feel worth spinning, few enough that every option is one
+            you both want. Bucket list and habit wheels can hold 20 to 30
+            entries.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if one of us doesn't like what the wheel picks?</summary>
+          <div class="faq-a">
+            Only add options you are both genuinely fine with. If you want an
+            escape hatch, agree on one veto each per session before spinning,
+            and treat the spin after a veto as final.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            Can we use separate wheels for different decisions in one night?
+          </summary>
+          <div class="faq-a">
+            Yes. Build one wheel for the activity and another for food, save
+            both as bookmarks, and spin each in turn. Every wheel you build has
+            its own shareable link.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can we use a spin wheel for a long-distance relationship?</summary>
+          <div class="faq-a">
+            Yes. Share the wheel link over a video call and spin together. Good
+            entries include a movie to watch in sync, a recipe to cook on
+            camera, an online game, or a conversation prompt.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are there other wheels that work well for couples?</summary>
+          <div class="faq-a">
+            Yes. A Yes or No wheel handles quick go or no-go calls, a coin flip
+            wheel settles a tie between two options, and a number picker can
+            decide who goes first or who pays.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do we need an account to build a date night wheel?</summary>
+          <div class="faq-a">
+            No. You can build, spin and share a wheel by link without creating
+            an account.
+          </div>
+        </details>
+
+        <div class="takeaways">
+          <h2>✅ Key Takeaways</h2>
+          <ul>
+            <li>
+              A wheel does not replace the thinking; it removes the last,
+              tiring step of choosing between options you already accept.
+            </li>
+            <li>
+              The 20 setups cover dinner, outings, nights in, romance and
+              shared goals, each with entries ready to copy.
+            </li>
+            <li>
+              Both partners should approve every entry, especially on personal
+              wheels like forfeits and conversation prompts.
+            </li>
+            <li>
+              Save wheels as bookmarks and agree the veto rule before you spin.
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          The best date nights are rarely the most elaborate. They are the ones
+          where both people feel heard, there is a little surprise built in,
+          and you end up doing something neither of you would have picked
+          alone. Choose one of the 20 ideas above, open the
+          <a href="/">spin wheel</a>, and build your first wheel together
+          tonight.
+        </p>
+
+
+        <BlogAuthorBox />
+
+        <div class="share-row">
+          <span>Found this helpful? Share it:</span>
+          <a
+            class="share-btn"
+            href="https://twitter.com/intent/tweet?text=Date+Night+Roulette%3A+20+Spin+Wheel+Ideas+for+Couples&url=https%3A%2F%2Fspinthewheelsonline.com%2Fblogs%2Fdate-night-roulette-spin-wheel-ideas-couples"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Share on X</a
+          >
+          <button class="share-btn" type="button" id="copy-btn">
+            🔗 Copy link
+          </button>
+        </div>
+
+        <section class="more" aria-labelledby="more-tools">
+          <h2 id="more-tools">More free tools</h2>
+          <div class="tools-strip">
+            <a class="tool-pill" href="/">🎡 Spin the Wheel</a>
+            <a class="tool-pill" href="/yes-no-wheel">✅ Yes or No Wheel</a>
+            <a class="tool-pill" href="/food-picker-wheel">🍽️ Food Picker</a>
+            <a class="tool-pill" href="/number-picker-wheel">🔢 Number Picker</a>
+            <a class="tool-pill" href="/truth-or-dare-wheel">🎲 Truth or Dare</a>
+            <a class="tool-pill" href="/tools">🧰 All Tools</a>
+          </div>
+        </section>
+
+        <section class="more" aria-labelledby="more-articles">
+          <h2 id="more-articles">Related articles</h2>
+          <div class="articles-grid">
+            <a class="art-card" href="/blogs/spin-the-wheel-tool">
+              <span>Guide</span>
+              <strong>What Is a Spin the Wheel Tool and How Does It Work?</strong>
+            </a>
+            <a class="art-card" href="/blogs/best-uses-random-wheel-spinner">
+              <span>Ideas</span>
+              <strong>10 Creative Ways to Use a Spin Wheel</strong>
+            </a>
+            <a class="art-card" href="/blogs/what-to-eat-tonight-spin-wheel-dinner-decision">
+              <span>Food</span>
+              <strong>What to Eat Tonight: Let a Wheel Decide Dinner</strong>
+            </a>
+            <a class="art-card" href="/blogs/psychology-random-decision-making">
+              <span>Science</span>
+              <strong>The Psychology Behind Random Decision Making</strong>
+            </a>
+            <a class="art-card" href="/blogs/spin-wheel-birthday-party-ideas">
+              <span>Events</span>
+              <strong>Spin the Wheel Ideas for Birthday Parties</strong>
+            </a>
+            <a class="art-card" href="/blogs/yes-no-wheel-when-to-use">
+              <span>Feature</span>
+              <strong>Yes or No Wheel: When to Use It</strong>
+            </a>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <WheelModals lang={lang} t={t} chrome={uiChrome} />
+<SiteFooter lang={lang} chrome={uiChrome} currentPath="/blogs/date-night-roulette-spin-wheel-ideas-couples" />
+
+    <button class="back-top" id="backTop" type="button" aria-label="Back to top">
+      ↑
+    </button>
+
+    <script is:inline>
+      (function () {
+        var backTop = document.getElementById("backTop");
+        window.addEventListener(
+          "scroll",
+          function () {
+            backTop.classList.toggle("visible", window.scrollY > 400);
+          },
+          { passive: true },
+        );
+        backTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        var btn = document.getElementById("copy-btn");
+        btn.addEventListener("click", function () {
+          navigator.clipboard
+            .writeText(window.location.href)
+            .then(function () {
+              btn.textContent = "✅ Copied!";
+            })
+            .catch(function () {
+              btn.textContent = "❌ Try again";
+            })
+            .finally(function () {
+              setTimeout(function () {
+                btn.textContent = "🔗 Copy link";
+              }, 2500);
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            var target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+              e.preventDefault();
+              window.scrollTo({
+                top: target.getBoundingClientRect().top + window.scrollY - 76,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      })();
+    </script>
+   <CookieBanner lang={lang} chrome={uiChrome} />
+    <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

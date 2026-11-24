@@ -1,0 +1,109 @@
+---
+import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
+import { getChrome } from "../data/i18n-chrome.js";
+import { SITE_URL, SITE_NAME, REVIEWED_ISO, ASSETS } from "../config/site";
+import AnalyticsHead from "../components/AnalyticsHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WheelModals from "../components/WheelModals.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const lang = (LANGUAGES as any).en;
+const t = (TRANSLATIONS as any).en;
+const uiChrome = getChrome("en");
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 }, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` } },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, publisher: { "@id": `${SITE_URL}/#organization` } },
+    { "@type": "WebPage", "@id": `${SITE_URL}/changelog#webpage`, name: "Changelog & Latest Updates – Spin The Wheels Online", url: `${SITE_URL}/changelog`, description: "Product release notes, Astro 5 Static Edge architecture upgrades, cryptographic randomness improvements, and localization milestones.", dateModified: REVIEWED_ISO, inLanguage: "en", isPartOf: { "@id": `${SITE_URL}/#website` }, publisher: { "@id": `${SITE_URL}/#organization` }, breadcrumb: { "@id": `${SITE_URL}/changelog#breadcrumbs` } },
+    { "@type": "BreadcrumbList", "@id": `${SITE_URL}/changelog#breadcrumbs`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` }, { "@type": "ListItem", position: 2, name: "Changelog", item: `${SITE_URL}/changelog` }] }
+  ]
+}).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Changelog &amp; Latest Updates – Spin The Wheels Online</title>
+  <meta name="description" content="Read the latest product updates, Astro 5 Static Edge speed upgrades, and dataset releases for Spin The Wheels Online." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href={`${SITE_URL}/changelog`} />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#F59E0B" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href={ASSETS.cssHref} />
+  <AnalyticsHead enableAds={true} />
+  <script type="application/ld+json" set:html={schemaJson} />
+</head>
+<body>
+  <SiteHeader lang={lang} t={t} chrome={uiChrome} currentPath="/changelog" />
+  <main class="container" style="max-width: 860px; padding: 48px 20px;">
+    <article class="card" style="padding: clamp(24px, 5vw, 44px);">
+      <h1 class="section-title" style="text-align: left; margin-bottom: 12px;">Changelog &amp; <span>Product Releases</span></h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px;">
+        Track our engineering upgrades, static edge speed improvements, and dataset updates.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="border-left: 3px solid var(--accent-gold); padding-left: 20px;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--accent-gold-dark); text-transform: uppercase;">
+            November 24, 2026 – Version 5.0 (Astro 5 Static Edge Migration &amp; 288-Page Editorial Polish)
+          </div>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin: 4px 0 8px;">Zero-Cold-Start Static Edge HTML, Cloudflare Pages Functions &amp; Complete 288-Page Audit</h2>
+          <ul style="margin-left: 20px; color: var(--text-secondary); line-height: 1.7;">
+            <li>Migrated the full site to <strong>Astro 5 Static Site Generation (SSG)</strong> on Cloudflare Pages Edge CDN—pre-rendering all 288 canonical pages into zero-framework-JS HTML while keeping our lightweight HTML5 Canvas wheel engine intact.</li>
+            <li>Moved canonical redirects, <code>?embed=1</code> clean chrome handling, and <code>/api/contact</code> to instant Cloudflare Pages Edge Functions with zero Node.js cold starts.</li>
+            <li>Completed an exhaustive 288-page originality and search-clarity pass across all 69 English wheels, 8 category hubs, 25 guides, 19 international hubs, and 159 localized wheel pages.</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--border-color); padding-left: 20px;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--accent-gold-dark); text-transform: uppercase;">
+            November 24, 2026 – Version 4.6 (Editorial Audit, Factual Verification &amp; Multilingual Depth)
+          </div>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin: 4px 0 8px;">Full Content Audit, Reference Charts &amp; Expanded Brazilian Portuguese Guides</h2>
+          <ul style="margin-left: 20px; color: var(--text-secondary); line-height: 1.7;">
+            <li>Replaced shared tool boilerplate with original human-written guides and verifiable reference charts across all 69 wheels and 8 category hubs.</li>
+            <li>Expanded native Portuguese (Brazil), Vietnamese, and Simplified Chinese usage guides, presets (1–60, 1–250 numbers, Adedonha/Stop alphabet rules), and localized FAQs.</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--border-color); padding-left: 20px;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--accent-gold-dark); text-transform: uppercase;">
+            November 20, 2026 – Version 4.0 (Content Quality, Weighted Slices &amp; Embeds)
+          </div>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin: 4px 0 8px;">Per-Slice Probability Weights, Standards QR Codes &amp; Deep Tool Guides</h2>
+          <ul style="margin-left: 20px; color: var(--text-secondary); line-height: 1.7;">
+            <li>Added interactive per-slice weight controls (1x to 20x) directly inside the entries list with live percentage probabilities.</li>
+            <li>Launched responsive Embed Wheel iframe generator (<code>?embed=1</code>) and upgraded QR sharing to a pure-JS ISO/IEC 18004 QR code encoder.</li>
+            <li>Scaled to 69 canonical tools with complete verified rosters (195 countries, 50 US states, 27 Brazilian federative units, 32 NFL teams, 30 NBA/MLB teams, 22 Major Arcana, and True 2D6 Catan odds).</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--border-color); padding-left: 20px;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
+            September 2026 – Version 2.0 (Cryptographic Fairness &amp; PWA Upgrade)
+          </div>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin: 4px 0 8px;">Web Cryptography API Core &amp; Offline Service Worker</h2>
+          <ul style="margin-left: 20px; color: var(--text-secondary); line-height: 1.7;">
+            <li>Migrated randomization core to Web Cryptography API (<code>crypto.getRandomValues</code>) with rejection sampling.</li>
+            <li>Enabled offline PWA service worker caching and "Remove Winner After Spin" elimination mode.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </main>
+  <WheelModals lang={lang} t={t} chrome={uiChrome} />
+  <CookieBanner lang={lang} chrome={uiChrome} />
+  <SiteFooter lang={lang} chrome={uiChrome} currentPath="/changelog" />
+  <script src={ASSETS.jsHref} defer></script>
+</body>
+</html>

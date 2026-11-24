@@ -1,0 +1,103 @@
+---
+import { getChrome } from "../data/i18n-chrome.js";
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+import { INDEXABLE_LANGS } from "../config/site";
+
+interface Props {
+  lang?: any;
+  t?: any;
+  chrome?: any;
+}
+
+const { lang, t, chrome } = Astro.props;
+const modalLang = lang?.code || "en";
+const uiChrome = chrome || getChrome(modalLang);
+const hasIndexableModal = INDEXABLE_LANGS.has(modalLang);
+
+const modalToolUrl = (slug: string) => {
+  if (modalLang === "en") return `/${slug}`;
+  const loc = hasIndexableModal ? (SPECIALIZED_WHEELS as any)[slug]?.translations?.[modalLang] : null;
+  return loc && loc.name && loc.heroSubtitle && loc.items ? `/${modalLang}/${slug}` : `/${slug}`;
+};
+---
+
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+<!-- Result Winner Modal -->
+<div class="modal-overlay" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="modalResult">
+  <div class="modal-dialog">
+    <span class="modal-emoji" aria-hidden="true">🎉</span>
+    <div class="modal-subtitle">{t?.ui?.winnerTitle || "We Have a Winner!"}</div>
+    <div class="modal-winner" id="modalResult">—</div>
+
+    <div class="modal-buttons">
+      <button class="btn-primary" type="button" onclick="window.stwol.closeModal()">
+        🎯 {t?.ui?.spinAgain || "Spin Again"}
+      </button>
+      <button class="btn-secondary" type="button" onclick="window.stwol.copyWinnerResult()">
+        📋 {uiChrome.copyResult || "Copy Result"}
+      </button>
+      <button class="btn-secondary" id="modalRemoveBtn" type="button" onclick="window.stwol.removeWinnerAndClose()">
+        🗑 {t?.ui?.removeAndContinue || "Remove Winner & Continue"}
+      </button>
+      <button class="btn-secondary" type="button" onclick="window.stwol.shareWheel()">
+        🔗 {t?.ui?.shareWheel || "Share Wheel"}
+      </button>
+    </div>
+
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border-color); font-size:0.82rem;">
+      <div style="color:var(--text-muted); margin-bottom:8px; font-weight:700;">{uiChrome.exploreSpecialized || "Explore specialized wheels:"}</div>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center;">
+        <a class="preset-chip" href={modalToolUrl("yes-no-wheel")}>{uiChrome.quickYesNo || "Yes / No"}</a>
+        <a class="preset-chip" href={modalToolUrl("wheel-of-names")}>{uiChrome.quickNames || "Wheel of Names"}</a>
+        <a class="preset-chip" href={modalToolUrl("number-picker-wheel")}>{uiChrome.quickNumbers || "Numbers"}</a>
+        <a class="preset-chip" href={modalToolUrl("dinner-wheel")}>{uiChrome.quickDinner || "Dinner Decider"}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QR Code Modal -->
+<div class="modal-overlay" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+  <div class="modal-dialog">
+    <h3 id="qrModalTitle" style="font-size:1.2rem; font-weight:800; margin-bottom:12px;">📱 {t?.ui?.qrCodeTitle || "Scan QR Code on Phone"}</h3>
+    <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">{uiChrome.qrInstructions}</p>
+    <div style="display:flex; justify-content:center; margin-bottom:16px;">
+      <canvas id="qrCanvas" style="border:4px solid var(--border-color); border-radius:10px; background:#FFFFFF;"></canvas>
+    </div>
+    <div style="display:flex; gap:8px; margin-bottom:14px;">
+      <input type="text" id="qrLinkInput" class="entry-input" readonly onclick="this.select()" aria-label="Shareable wheel URL" />
+      <button class="btn-primary" type="button" onclick="window.stwol.shareWheel()">{uiChrome.copy || "Copy"}</button>
+    </div>
+    <button class="btn-secondary" type="button" onclick="window.stwol.closeModal()" style="width:100%;">
+      {uiChrome.close || "Close"}
+    </button>
+  </div>
+</div>
+
+<!-- Embed Wheel Widget Modal -->
+<div class="modal-overlay" id="embedModal" role="dialog" aria-modal="true" aria-labelledby="embedModalTitle">
+  <div class="modal-dialog" style="max-width: 540px; text-align: left;">
+    <h3 id="embedModalTitle" style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🖼️ {t?.ui?.embedTitle || "Embed Wheel Widget"}</h3>
+    <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:14px;">{uiChrome.embedInstructions}</p>
+    <div style="margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+      <label for="embedHeightSelect" style="font-size:0.85rem; font-weight:700;">{uiChrome.widgetHeight}</label>
+      <select id="embedHeightSelect" class="setting-select" onchange="window.stwol.updateEmbedCode()">
+        <option value="540">{uiChrome.compactHeight || "Compact (540px)"}</option>
+        <option value="640" selected>{uiChrome.standardHeight || "Standard (640px)"}</option>
+        <option value="740">{uiChrome.tallHeight || "Tall (740px)"}</option>
+      </select>
+    </div>
+    <textarea id="embedCodeTextarea" class="bulk-textarea" readonly style="min-height:115px; font-family:monospace; font-size:0.8rem; margin-bottom:14px;" onclick="this.select()" aria-label="Embed HTML iframe code"></textarea>
+    <div style="display:flex; gap:10px;">
+      <button class="btn-primary" type="button" onclick="window.stwol.copyEmbedCode()" style="flex:1;">
+        📋 {uiChrome.copyEmbedCode || "Copy Embed Code"}
+      </button>
+      <button class="btn-secondary" type="button" onclick="window.stwol.closeModal()">
+        {uiChrome.close || "Close"}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="shareToast" class="toast" role="status" aria-live="polite"></div>

@@ -1,0 +1,154 @@
+---
+import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
+
+interface Props {
+  ctaWheelSlugs?: string[];
+  ctaCategorySlug?: string;
+  ctaCategoryName?: string;
+}
+
+const {
+  ctaWheelSlugs = [],
+  ctaCategorySlug = "quick-decisions",
+  ctaCategoryName = "All Spin Wheels"
+} = Astro.props;
+
+const wheelsMap = SPECIALIZED_WHEELS as Record<string, any>;
+const cards = ctaWheelSlugs
+  .map((s) => (wheelsMap[s] ? { slug: s, name: wheelsMap[s].name, category: wheelsMap[s].category, desc: wheelsMap[s].description } : null))
+  .filter(Boolean) as Array<{ slug: string; name: string; category: string; desc: string }>;
+---
+
+{cards.length > 0 && (
+  <section class="stwol-blog-cta" aria-label="Featured Spin Wheels in This Guide">
+    <style>
+      .stwol-blog-cta {
+        margin: 34px 0;
+        padding: 24px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        border: 1px solid #fcd34d;
+        font-family: 'DM Sans', 'Nunito', system-ui, -apple-system, sans-serif;
+        color: #111827;
+      }
+      .stwol-blog-cta-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .stwol-blog-cta-head h3 {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        font-size: 1.18rem;
+        font-weight: 800;
+        color: #111827;
+        line-height: 1.3;
+      }
+      .stwol-blog-cta-hub {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #b45309 !important;
+        text-decoration: none !important;
+        background: #ffffff;
+        padding: 5px 12px;
+        border-radius: 999px;
+        border: 1px solid #f59e0b;
+        white-space: nowrap;
+      }
+      .stwol-blog-cta-hub:hover {
+        background: #f59e0b;
+        color: #ffffff !important;
+      }
+      .stwol-blog-cta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 12px;
+      }
+      .stwol-blog-cta-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 14px 16px;
+        text-decoration: none !important;
+        color: #111827 !important;
+        box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
+        transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      .stwol-blog-cta-card:hover {
+        transform: translateY(-2px);
+        border-color: #d97706;
+        box-shadow: 0 8px 20px rgba(217, 119, 6, 0.15);
+      }
+      .stwol-blog-cta-cat {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #b45309;
+        margin-bottom: 4px;
+      }
+      .stwol-blog-cta-title {
+        font-size: 0.98rem;
+        font-weight: 800;
+        color: #111827;
+        margin-bottom: 6px;
+        line-height: 1.3;
+      }
+      .stwol-blog-cta-desc {
+        font-size: 0.82rem;
+        color: #4b5563;
+        line-height: 1.45;
+        margin: 0 0 10px 0 !important;
+      }
+      .stwol-blog-cta-link {
+        font-size: 0.83rem;
+        font-weight: 800;
+        color: #d97706;
+      }
+      .stwol-blog-cta-foot {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(217, 119, 6, 0.25);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.84rem;
+        color: #4b5563;
+      }
+      .stwol-blog-cta-foot a {
+        color: #b45309 !important;
+        font-weight: 700;
+        text-decoration: underline !important;
+      }
+    </style>
+    <div class="stwol-blog-cta-head">
+      <h3>🎡 Try the Free Wheels Featured in This Guide</h3>
+      <a href={`/category/${ctaCategorySlug}`} class="stwol-blog-cta-hub">Browse {ctaCategoryName} Hub &rarr;</a>
+    </div>
+    <div class="stwol-blog-cta-grid">
+      {cards.map((c) => (
+        <a href={`/${c.slug}`} class="stwol-blog-cta-card">
+          <div>
+            <div class="stwol-blog-cta-cat">{c.category}</div>
+            <div class="stwol-blog-cta-title">{c.name}</div>
+            <p class="stwol-blog-cta-desc">{c.desc.slice(0, 88)}&hellip;</p>
+          </div>
+          <span class="stwol-blog-cta-link">Spin Free Now &rarr;</span>
+        </a>
+      ))}
+    </div>
+    <div class="stwol-blog-cta-foot">
+      <span>Every tool runs locally with Web Cryptography fairness &mdash; zero signup.</span>
+      <span><a href="/tools">Explore All {Object.keys(wheelsMap).length}+ Spin Wheels &rarr;</a></span>
+    </div>
+  </section>
+)}
