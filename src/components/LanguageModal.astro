@@ -29,7 +29,7 @@ const getModalLangLink = (targetCode: string) => {
     return hasLocalizedWheel(currentSlug, targetCode) ? `/${targetCode}/${currentSlug}` : `/${targetCode}`;
   }
   if (currentPath && (currentPath.endsWith("/tools") || currentPath === "/tools")) {
-    return targetCode === "en" ? "/tools" : (INDEXABLE_LANGS.has(targetCode) ? `/${targetCode}/tools` : `/${targetCode}`);
+    return targetCode === "en" ? "/tools" : `/${targetCode}`;
   }
   return targetCode === "en" ? "/" : `/${targetCode}`;
 };

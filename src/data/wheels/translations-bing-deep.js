@@ -11,11 +11,18 @@ export default {
   "number-picker-wheel": {
     pt: {
       title: "Roleta de Números Online | Sorteador 1 a 60, 100 e 250",
-      description: "Gire a Roleta de Números online grátis! Sorteie de 1 a 10, 1 a 60, 1 a 100 ou 1 a 250 sem repetir, com pesos 1x–20x e histórico em CSV — sem cadastro.",
+      description: "Gire a Roleta de Números (Roleta dos Números) online grátis! Sorteador de números de 01 a 60, 1 a 100 ou 1 a 250 sem repetir, com histórico CSV sem cadastro.",
+      keywords: "roleta de números, roleta de numeros, roleta online números, roleta dos números, roleta numeros, sorteador de 01 a 60, roleta aleatória de números, roleta numérica, roleta de 1 a 250, sorteador de números roleta, roleta para sorteio de números",
       heroTitle: "Roleta de Números Online",
-      heroHighlight: "Sorteador de Números Grátis (1 a 500)",
+      heroHighlight: "Sorteador de Números Grátis (01 a 60, 100 e 250)",
       heroSubtitle: "Sorteie números para rifas escolares, bingos, dinâmicas de sala e jogos de 01 a 60, 1 a 100 ou 1 a 250 direto no navegador.",
-      quickAnswer: "<strong>Como usar a Roleta de Números Online?</strong> Escolha um atalho pronto (1 a 10, 1 a 60, 1 a 100 ou 1 a 250) ou cole até 500 bilhetes personalizados do Excel. Cada giro usa a Web Cryptography API do navegador com opção de remover números já sorteados e baixar comprovante em CSV.",
+      quickAnswer: "<strong>Como usar a Roleta de Números Online?</strong> Escolha um atalho pronto (1 a 10, 01 a 60, 1 a 100 ou 1 a 250) ou cole até 500 bilhetes personalizados do Excel. Cada giro usa a Web Cryptography API do navegador com opção de remover números já sorteados e baixar comprovante em CSV.",
+      presets: {
+        num10: { label: "1 a 10 (Rápido)", items: Array.from({ length: 10 }, (_, i) => String(i + 1)) },
+        num60: { label: "01 a 60 (Bolão / Rifas)", items: Array.from({ length: 60 }, (_, i) => String(i + 1).padStart(2, "0")) },
+        num100: { label: "1 a 100 (Cartela Completa)", items: Array.from({ length: 100 }, (_, i) => String(i + 1)) },
+        num250: { label: "1 a 250 (Rifa Grande)", items: Array.from({ length: 250 }, (_, i) => String(i + 1)) }
+      },
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -82,7 +89,8 @@ export default {
     },
     zh: {
       title: "随机数大转盘 | 免费在线数字抽奖与学号点名器 (1–500)",
-      description: "免费在线随机数大转盘：内置1–10、1–20与自定义最多500个数字批量导入，支持不重复抽取、权重设置与CSV记录导出，免登录打开即用。",
+      description: "免费在线随机数大转盘与数字抽奖轮盘：内置1–10、1–20与自定义最多500个数字Excel批量导入，支持中奖号码自动剔除不重复、1x–20x权重调节、随时手动停止与CSV记录导出，免登录即用。",
+      keywords: "随机数大转盘, 数字转盘游戏, 随机数字转盘, 学号随机点名器, 在线抽奖转盘数字",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -107,12 +115,19 @@ export default {
 
   "letter-picker-wheel": {
     pt: {
-      title: "Roleta de Letras do Alfabeto A–Z | Stop & Adedonha",
-      description: "Gire a Roleta de Letras do Alfabeto (A a Z) grátis! Perfeita para jogar Stop / Adedonha, alfabetização e jogos de palavras com remoção automática.",
-      heroTitle: "Roleta de Letras do Alfabeto (A–Z)",
+      title: "Roleta de Letras e Roleta do Alfabeto A–Z (Stop Grátis)",
+      description: "Gire a Roleta de Letras (Roleta do Alfabeto A a Z) online grátis! Sorteador de letras sem repetir para Stop, Adedonha e sala de aula — opção sem K, W e Y.",
+      keywords: "roleta de letras, roleta alfabeto, roleta do alfabeto, roleta de alfabeto, roleta letras, roleta das letras, sorteador de letras, sorteio de letras, roleta de letras do alfabeto, roleta online de letras",
+      heroTitle: "Roleta de Letras e Roleta do Alfabeto (A–Z)",
       heroHighlight: "Sorteador de Letras Online para Stop e Adedonha",
-      heroSubtitle: "Sorteie qualquer letra de A a Z, apenas vogais ou consoantes sem repetir nenhuma rodada — ideal para Stop!, Adedonha e sala de aula.",
-      quickAnswer: "<strong>Como jogar Stop / Adedonha com a Roleta de Letras?</strong> Clique em Girar com todas as 26 letras do alfabeto (ou remova K, W e Y para rodadas mais rápidas) e ative 'Remover Vencedor Após Giro' para nunca repetir a mesma letra na partida.",
+      heroSubtitle: "Sorteie qualquer letra de A a Z, apenas vogais, consoantes ou modo Stop sem K, W e Y — sem repetir nenhuma rodada.",
+      quickAnswer: "<strong>Como jogar Stop / Adedonha com a Roleta de Letras?</strong> Clique em Girar com todas as 26 letras do alfabeto (ou use o atalho 'Stop Sem K, W, X, Y, Z' acima da lista) e ative 'Remover Vencedor Após Giro' para nunca repetir a mesma letra na partida.",
+      presets: {
+        az26: { label: "Alfabeto Completo A–Z (26)", items: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") },
+        stop21: { label: "Stop / Adedonha (Sem K, W, X, Y, Z)", items: "ABCDEFGHIJLMNOPQRSTUV".split("") },
+        vogais: { label: "Apenas Vogais (A, E, I, O, U)", items: ["A", "E", "I", "O", "U"] },
+        consoantes: { label: "Apenas Consoantes (21)", items: "BCDFGHJKLMNPQRSTVWXYZ".split("") }
+      },
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -169,11 +184,12 @@ export default {
 
   "color-picker-wheel": {
     pt: {
-      title: "Roleta de Cores Online Grátis | Sorteador de Cores",
-      description: "Gire a Roleta de Cores online grátis! Ideal para o Desafio das 3 Cores no desenho, brincadeiras infantis, gincanas e paletas criativas sem cadastro.",
+      title: "Roleta de Cores e Roleta das Cores Online (Sorteador)",
+      description: "Gire a Roleta de Cores (Roleta das Cores) online grátis! Sorteador de cores para o Desafio das 3 Cores no desenho, educação infantil, RGB/HEX e gincanas.",
+      keywords: "roleta de cores, roleta das cores, roleta de cores online, sorteador de cores, roleta cores, roleta de cores para girar, roleta da cor, sorteio de cores",
       heroTitle: "Roleta de Cores Online",
-      heroHighlight: "Sorteador de Cores para Desenho e Jogos",
-      heroSubtitle: "Sorteie cores do arco-íris, tons pastéis ou neon para desafios artísticos, educação infantil e dinâmicas de festa.",
+      heroHighlight: "Sorteador de Cores para Desenho, Desafio 3 Cores e Jogos",
+      heroSubtitle: "Sorteie cores do arco-íris, tons pastéis, neon ou códigos HEX/RGB para desafios artísticos, educação infantil e dinâmicas de festa.",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -213,14 +229,23 @@ export default {
         { q: "Làm sao quay đúng 3 màu không trùng cho thử thách vẽ tranh?", a: "Bật công tắc 'Xóa Người Thắng Sau Khi Quay' rồi quay 3 lượt liên tiếp." },
         { q: "Có thể thêm các màu sắc tùy chỉnh hoặc mã HEX không?", a: "Có, bạn chỉ cần nhập tên màu hoặc mã HEX trực tiếp vào ô thêm mục." }
       ]
+    },
+    zh: {
+      description: "免费颜色随机大转盘与在线配色抽签轮盘：内置彩虹基础色、莫兰迪柔和粉彩与赛博霓虹色预设，开启中奖自动剔除即可轻松完成三色绘画挑战（3-Marker Challenge），支持自定义HEX色号批量导入且免登录即用。",
+      keywords: "颜色随机大转盘, 三色绘画挑战转盘, 在线颜色抽签器, 随机配色转盘"
     }
   },
 
   "country-picker-wheel": {
+    zh: {
+      description: "免费全球国家随机大转盘（世界各国抽签轮盘）：支持按亚洲、欧洲、美洲、非洲与大洋洲筛选国家及国旗，开启中奖自动剔除即可进行不重复的地理课堂提问、世界地图淘汰赛与旅行美食目的地随机抽选。",
+      keywords: "全球国家随机大转盘, 世界国家转盘, 随机国家生成器, 地理课堂抽签转盘"
+    },
     pt: {
       title: "Roleta de Todos os Países do Mundo (195) | Eliminação",
-      description: "Gire a Roleta com todos os 195 países do mundo grátis! Filtre por continente e ative eliminação automática para guerra de mapas, geografia e viagens.",
-      heroTitle: "Roleta de Países do Mundo",
+      description: "Gire a Roleta com Todos os Países do Mundo (195 países da ONU) grátis! Filtre por continente e ative eliminação automática para guerra de mapas e geografia.",
+      keywords: "roleta de todos os países do mundo, roleta com todos os países do mundo, roleta de paises, roleta de países, roleta de países do mundo, roleta sorteadora de todos os países do mundo com eliminação, roleta dos países, sorteador de paises",
+      heroTitle: "Roleta de Todos os Países do Mundo",
       heroHighlight: "Todos os 195 Países com Eliminação Automática",
       heroSubtitle: "Sorteie qualquer um dos 195 países reconhecidos pela ONU — perfeito para batalha de países no mapa, aulas de geografia e desafios gastronômicos.",
       replaceGuide: true,
@@ -248,11 +273,12 @@ export default {
 
   "truth-or-dare-wheel": {
     pt: {
-      title: "Roleta Verdade ou Desafio Online | Jogo de Festa Grátis",
-      description: "Jogue Verdade ou Desafio online na roleta grátis! Escolha Clássico 50/50, Família, Escola ou Festa com amigos — divertido no celular ou na TV.",
+      title: "Roleta Verdade ou Desafio Online | Jogo de Roleta Grátis",
+      description: "Jogue Verdade ou Desafio Jogo Roleta online grátis! Escolha Clássico 50/50, Família, Casais, Escola ou Festa com amigos — divertido no celular ou na TV.",
+      keywords: "verdade ou desafio jogo roleta, roleta verdade ou desafio, verdade ou desafio roleta, roleta de verdade ou desafio, giro de verdade e desafio, verdade ou desafio online roleta",
       heroTitle: "Roleta Verdade ou Desafio Online",
-      heroHighlight: "Jogo de Festa, Amigos e Família Grátis",
-      heroSubtitle: "Acabe com a dúvida de quem escolhe Verdade toda rodada — gire no celular ou projete na TV com modos Clássico, Festa e Família.",
+      heroHighlight: "Jogo de Roleta para Festas, Casais, Amigos e Família",
+      heroSubtitle: "Acabe com a dúvida de quem escolhe Verdade toda rodada — gire no celular ou projete na TV com modos Clássico, Festa, Casais e Família.",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -296,9 +322,15 @@ export default {
   },
 
   "brazil-state-picker-wheel": {
+    es: {
+      title: "Ruleta con los Estados de Brasil | 26 Estados + DF (IBGE)",
+      description: "¡Gira la Ruleta con los Estados de Brasil (Ruleta de los 26 Estados Brasileños + Distrito Federal) gratis! Filtra por las 5 regiones del IBGE sin repetición.",
+      keywords: "ruleta con los estados de brasil, ruleta de los estados de brasil, estados de brasil al azar, ruleta estados brasileños, geografía de brasil"
+    },
     pt: {
       title: "Roleta dos Estados do Brasil | 26 Estados + DF (IBGE)",
-      description: "Gire a Roleta dos Estados do Brasil com todos os 26 estados + Distrito Federal (27 UFs)! Filtre pelas 5 regiões do IBGE para geografia e quizzes.",
+      description: "Gire a Roleta dos Estados do Brasil (Sorteador de Estados Brasileiros) com todos os 26 estados + Distrito Federal! Filtre pelas 5 regiões do IBGE grátis.",
+      keywords: "roleta dos estados do brasil, roleta estados brasileiros, sorteador de estados, roleta dos estados brasileiros, sorteador online de estado brasileiro, estados do brasil roleta",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -322,9 +354,14 @@ export default {
   },
 
   "yes-no-wheel": {
+    zh: {
+      description: "纠结症与选择困难救星！免费在线“是/否（Yes or No）”随机决策大转盘，采用浏览器原生密码学随机算法保证50/50绝对公平，支持纯粹二选一、包含“也许/再转一次”模式及三局两胜，免注册即刻使用。",
+      keywords: "是否随机转盘, 二选一决策转盘, 在线决定转盘, 幸运大转盘小决定"
+    },
     pt: {
-      title: "Roleta Sim ou Não Online | Decisão 50/50 Grátis",
-      description: "Gire a Roleta Sim ou Não grátis para decidir rápido! Alterne entre 50/50 exato, Sim/Não/Talvez ou Melhor de 3 — direto no navegador e sem cadastro.",
+      title: "Roleta Sim ou Não Online | Decisão 50/50 e Talvez Grátis",
+      description: "Gire a Roleta Sim ou Não (Sim ou Não Roleta) online grátis para decidir rápido! Alterne entre 50/50 exato, Sim/Não/Talvez ou Melhor de 3 sem cadastro.",
+      keywords: "roleta sim ou não, sim ou não roleta, roleta de sim ou não, roleta online sim ou não, jogo sim ou nao roleta",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -345,6 +382,10 @@ export default {
   },
 
   "animal-picker-wheel": {
+    zh: {
+      description: "免费动物随机大转盘（野生动物与萌宠抽签轮盘）：涵盖丛林猛兽、海洋生物、飞禽鸟类与常见宠物预设，支持1x–20x自定义权重与中奖自动剔除，非常适合生物课提问、儿童早教认知、你画我猜与动物融合绘画挑战。",
+      keywords: "动物随机大转盘, 随机动物生成器, 儿童动物认知转盘, 绘画灵感随机轮盘"
+    },
     pt: {
       title: "Roleta dos Animais Aleatórios | Sorteador Online Grátis",
       description: "Gire a Roleta dos Animais grátis! Sorteie bichos da selva, marinhos, aves e pets para mímica, desenho criativo, aulas de ciências e brincadeiras.",
@@ -549,7 +590,8 @@ export default {
   "raffle-wheel": {
     zh: {
       title: "在线抽奖转盘生成器 | 免费活动抽奖与年会大转盘",
-      description: "免费在线抽奖转盘生成器：批量粘贴最多500名参与者或抽奖编号，支持1x–20x自定义权重、中奖后自动剔除与CSV凭证导出，免登录即用。",
+      description: "免费在线抽奖转盘生成器与幸运大转盘：支持从Excel批量粘贴最多500名参与者或抽奖编号，提供1x–20x自定义概率权重、中奖后自动剔除、随时手动停止与CSV开奖凭证导出，免登录打开即用。",
+      keywords: "在线抽奖转盘生成器, 幸运大转盘在线生成器, 随机轮盘生成器, 在线转盘生成器, 抽奖转盘免费",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -574,7 +616,8 @@ export default {
   "classroom-name-picker": {
     zh: {
       title: "课堂随机点名转盘 | 免费教师在线点名器（免登录）",
-      description: "免费课堂随机点名转盘：一键粘贴Excel全班花名册（最高500人），支持已点同学自动剔除、静音模式与本地隐私保存，适合希沃白板投影。",
+      description: "免费课堂随机点名转盘与教师在线点名器：一键批量粘贴Excel全班学生花名册（最高500人），支持已点同学自动剔除不重复、1x–20x权重、静音模式与本地浏览器隐私保存，完美适配电子白板投影。",
+      keywords: "课堂随机点名转盘, 在线大转盘随机点名器, 转盘点名器, 随机点名大转盘, 课堂点名轮盘",
       replaceGuide: true,
       mergeFaqs: true,
       guide: {
@@ -593,6 +636,27 @@ export default {
         { q: "学生花名册数据会上传到网络服务器吗？", a: "不会。全部名单仅保存在您的本地浏览器中，刷新不丢失且充分保护学生隐私。" },
         { q: "全班点完一轮后怎样快速恢复完整名单？", a: "从“我保存的转盘”下拉框重新载入班级名单即可一键恢复全部同学。" }
       ]
+    }
+  },
+
+  "picker-wheel": {
+    zh: {
+      description: "免费在线随机选择大转盘（自定义选项决定器）：自由输入或从Excel批量粘贴多达500个选项、任务或灵感清单，支持1x–20x自定义概率权重、抽中自动剔除、随时手动停止与二维码分享，免登录公平帮你做决定。",
+      keywords: "随机选择大转盘, 在线决定转盘, 随机转盘决定器, 大转盘小决定网页版, 自定义转盘生成器"
+    }
+  },
+
+  "wheel-of-names": {
+    zh: {
+      description: "免费在线名字大转盘与随机姓名抽取器：支持从Excel或表格一键批量粘贴多达500个名字，提供1x–20x概率权重调节、中奖名单自动剔除不重复、随时手动停止与CSV导出，广泛用于教师课堂点名、团队晨会与年会抽奖。",
+      keywords: "名字大转盘, 随机点名器, 在线抽奖转盘生成器, 轮盘随机名字生成器, 随机抽名字转盘"
+    }
+  },
+
+  "randomizer-number-1-100": {
+    zh: {
+      description: "免费1到100随机数大转盘（1–100完整百格抽奖轮盘）：支持1–10、1–60与全量1–100数字一键加载，每个数字精确拥有1%中奖概率，已抽号码可自动剔除不重复并导出CSV记录，非常适合课堂学号抽查、百人抽奖与概率实验。",
+      keywords: "1到100随机数转盘, 1-100数字大转盘, 百人抽奖转盘, 随机数字生成器1-100"
     }
   }
 };

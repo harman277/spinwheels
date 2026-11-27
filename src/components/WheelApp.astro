@@ -1,6 +1,7 @@
 ---
 import { LANGUAGES, TRANSLATIONS } from "../data/i18n.js";
 import { getChrome } from "../data/i18n-chrome.js";
+import { getLocalizedDepthCopy, buildContextualLocalizedFaqs } from "../data/localized-tool-depth.js";
 import SPECIALIZED_WHEELS from "../data/specialized-wheels.js";
 import { CATEGORIES, CATEGORIES_BY_SLUG, CATEGORY_NAME_TO_SLUG } from "../data/categories.js";
 import {
@@ -80,8 +81,32 @@ if (!slug) {
   customT.heroSubtitle = rawLoc.heroSubtitle;
   if (rawLoc.quickAnswer) customT.quickAnswer = rawLoc.quickAnswer;
   if (rawLoc.presets) customT.presets = rawLoc.presets;
-  if (rawLoc.faqs && rawLoc.faqs.length) {
-    customT.faqs = rawLoc.faqs.length >= 4 ? rawLoc.faqs.slice() : rawLoc.faqs.concat(baseT.faqs.slice(0, 3));
+  if (rawLoc.howTo) customT.howTo = rawLoc.howTo;
+  if (rawLoc.useCases) customT.useCases = rawLoc.useCases;
+  const contextualNativeFaqs = buildContextualLocalizedFaqs(
+    langCode,
+    rawLoc.name,
+    rawLoc.items,
+    Object.entries(customT.presets || {})
+  );
+  const baseNativeFaqs = Array.isArray(rawLoc.faqs) ? rawLoc.faqs.slice() : [];
+  const seenNativeQ = new Set(baseNativeFaqs.map((f: any) => f?.q));
+  contextualNativeFaqs.forEach((f: any) => {
+    if (f && f.q && !seenNativeQ.has(f.q)) {
+      seenNativeQ.add(f.q);
+      baseNativeFaqs.push(f);
+    }
+  });
+  if (baseNativeFaqs.length < 5 && Array.isArray(baseT.faqs)) {
+    baseT.faqs.forEach((f: any) => {
+      if (baseNativeFaqs.length < 6 && f && f.q && !seenNativeQ.has(f.q)) {
+        seenNativeQ.add(f.q);
+        baseNativeFaqs.push(f);
+      }
+    });
+  }
+  if (baseNativeFaqs.length) {
+    customT.faqs = baseNativeFaqs;
   }
 } else if (tool) {
   isIndexed = false;
@@ -107,6 +132,9 @@ const ogImg = `${SITE_URL}/${tool?.ogImage || "eng-spin-the-wheel-picker.webp"}`
 const totalWheelsCount = Object.keys(SPECIALIZED_WHEELS).length;
 const isLocalizedHub = langCode !== "en" && INDEXABLE_LANGS.has(langCode);
 const hasToolDeepGuide = Boolean(langCode === "en" && tool && tool.editorialGuide);
+// Localized tool pages with a native guide skip the language-wide boilerplate blocks
+// (use cases / fairness / comparison) that are identical on every page of that language.
+const hideLocalizedBoilerplate = Boolean(slug && langCode !== "en" && toolLoc?.guide);
 
 const catSlug = tool ? (CATEGORY_NAME_TO_SLUG as any)[tool.category] : null;
 const activeCatObj = catSlug ? (CATEGORIES_BY_SLUG as any)[catSlug] : null;
@@ -117,17 +145,78 @@ const altNamesList = Array.isArray(tool?.altNames) && tool.altNames.length
   ? tool.altNames
   : ["Wheel of Names", "Random Wheel Spinner", "Decision Wheel", "Random Name Picker", "Picker Wheel Online"];
 
-const relatedWheels = (tool?.relatedSlugs || [])
-  .map((relSlug: string) => ((SPECIALIZED_WHEELS as any)[relSlug] ? { slug: relSlug, ...(SPECIALIZED_WHEELS as any)[relSlug] } : null))
-  .filter(Boolean);
-
-const featuredWheels = !slug
-  ? FEATURED_HOME_SLUGS.map((s) => ((SPECIALIZED_WHEELS as any)[s] ? { slug: s, ...(SPECIALIZED_WHEELS as any)[s] } : null)).filter(Boolean)
+// All wheels that have a complete native translation in langCode (for 100% native localized hubs & related grids)
+const nativeLangWheels = langCode !== "en" && INDEXABLE_LANGS.has(langCode)
+  ? Object.entries(SPECIALIZED_WHEELS)
+      .filter(([_, w]: [string, any]) => {
+        const loc = w?.translations?.[langCode];
+        return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+      })
+      .map(([s, w]: [string, any]) => ({ slug: s, ...w }))
   : [];
 
-const displayBlogs = slug
-  ? (langCode === "en" && Array.isArray(tool?.relatedBlogs) ? tool.relatedBlogs : [])
-  : (langCode === "en" ? FEATURED_HOME_BLOGS : []);
+const categorySiblingWheels = tool?.category
+  ? Object.entries(SPECIALIZED_WHEELS)
+      .filter(([s, w]: [string, any]) => s !== slug && w.category === tool.category)
+      .map(([s, w]: [string, any]) => ({ slug: s, ...w }))
+  : [];
+
+let relatedWheels: any[] = [];
+if (slug && langCode !== "en") {
+  const nativeBySlug = new Map(nativeLangWheels.map((w: any) => [w.slug, w]));
+  const picked = new Set<string>();
+  for (const relSlug of (tool?.relatedSlugs || [])) {
+    if (relSlug !== slug && nativeBySlug.has(relSlug)) {
+      picked.add(relSlug);
+      relatedWheels.push(nativeBySlug.get(relSlug));
+    }
+  }
+  for (const nw of nativeLangWheels) {
+    if (nw.slug !== slug && !picked.has(nw.slug) && relatedWheels.length < 8) {
+      picked.add(nw.slug);
+      relatedWheels.push(nw);
+    }
+  }
+} else if (slug) {
+  const picked = new Set<string>();
+  for (const relSlug of (tool?.relatedSlugs || [])) {
+    if (relSlug !== slug && (SPECIALIZED_WHEELS as any)[relSlug]) {
+      picked.add(relSlug);
+      relatedWheels.push({ slug: relSlug, ...(SPECIALIZED_WHEELS as any)[relSlug] });
+    }
+  }
+  for (const cw of categorySiblingWheels) {
+    if (!picked.has(cw.slug) && relatedWheels.length < 8) {
+      picked.add(cw.slug);
+      relatedWheels.push(cw);
+    }
+  }
+}
+
+const featuredWheels = !slug
+  ? (langCode === "en"
+      ? FEATURED_HOME_SLUGS.map((s) => ((SPECIALIZED_WHEELS as any)[s] ? { slug: s, ...(SPECIALIZED_WHEELS as any)[s] } : null)).filter(Boolean)
+      : nativeLangWheels)
+  : [];
+
+const displayBlogs: any[] = [];
+if (slug && langCode === "en") {
+  const seenB = new Set<string>();
+  for (const b of (Array.isArray(tool?.relatedBlogs) ? tool.relatedBlogs : [])) {
+    if (b && b.slug && !seenB.has(b.slug)) {
+      seenB.add(b.slug);
+      displayBlogs.push(b);
+    }
+  }
+  for (const b of (Array.isArray(activeCatObj?.relatedBlogs) ? activeCatObj.relatedBlogs : [])) {
+    if (b && b.slug && !seenB.has(b.slug) && displayBlogs.length < 6) {
+      seenB.add(b.slug);
+      displayBlogs.push(b);
+    }
+  }
+} else if (!slug && langCode === "en") {
+  displayBlogs.push(...FEATURED_HOME_BLOGS);
+}
 
 // Breadcrumbs (4 levels on tool pages)
 const breadcrumbItems: Array<Record<string, any>> = [
@@ -274,6 +363,15 @@ const initialItemsJson = Array.isArray(defaultItems) && defaultItems.length
   : null;
 const hasDeepTable = Boolean(hasToolDeepGuide && Array.isArray(tool?.deepSections) && tool.deepSections.some((s: any) => s && s.table));
 const presetEntries = Object.entries(customT.presets || {}) as Array<[string, any]>;
+
+const SSR_PALETTE = ["#EF4444", "#F97316", "#EAB308", "#22C55E", "#06B6D4", "#3B82F6", "#8B5CF6", "#EC4899", "#14B8A6", "#F43F5E"];
+const ssrItems: string[] = Array.isArray(defaultItems) && defaultItems.length
+  ? defaultItems.map(String)
+  : (Array.isArray(customT.presets?.drawnames?.items) && customT.presets.drawnames.items.length
+      ? customT.presets.drawnames.items.map(String)
+      : ["Oliver", "Charlotte", "Amelia", "Henry", "Lucas", "Mia", "Benjamin", "Sophia"]);
+const ssrSinglePct = ssrItems.length > 0 ? (100 / ssrItems.length).toFixed(ssrItems.length > 20 ? 2 : 1) : "0";
+const locDepth = langCode !== "en" ? getLocalizedDepthCopy(langCode, localizedWheelName, ssrItems, presetEntries) : null;
 ---
 
 <!doctype html>
@@ -321,7 +419,7 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
 
   <link rel="stylesheet" href={ASSETS.cssHref} />
-  <AnalyticsHead enableAds={true} />
+  <AnalyticsHead enableAds={isIndexed} />
 
   <script type="application/ld+json" set:html={schemaJson} />
   <script is:inline set:html={`window.stwol_presets = ${presetsJson};${initialItemsJson ? `\nwindow.stwol_initial_items = ${initialItemsJson};` : ""}`} />
@@ -388,6 +486,9 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
             <button class="spin-action-btn" id="spinBtn" type="button" onclick="window.stwol.spinWheel()" aria-label={customT.ui.spinBtn}>
               {customT.ui.spinBtn}
             </button>
+            <button class="btn-secondary" id="stopBtn" type="button" hidden onclick="window.stwol.stopWheel()" style="margin-top:8px; width:100%; max-width:260px; font-weight:800; border-color:var(--danger); color:var(--danger);">
+              ⏹ STOP
+            </button>
 
             <div class="result-banner" aria-live="polite">
               <div class="result-banner-label">{customT.ui.resultDecided}</div>
@@ -407,7 +508,20 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
                 ))}
               </div>
 
-              <div class="entries-list" id="entriesList" role="list" aria-label="Current Wheel Items"></div>
+              <div class="entries-list" id="entriesList" role="list" aria-label="Current Wheel Items">
+                {ssrItems.slice(0, 60).map((itemText: string, idx: number) => (
+                  <div class="entry-item" role="listitem">
+                    <span class="entry-color" style={`background:${SSR_PALETTE[idx % SSR_PALETTE.length]}`}></span>
+                    <span class="entry-text" title={itemText}>{itemText}</span>
+                    <div class="entry-weight-wrap" title={`1x (${ssrSinglePct}%)`}>
+                      <button class="weight-btn" type="button" onclick={`window.stwol.adjustWeight(${idx}, -1)`} aria-label={`- ${itemText}`}>−</button>
+                      <span class="weight-badge">1x</span>
+                      <button class="weight-btn" type="button" onclick={`window.stwol.adjustWeight(${idx}, 1)`} aria-label={`+ ${itemText}`}>+</button>
+                    </div>
+                    <button class="entry-del" type="button" onclick={`window.stwol.removeEntry(${idx})`} aria-label={`✕ ${itemText}`}>✕</button>
+                  </div>
+                ))}
+              </div>
 
               <div class="add-entry-row">
                 <label for="newEntry" class="sr-only">Add an entry to the wheel</label>
@@ -601,7 +715,28 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
               <a href="/yes-no-wheel" class="companion-pill">Yes or No Wheel &rarr;</a>
               <a href="/country-picker-wheel" class="companion-pill">Country Wheel &rarr;</a>
               <a href="/number-picker-wheel" class="companion-pill">Number Picker &rarr;</a>
+              <a href="/dandy-world-wheel-spinner" class="companion-pill">Dandy's World Wheel &rarr;</a>
+              <a href="/nba-player-spin-the-wheel" class="companion-pill">NBA Player Wheel &rarr;</a>
               <a href="/tools" class="companion-pill companion-pill-cat">Explore All {totalWheelsCount}+ Wheels</a>
+            </div>
+          )}
+
+          {langCode !== "en" && nativeLangWheels.length > 0 && (
+            <div class="companion-strip" aria-label={locDepth?.companionLabel || uiChrome.relatedWheelsHeading}>
+              <span class="companion-label">{locDepth?.companionLabel || uiChrome.relatedWheelsHeading}</span>
+              {nativeLangWheels
+                .filter((nw: any) => nw.slug !== slug)
+                .slice(0, 12)
+                .map((nw: any) => (
+                  <a href={`/${langCode}/${nw.slug}`} class="companion-pill">
+                    {nw.translations?.[langCode]?.name || nw.name} &rarr;
+                  </a>
+                ))}
+              {slug && (
+                <a href={`/${langCode}`} class="companion-pill companion-pill-cat">
+                  🏠 {uiChrome.homeBreadcrumb || langMeta.name}
+                </a>
+              )}
             </div>
           )}
         </section>
@@ -679,7 +814,7 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
           </div>
         </section>
 
-        {(!hasToolDeepGuide || tool?.useCases) && (
+        {!hideLocalizedBoilerplate && (!hasToolDeepGuide || tool?.useCases) && (
           <section class="content-section" aria-labelledby="useCasesHeading">
             <div class="section-header">
               <h2 class="section-title" id="useCasesHeading">{customT.useCases.title}</h2>
@@ -774,6 +909,55 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
                 </div>
               )}
 
+              {presetEntries.length > 0 && (
+                <div class="editorial-subsection" style="margin-top:20px;">
+                  <h3>Included Presets &amp; Pre-Loaded Slice Probabilities for {tool.name}</h3>
+                  <p>
+                    By default, <strong>{tool.name}</strong> loads <strong>{ssrItems.length} slices</strong> onto the canvas, giving each option an exact <strong>1/{ssrItems.length} ({ssrSinglePct}%)</strong> uniform mathematical selection probability per spin via <code>window.crypto.getRandomValues()</code>. Switch between the built-in quick preset modes below in one click:
+                  </p>
+                  <div class="table-wrap" style="margin: 12px 0 16px;">
+                    <table class="compare-table">
+                      <thead>
+                        <tr>
+                          <th>Preset Mode</th>
+                          <th>Slices</th>
+                          <th>Single-Spin Odds (1/N)</th>
+                          <th>Included Options Preview</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {presetEntries.map(([pKey, pVal]) => {
+                          const pList = Array.isArray(pVal?.items) ? pVal.items : [];
+                          const pCount = pList.length || 1;
+                          const pPct = (100 / pCount).toFixed(pCount > 20 ? 2 : 1);
+                          return (
+                            <tr>
+                              <td><strong>{pVal?.label || pKey}</strong></td>
+                              <td>{pCount}</td>
+                              <td>1/{pCount} ({pPct}%)</td>
+                              <td>{pList.slice(0, 6).join(", ")}{pList.length > 6 ? "…" : ""}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {categorySiblingWheels.length > 0 && activeCatObj && (
+                <div class="editorial-subsection" style="margin-top:18px;">
+                  <h3>Companion Spinners in {activeCatObj.name}</h3>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                    {categorySiblingWheels.map((cw: any) => (
+                      <a href={`/${cw.slug}`} class="companion-pill" style="text-decoration:none;">
+                        {cw.name} &rarr;
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {activeCatObj && (
                 <div class="category-callout">
                   <div>
@@ -848,7 +1032,7 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
           </section>
         )}
 
-        {!(hasToolDeepGuide && tool?.fairnessMath) && (
+        {!hideLocalizedBoilerplate && !(hasToolDeepGuide && tool?.fairnessMath) && (
           <section class="content-section" aria-labelledby="fairnessHeading">
             <div class="section-header">
               <h2 class="section-title" id="fairnessHeading">{customT.fairness.title}</h2>
@@ -863,7 +1047,7 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
           </section>
         )}
 
-        {!hasDeepTable && (
+        {!hideLocalizedBoilerplate && !hasDeepTable && (
           <section class="content-section" aria-labelledby="comparisonHeading">
             <div class="section-header">
               <h2 class="section-title" id="comparisonHeading">{customT.comparison.title}</h2>
@@ -913,6 +1097,94 @@ const presetEntries = Object.entries(customT.presets || {}) as Array<[string, an
                 <ul style="margin:16px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
                   {toolLoc.guide.tips.map((tip: string) => <li>{tip}</li>)}
                 </ul>
+              )}
+
+              {locDepth && (
+                <>
+                  <div class="editorial-subsection" style="margin-top:24px;">
+                    <h3>{locDepth.tableHeading}</h3>
+                    <p style="margin-top:8px; line-height:1.75; color:var(--text-secondary);">{locDepth.tableIntro}</p>
+                    {locDepth.presetRows.length > 0 && (
+                      <div class="table-wrap" style="margin: 14px 0 18px;">
+                        <table class="compare-table">
+                          <thead>
+                            <tr>
+                              <th>{locDepth.colPreset}</th>
+                              <th>{locDepth.colCount}</th>
+                              <th>{locDepth.colOdds}</th>
+                              <th>{locDepth.colSample}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {locDepth.presetRows.map((pr: any) => (
+                              <tr>
+                                <td><strong>{pr.label}</strong></td>
+                                <td>{pr.count}</td>
+                                <td>{pr.odds}</td>
+                                <td>{pr.sample}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="editorial-subsection" style="margin-top:20px;">
+                    <h3>{locDepth.rosterHeading}</h3>
+                    <p style="margin-top:8px; line-height:1.75; color:var(--text-secondary);">{locDepth.rosterIntro}</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+                      {locDepth.allItems.map((it: string, idx: number) => (
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:999px; font-size:0.82rem; background:var(--surface-hover, rgba(245,158,11,0.08)); border:1px solid var(--border-color);">
+                          <span style={`width:8px; height:8px; border-radius:50%; background:${SSR_PALETTE[idx % SSR_PALETTE.length]};`}></span>
+                          <span>{it}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </article>
+          </section>
+        )}
+
+        {!slug && langCode !== "en" && locDepth && (
+          <section class="content-section" aria-labelledby="localizedHubGuideHeading">
+            <div class="section-header">
+              <h2 class="section-title" id="localizedHubGuideHeading">{locDepth.hubGuideTitle}</h2>
+              <p class="section-subtitle">{locDepth.hubGuideSubtitle}</p>
+            </div>
+            <article class="card localized-guide">
+              <p class="editorial-lead">{locDepth.hubGuideIntro}</p>
+              {locDepth.hubGuideParas.map((para: string) => (
+                <p style="margin-top:12px; line-height:1.75; color:var(--text-secondary);">{para}</p>
+              ))}
+              {locDepth.presetRows.length > 0 && (
+                <div class="editorial-subsection" style="margin-top:20px;">
+                  <h3>{locDepth.tableHeading}</h3>
+                  <div class="table-wrap" style="margin: 14px 0 18px;">
+                    <table class="compare-table">
+                      <thead>
+                        <tr>
+                          <th>{locDepth.colPreset}</th>
+                          <th>{locDepth.colCount}</th>
+                          <th>{locDepth.colOdds}</th>
+                          <th>{locDepth.colSample}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {locDepth.presetRows.map((pr: any) => (
+                          <tr>
+                            <td><strong>{pr.label}</strong></td>
+                            <td>{pr.count}</td>
+                            <td>{pr.odds}</td>
+                            <td>{pr.sample}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               )}
             </article>
           </section>

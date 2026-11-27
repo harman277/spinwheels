@@ -22,7 +22,9 @@ export const FEATURED_HOME_SLUGS = [
   "number-picker-wheel", "randomizer-number-1-100", "letter-picker-wheel", "color-picker-wheel",
   "truth-or-dare-wheel", "emoji-picker-wheel", "raffle-wheel", "prize-wheel",
   "classroom-name-picker", "team-picker-wheel", "food-picker-wheel", "random-flag-generator",
-  "language-picker-wheel", "random-nfl-team-generator", "nba-team-wheel", "brazil-state-picker-wheel"
+  "language-picker-wheel", "random-nfl-team-generator", "nba-team-wheel", "brazil-state-picker-wheel",
+  "dandy-world-wheel-spinner", "nba-player-spin-the-wheel", "zodiac-picker-wheel", "us-state-picker-wheel",
+  "music-genre-wheel", "day-picker-wheel"
 ];
 
 export const FEATURED_HOME_BLOGS = [
@@ -31,7 +33,10 @@ export const FEATURED_HOME_BLOGS = [
   { slug: "how-to-run-online-giveaway", title: "How to Pick a Random Giveaway Winner Fairly", tag: "Giveaways" },
   { slug: "is-spin-wheel-truly-random", title: "Is a Digital Spin Wheel Truly Random? Science Proof", tag: "Cryptography" },
   { slug: "what-to-eat-tonight-spin-wheel-dinner-decision", title: "What's for Dinner Tonight? End Debates With a Wheel", tag: "Lifestyle" },
-  { slug: "best-wheel-of-names-alternatives-free-spinner-tools", title: "10 Best Wheel of Names Alternatives & Free Spinners", tag: "Comparison" }
+  { slug: "best-wheel-of-names-alternatives-free-spinner-tools", title: "10 Best Wheel of Names Alternatives & Free Spinners", tag: "Comparison" },
+  { slug: "sports-gaming-spin-wheel-challenges-nfl-nba-pokemon-fortnite", title: "Sports & Gaming Spin Wheel Challenges (NFL, NBA, Pokémon & Fortnite)", tag: "Gaming & Sports" },
+  { slug: "spin-wheel-icebreakers-onboarding", title: "25+ Team Icebreaker & Onboarding Spin Wheel Prompts", tag: "Teams & Work" },
+  { slug: "date-night-roulette-spin-wheel-ideas-couples", title: "Date Night Roulette: 30+ Fun Spin Wheel Ideas for Couples", tag: "Date Night" }
 ];
 
 export function toHreflangCode(code: string): string {

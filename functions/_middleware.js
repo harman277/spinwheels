@@ -66,7 +66,48 @@ const ALIAS_REDIRECTS = {
   "animal-wheel": "animal-picker-wheel",
   "flag-wheel": "random-flag-generator",
   "zodiac-wheel": "zodiac-picker-wheel",
-  "emoji-name-picker": "emoji-picker-wheel"
+  "emoji-name-picker": "emoji-picker-wheel",
+  "wheel-of-country": "country-picker-wheel",
+  "every-country-wheel": "country-picker-wheel",
+  "all-countries-wheel": "country-picker-wheel",
+  "country-wheel-spinner": "country-picker-wheel",
+  "country-spinner": "country-picker-wheel",
+  "number-wheel-spinner": "number-picker-wheel",
+  "number-spinner": "number-picker-wheel",
+  "number-spinner-wheel": "number-picker-wheel",
+  "random-number-wheel": "number-picker-wheel",
+  "color-wheel-spinner": "color-picker-wheel",
+  "colour-wheel-spinner": "color-picker-wheel",
+  "color-spin-wheel": "color-picker-wheel",
+  "letter-spinner": "letter-picker-wheel",
+  "letter-wheel-spinner": "letter-picker-wheel",
+  "alphabet-wheel": "letter-picker-wheel",
+  "yes-or-no-wheel": "yes-no-wheel",
+  "yes-or-no-spinner": "yes-no-wheel",
+  "yes-no-spinner": "yes-no-wheel",
+  "truth-or-dare-spinner": "truth-or-dare-wheel",
+  "dare-wheel": "truth-or-dare-wheel",
+  "animal-wheel-spinner": "animal-picker-wheel",
+  "random-animal-wheel": "animal-picker-wheel",
+  "wheel-of-animals": "animal-picker-wheel",
+  "nba-players-wheel": "nba-player-spin-the-wheel",
+  "random-nba-player-wheel": "nba-player-spin-the-wheel",
+  "nfl-team-wheel": "random-nfl-team-generator",
+  "wheel-of-nfl-teams": "random-nfl-team-generator",
+  "dandys-world-wheel-spinner": "dandy-world-wheel-spinner",
+  "dandys-world-toon-wheel": "dandy-world-wheel-spinner",
+  "dandys-world-trinket-wheel": "dandy-world-wheel-spinner",
+  "language-wheel": "language-picker-wheel",
+  "wheel-of-languages": "language-picker-wheel",
+  "random-language-picker": "language-picker-wheel",
+  "month-picker": "month-picker-wheel",
+  "wheel-of-months": "month-picker-wheel",
+  "months-of-the-year-wheel": "month-picker-wheel",
+  "days-of-the-week-wheel": "day-picker-wheel",
+  "day-wheel": "day-picker-wheel",
+  "us-states-wheel": "us-state-picker-wheel",
+  "50-states-wheel": "us-state-picker-wheel",
+  "brazil-states-wheel": "brazil-state-picker-wheel"
 };
 
 const ALL_LANGS = new Set([
@@ -95,10 +136,14 @@ export async function onRequest(context) {
     return Response.redirect(`${url.origin}${url.pathname.toLowerCase()}${url.search}`, 301);
   }
 
-  // 4. Localized alias redirect (/:lang/:alias -> /:lang/:target)
+  // 4. Localized alias redirect (/:lang/:alias -> /:lang/:target and /:lang/tools -> /:lang)
   const parts = url.pathname.split("/").filter(Boolean);
   if (parts.length === 2 && ALL_LANGS.has(parts[0])) {
     const [lang, seg] = parts;
+    if (seg === "tools") {
+      const dest = lang === "en" ? "/tools" : `/${lang}`;
+      return Response.redirect(`${url.origin}${dest}${url.search}`, 301);
+    }
     const target = ALIAS_REDIRECTS[decodeURIComponent(seg)];
     if (target) {
       const dest = lang === "en" ? `/${target}` : `/${lang}/${target}`;

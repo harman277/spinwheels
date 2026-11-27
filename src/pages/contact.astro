@@ -93,13 +93,29 @@ const schemaJson = JSON.stringify({
         <div id="formStatus" style="display:none; padding:14px; border-radius:var(--radius-md); font-size:0.9rem; font-weight:600;" role="alert"></div>
       </form>
 
-      <div style="margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
-        <h2 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Helpful Details to Include</h2>
-        <ul style="margin-left: 20px; margin-bottom: 12px;">
-          <li><strong>Bug reports:</strong> Tell us the exact wheel URL (for example, <code>/country-picker-wheel</code>), your browser and device, and what you tapped right before the issue happened.</li>
-          <li><strong>Dataset or translation fixes:</strong> Let us know the specific team, country, preset, or phrase that needs correction so we can verify and update it quickly.</li>
-          <li><strong>Saved-list privacy note:</strong> Because custom wheels live strictly inside your own browser's <code>localStorage</code> and are never sent to our servers, we cannot view or recover lists cleared by browser resets—use <strong>Share Wheel</strong> to bookmark important lists as a URL.</li>
+      <div style="margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.94rem; line-height: 1.7;">
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">Helpful Details to Include in Your Message</h2>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Bug reports &amp; display issues:</strong> Tell us the exact wheel URL (for example, <code>/country-picker-wheel</code> or <code>/pt/number-picker-wheel</code>), your browser and device (such as Chrome on a school Chromebook or Safari on iPhone), and what you clicked right before the issue happened.</li>
+          <li><strong>Dataset or translation fixes:</strong> Let us know the specific sports franchise, country, state, preset pack, or localized phrase that needs updating so our editorial desk can verify and publish the correction promptly.</li>
+          <li><strong>Saved-list privacy note:</strong> Because custom wheels live strictly inside your own browser's <code>localStorage</code> and are never uploaded to our servers, our support team cannot view or recover lists cleared by browser resets—always use <strong>Share Wheel</strong> to bookmark important lists as a URL or export your Spin History as a CSV file.</li>
         </ul>
+
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 24px 0 10px;">Quick Troubleshooting &amp; Support FAQ</h2>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="padding:14px 16px; border-radius:10px; background:var(--bg-surface-elevated); border:1px solid var(--border-color);">
+            <strong style="color:var(--text-primary); display:block; margin-bottom:4px;">Why don't I hear the wheel clicking or drumroll sound?</strong>
+            <span>Check that the speaker icon in the top navigation bar is not muted (🔇), verify that <em>Sound Effect</em> under Customization &amp; Settings is set to Mechanical Clicker or Suspense Drumroll, and tap anywhere on the page once so your browser unlocks Web Audio synthesis.</span>
+          </div>
+          <div style="padding:14px 16px; border-radius:10px; background:var(--bg-surface-elevated); border:1px solid var(--border-color);">
+            <strong style="color:var(--text-primary); display:block; margin-bottom:4px;">How do I embed an ad-free wheel on Google Sites, Notion, or OBS Studio?</strong>
+            <span>Open any wheel, scroll to the <em>Save, Share &amp; Embed</em> card, and click <strong>Embed Wheel</strong>. The generated <code>?embed=1</code> iframe automatically removes navigation chrome and advertisements for clean classroom and livestream overlays.</span>
+          </div>
+          <div style="padding:14px 16px; border-radius:10px; background:var(--bg-surface-elevated); border:1px solid var(--border-color);">
+            <strong style="color:var(--text-primary); display:block; margin-bottom:4px;">How do I restore a specialized wheel's default entries after editing it?</strong>
+            <span>Every edits you make auto-saves locally for that page path. Click the <strong>↺ Reset to Default Entries</strong> button directly below Shuffle/Sort/Clear All to restore the original verified dataset in one tap.</span>
+          </div>
+        </div>
       </div>
     </article>
   </main>

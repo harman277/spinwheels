@@ -9,7 +9,30 @@
 /terms /terms-and-conditions 301
 
 # Canonical /en/:slug -> /:slug
+/en/nba-teams-spin-the-wheel /nba-team-wheel 301
 /en/:slug /:slug 301
+
+# Legacy Bing URL & localized /tools directory consolidation
+/pt/movie-genre-wheel /pt/music-genre-wheel 301
+/zh/tools /zh 301
+/pt/tools /pt 301
+/vi/tools /vi 301
+/es/tools /es 301
+/de/tools /de 301
+/fr/tools /fr 301
+/it/tools /it 301
+/pl/tools /pl 301
+/ja/tools /ja 301
+/ko/tools /ko 301
+/nl/tools /nl 301
+/sv/tools /sv 301
+/da/tools /da 301
+/no/tools /no 301
+/tr/tools /tr 301
+/ru/tools /ru 301
+/ar/tools /ar 301
+/hi/tools /hi 301
+/id/tools /id 301
 
 # All 46 Canonical Search Aliases & Legacy Clone Consolidation
 /wheelofnames /wheel-of-names 301
@@ -66,3 +89,45 @@
 /flag-wheel /random-flag-generator 301
 /zodiac-wheel /zodiac-picker-wheel 301
 /emoji-name-picker /emoji-picker-wheel 301
+/wheel-of-country /country-picker-wheel 301
+/every-country-wheel /country-picker-wheel 301
+/all-countries-wheel /country-picker-wheel 301
+/country-wheel-spinner /country-picker-wheel 301
+/country-spinner /country-picker-wheel 301
+/number-wheel-spinner /number-picker-wheel 301
+/number-spinner /number-picker-wheel 301
+/number-spinner-wheel /number-picker-wheel 301
+/random-number-wheel /number-picker-wheel 301
+/color-wheel-spinner /color-picker-wheel 301
+/colour-wheel-spinner /color-picker-wheel 301
+/color-spin-wheel /color-picker-wheel 301
+/letter-spinner /letter-picker-wheel 301
+/letter-wheel-spinner /letter-picker-wheel 301
+/alphabet-wheel /letter-picker-wheel 301
+/yes-or-no-wheel /yes-no-wheel 301
+/yes-or-no-spinner /yes-no-wheel 301
+/yes-no-spinner /yes-no-wheel 301
+/truth-or-dare-spinner /truth-or-dare-wheel 301
+/dare-wheel /truth-or-dare-wheel 301
+/animal-wheel-spinner /animal-picker-wheel 301
+/random-animal-wheel /animal-picker-wheel 301
+/wheel-of-animals /animal-picker-wheel 301
+/nba-players-wheel /nba-player-spin-the-wheel 301
+/random-nba-player-wheel /nba-player-spin-the-wheel 301
+/nfl-team-wheel /random-nfl-team-generator 301
+/wheel-of-nfl-teams /random-nfl-team-generator 301
+/dandys-world-wheel-spinner /dandy-world-wheel-spinner 301
+/dandys-world-toon-wheel /dandy-world-wheel-spinner 301
+/dandys-world-trinket-wheel /dandy-world-wheel-spinner 301
+/language-wheel /language-picker-wheel 301
+/wheel-of-languages /language-picker-wheel 301
+/random-language-picker /language-picker-wheel 301
+/month-picker /month-picker-wheel 301
+/wheel-of-months /month-picker-wheel 301
+/months-of-the-year-wheel /month-picker-wheel 301
+/days-of-the-week-wheel /day-picker-wheel 301
+/day-wheel /day-picker-wheel 301
+/us-states-wheel /us-state-picker-wheel 301
+/50-states-wheel /us-state-picker-wheel 301
+/brazil-states-wheel /brazil-state-picker-wheel 301
+/roleta-estados-do-brasil /pt/brazil-state-picker-wheel 301

@@ -30,6 +30,36 @@ const getToolLabel = (slug: string, fallback: string) => {
 };
 
 const catLabel = (enName: string, fallback: string) => uiChrome.categories?.[enName] || fallback;
+
+const nativeFooterWheels = footerLang !== "en" && hasIndexableFooter
+  ? Object.entries(SPECIALIZED_WHEELS)
+      .filter(([_, w]: [string, any]) => {
+        const loc = w?.translations?.[footerLang];
+        return Boolean(loc && loc.name && loc.heroSubtitle && loc.items);
+      })
+      .map(([s, w]: [string, any]) => ({
+        href: `/${footerLang}/${s}`,
+        label: w.translations[footerLang].name
+      }))
+      .slice(0, 14)
+  : [];
+
+const defaultEnFooterWheels = [
+  { slug: "wheel-of-names", label: "Wheel of Names" },
+  { slug: "country-picker-wheel", label: "Country Picker Wheel (195)" },
+  { slug: "number-picker-wheel", label: "Number Picker Wheel" },
+  { slug: "yes-no-wheel", label: "Yes or No Wheel" },
+  { slug: "animal-picker-wheel", label: "Animal Picker Wheel" },
+  { slug: "color-picker-wheel", label: "Color Wheel Spinner" },
+  { slug: "truth-or-dare-wheel", label: "Truth or Dare Wheel" },
+  { slug: "letter-picker-wheel", label: "Letter Picker Wheel (A–Z)" },
+  { slug: "dandy-world-wheel-spinner", label: "Dandy's World Wheel Spinner" },
+  { slug: "nba-player-spin-the-wheel", label: "NBA Player Spin the Wheel" },
+  { slug: "random-nfl-team-generator", label: "Random NFL Team Generator" },
+  { slug: "raffle-wheel", label: "Raffle & Giveaway Wheel" },
+  { slug: "prize-wheel", label: "Prize Wheel" },
+  { slug: "twister-spinner", label: "Twister Spinner" }
+];
 ---
 
 <footer class="site-footer" role="contentinfo">
@@ -46,17 +76,13 @@ const catLabel = (enName: string, fallback: string) => uiChrome.categories?.[enN
       <div class="footer-col">
         <h3>{uiChrome.popularWheelsCol}</h3>
         <ul>
-          <li><a href={getToolUrl("wheel-of-names")}>{getToolLabel("wheel-of-names", "Wheel of Names")}</a></li>
-          <li><a href={getToolUrl("yes-no-wheel")}>{getToolLabel("yes-no-wheel", "Yes or No Wheel")}</a></li>
-          <li><a href={getToolUrl("picker-wheel")}>{getToolLabel("picker-wheel", "Picker Wheel")}</a></li>
-          <li><a href={getToolUrl("decision-wheel")}>{getToolLabel("decision-wheel", "Decision Wheel")}</a></li>
-          <li><a href={getToolUrl("raffle-wheel")}>{getToolLabel("raffle-wheel", "Raffle & Giveaway Wheel")}</a></li>
-          <li><a href={getToolUrl("prize-wheel")}>{getToolLabel("prize-wheel", "Prize Wheel")}</a></li>
-          <li><a href={getToolUrl("dinner-wheel")}>{getToolLabel("dinner-wheel", "Dinner & Food Wheel")}</a></li>
-          <li><a href={getToolUrl("twister-spinner")}>{getToolLabel("twister-spinner", "Twister Spinner")}</a></li>
-          <li><a href={getToolUrl("number-picker-wheel")}>{getToolLabel("number-picker-wheel", "Number Picker Wheel")}</a></li>
-          <li><a href={getToolUrl("truth-or-dare-wheel")}>{getToolLabel("truth-or-dare-wheel", "Truth or Dare Wheel")}</a></li>
-          <li><a href={getToolUrl("dice-roller-wheel")}>{getToolLabel("dice-roller-wheel", "Dice Roller Wheel")}</a></li>
+          {nativeFooterWheels.length > 0
+            ? nativeFooterWheels.map((fw) => (
+                <li><a href={fw.href}>{fw.label}</a></li>
+              ))
+            : defaultEnFooterWheels.map((fw) => (
+                <li><a href={getToolUrl(fw.slug)}>{getToolLabel(fw.slug, fw.label)}</a></li>
+              ))}
           <li><a href="/tools">{(uiChrome.viewAllWheels || "View All {count}+ Wheels").replace("{count}", String(totalFooterWheels))} &rarr;</a></li>
         </ul>
       </div>
@@ -120,13 +146,22 @@ const catLabel = (enName: string, fallback: string) => uiChrome.categories?.[enN
       <a href="/hi" style="margin:0 5px;">🇮🇳 हिन्दी</a> ·
       <a href="/id" style="margin:0 5px;">🇮🇩 Bahasa Indonesia</a>
       <button type="button" onclick="if(window.stwol && window.stwol.openLanguageModal) window.stwol.openLanguageModal();" style="margin-left:8px; color:var(--accent-gold-dark); font-weight:700; text-decoration:underline;">
-        + All 35 Languages
+        {footerLang === "en" ? "+ All 35 Languages" : "+ 35 🌐"}
       </button>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 spinthewheelsonline.com. All rights reserved. Cryptographically random decision tool.</p>
-      <p style="font-size:0.8rem;">Developed with privacy in mind. Data never leaves your device.</p>
+      {footerLang === "en" ? (
+        <>
+          <p>© 2026 spinthewheelsonline.com. All rights reserved. Cryptographically random decision tool.</p>
+          <p style="font-size:0.8rem;">Developed with privacy in mind. Data never leaves your device.</p>
+        </>
+      ) : (
+        <>
+          <p>© 2026 spinthewheelsonline.com — {uiChrome.footerTagline}</p>
+          <p style="font-size:0.8rem;">{uiChrome.editorialBadge}</p>
+        </>
+      )}
     </div>
   </div>
 </footer>

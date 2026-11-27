@@ -79,6 +79,8 @@ const CATEGORIES = [
       { slug: "spin-wheel-classroom-activities", title: "How Teachers Use Spin the Wheel in Classrooms", tag: "Education" },
       { slug: "how-to-use-spin-wheel-classroom-examples", title: "20+ Classroom Spin Wheel Examples for Teachers", tag: "Lesson Ideas" },
       { slug: "name-picker-wheel-work-school", title: "10 Smart Ways to Use a Name Picker Wheel at Work & School", tag: "Work & School" },
+      { slug: "spin-wheel-icebreakers-onboarding", title: "25+ Spin Wheel Icebreakers for New Employee Onboarding", tag: "Onboarding" },
+      { slug: "spin-wheel-team-building", title: "How Remote Teams Use Spin the Wheel for Team Building", tag: "Remote Teams" },
       { slug: "best-wheel-of-names-alternatives-free-spinner-tools", title: "Best Wheel of Names Alternatives & Free Spinners Compared", tag: "Comparison" }
     ],
     faqs: [

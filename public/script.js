@@ -295,15 +295,27 @@
     ctx.stroke();
   }
 
-  // --- Wheel Spin Logic ---
+  // --- Wheel Spin & Manual Early-Stop Logic ---
+  let activeStopTrigger = null;
+
+  function stopWheel() {
+    if (!spinning || typeof activeStopTrigger !== "function") return;
+    activeStopTrigger();
+  }
+
   function spinWheel() {
     if (spinning || entries.length < 2) return;
     initAudio();
 
     spinning = true;
     const spinBtn = document.getElementById("spinBtn");
+    const stopBtn = document.getElementById("stopBtn");
     const centerBtn = document.querySelector(".center-circle");
     if (spinBtn) spinBtn.disabled = true;
+    if (stopBtn) {
+      stopBtn.hidden = false;
+      stopBtn.disabled = false;
+    }
     if (centerBtn) centerBtn.disabled = true;
 
     const resultBox = document.getElementById("resultValue");
@@ -341,7 +353,7 @@
     if (delta < 0) delta += Math.PI * 2;
     const totalRotation = Math.PI * 2 * extraFullRotations + delta;
     const startAngle = currentAngle;
-    const finalTargetAngle = startAngle + totalRotation;
+    let finalTargetAngle = startAngle + totalRotation;
 
     const soundType = document.getElementById("soundSelect") ? document.getElementById("soundSelect").value : "tick";
     if (soundType === "drum") {
@@ -351,16 +363,44 @@
     const startTime = performance.now();
     previousSectorIndex = -1;
 
+    let stoppingEarly = false;
+    let stopStartTime = 0;
+    let stopStartAngle = 0;
+    let stopTotalRotation = 0;
+    const stopDurationMs = 380;
+
+    activeStopTrigger = function () {
+      if (stoppingEarly) return;
+      stoppingEarly = true;
+      stopStartTime = performance.now();
+      stopStartAngle = currentAngle;
+      const mod = stopStartAngle % (Math.PI * 2);
+      let remDelta = targetOffset - mod;
+      if (remDelta < 0) remDelta += Math.PI * 2;
+      stopTotalRotation = Math.PI * 2 + remDelta;
+      finalTargetAngle = stopStartAngle + stopTotalRotation;
+      if (stopBtn) stopBtn.disabled = true;
+    };
+
     function easeOutQuint(t) {
       return 1 - Math.pow(1 - t, 5);
     }
 
-    function animate(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const eased = easeOutQuint(progress);
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
 
-      currentAngle = startAngle + totalRotation * eased;
+    function animate(now) {
+      let progress;
+      if (stoppingEarly) {
+        const stopElapsed = now - stopStartTime;
+        progress = Math.min(stopElapsed / stopDurationMs, 1);
+        currentAngle = stopStartAngle + stopTotalRotation * easeOutCubic(progress);
+      } else {
+        const elapsed = now - startTime;
+        progress = Math.min(elapsed / durationMs, 1);
+        currentAngle = startAngle + totalRotation * easeOutQuint(progress);
+      }
       drawWheel(currentAngle);
 
       if (soundType === "tick") {
@@ -386,7 +426,12 @@
         currentAngle = finalTargetAngle;
         drawWheel(currentAngle);
         spinning = false;
+        activeStopTrigger = null;
         if (spinBtn) spinBtn.disabled = false;
+        if (stopBtn) {
+          stopBtn.hidden = true;
+          stopBtn.disabled = false;
+        }
         if (centerBtn) centerBtn.disabled = false;
         onSpinComplete(winIndex);
       }
@@ -1587,7 +1632,7 @@
 
     const firstSlug = remainingSegments[0];
     if (firstSlug === "tools") {
-      return "/tools";
+      return targetLangCode === "en" ? "/tools" : "/" + targetLangCode;
     }
 
     const staticPrefixes = ["about", "contact", "privacy-policy", "terms-and-conditions", "changelog", "blogs", "category"];
@@ -1691,9 +1736,12 @@
     cards.forEach((card) => {
       const code = card.getAttribute("data-lang-code");
       if (code) {
-        const nextUrl = getLocalizedUrl(code);
-        if (card.tagName === "A") card.setAttribute("href", nextUrl);
-        else card.setAttribute("data-href", nextUrl);
+        const existingHref = card.getAttribute("href");
+        if (!existingHref || existingHref === "#") {
+          const nextUrl = getLocalizedUrl(code);
+          if (card.tagName === "A") card.setAttribute("href", nextUrl);
+          else card.setAttribute("data-href", nextUrl);
+        }
       }
     });
 
@@ -1704,7 +1752,8 @@
     const btn = document.getElementById("langSuggestBtn");
 
     if (banner && msg && btn && detected && detected.code !== currentLang) {
-      const targetHref = getLocalizedUrl(detected.code);
+      const matchingCard = modal.querySelector(`#langModalGrid .lang-card[data-lang-code="${detected.code}"]`);
+      const targetHref = (matchingCard && matchingCard.getAttribute("href")) || getLocalizedUrl(detected.code);
       msg.innerHTML = `Detected language: <strong>${detected.flag} ${detected.name}</strong>`;
       btn.textContent = `Switch to ${detected.name} →`;
       if (btn.tagName === "A") btn.setAttribute("href", targetHref);
@@ -1935,6 +1984,8 @@
         const modal = document.getElementById("resultModal");
         if (modal && modal.classList.contains("open")) {
           closeModal();
+        } else if (spinning) {
+          stopWheel();
         } else {
           spinWheel();
         }
@@ -1972,6 +2023,7 @@
 
   window.stwol = {
     spinWheel,
+    stopWheel,
     addEntry,
     removeEntry,
     adjustWeight,

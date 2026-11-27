@@ -7,12 +7,12 @@
 
 export default {
   en: {
-    metaTitle: "Spin the Wheel Online Free — Wheel of Names & Spinner",
-    metaDesc: "Spin the wheel online free! Use our random Wheel of Names, spinning tool & spin wheel game for classrooms, raffles & choices—up to 500 entries, no login.",
-    keywords: "spin the wheel, wheel of names, spin the wheel online, spinning tool, wheel spinner, random wheel spinner, spin the wheel game online, free spin the wheel generator, picker wheel",
+    metaTitle: "Spin the Wheel Online Free | Wheel of Names & Random Spinner",
+    metaDesc: "Spin the wheel online free! Fast Wheel of Names, random wheel spinner & spinning tool for classrooms, giveaways & games—up to 500 entries, 100% fair, no login.",
+    keywords: "spin the wheel, spin the wheel online, spin the wheel online free, wheel of names, spinning tool, spin wheel online, wheel spinner, random wheel spinner, spin the wheel generator, spinning wheel online, picker wheel, wheel picker, spin a wheel, spin the wheel game online, randomizer wheel, unblocked spin wheel",
     heroTitle: "SPIN THE WHEEL",
     heroHighlight: "Free Wheel of Names & Random Spinner Online",
-    heroSubtitle: "Type or paste up to 500 names, choices, or numbers—adjust 1x–20x weights, remove winners, and spin free in your browser with zero signup."
+    heroSubtitle: "Type or paste up to 500 names, choices, or numbers—adjust 1x–20x weights, remove winners, or stop mid-spin free in your browser with zero signup."
   },
   es: {
     metaTitle: "Ruleta Aleatoria Online Gratis | Ruleta de Nombres",
@@ -72,11 +72,11 @@ export default {
   },
   zh: {
     metaTitle: "在线抽奖转盘生成器免费 — 幸运大转盘与随机点名器",
-    metaDesc: "免费在线大转盘与随机点名器！支持最多500个选项、自定义权重、抽中自动剔除与CSV导出，适用于课堂点名、公司抽奖和日常决策，免登录即用。",
-    keywords: "在线抽奖转盘生成器, 在线大转盘, 幸运轮盘, 随机转盘生成器, 随机点名器, 抽奖转盘免费",
+    metaDesc: "免费在线抽奖转盘生成器、幸运大转盘与随机点名器！支持批量粘贴最多500个名字或选项、1x–20x自定义权重、中奖后自动剔除、随时手动停止与CSV记录导出，适用于课堂点名与年会抽奖。",
+    keywords: "在线抽奖转盘生成器, 在线大转盘, 幸运轮盘, 随机转盘生成器, 随机点名器, 抽奖转盘免费, 在线转盘生成器, 幸运大转盘在线生成器, 随机轮盘生成器, 在线转盘 带停止键, 随机转盘手动停",
     heroTitle: "免费在线大转盘",
     heroHighlight: "幸运抽奖转盘与课堂随机点名器",
-    heroSubtitle: "最多支持批量粘贴 500 个姓名或选项，自由调整 1x–20x 权重与中奖自动剔除，浏览器本地运行免注册。"
+    heroSubtitle: "最多支持批量粘贴 500 个姓名或选项，自由调整 1x–20x 权重、中奖自动剔除与随时手动停止，浏览器本地运行免注册。"
   },
   ja: {
     metaTitle: "ルーレット 無料 オンライン | 名前抽選・ランダム回転",

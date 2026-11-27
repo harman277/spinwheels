@@ -130,46 +130,49 @@ const MORE20_TRANSLATIONS = {
     },
     howTo: {
       title: "Online Çark Çevir Aracı Nasıl Kullanılır?",
-      subtitle: "Dört kolay adımda kendi özel çarkınızı oluşturup çevirin.",
+      subtitle: "Dört kolay adımda kendi özel isim, kura veya karar çarkınızı oluşturup çevirin.",
       steps: [
-        { num: 1, title: "İsimleri veya Seçenekleri Girin", desc: "Seçenekleri tek tek yazın veya 'Toplu Ekle' butonuna basarak kopyala-yapıştır yapın." },
-        { num: 2, title: "Renk ve Ses Seçin", desc: "Çark temasını, ses efektini ve dönüş süresini (2-15 saniye) isteğinize göre ayarlayın." },
-        { num: 3, title: "Çarkı Çevirin", desc: "'Çarkı Çevir' butonuna tıklayın. Gerçekçi fiziksel yavaşlamayla kazanan belirlenecektir." },
-        { num: 4, title: "Sonucu Yönetin ve Paylaşın", desc: "Kazananı çıkarıp bir sonraki tura geçin veya çark linkini QR kod ile paylaşın." }
+        { num: 1, title: "İsimleri veya Seçenekleri Girin", desc: "Seçenekleri tek tek yazın veya 'Toplu Ekle' butonuna basarak Excel, Word ya da not defterinden 500'e kadar ismi her satıra bir kayıt gelecek şekilde tek seferde yapıştırın. Ayrıca her dilimin yanındaki −/+ ağırlık butonlarıyla kazanma olasılığını özelleştirebilirsiniz." },
+        { num: 2, title: "Renk, Tema ve Ses Seçin", desc: "Gökkuşağı, Casino Altını, Siber Neon veya Pastel çark temalarından birini seçin. Mekanik tıkırtı veya gerilim davulu ses efektini ve dönüş süresini (2 ile 15 saniye arasında) etkinliğinizin temposuna göre ayarlayın." },
+        { num: 3, title: "Çarkı Çevirin veya Erken Durdurun", desc: "'ÇARKI ÇEVİR' butonuna, çarkın ortasına veya klavyenizdeki Boşluk (Space) tuşuna basın. Web Cryptography API ile belirlenen kazanan, gerçekçi fiziksel yavaşlamayla (veya Durdur butonuyla anında) ibrenin altında duracaktır." },
+        { num: 4, title: "Sonucu Yönetin, Kaydedin ve Paylaşın", desc: "'Kazananı Çarktan Çıkar' seçeneğiyle çok turlu çekilişlerde aynı ismin tekrar çıkmasını önleyin, geçmişi CSV olarak indirin veya özel çarkınızı bağlantı ve QR kod ile katılımcılarla paylaşın." }
       ]
     },
     useCases: {
       title: "Eğitimde, İş Hayatında ve Eğlencede Kullanım Alanları",
-      subtitle: "Öğretmenler, yayıncılar ve ekipler için en iyi karar aracı.",
+      subtitle: "Öğretmenler, canlı yayın içerik üreticileri, İK ekipleri ve arkadaş grupları için en kapsamlı karar aracı.",
       items: [
-        { icon: "🏫", title: "Sınıf İçi Söz Hakkı", desc: "Öğretmenler akıllı tahtada öğrencileri tarafsızca seçmek için çark kullanır." },
-        { icon: "🎁", title: "Canlı Yayın Çekilişleri", desc: "YouTube ve Twitch yayıncıları şeffaf ve güvenilir çekilişler düzenler." },
-        { icon: "💼", title: "Toplantı ve Görev Dağılımı", desc: "Çevik ekipler günlük toplantılarda konuşmacı ve nöbetçi belirler." },
-        { icon: "🎉", title: "Parti Oyunları & Yemek Kararı", desc: "Yemekte ne yeneceğine veya parti oyunlarında kimin başlayacağına saniyeler içinde karar verin." }
+        { icon: "🏫", title: "Sınıf İçi Söz Hakkı ve Grup Kurma", desc: "Öğretmenler akıllı tahtada Tam Ekran modunu açarak öğrencileri tarafsızca söz hakkı için seçer, okuma grupları oluşturur ve kelime yarışmalarını eğlenceli hale getirir." },
+        { icon: "🎁", title: "Canlı Yayın ve Sosyal Medya Çekilişleri", desc: "YouTube, Twitch, TikTok ve Instagram yayıncıları katılımcı listesini toplu yapıştırarak izleyicilerin gözü önünde %100 şeffaf, CSV kayıtlı ve güvenilir ödül kuraları düzenler." },
+        { icon: "💼", title: "Toplantı Sırası ve Görev Dağılımı", desc: "Çevik (Agile/Scrum) yazılım ve ofis ekipleri günlük toplantılarda konuşmacı sırasını, kod inceleme nöbetçisini veya takım içi buz kırıcı soruları adilce belirler." },
+        { icon: "🎉", title: "Parti Oyunları & Günlük Yemek Kararı", desc: "Akşam yemeğinde ne yeneceğine, hangi filmin izleneceğine veya Doğruluk mu Cesaret mi oyunlarında sıranın kimde olduğuna saniyeler içinde karar verin." }
       ]
     },
     fairness: {
-      title: "Kriptografik Güvenlik ve Tam Adillik",
-      subtitle: "Hiçbir hile barındırmayan matematiksel saf rastgelelik.",
-      text1: "Sıradan araçların aksine sistemimiz Web Cryptography API (<code>window.crypto.getRandomValues</code>) kullanır.",
-      text2: "Donanım düzeyindeki entropiden beslenerek her bir dilime tam olarak eşit seçilme şansı tanır.",
-      formula: "P(Dilim) = 1 / Toplam_Dilim",
-      text3: "Çark ibresi ve seçilen sonuç mükemmel bir biçimde örtüşür."
+      title: "Kriptografik Güvenlik ve Matematiksel Tam Adillik",
+      subtitle: "Hiçbir algoritma hilesi barındırmayan donanım tabanlı saf rastgelelik.",
+      text1: "Sıradan sözde-rastgele (Math.random) araçların aksine sistemimiz modern tarayıcıların resmi Web Cryptography API (<code>window.crypto.getRandomValues</code>) standardını kullanır.",
+      text2: "İşletim sistemi çekirdeğindeki donanım düzeyinde entropiden beslenerek her bir dilime (veya belirlediğiniz özel ağırlık katsayısına) tam olarak eşit ve öngörülemez seçilme şansı tanır.",
+      formula: "P(Dilim) = Ağırlık / Toplam_Ağırlık (Eşit ağırlıkta: 1 / N)",
+      text3: "Çark ibresi, döndürme başladığı anda kriptografik olarak hesaplanan hedef açıya milimetrik hassasiyetle yerleşir ve İstatistikler sekmesinde teorik olasılıklarla gerçek sonuçları canlı karşılaştırabilirsiniz."
     },
     comparison: {
-      title: "Karşılaştırma: Online Çark vs Diğer Yöntemler",
-      headers: ["Kriter", "SpinTheWheelsOnline", "Fiziksel Zar / Yazı Tura", "Basit Sayı Üreteci", "Kağıttan Kura"],
+      title: "Karşılaştırma: Online Çark vs Diğer Kura Yöntemleri",
+      headers: ["Kriter", "SpinTheWheelsOnline", "Fiziksel Zar / Yazı Tura", "Basit Sayı Üreteci", "Kağıttan Kura Çekimi"],
       rows: [
-        ["Görsel Heyecan", "⭐⭐⭐⭐⭐ Yüksek", "⭐⭐ Orta", "⭐ Düşük", "⭐⭐ Orta"],
-        ["Kapasite", "En fazla 500 isim", "6-20 Taraf", "Yalnızca Rakam", "Yazması Zahmetli"],
-        ["Adillik & Güven", "Kriptografik CSPRNG", "Aşınmaya Bağlı", "Temel Algoritma", "El Hilesine Açık"],
-        ["Kazananı Eleme", "Otomatik Tek Tıkla", "Yeniden Atış Gerekir", "Manuel Filtre", "Kağıdı Ayırmak Gerek"]
+        ["Görsel Heyecan & Sunum", "⭐⭐⭐⭐⭐ Yüksek (60 FPS + Ses)", "⭐⭐ Orta", "⭐ Düşük", "⭐⭐ Orta"],
+        ["Kapasite & Esneklik", "En fazla 500 isim + Ağırlık", "6-20 Taraf ile Sınırlı", "Yalnızca Rakam", "Yazması ve Katlaması Zahmetli"],
+        ["Adillik & Güven", "Kriptografik CSPRNG", "Yüzey ve Aşınmaya Bağlı", "Temel PRNG Algoritması", "Katlama ve El Hilesine Açık"],
+        ["Kazananı Eleme & Kayıt", "Otomatik Tek Tıkla + CSV", "Yeniden Atış Gerekir", "Manuel Filtre", "Kağıdı Ayırmak Gerekir"]
       ]
     },
     faqs: [
-      { q: "Çark çevirme aracı tamamen ücretsiz mi?", a: "Evet, sınırsız kullanım ile yüzde yüz ücretsizdir. Üyelik veya kart gerekmez." },
-      { q: "En fazla kaç isim ekleyebilirim?", a: "Tek bir çarka 500'e kadar isim veya seçenek ekleyebilirsiniz." },
-      { q: "Sonuçların hilesiz olduğunu nasıl anlarım?", a: "Tarayıcının resmi Web Cryptography API altyapısı kullanılarak donanım rastgeleliği sağlanır." }
+      { q: "Çark çevirme aracı tamamen ücretsiz mi?", a: "Evet, SpinTheWheelsOnline sınırsız çark çevirme, kaydetme, QR kod oluşturma ve CSV dışa aktarma özellikleriyle yüzde yüz ücretsizdir. Herhangi bir üyelik, abonelik veya kredi kartı bilgisi gerekmez." },
+      { q: "Tek bir çarka en fazla kaç isim veya seçenek ekleyebilirim?", a: "Tek bir çarka 500'e kadar isim, numara veya seçenek ekleyebilirsiniz. 'Toplu Ekle' özelliğini kullanarak Excel veya metin belgesindeki yüzlerce satırlık listeyi tek tıkla çarka aktarabilirsiniz." },
+      { q: "Sonuçların hilesiz ve gerçekten rastgele olduğunu nasıl anlarım?", a: "Aracımız basit zaman damgalı algoritmalar yerine tarayıcının kriptografik güvenlik standardı olan window.crypto.getRandomValues() fonksiyonunu kullanır. Her dilim eşit ağırlıktayken tam 1/N olasılığa sahiptir ve İstatistikler panelinden tüm geçmiş dağılımı denetleyebilirsiniz." },
+      { q: "Aynı kişinin iki kez seçilmesini nasıl engellerim?", a: "Ayarlar panelindeki 'Kazananı Çarktan Çıkar' seçeneğini aktif hale getirmeniz veya kazanan penceresindeki 'Kazananı Çıkar ve Devam Et' butonuna tıklamanız yeterlidir. Seçilen isim bir sonraki tur öncesi otomatik olarak listeden silinir." },
+      { q: "Bazı seçeneklerin kazanma şansını (ağırlığını) artırabilir miyim?", a: "Evet! İsim listesindeki her seçeneğin yanında bulunan '−' ve '+' ağırlık butonlarını kullanarak bir dilimin ağırlığını 1x'ten 20x'e kadar artırabilirsiniz. Çark üzerindeki dilim genişliği ve yüzde olasılığı anında güncellenir." },
+      { q: "Girdiğim öğrenci veya çekiliş listesi sunucuya kaydediliyor mu?", a: "Hayır. Gizliliğiniz bizim için önceliklidir; girdiğiniz tüm isimler ve kayıtlı çarklarınız yalnızca kendi cihazınızın tarayıcı hafızasında (localStorage) tutulur ve hiçbir dış sunucuya gönderilmez." }
     ]
   }),
 
@@ -205,46 +208,49 @@ const MORE20_TRANSLATIONS = {
     },
     howTo: {
       title: "Как Пользоваться Онлайн Колесом Фортуны",
-      subtitle: "Создайте и запустите собственное колесо за четыре простых шага.",
+      subtitle: "Создайте и запустите собственное колесо имен, призов или решений за четыре простых шага.",
       steps: [
-        { num: 1, title: "Введите Имена или Варианты", desc: "Добавьте записи по одной или воспользуйтесь опцией 'Вставить Списком'." },
-        { num: 2, title: "Настройте Цвета и Звуки", desc: "Выберите цветовую палитру, звуковой эффект и продолжительность вращения." },
-        { num: 3, title: "Крутите Колесо", desc: "Нажмите 'Крутить Колесо'. Физическая анимация плавно остановится на случайном победителе." },
-        { num: 4, title: "Управляйте Результатом", desc: "Исключите победителя для следующего раунда или поделитесь ссылкой." }
+        { num: 1, title: "Введите Имена или Варианты", desc: "Добавьте записи по одной или воспользуйтесь функцией 'Вставить Списком', чтобы импортировать до 500 имен из Excel или текстового файла. С помощью кнопок −/+ возле каждого пункта можно настроить индивидуальный вес (шанс выпадения) сектора." },
+        { num: 2, title: "Настройте Цвета, Тему и Звуки", desc: "Выберите цветовую палитру (Радуга, Золото Казино, Кибер-Неон, Пастель), звуковой эффект (щелчки или барабанная дробь) и длительность вращения от 2 до 15 секунд." },
+        { num: 3, title: "Крутите или Останавливайте Колесо", desc: "Нажмите 'КРУТИТЬ КОЛЕСО', кликните по центру колеса или нажмите клавишу Пробел (Space). Плавная 60 FPS анимация (или кнопка досрочной остановки) укажет на криптографически выбранного победителя." },
+        { num: 4, title: "Управляйте Результатом и Делитесь", desc: "Включите 'Удалять Победителя После Вращения' для многораундовых розыгрышей без повторов, скачайте журнал в CSV или поделитесь колесом через ссылку и QR-код." }
       ]
     },
     useCases: {
-      title: "Популярные Сферы Применения",
-      subtitle: "Для уроков, стримов, работы и домашних праздников.",
+      title: "Популярные Сферы Применения Колеса Фортуны",
+      subtitle: "Универсальный инструмент для учителей, стримеров, HR-команд и домашних праздников.",
       items: [
-        { icon: "🏫", title: "Выбор Ученика в Классе", desc: "Честный опрос школьников и студентов без предвзятости." },
-        { icon: "🎁", title: "Розыгрыши на Стримах", desc: "Прозрачное определение победителей призов на Twitch и YouTube." },
-        { icon: "💼", title: "Командные Встречи", desc: "Жеребьевка докладчиков и дежурств на Scrum-митингах." },
-        { icon: "🎉", title: "Игры и Вечеринки", desc: "Быстрый выбор игры, ресторана или штрафного задания." }
+        { icon: "🏫", title: "Выбор Ученика и Викторины в Классе", desc: "Учителя выводят колесо в полноэкранном режиме на интерактивную доску для честного опроса школьников и деления класса на команды без предвзятости." },
+        { icon: "🎁", title: "Розыгрыши Призов на Стримах и в Соцсетях", desc: "Стримеры на Twitch, YouTube и в Telegram проводят прозрачные конкурсы с мгновенной выгрузкой истории вращений в CSV-протокол." },
+        { icon: "💼", title: "Командные Встречи и Scrum-Стендапы", desc: "Распределяйте очередь выступлений на планерках, выбирайте дежурных по код-ревью и проводите тимбилдинг в распределенных командах." },
+        { icon: "🎉", title: "Вечеринки, Игры и Повседневный Выбор", desc: "Решайте за секунды, что заказать на ужин, какой фильм посмотреть вечером или чья очередь выполнять задание в игре Правда или Действие." }
       ]
     },
     fairness: {
-      title: "Криптографическая Надежность",
-      subtitle: "Абсолютная математическая непредвзятость.",
-      text1: "Вместо устаревшего Math.random используется стандарт Web Cryptography API.",
-      text2: "Случайность формируется ядром ОС на основе физической энтропии оборудования.",
-      formula: "Вероятность = 1 / Число_Секторов",
-      text3: "Визуальный указатель точно соответствует вычисленному результату."
+      title: "Криптографическая Надежность и Математическая Честность",
+      subtitle: "Абсолютная непредвзятость на базе аппаратной энтропии браузера.",
+      text1: "Вместо предсказуемого генератора Math.random наша платформа использует стандарт Web Cryptography API (<code>window.crypto.getRandomValues</code>).",
+      text2: "Случайное число формируется ядром операционной системы на основе физической энтропии оборудования, обеспечивая каждому сектору строго равную вероятность.",
+      formula: "P(Сектор) = Вес_Сектора / Сумма_Весов (при равных весах: 1 / N)",
+      text3: "Визуальный указатель всегда останавливается в точном соответствии с криптографическим расчетом, а вкладка Статистика позволяет сверять реальную частоту побед с теоретической вероятностью."
     },
     comparison: {
-      title: "Сравнение: Онлайн Колесо vs Другие Методы",
+      title: "Сравнение: Онлайн Колесо vs Другие Методы Жеребьевки",
       headers: ["Критерий", "SpinTheWheelsOnline", "Кубики и Монетки", "Генератор Чисел", "Бумажная Жеребьевка"],
       rows: [
-        ["Эмоции и Зрелищность", "⭐⭐⭐⭐⭐ Высокая", "⭐⭐ Средняя", "⭐ Минимальная", "⭐⭐ Средняя"],
-        ["Вместимость", "До 500 вариантов", "До 6-20 граней", "Только числа", "Трудоемко писать"],
-        ["Честность", "CSPRNG криптография", "Зависит от броска", "Простой скрипт", "Риск подглядывания"],
-        ["Исключение Выигравшего", "Один клик", "Нужно перебрасывать", "Ручная настройка", "Вытаскивать бумажку"]
+        ["Эмоции и Зрелищность", "⭐⭐⭐⭐⭐ Высокая (60 FPS + Звук)", "⭐⭐ Средняя", "⭐ Минимальная", "⭐⭐ Средняя"],
+        ["Вместимость и Веса", "До 500 вариантов + Вес 1x–20x", "До 6-20 граней", "Только числа", "Трудоемко писать вручную"],
+        ["Честность и Доверие", "CSPRNG криптография", "Зависит от физического броска", "Простой скрипт", "Риск подглядывания"],
+        ["Исключение Выигравшего", "Автоматически + Экспорт CSV", "Нужно перебрасывать", "Ручная настройка", "Нужно убирать бумажку"]
       ]
     },
     faqs: [
-      { q: "Колесо действительно бесплатное?", a: "Да, абсолютно бесплатно и без ограничений по количеству вращений." },
-      { q: "Сколько имен можно внести?", a: "До 500 имен в один список." },
-      { q: "Можно ли крутить с телефона?", a: "Да, инструмент полностью адаптирован для экранов iPhone, Android и планшетов." }
+      { q: "Колесо фортуны действительно полностью бесплатное?", a: "Да, инструмент на 100% бесплатен без ограничений по числу вращений, сохранений и участников. Регистрация аккаунта или привязка карты не требуются." },
+      { q: "Сколько имен или вариантов можно добавить на одно колесо?", a: "Вы можете добавить до 500 имен, чисел или призов одновременно. Через кнопку 'Вставить Списком' весь список загружается за одну секунду." },
+      { q: "Как гарантируется честность выбора победителя?", a: "Мы используем криптографический генератор window.crypto.getRandomValues(), который опирается на аппаратную энтропию устройства. Каждый сектор с весом 1x имеет строгую вероятность 1/N." },
+      { q: "Как исключить победителя, чтобы он не выпал повторно?", a: "Включите переключатель 'Удалять Победителя После Вращения' в настройках или нажмите кнопку 'Удалить Победителя и Продолжить' во всплывающем окне результата." },
+      { q: "Можно ли изменить шанс выпадения отдельного сектора?", a: "Да! Нажимайте кнопки '−' и '+' рядом с любой записью в списке, чтобы задать вес от 1x до 20x. Ширина сектора и процентная вероятность пересчитаются автоматически." },
+      { q: "Сохраняются ли мои списки на сторонних серверах?", a: "Нет. Все введенные имена и сохраненные колеса хранятся исключительно локально в браузере вашего устройства (localStorage) и никогда не передаются на внешние серверы." }
     ]
   }),
 
@@ -280,46 +286,49 @@ const MORE20_TRANSLATIONS = {
     },
     howTo: {
       title: "كيف تستخدم عجلة الحظ الإلكترونية؟",
-      subtitle: "أنشئ عجلتك الخاصة وقم بالسحب في أربع خطوات سهلة ومباشرة.",
+      subtitle: "أنشئ عجلة الأسماء أو السحوبات الخاصة بك وابدأ القرعة في أربع خطوات سهلة.",
       steps: [
-        { num: 1, title: "إدخال الأسماء والخيارات", desc: "اكتب الأسماء يدوياً أو استخدم 'اللصق الجماعي' لاستيراد القوائم دفعة واحدة." },
-        { num: 2, title: "تخصيص الألوان والأصوات", desc: "اختر نسق الألوان المفضل ومؤثر الصوت التفاعلي وفترة الدوران المناسبة." },
-        { num: 3, title: "تدوير العجلة", desc: "اضغط على زر التدوير لتشاهد حركة الفيزياء الانسيابية حتى التوقف على الفائز." },
-        { num: 4, title: "مشاركة النتيجة أو استبعاد الفائز", desc: "استبعد الفائز للجولات التالية أو شارك الرابط المباشر مع المشاركين." }
+        { num: 1, title: "إدخال الأسماء والخيارات", desc: "اكتب الأسماء يدوياً أو استخدم ميزة 'لصق جماعي' لاستيراد ما يصل إلى 500 اسم دفعة واحدة من ملف إكسل أو نص. يمكنك أيضاً تعديل وزن كل خيار (من 1x إلى 20x) عبر أزرار −/+." },
+        { num: 2, title: "تخصيص الألوان والأصوات", desc: "اختر نسق الألوان المفضل (قوس قزح، ذهبي، نيون، باستيل)، وحدد مؤثر الصوت التفاعلي وفترة الدوران من ثانيتين إلى 15 ثانية." },
+        { num: 3, title: "تدوير العجلة أو إيقافها", desc: "اضغط على زر 'تدوير العجلة' أو منتصف العجلة أو مفتاح المسافة (Space). ستدور العجلة بسلاسة وتتوقف بدقة على الفائز المختار تشفيرياً." },
+        { num: 4, title: "إدارة النتيجة والمشاركة", desc: "فعّل خيار 'إزالة الفائز بعد السحب' لمنع تكرار الفوز في الجولات المتتالية، وحمّل سجل النتائج بصيغة CSV أو شارك العجلة عبر الرابط ورمز QR." }
       ]
     },
     useCases: {
       title: "استخدامات واسعة في التعليم والعمل والترفيه",
-      subtitle: "المعلمون وفرق العمل وصناع المحتوى يعتمدون عليها يومياً.",
+      subtitle: "المعلمون وفرق العمل وصناع المحتوى يعتمدون عليها يومياً لقرارات عادلة.",
       items: [
-        { icon: "🏫", title: "القرعة المدرسية بالفصل", desc: "اختيار الطلاب للإجابة على السبورة الذكية بعدالة ومن دون أي إحراج." },
-        { icon: "🎁", title: "سحوبات البث المباشر", desc: "إجراء مسابقات شفافة وموثوقة على تيك توك، يوتيوب، وتويتش." },
-        { icon: "💼", title: "اجتماعات العمل والشركات", desc: "تحديد أدوار المتحدثين وتوزيع مهام المناوبة بإنصاف تام." },
-        { icon: "🎉", title: "ألعاب الجمعات والعائلة", desc: "إنهاء الحيرة في اختيار وجبة العشاء أو تحديد ترتيب اللاعبين." }
+        { icon: "🏫", title: "القرعة المدرسية وتفاعل الفصل", desc: "عرض العجلة بوضع ملء الشاشة على السبورة الذكية لاختيار الطلاب للإجابة أو تقسيم المجموعات الدراسية بعدالة وحماس." },
+        { icon: "🎁", title: "سحوبات الجوائز والبث المباشر", desc: "إجراء مسابقات وسحوبات شفافة وموثوقة أمام الجمهور على يوتيوب وتيك توك وتويتش وانستغرام مع توثيق السجل." },
+        { icon: "💼", title: "اجتماعات العمل وتوزيع المهام", desc: "تحديد أدوار المتحدثين في الاجتماعات اليومية وتوزيع مهام المناوبة والعمل الجماعي بإنصاف تام." },
+        { icon: "🎉", title: "ألعاب الجمعات والقرارات اليومية", desc: "إنهاء الحيرة في اختيار وجبة العشاء أو تحديد ترتيب اللاعبين وتحديات الصراحة والجرأة مع الأصدقاء والعائلة." }
       ]
     },
     fairness: {
       title: "نزاهة تشفيرية وأمان رياضي مطلق",
-      subtitle: "لا مجال للتلاعب أو الانحياز الخوارزمي.",
-      text1: "تستخدم منصتنا معيار Web Cryptography API المعترف به دولياً.",
-      text2: "يتم استخلاص العشوائية من مصادر إنتروبيا العتاد الفيزيائي في جهازك.",
-      formula: "احتمال كل خيار = 1 / إجمالي_الخيارات",
-      text3: "مؤشر التوقف يتطابق بدقة تامة مع الحساب الرياضي المشفر."
+      subtitle: "لا مجال للتلاعب أو الانحياز الخوارزمي في نتائج القرعة.",
+      text1: "تستخدم منصتنا معيار Web Cryptography API (<code>window.crypto.getRandomValues</code>) المعترف به دولياً بدلاً من الدوال العشوائية البسيطة.",
+      text2: "يتم استخلاص العشوائية من مصادر إنتروبيا العتاد الفيزيائي في نظام التشغيل لضمان تكافؤ الفرص لكل مشارك.",
+      formula: "احتمال الفوز = وزن_الخيار / مجموع_الأوزان (عند التساوي: 1 / N)",
+      text3: "مؤشر التوقف يتطابق بدقة تامة مع الحساب الرياضي المشفر، ويمكنك مراجعة إحصائيات التكرار الفعلية مقارنة بالاحتمال النظري في أي وقت."
     },
     comparison: {
       title: "مقارنة: عجلة الحظ الرقمية مقابل الوسائل التقليدية",
       headers: ["المعيار", "عجلة الحظ أونلاين", "القرعة الورقية", "النرد والعملة", "الأرقام العشوائية البسيطة"],
       rows: [
-        ["التشويق البصري", "⭐⭐⭐⭐⭐ ممتاز وحماسي", "⭐⭐ متوسط", "⭐⭐ عادي", "⭐ ضعيف جداً"],
-        ["سعة الأسماء", "حتى 500 خيار", "محدود ومتعب بالكتابة", "6 إلى 20 وجهاً فقط", "أرقام فقط"],
-        ["النزاهة والشفافية", "تشفير CSPRNG عتادي", "عرضة للغش واللمس", "يتأثر بطريقة الرمي", "خوارزمية برمجية قابلة للتكرار"],
-        ["استبعاد الفائز تلقائياً", "بنقرة زر واحدة", "يتطلب تمزيق الورقة", "إعادة رمي إجبارية", "تعديل النطاق يدوياً"]
+        ["التشويق البصري", "⭐⭐⭐⭐⭐ ممتاز وحماسي (60 FPS)", "⭐⭐ متوسط", "⭐⭐ عادي", "⭐ ضعيف جداً"],
+        ["سعة الأسماء والأوزان", "حتى 500 خيار + أوزان مخصصة", "محدود ومتعب بالكتابة", "6 إلى 20 وجهاً فقط", "أرقام فقط"],
+        ["النزاهة والشفافية", "تشفير CSPRNG عتادي", "عرضة للغش واللمس", "يتأثر بطريقة الرمي", "خوارزمية برمجية بسيطة"],
+        ["استبعاد الفائز وتصدير السجل", "تلقائي بنقرة + ملف CSV", "يتطلب تمزيق الورقة", "إعادة رمي إجبارية", "تعديل النطاق يدوياً"]
       ]
     },
     faqs: [
-      { q: "هل عجلة الحظ مجانية تماماً؟", a: "نعم، مجانية بنسبة 100% لعدد دورات غير محدود وبدون أي رسوم أو تسجيل." },
-      { q: "كم اسماً يمكنني إضافته للعجلة؟", a: "يمكن إضافة حتى 500 اسم أو خيار في العجلة الواحدة." },
-      { q: "هل تعمل على الهواتف الذكية؟", a: "نعم، مصممة لتعمل بسلاسة فائقة على هواتف آيفون وأندرويد والأجهزة اللوحية." }
+      { q: "هل عجلة الحظ مجانية تماماً وبدون تسجيل؟", a: "نعم، الأداة مجانية بنسبة 100% لعدد دورات غير محدود مع جميع الميزات (الحفظ، المشاركة، رمز QR، وتصدير CSV) دون الحاجة لإنشاء حساب." },
+      { q: "كم اسماً يمكنني إضافته للعجلة في وقت واحد؟", a: "يمكنك إضافة حتى 500 اسم أو خيار في العجلة الواحدة باستخدام الإضافة الفردية أو ميزة اللصق الجماعي السريع." },
+      { q: "كيف أضمن أن القرعة عادلة تماماً وغير منحازة؟", a: "تعتمد العجلة على واجهة التشفير القياسية window.crypto.getRandomValues() في المتصفح، والتي تمنح كل قسم فرصة رياضية متساوية تماماً (1/N)." },
+      { q: "كيف أمنع تكرار فوز نفس الاسم في السحوبات المتعددة؟", a: "فعّل خيار 'إزالة الفائز بعد السحب' من قسم الإعدادات، أو اضغط على زر 'استبعاد الفائز والمتابعة' عند ظهور نافذة الفائز." },
+      { q: "هل يمكنني مضاعفة فرصة فوز اسم معين؟", a: "نعم! استخدم أزرار '−' و '+' بجانب أي اسم في القائمة لزيادة وزنه من 1x حتى 20x، وستتحدث نسبة الاحتمال ومساحة القسم فوراً." },
+      { q: "هل يتم حفظ أسماء الطلاب أو المشتركين في خوادم خارجية؟", a: "لا، خصوصيتك محمية بالكامل؛ جميع الأسماء والعجلات المحفوظة تُخزن محلياً داخل متصفح جهازك فقط (localStorage) ولا تُرسل لأي خادم." }
     ]
   }),
 
@@ -355,46 +364,49 @@ const MORE20_TRANSLATIONS = {
     },
     howTo: {
       title: "स्पिन द व्हील का उपयोग कैसे करें?",
-      subtitle: "चार आसान चरणों में अपना मनपसंद पहिया तैयार करें।",
+      subtitle: "चार आसान चरणों में अपना मनपसंद नाम चक्र या लकी ड्रा व्हील तैयार करें।",
       steps: [
-        { num: 1, title: "नाम या विकल्प दर्ज करें", desc: "नाम टाइप करें या एक साथ पूरी लिस्ट पेस्ट करें।" },
-        { num: 2, title: "रंग और आवाज़ चुनें", desc: "आकर्षक थीम और पसंदीदा साउंड इफेक्ट सेट करें।" },
-        { num: 3, title: "पहिया घुमाएं", desc: "'स्पिन द व्हील' पर क्लिक करें। पहिया घूमकर विजेता पर रुकेगा।" },
-        { num: 4, title: "विजेता प्रबंधित करें और शेयर करें", desc: "विजेता को हटाकर अगला राउंड खेलें या दोस्तों के साथ लिंक शेयर करें।" }
+        { num: 1, title: "नाम या विकल्प दर्ज करें", desc: "एक-एक करके नाम टाइप करें या 'बल्क पेस्ट करें' बटन दबाकर एक्सेल या नोटपैड से 500 तक नाम एक साथ पेस्ट करें। आप −/+ बटन से किसी भी विकल्प का वेट (संभावना) भी बदल सकते हैं।" },
+        { num: 2, title: "रंग, थीम और आवाज़ चुनें", desc: "रेनबो, कैसीनो गोल्ड या नियॉन थीम चुनें, अपनी पसंद का साउंड इफेक्ट (टिक-टिक या ड्रमरोल) लगाएं और घूमने का समय 2 से 15 सेकंड के बीच सेट करें।" },
+        { num: 3, title: "पहिया घुमाएं या तुरंत रोकें", desc: "'पहिया घुमाएं (SPIN)' बटन, पहिए के केंद्र या स्पेसबार (Space) को दबाएं। स्मूथ 60 FPS एनिमेशन के साथ पहिया घूमकर क्रिप्टोग्राफिक रूप से चुने गए विजेता पर रुकेगा।" },
+        { num: 4, title: "विजेता हटाएं, सेव करें और शेयर करें", desc: "अगले राउंड से पहले विजेता को हटाने के लिए 'जीतने के बाद नाम हटाएं' चालू करें, इतिहास को CSV में डाउनलोड करें या लिंक व QR कोड से व्हील शेयर करें।" }
       ]
     },
     useCases: {
       title: "स्कूल, ऑफिस और मनोरंजन में बेहतरीन उपयोग",
-      subtitle: "लाखों शिक्षक, स्ट्रीमर्स और प्रोफेशनल्स की पहली पसंद।",
+      subtitle: "शिक्षकों, यूट्यूब स्ट्रीमर्स, एचआर टीमों और दोस्तों की पहली पसंद।",
       items: [
-        { icon: "🏫", title: "क्लास में छात्रों का चयन", desc: "स्मार्ट बोर्ड पर बिना किसी भेदभाव के निष्पक्ष रूप से छात्रों को बुलाएं।" },
-        { icon: "🎁", title: "यूट्यूब व लाइव लकी ड्रा", desc: "दर्शकों के सामने बिल्कुल निष्पक्ष और पारदर्शी गिवअवे करें।" },
-        { icon: "💼", title: "ऑफिस मीटिंग व टास्क", desc: "टीम मीटिंग में बोलने की बारी और रोस्टर तय करने के लिए।" },
-        { icon: "🎉", title: "पार्टी गेम्स और खाना तय करना", desc: "दोस्त मिलकर क्या खाएं या गेम में किसकी बारी है, तुरंत फैसला करें।" }
+        { icon: "🏫", title: "क्लासरूम में छात्रों का निष्पक्ष चयन", desc: "शिक्षक स्मार्ट बोर्ड पर फुलस्क्रीन मोड खोलकर बिना किसी पक्षपात के छात्रों से सवाल पूछने और टीम बनाने के लिए इसका उपयोग करते हैं।" },
+        { icon: "🎁", title: "यूट्यूब व सोशल मीडिया लकी ड्रा", desc: "लाइव स्ट्रीम और गिवअवे में दर्शकों के सामने 100% पारदर्शी लकी ड्रा करें और परिणाम को CSV फाइल के रूप में सुरक्षित रखें।" },
+        { icon: "💼", title: "ऑफिस मीटिंग व टीम टास्क", desc: "डेली स्टैंडअप मीटिंग में बोलने की बारी, प्रोजेक्ट प्रेजेंटेशन का क्रम और टीम आइसब्रेकर तय करने के लिए सबसे सरल टूल।" },
+        { icon: "🎉", title: "पार्टी गेम्स और रोज़मर्रा के फैसले", desc: "रात के खाने में क्या बनाएं, कौन सी फिल्म देखें या ट्रुथ ऑर डेयर गेम में किसकी बारी है—सेकंडों में फैसला करें।" }
       ]
     },
     fairness: {
-      title: "क्रिप्टोग्राफिक सुरक्षा और 100% निष्पक्षता",
-      subtitle: "शून्य एल्गोरिथम पूर्वाग्रह की गारंटी।",
-      text1: "हम साधारण Math.random के बजाय ब्राउज़र के Web Cryptography API का उपयोग करते हैं।",
-      text2: "यह आपके डिवाइस के हार्डवेयर एंट्रॉपी से रैंडम नंबर बनाता है जिससे हर विकल्प की संभावना समान होती है।",
-      formula: "जीतने की संभावना = 1 / कुल विकल्प",
-      text3: "पहिए का पॉइंटर पूरी तरह से गणितीय गणना के अनुरूप ही रुकता है।"
+      title: "क्रिप्टोग्राफिक सुरक्षा और 100% गणितीय निष्पक्षता",
+      subtitle: "शून्य एल्गोरिथम पूर्वाग्रह और पूर्ण पारदर्शिता की गारंटी।",
+      text1: "हम साधारण Math.random के बजाय आधुनिक ब्राउज़र के आधिकारिक Web Cryptography API (<code>window.crypto.getRandomValues</code>) का उपयोग करते हैं।",
+      text2: "यह आपके डिवाइस के ऑपरेटिंग सिस्टम की हार्डवेयर एंट्रॉपी से रैंडम नंबर बनाता है जिससे हर विकल्प के जीतने की संभावना बिल्कुल समान रहती है।",
+      formula: "जीतने की संभावना = विकल्प_का_भार / कुल_भार (समान भार पर: 1 / N)",
+      text3: "पहिए का पॉइंटर पूरी तरह से गणितीय गणना के अनुरूप ही रुकता है और आप आंकड़े (Stats) पैनल में सैद्धांतिक बनाम वास्तविक परिणाम देख सकते हैं।"
     },
     comparison: {
       title: "तुलना: ऑनलाइन चक्र बनाम पारंपरिक तरीके",
       headers: ["मानक", "स्पिन द व्हील ऑनलाइन", "सिक्का / पासा", "साधारण नंबर पिकर", "कागज की पर्ची"],
       rows: [
-        ["रोमांच और सस्पेंस", "⭐⭐⭐⭐⭐ जबरदस्त", "⭐⭐ मध्यम", "⭐ बहुत कम", "⭐⭐ मध्यम"],
-        ["क्षमता", "500 नामों तक", "केवल 6-20 विकल्प", "केवल संख्या", "लिखने में समय बर्बाद"],
-        ["निष्पक्षता", "क्रिप्टोग्राफिक CSPRNG", "फेंकने के तरीके पर निर्भर", "बेसिक कोड", "हाथ की चालाकी संभव"],
-        ["विजेता हटाना", "एक क्लिक में", "बार-बार रोल करना", "मैनुअल फिल्टर", "पर्ची अलग करनी पड़ती है"]
+        ["रोमांच और सस्पेंस", "⭐⭐⭐⭐⭐ जबरदस्त (60 FPS + साउंड)", "⭐⭐ मध्यम", "⭐ बहुत कम", "⭐⭐ मध्यम"],
+        ["क्षमता और लचीलापन", "500 नामों तक + कस्टम वेट", "केवल 6-20 विकल्प", "केवल संख्या", "लिखने में समय बर्बाद"],
+        ["निष्पक्षता और भरोसा", "क्रिप्टोग्राफिक CSPRNG", "फेंकने के तरीके पर निर्भर", "बेसिक कोड", "हाथ की चालाकी संभव"],
+        ["विजेता हटाना व रिकॉर्ड", "एक क्लिक में + CSV एक्सपोर्ट", "बार-बार रोल करना", "मैनुअल फिल्टर", "पर्ची अलग करनी पड़ती है"]
       ]
     },
     faqs: [
-      { q: "क्या यह टूल सच में पूरी तरह फ्री है?", a: "हाँ, असीमित स्पिन के साथ 100% मुफ्त है। किसी खाते या कार्ड की आवश्यकता नहीं है।" },
-      { q: "मैं एक पहिये में कितने नाम डाल सकता हूँ?", a: "आप एक बार में 500 तक नाम या विकल्प डाल सकते हैं।" },
-      { q: "क्या यह मोबाइल पर काम करता है?", a: "हाँ, यह एंड्रॉइड और आईफोन दोनों पर बेहद तेज़ और सुचारू रूप से चलता है।" }
+      { q: "क्या यह स्पिन द व्हील टूल सच में पूरी तरह फ्री है?", a: "हाँ, यह असीमित स्पिन, कस्टम सेव, QR कोड और CSV डाउनलोड के साथ 100% मुफ्त है। किसी रजिस्ट्रेशन या क्रेडिट कार्ड की आवश्यकता नहीं है।" },
+      { q: "मैं एक पहिये में अधिकतम कितने नाम डाल सकता हूँ?", a: "आप एक बार में 500 तक नाम, नंबर या विकल्प डाल सकते हैं। 'बल्क पेस्ट करें' फीचर से पूरी लिस्ट एक सेकंड में लोड हो जाती है।" },
+      { q: "यह कैसे सुनिश्चित होता है कि परिणाम पूरी तरह निष्पक्ष है?", a: "हमारा व्हील ब्राउज़र के Web Cryptography API (window.crypto.getRandomValues) का उपयोग करता है, जो हर स्लाइस को 1/N का सटीक और निष्पक्ष अवसर देता है।" },
+      { q: "एक ही विजेता को दोबारा चुने जाने से कैसे रोकें?", a: "सेटिंग्स में 'जीतने के बाद नाम हटाएं' विकल्प को चालू करें या विजेता पॉपअप में 'विजेता हटाएं और जारी रखें' बटन पर क्लिक करें।" },
+      { q: "क्या मैं किसी विशेष नाम के जीतने की संभावना बढ़ा सकता हूँ?", a: "हाँ! सूची में प्रत्येक नाम के पास दिए गए '−' और '+' बटन से आप किसी भी स्लाइस का वजन 1x से 20x तक बढ़ा सकते हैं।" },
+      { q: "क्या मेरे द्वारा डाले गए नाम किसी सर्वर पर सेव होते हैं?", a: "नहीं। आपकी गोपनीयता पूरी तरह सुरक्षित है—सभी नाम और सेव किए गए व्हील केवल आपके अपने डिवाइस के ब्राउज़र (localStorage) में रहते हैं।" }
     ]
   }),
 
@@ -430,46 +442,49 @@ const MORE20_TRANSLATIONS = {
     },
     howTo: {
       title: "Cara Menggunakan Pemutar Roda Online",
-      subtitle: "Buat roda keberuntungan kustom Anda dalam empat langkah praktis.",
+      subtitle: "Buat roda nama, undian arisan, atau giveaway kustom Anda dalam empat langkah praktis.",
       steps: [
-        { num: 1, title: "Ketik Nama atau Pilihan", desc: "Ketik satu per satu atau gunakan opsi 'Tempel Massal' dari Excel atau catatan." },
-        { num: 2, title: "Sesuaikan Desain & Suara", desc: "Pilih palet warna, atur durasi putaran (2-15 detik), dan pilih efek suara." },
-        { num: 3, title: "Putar Rodanya", desc: "Tekan tombol 'PUTAR RODA'. Roda akan melambat secara mulus hingga berhenti." },
-        { num: 4, title: "Kelola Hasil & Bagikan", desc: "Hapus pemenang untuk babak berikutnya atau bagikan tautan lewat kode QR." }
+        { num: 1, title: "Ketik Nama atau Pilihan", desc: "Ketik satu per satu atau gunakan tombol 'Tempel Massal' untuk menyalin hingga 500 nama sekaligus dari Excel, WhatsApp, atau catatan. Anda juga bisa mengatur bobot peluang tiap nama dengan tombol −/+." },
+        { num: 2, title: "Sesuaikan Desain & Suara", desc: "Pilih palet warna tema (Pelangi, Emas Kasino, Neon Siber, Pastel), atur durasi putaran (2 hingga 15 detik), dan pilih efek suara interaktif." },
+        { num: 3, title: "Putar atau Hentikan Roda", desc: "Tekan tombol 'PUTAR RODA', klik bagian tengah roda, atau tekan tombol Spasi (Spacebar). Roda berputar mulus 60 FPS hingga menunjuk pemenang yang dipilih secara kriptografis." },
+        { num: 4, title: "Kelola Hasil & Bagikan", desc: "Aktifkan 'Hapus Pemenang Setelah Putaran' untuk kocokan arisan atau undian bertahap tanpa duplikat, unduh riwayat CSV, atau bagikan lewat tautan dan kode QR." }
       ]
     },
     useCases: {
-      title: "Solusi Cerdas untuk Berbagai Kebutuhan",
-      subtitle: "Dipakai harian oleh pendidik, kreator konten, dan tim profesional.",
+      title: "Solusi Cerdas untuk Pendidikan, Arisan & Hiburan",
+      subtitle: "Dipakai harian oleh guru, penyelenggara arisan, kreator konten, dan tim kantor.",
       items: [
-        { icon: "🏫", title: "Panggil Siswa di Kelas", desc: "Bantu guru menunjuk siswa secara adil di layar proyektor tanpa pilih kasih." },
-        { icon: "🎁", title: "Giveaway & Undian Arisan", desc: "Menentukan pemenang giveaway live di Instagram/TikTok atau kocokan arisan keluarga." },
-        { icon: "💼", title: "Rapat & Giliran Tugas Kantor", desc: "Menentukan urutan bicara saat sprint meeting atau pembagian piket kantor." },
-        { icon: "🎉", title: "Game Nongkrong & Pilihan Makanan", desc: "Atasi kebingungan memilih tempat makan siang atau giliran permainan bersama kawan." }
+        { icon: "🏫", title: "Panggil Siswa & Kuis di Kelas", desc: "Bantu guru menunjuk siswa secara adil di layar proyektor dengan mode Layar Penuh serta membagi kelompok belajar tanpa pilih kasih." },
+        { icon: "🎁", title: "Giveaway Live & Kocokan Arisan", desc: "Menentukan pemenang giveaway live di TikTok, Instagram, atau YouTube serta kocokan arisan keluarga dan RT secara transparan." },
+        { icon: "💼", title: "Rapat Tim & Giliran Tugas Kantor", desc: "Menentukan urutan bicara saat daily standup meeting, jadwal piket, atau sesi icebreaker tim kerja jarak jauh." },
+        { icon: "🎉", title: "Game Nongkrong & Pilihan Kuliner", desc: "Atasi kebingungan memilih menu makan siang bersama teman atau menentukan giliran tantangan Truth or Dare." }
       ]
     },
     fairness: {
-      title: "Keamanan Kriptografi & Keadilan Penuh",
+      title: "Keamanan Kriptografi & Keadilan Matematik Penuh",
       subtitle: "Tanpa algoritma curang atau rekayasa pihak ketiga.",
-      text1: "Kami tidak memakai generator acak biasa, melainkan standar Web Cryptography API resmi.",
-      text2: "Mengambil entropi langsung dari sistem operasi perangkat Anda demi probabilitas merata sempurna.",
-      formula: "Peluang = 1 / Total Pilihan",
-      text3: "Jarum penunjuk secara presisi menyentuh sektor yang dihitung algoritma."
+      text1: "Kami tidak memakai generator acak biasa (Math.random), melainkan standar Web Cryptography API (<code>window.crypto.getRandomValues</code>) resmi pada peramban modern.",
+      text2: "Mengambil entropi perangkat keras langsung dari sistem operasi perangkat Anda demi menjamin probabilitas yang merata sempurna bagi setiap peserta.",
+      formula: "Peluang = Bobot_Pilihan / Total_Bobot (Bobot sama: 1 / N)",
+      text3: "Jarum penunjuk secara presisi menyentuh sektor yang dihitung algoritma, dan Anda dapat memeriksa perbandingan peluang teoritis vs hasil nyata di panel Statistik."
     },
     comparison: {
-      title: "Perbandingan: Roda Putar vs Metode Tradisional",
+      title: "Perbandingan: Roda Putar Online vs Metode Tradisional",
       headers: ["Kriteria", "Putar Roda Online", "Dadu / Koin Fisik", "Generator Angka Biasa", "Kocokan Kertas"],
       rows: [
-        ["Sensasi & Keseruan", "⭐⭐⭐⭐⭐ Sangat Tinggi", "⭐⭐ Sedang", "⭐ Rendah Sekali", "⭐⭐ Sedang"],
-        ["Kapasitas Opsi", "Hingga 500 entri", "Terbatas 6-20 sisi", "Hanya deret angka", "Capek menulis tangan"],
-        ["Keadilan & Bebas Curang", "CSPRNG Kriptografis", "Tergantung sudut lempar", "Algoritma dasar", "Rentan kecurangan tangan"],
-        ["Eliminasi Pemenang", "Otomatis Sekali Klik", "Harus kocok ulang", "Harus edit angka", "Harus buang kertas"]
+        ["Sensasi & Visual", "⭐⭐⭐⭐⭐ Sangat Tinggi (60 FPS + Audio)", "⭐⭐ Sedang", "⭐ Rendah Sekali", "⭐⭐ Sedang"],
+        ["Kapasitas & Bobot", "Hingga 500 entri + Bobot 1x–20x", "Terbatas 6-20 sisi", "Hanya deret angka", "Capek menulis & melipat kertas"],
+        ["Keadilan & Transparansi", "CSPRNG Kriptografis", "Tergantung sudut lempar", "Algoritma dasar", "Rentan kertas terselip"],
+        ["Eliminasi & Rekap Data", "Otomatis Sekali Klik + CSV", "Harus lempar ulang", "Harus edit rentang", "Harus pisahkan kertas"]
       ]
     },
     faqs: [
-      { q: "Apakah alat putar roda ini benar-benar gratis?", a: "Ya, 100% gratis tanpa batasan jumlah putaran dan tanpa perlu mendaftar akun." },
-      { q: "Berapa banyak nama yang bisa saya masukkan?", a: "Anda dapat menambahkan hingga 500 nama atau pilihan dalam satu roda." },
-      { q: "Apakah bisa dibuka di HP?", a: "Sangat bisa! Situs ini responsif dan lancar di iPhone, Android, dan tablet." }
+      { q: "Apakah alat putar roda ini benar-benar 100% gratis?", a: "Ya, 100% gratis selamanya tanpa batasan jumlah putaran, penyimpanan roda, maupun ekspor CSV, serta tanpa perlu mendaftar akun." },
+      { q: "Berapa banyak nama peserta yang bisa saya masukkan?", a: "Anda dapat menambahkan hingga 500 nama, nomor undian, atau hadiah dalam satu roda menggunakan fitur Tempel Massal." },
+      { q: "Bagaimana cara memastikan hasil kocokan arisan atau giveaway ini adil?", a: "Sistem kami menggunakan window.crypto.getRandomValues() dari Web Cryptography API yang menghasilkan angka acak murni berbasis perangkat keras dengan peluang tepat 1/N." },
+      { q: "Bagaimana agar nama yang sudah menang tidak terpilih lagi?", a: "Centang opsi 'Hapus Pemenang Setelah Putaran' di bagian Pengaturan atau klik tombol 'Hapus Pemenang & Lanjut' saat pop-up pemenang muncul." },
+      { q: "Bisakah saya mengatur bobot peluang berbeda untuk peserta tertentu?", a: "Bisa! Gunakan tombol '−' dan '+' di samping setiap nama pada daftar untuk mengatur bobot mulai dari 1x hingga 20x." },
+      { q: "Apakah daftar nama arisan atau siswa saya disimpan di server?", a: "Tidak. Privasi Anda terjaga sepenuhnya karena seluruh daftar nama dan roda tersimpan hanya di memori lokal peramban perangkat Anda (localStorage)." }
     ]
   })
 };

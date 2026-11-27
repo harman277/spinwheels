@@ -39,6 +39,7 @@ import deepPartZBing from "./wheels/deep/part-z-bing-2026.js";
 import deepPartZ2 from "./wheels/deep/part-z2-human-en-a.js";
 import deepPartZ3 from "./wheels/deep/part-z3-human-en-b.js";
 import deepPartZ4 from "./wheels/deep/part-z4-bing-hero-all69.js";
+import SEO_OVERRIDES from "./wheels/seo-overrides-bing-2026-11.js";
 
 const DEEP_MODULES = [
   deepPart1,
@@ -87,6 +88,15 @@ DEEP_MODULES.forEach((mod) => {
   }
 });
 
+// Final Bing-data-driven SERP title/description/keywords overrides (English).
+for (const [slug, o] of Object.entries(SEO_OVERRIDES)) {
+  const wheel = SPECIALIZED_WHEELS[slug];
+  if (!wheel || !o) continue;
+  if (o.title) wheel.title = o.title;
+  if (o.description) wheel.description = o.description;
+  if (o.keywords) wheel.keywords = o.keywords;
+}
+
 for (const [slug, langMap] of Object.entries(WHEEL_TRANSLATIONS)) {
   if (SPECIALIZED_WHEELS[slug]) {
     SPECIALIZED_WHEELS[slug].translations = Object.assign(
@@ -126,10 +136,17 @@ for (const enrichMap of [WHEEL_TRANSLATIONS_ENRICHED, WHEEL_TRANSLATIONS_BING_DE
       if (!cur) continue;
       if (enrich.title) cur.title = enrich.title;
       if (enrich.description) cur.description = enrich.description;
+      if (enrich.keywords) cur.keywords = enrich.keywords;
       if (enrich.heroTitle) cur.heroTitle = enrich.heroTitle;
       if (enrich.heroHighlight) cur.heroHighlight = enrich.heroHighlight;
       if (enrich.heroSubtitle) cur.heroSubtitle = enrich.heroSubtitle;
       if (enrich.quickAnswer) cur.quickAnswer = enrich.quickAnswer;
+      if (Array.isArray(enrich.items) && enrich.items.length) cur.items = enrich.items;
+      if (enrich.presets && typeof enrich.presets === "object") {
+        cur.presets = Object.assign({}, cur.presets || {}, enrich.presets);
+      }
+      if (enrich.howTo) cur.howTo = enrich.howTo;
+      if (enrich.useCases) cur.useCases = enrich.useCases;
       if (Array.isArray(enrich.faqs) && enrich.faqs.length) {
         if (!cur.faqs || !cur.faqs.length) {
           cur.faqs = enrich.faqs;

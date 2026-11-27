@@ -7,6 +7,16 @@ Disallow: /*?w=
 Disallow: /*?embed=
 Disallow: /*?q=
 
+# Google AdSense & Ads Quality Crawlers (Full Access)
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
 # Primary Search Engines (Google, Bing uncapped, Seznam)
 User-agent: Googlebot
 Allow: /

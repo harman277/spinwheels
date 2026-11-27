@@ -17,7 +17,7 @@ const schemaJson = JSON.stringify({
   "@graph": [
     { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-512x512.png`, width: 512, height: 512 }, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "spinthewheelsonline@gmail.com", url: `${SITE_URL}/contact` } },
     { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, publisher: { "@id": `${SITE_URL}/#organization` } },
-    { "@type": "WebPage", "@id": `${SITE_URL}/terms-and-conditions#webpage`, name: "Terms and Conditions", url: `${SITE_URL}/terms-and-conditions`, description: "Terms and Conditions governing the use of Spin The Wheels Online.", dateModified: REVIEWED_ISO, inLanguage: "en", isPartOf: { "@id": `${SITE_URL}/#website` }, publisher: { "@id": `${SITE_URL}/#organization` }, breadcrumb: { "@id": `${SITE_URL}/terms-and-conditions#breadcrumbs` } },
+    { "@type": "WebPage", "@id": `${SITE_URL}/terms-and-conditions#webpage`, name: "Terms and Conditions – Spin The Wheels Online", url: `${SITE_URL}/terms-and-conditions`, description: "Terms and Conditions governing the use of Spin The Wheels Online, including permitted classroom and commercial uses, sweepstakes disclaimers, and embed guidelines.", dateModified: REVIEWED_ISO, inLanguage: "en", isPartOf: { "@id": `${SITE_URL}/#website` }, publisher: { "@id": `${SITE_URL}/#organization` }, breadcrumb: { "@id": `${SITE_URL}/terms-and-conditions#breadcrumbs` } },
     { "@type": "BreadcrumbList", "@id": `${SITE_URL}/terms-and-conditions#breadcrumbs`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` }, { "@type": "ListItem", position: 2, name: "Terms and Conditions", item: `${SITE_URL}/terms-and-conditions` }] }
   ]
 }).replace(/</g, "\\u003c");
@@ -29,7 +29,7 @@ const schemaJson = JSON.stringify({
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terms and Conditions – Spin The Wheels Online</title>
-  <meta name="description" content="Terms and Conditions of use for Spin The Wheels Online. Please read these terms before using our free online spin wheel tools." />
+  <meta name="description" content="Terms and Conditions of use for Spin The Wheels Online. Please read these terms before using our free online spin wheel tools, embeds, and guides." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href={`${SITE_URL}/terms-and-conditions`} />
   <link rel="icon" href="/favicon.ico" />
@@ -48,25 +48,56 @@ const schemaJson = JSON.stringify({
   <main class="container" style="max-width: 860px; padding: 48px 20px;">
     <article class="card" style="padding: clamp(24px, 5vw, 44px);">
       <h1 class="section-title" style="text-align: left; margin-bottom: 8px;">Terms and <span>Conditions</span></h1>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 24px;">Last Updated: November 24, 2026</p>
-      <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
-        Welcome to <strong>Spin The Wheels Online</strong>. By accessing or using <strong>https://spinthewheelsonline.com</strong>, you agree to these Terms and Conditions.
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 24px;">Effective Date: January 1, 2025 · Last Updated: November 28, 2026</p>
+      <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 20px;">
+        Welcome to <strong>Spin The Wheels Online</strong> ("we", "us", or "our"). By accessing or using <strong>https://spinthewheelsonline.com</strong>, including any of our <a href="/tools">69 specialized picker wheels</a>, localized international editions, shareable links, QR codes, iframe widgets, or <a href="/blogs">editorial guides</a>, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please discontinue use of the site.
       </p>
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">1. Permitted Use</h2>
-      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-        Spin The Wheels Online provides free browser-based wheel spinners for educational demonstrations, entertainment, classroom moderation, personal decision-making, and informal giveaways.
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">1. Permitted Educational, Personal &amp; Creator Use</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 14px;">
+        Spin The Wheels Online provides free, browser-based random selection utilities powered by the client-side Web Cryptography API (<code>window.crypto.getRandomValues()</code>). You are granted a non-exclusive, revocable license to use our wheels for:
       </p>
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">2. Sweepstakes, Giveaways &amp; Raffles Disclaimer</h2>
-      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-        While our tool uses browser Web Cryptography randomness, <strong>Spin The Wheels Online is not a gambling operator, lottery authority, or regulated sweepstakes administrator</strong>. Organizers running commercial giveaways or raffles remain solely responsible for local compliance, eligibility rules, and tax obligations.
+      <ul style="margin: 0 0 18px 24px; color: var(--text-secondary); line-height: 1.75;">
+        <li><strong>Classroom &amp; Academic Instruction:</strong> Projecting student pickers, vocabulary wheels, math probability demonstrations, and geography quizzes on interactive whiteboards, Chromebooks, or learning portals.</li>
+        <li><strong>Content Creation &amp; Livestreams:</strong> Displaying or embedding our wheels during live broadcasts, YouTube videos, Twitch streams, podcasts, or social media giveaway announcements.</li>
+        <li><strong>Workplace &amp; Event Facilitation:</strong> Running daily Agile standups, onboarding icebreakers, trade-show booth promotions, fantasy sports draft lotteries, and team-building sessions.</li>
+        <li><strong>Personal &amp; Household Decisions:</strong> Settling everyday choices, meal planning, chore rotations, and party games.</li>
+      </ul>
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">2. Prohibited Activities &amp; Acceptable Use</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 14px;">
+        To keep our platform safe for schools, families, and creators, you agree <strong>not</strong> to use Spin The Wheels Online to:
       </p>
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">3. Intellectual Property &amp; Disclaimer</h2>
-      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-        All original software, designs, and written editorial guides belong to Spin The Wheels Online. The service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind.
+      <ul style="margin: 0 0 18px 24px; color: var(--text-secondary); line-height: 1.75;">
+        <li>Operate or promote unlawful real-money gambling, unlicensed wagering, or deceptive lottery schemes.</li>
+        <li>Encode, distribute, or share <code>?w=</code> wheel URLs containing hate speech, harassment, personally identifiable confidential records (such as government IDs, passwords, or medical records), defamatory statements, or illegal content.</li>
+        <li>Scrape, clone, frame-hijack, or redistribute our proprietary source code, editorial articles, or custom illustrations without written permission (standard iframe embedding via our official <code>?embed=1</code> widget snippet with intact attribution is expressly permitted).</li>
+        <li>Attempt to disrupt our edge CDN infrastructure, contact API endpoints, or security controls.</li>
+      </ul>
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">3. Sweepstakes, Giveaways &amp; Raffles Disclaimer</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+        While our wheel engine utilizes browser Web Cryptography randomness with rejection sampling to ensure mathematical fairness across slices, <strong>Spin The Wheels Online is a software utility provider—not a gambling operator, lottery authority, escrow agent, or regulated sweepstakes administrator</strong>. Organizers using our <a href="/raffle-wheel">Raffle Wheel</a>, <a href="/prize-wheel">Prize Wheel</a>, or CSV export logs to draw winners for commercial promotions, charity fundraisers, or social media contests remain solely responsible for verifying entrant eligibility, publishing official contest rules, complying with local sweepstakes laws, and fulfilling prizes.
       </p>
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">4. Contact</h2>
-      <p style="color: var(--text-secondary); line-height: 1.7;">
-        Questions regarding these Terms may be directed to <a href="mailto:spinthewheelsonline@gmail.com">spinthewheelsonline@gmail.com</a>.
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">4. Local Browser Storage &amp; User Data Responsibility</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+        As detailed in our <a href="/privacy-policy">Privacy Policy</a>, custom wheel entries and saved lists are stored strictly in your own browser's <code>localStorage</code> and are never backed up to our servers. Consequently, clearing your browser cache, using private/incognito windows, or switching devices will reset unsaved local lists. We recommend bookmarking a <em>Share Wheel</em> URL or exporting a CSV log for any critical roster you wish to preserve long-term.
+      </p>
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">5. No Medical, Legal, or Financial Advice</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+        All decision spinners (including the <a href="/yes-no-wheel">Yes or No Wheel</a>, <a href="/decision-wheel">Decision Wheel</a>, and <a href="/tarot-wheel">Tarot Card Wheel</a>) and all written guides on this website are provided strictly for informational, educational, and entertainment purposes. Never rely on a random spinner for medical, legal, financial, safety, or high-stakes life decisions.
+      </p>
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">6. Intellectual Property, Warranty Disclaimer &amp; Limitation of Liability</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+        All original software code, visual designs, logos, reference tables, and editorial articles on Spin The Wheels Online are protected by copyright and intellectual property laws. Trademarks referenced in educational or pop-culture wheels (such as league franchise names or video game titles) belong to their respective owners and are used strictly for descriptive, non-affiliated reference purposes. The service is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, express or implied. Under no circumstances shall Spin The Wheels Online or its contributors be liable for any direct, indirect, incidental, or consequential damages arising from your use of the website.
+      </p>
+
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 28px 0 10px; color: var(--text-primary);">7. Contact Information</h2>
+      <p style="color: var(--text-secondary); line-height: 1.75;">
+        Questions regarding these Terms and Conditions may be directed to our team via our <a href="/contact">Contact page</a> or by emailing <a href="mailto:spinthewheelsonline@gmail.com">spinthewheelsonline@gmail.com</a>.
       </p>
     </article>
   </main>

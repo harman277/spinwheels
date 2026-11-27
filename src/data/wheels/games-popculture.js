@@ -793,26 +793,88 @@ export default {
 
   "nba-player-spin-the-wheel": {
     name: "NBA Player Spin the Wheel",
-    title: "NBA Player Spin the Wheel | 2K Draft & Trivia Spinner",
-    description: "Spin for NBA superstars, All-Time GOAT legends, sharpshooters, or young stars! Built for NBA 2K blacktop drafts, Immaculate Grid practice, and basketball trivia.",
-    keywords: "nba player spin the wheel, random nba player generator, nba 2k draft wheel, basketball player spinner, nba goats wheel",
+    title: "NBA Player Spin the Wheel | Random NBA Players (Active & GOATs)",
+    description: "Spin the NBA Player Wheel featuring active NBA superstars and retired GOAT legends! Perfect for NBA 2K Blacktop drafts, Start/Bench/Cut, and build-a-player games.",
+    keywords: "nba player spin the wheel, random nba player generator, spin the wheel active and retired nba players, nba players wheel, spin the wheel to build your nba player, every nba player spin the wheel, nba 2k draft wheel",
     heroTitle: "NBA Player Spin the Wheel",
-    heroHighlight: "2K Blacktop, All-Time Legends & Trivia Wheel",
-    heroSubtitle: "Draft wild NBA 2K Blacktop trios, settle GOAT debates, or spin mystery stars for basketball trivia and Immaculate Grid drills.",
-    quickAnswer: "<strong>What is the NBA Player Spin the Wheel?</strong> A basketball randomizer loaded with modern NBA MVP contenders plus presets for All-Time Legends (Jordan, Kobe, Magic, Bird, Shaq), Elite 3-Point Shooters, and NBA Franchises. Players spin it for 2K Blacktop drafts, 'Start / Bench / Cut' challenges, and trivia.",
+    heroHighlight: "Active NBA Stars, Retired Legends & Build-a-Player Spinner",
+    heroSubtitle: "Spin active NBA All-Stars across all 30 franchises, retired Hall-of-Fame GOATs, or Build-Your-NBA-Player attribute wheels for NBA 2K Blacktop drafts, Start/Bench/Cut, and Immaculate Grid drills.",
+    quickAnswer: "<strong>What is the NBA Player Spin the Wheel?</strong> A comprehensive basketball player randomizer preloaded with 30+ active NBA superstars plus one-click presets for Active + Retired All-Time Legends (Jordan, LeBron, Kobe, Steph, Magic, Bird, Shaq, Duncan, Kareem), Build Your NBA Player (Signature Moves & Traits), Elite 3-Point Shooters, and all 30 NBA Franchises.",
     ogImage: "eng-sport-picker-wheel.webp",
     category: "Gaming & Pop Culture",
     items: [
       "LeBron James 👑", "Stephen Curry 🎯", "Nikola Jokić 🃏",
       "Giannis Antetokounmpo 🦌", "Luka Dončić 🪄", "Shai Gilgeous-Alexander ⚡",
       "Jayson Tatum ☘️", "Kevin Durant 🐍", "Victor Wembanyama 👽",
-      "Anthony Edwards 🐜", "Joel Embiid 🔔", "Anthony Davis 🛡️"
+      "Anthony Edwards 🐜", "Joel Embiid 🔔", "Anthony Davis 🛡️",
+      "Jalen Brunson 🗽", "Devin Booker ☀️", "Donovan Mitchell 🕷️",
+      "Ja Morant 🥷", "Tyrese Haliburton ⏱️", "Damian Lillard ⌚",
+      "Jaylen Brown ☘️", "Kawhi Leonard 🖐️", "De'Aaron Fox 🦊",
+      "Jimmy Butler ☕", "Kyrie Irving 🪄", "Paolo Banchero 🪄",
+      "Chet Holmgren 🦄", "Trae Young ❄️", "Domantas Sabonis 💪",
+      "Bam Adebayo 🔥", "LaMelo Ball 🛸", "Zion Williamson 💥"
     ],
     presets: {
-      superstars: { label: "Current MVP & All-NBA Tier", items: ["Nikola Jokić 🃏", "Shai Gilgeous-Alexander ⚡", "Giannis Antetokounmpo 🦌", "Luka Dončić 🪄", "Jayson Tatum ☘️", "LeBron James 👑", "Stephen Curry 🎯", "Anthony Edwards 🐜", "Victor Wembanyama 👽", "Kevin Durant 🐍"] },
-      goats: { label: "All-Time Legends (90s–2010s)", items: ["Michael Jordan 🐐", "LeBron James 👑", "Kobe Bryant 🐍", "Kareem Abdul-Jabbar 🥽", "Magic Johnson ✨", "Larry Bird ☘️", "Shaquille O'Neal 💥", "Tim Duncan 🛡️", "Hakeem Olajuwon 🌙", "Allen Iverson ⚡"] },
-      shooters: { label: "Deadly 3-Point Shooters", items: ["Stephen Curry 🎯", "Klay Thompson 🏹", "Ray Allen 🎯", "Reggie Miller 🔥", "Damian Lillard ⌚", "Devin Booker ☀️", "Larry Bird ☘️", "Kyrie Irving 🪄"] },
-      startbenchcut: { label: "30 NBA Teams Wheel", items: ["Boston Celtics", "Denver Nuggets", "Golden State Warriors", "LA Lakers", "Milwaukee Bucks", "New York Knicks", "OKC Thunder", "Miami Heat", "Dallas Mavericks", "San Antonio Spurs", "Philadelphia 76ers", "Minnesota Timberwolves"] }
+      superstars: {
+        label: "Active NBA Stars (30 Players)",
+        items: [
+          "Nikola Jokić 🃏", "Shai Gilgeous-Alexander ⚡", "Giannis Antetokounmpo 🦌", "Luka Dončić 🪄",
+          "Jayson Tatum ☘️", "LeBron James 👑", "Stephen Curry 🎯", "Anthony Edwards 🐜",
+          "Victor Wembanyama 👽", "Kevin Durant 🐍", "Joel Embiid 🔔", "Anthony Davis 🛡️",
+          "Jalen Brunson 🗽", "Devin Booker ☀️", "Donovan Mitchell 🕷️", "Ja Morant 🥷",
+          "Tyrese Haliburton ⏱️", "Damian Lillard ⌚", "Jaylen Brown ☘️", "Kawhi Leonard 🖐️",
+          "De'Aaron Fox 🦊", "Jimmy Butler ☕", "Kyrie Irving 🪄", "Paolo Banchero 🪄",
+          "Chet Holmgren 🦄", "Trae Young ❄️", "Domantas Sabonis 💪", "Bam Adebayo 🔥",
+          "LaMelo Ball 🛸", "Zion Williamson 💥"
+        ]
+      },
+      goats: {
+        label: "Active & Retired NBA Legends (40 GOATs)",
+        items: [
+          "Michael Jordan 🐐", "LeBron James 👑", "Kobe Bryant 🐍", "Kareem Abdul-Jabbar 🥽",
+          "Magic Johnson ✨", "Larry Bird ☘️", "Shaquille O'Neal 💥", "Tim Duncan 🛡️",
+          "Stephen Curry 🎯", "Hakeem Olajuwon 🌙", "Wilt Chamberlain 💯", "Bill Russell 💍",
+          "Nikola Jokić 🃏", "Giannis Antetokounmpo 🦌", "Kevin Durant 🐍", "Dirk Nowitzki 🇩🇪",
+          "Dwyane Wade ⚡", "Allen Iverson 🎧", "Charles Barkley 🏀", "Karl Malone 📬",
+          "Julius Erving (Dr. J) ✈️", "Moses Malone 🏆", "Oscar Robertson  triple", "Jerry West LOGO",
+          "Kevin Garnett 🐺", "David Robinson ⚓", "Scottie Pippen 🛡️", "Isiah Thomas 活塞",
+          "Steve Nash 🇨🇦", "Jason Kidd 🧠", "Chris Paul Point", "James Harden 🧔",
+          "Russell Westbrook 🚀", "Kawhi Leonard 🖐️", "Vince Carter 🦅", "Tracy McGrady ⏱️",
+          "Reggie Miller 🔥", "Ray Allen 🎯", "Patrick Ewing 🗽", "Paul Pierce ☘️"
+        ]
+      },
+      buildplayer: {
+        label: "Build Your NBA Player (Moves & Traits)",
+        items: [
+          "Curry 3-Point Range 🎯", "LeBron Court Vision & IQ 🧠", "Jordan Mid-Range Fadeaway 🐐",
+          "Kyrie Ball-Handling Package 🪄", "Wembanyama 8-Foot Wingspan & Rim Protection 👽",
+          "Shaq Paint Dominance & Strength 💥", "Kobe Footwork & Mamba Clutch Gene 🐍",
+          "Jokić Touch Pass & Post Playmaking 🃏", "Giannis Eurostep & Transition Speed 🦌",
+          "Vince Carter 43-Inch Vertical Leap 🦅", "Kawhi Perimeter Lockdown Clamps 🖐️",
+          "Ja Morant Hang-Time Acrobatics 🥷", "Luka Step-Back & Pace Control 🪄",
+          "Dennis Rodman Relentless Rebounding 🪱", "Damian Lillard Logo Dame-Time Clutch ⌚",
+          "Allen Iverson Killer Crossover ⚡"
+        ]
+      },
+      shooters: {
+        label: "Deadly 3-Point Shooters",
+        items: [
+          "Stephen Curry 🎯", "Klay Thompson 🏹", "Ray Allen 🎯", "Reggie Miller 🔥",
+          "Damian Lillard ⌚", "Devin Booker ☀️", "Larry Bird ☘️", "Kyrie Irving 🪄",
+          "Dirk Nowitzki 🇩🇪", "James Harden 🧔", "Peja Stojaković 🇷🇸", "Kyle Korver 🎯"
+        ]
+      },
+      startbenchcut: {
+        label: "All 30 NBA Franchises",
+        items: [
+          "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls",
+          "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors",
+          "Houston Rockets", "Indiana Pacers", "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies",
+          "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks",
+          "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers",
+          "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"
+        ]
+      }
     },
     howTo: {
       title: "How to Draft NBA 2K Squads & Start/Bench/Cut Games",
@@ -875,25 +937,67 @@ export default {
 
   "dandy-world-wheel-spinner": {
     name: "Dandy's World Wheel Spinner",
-    title: "Dandy's World Wheel Spinner | Toons & Challenges Picker",
-    description: "Spin the Dandy's World Wheel for random Roblox Toons (Dandy, Astro, Pebble, Vee, Sprout, Shelly), Twisted threats, Trinkets, and fun solo/squad challenge runs.",
-    keywords: "dandy's world wheel spinner, dandys world toon wheel, random dandy's world character, dandy's world challenge wheel, roblox dandy's world",
+    title: "Dandy's World Wheel Spinner | All Toons & Trinkets (Updated)",
+    description: "Spin the updated Dandy's World Wheel for all Toons, Main Characters, Trinkets, Twisted bosses, and Roblox challenge runs (Astro, Pebble, Vee, Sprout, Shelly).",
+    keywords: "dandy's world wheel spinner, dandys world toon wheel, dandys world trinket wheel, dandys world trinket wheel updated, all dandys world characters spin the wheel, dandy's world wheel with main characters, dandys world challenges spin the wheel",
     heroTitle: "Dandy's World Wheel Spinner",
-    heroHighlight: "Random Toons, Trinkets & Run Challenges",
-    heroSubtitle: "Shake up your next Roblox Dandy's World elevator run! Spin random Toons, Twisted bosses, Trinket combos, or wild floor challenge rules with friends.",
-    quickAnswer: "<strong>What is the Dandy's World Wheel Spinner?</strong> A community-favorite Roblox Dandy's World randomizer for choosing your next playable Toon (Astro, Pebble, Vee, Sprout, Shelly, Cosmo, Goob, and more), rolling Trinket loadouts, or spinning wacky self-imposed elevator run challenges with your squad.",
+    heroHighlight: "All Toons, Main Characters, Trinkets (Updated) & Challenges",
+    heroSubtitle: "Shake up your next Roblox Dandy's World elevator run! Spin all 27+ updated Toons, Main Characters only, all 24+ Trinkets, Twisted threats, or wild elevator challenge rules with friends.",
+    quickAnswer: "<strong>What is the Dandy's World Wheel Spinner?</strong> An updated Roblox Dandy's World randomizer preloaded with all 27+ playable Toons (Astro, Pebble, Vee, Sprout, Shelly, Bobette, Cosmo, Goob, Gigi, Connie, Looey, Glisten, Flutter, Finn, Teagan, Rodger, Toodles, Razzle & Dazzle, Scraps, Brightney, Tisha, Boxten, Poppy, Shrimpo, Rudie, Ginger, Coal), plus dedicated presets for Main Characters Only, All 24+ Trinkets (Updated), Twisted Survival Threats, and Elevator Run Challenges.",
     ogImage: "eng-spin-the-wheel-picker.webp",
     category: "Gaming & Pop Culture",
     items: [
-      "Astro 🌙", "Pebble 🪨", "Vee 📺", "Sprout 🍓", "Shelly 🐚",
-      "Cosmo 🧁", "Goob 🫂", "Scraps 🐱", "Boxten 📦", "Poppy 🎈",
-      "Tisha 🧻", "Brightney 💡", "Rodger 🔍", "Glisten 🪞"
+      "Astro 🌙 (Main)", "Pebble 🪨 (Main)", "Vee 📺 (Main)", "Sprout 🍓 (Main)", "Shelly 🐚 (Main)", "Bobette 🎁 (Main)",
+      "Cosmo 🧁", "Goob 🫂", "Scraps 🐱", "Gigi 🎰", "Connie 👻", "Looey 🎈",
+      "Glisten 🪞", "Flutter 🦋", "Finn 🐟", "Teagan ☕", "Rodger 🔍", "Toodles 🎱",
+      "Razzle & Dazzle 🎭", "Brightney 💡", "Tisha 🧻", "Boxten 📦", "Poppy 🫧", "Shrimpo 🦐",
+      "Rudie 🦌", "Ginger 🍪", "Coal 🪨"
     ],
     presets: {
-      toons: { label: "Popular Playable Toons", items: ["Astro 🌙", "Pebble 🪨", "Vee 📺", "Sprout 🍓", "Shelly 🐚", "Cosmo 🧁", "Goob 🫂", "Tisha 🧻", "Boxten 📦", "Poppy 🎈", "Rodger 🔍", "Flutter 🦋"] },
-      challenges: { label: "Elevator Run Challenges", items: ["Starter Toons Only! 🎈", "Zero Sprint Run 🚶", "No Medkits / Healing 🚫", "Random Trinkets Only 🎲", "Distractor Role Forced ⚡", "Max Stealth Strategy 🤫", "Buy Everything From Dandy 🌻"] },
-      trinkets: { label: "Trinket & Item Picks", items: ["Veemote 📺", "Dog Plush 🐶", "Speedy Shoes 👟", "Magnifying Glass 🔍", "Participation Award 🏆", "Pink Bow 🎀", "Savory Charm ✨", "Wrench 🔧"] },
-      twisted: { label: "Twisted Survival Threats", items: ["Twisted Dandy 🌻⚠️", "Twisted Pebble 🪨", "Twisted Astro 🌑", "Twisted Vee ⚡", "Twisted Sprout 🥀", "Twisted Shelly 🐚", "Twisted Goob 🫂"] }
+      toons: {
+        label: "All 27 Playable Toons (Updated)",
+        items: [
+          "Astro 🌙 (Main)", "Pebble 🪨 (Main)", "Vee 📺 (Main)", "Sprout 🍓 (Main)", "Shelly 🐚 (Main)", "Bobette 🎁 (Main)",
+          "Cosmo 🧁", "Goob 🫂", "Scraps 🐱", "Gigi 🎰", "Connie 👻", "Looey 🎈",
+          "Glisten 🪞", "Flutter 🦋", "Finn 🐟", "Teagan ☕", "Rodger 🔍", "Toodles 🎱",
+          "Razzle & Dazzle 🎭", "Brightney 💡", "Tisha 🧻", "Boxten 📦", "Poppy 🫧", "Shrimpo 🦐",
+          "Rudie 🦌", "Ginger 🍪", "Coal 🪨"
+        ]
+      },
+      mains: {
+        label: "Main Characters Only (Mains + Dandy)",
+        items: [
+          "Astro 🌙", "Pebble 🪨", "Vee 📺", "Sprout 🍓", "Shelly 🐚", "Bobette 🎁", "Dandy 🌻"
+        ]
+      },
+      trinkets: {
+        label: "All 24 Trinkets Wheel (Updated)",
+        items: [
+          "Veemote 📺", "Dog Plush 🐶", "Speedy Shoes 👟", "Magnifying Glass 🔍",
+          "Participation Award 🏆", "Pink Bow 🎀", "Savory Charm ✨", "Wrench 🔧",
+          "Bone 🦴", "Night Cap 🌙", "Astro's Blanket 🛌", "Dandy Plush 🌻",
+          "Ribbon Spool 🧵", "Crayon Set 🖍️", "Diary 📔", "Feather Duster 🪶",
+          "Fancy Purse 👛", "Lucky Coin 🪙", "Coin Purse 💰", "Thinking Cap 🧠",
+          "Water Cooler 💧", "Ghost Snakes in a Can 🐍", "Cardboard Armor 🛡️", "Peppermint Icing 🍬"
+        ]
+      },
+      challenges: {
+        label: "Elevator Run Challenges",
+        items: [
+          "Starter Toons Only (Boxten/Poppy)! 🎈", "Zero Sprint Run 🚶", "No Medkits or Bandages 🚫",
+          "Random 2-Trinket Loadout Only 🎲", "Distractor Role Forced ⚡", "Max Stealth Strategy 🤫",
+          "Buy Everything From Dandy's Shop 🌻", "Ignore Dandy's Shop (Summon Twisted Dandy!) ⚠️",
+          "Shrimpo Solo Survival Challenge 🦐", "No Ability Usage on Odd Floors 🔒"
+        ]
+      },
+      twisted: {
+        label: "Twisted Survival Threats",
+        items: [
+          "Twisted Dandy 🌻⚠️", "Twisted Pebble 🪨", "Twisted Astro 🌑", "Twisted Vee ⚡",
+          "Twisted Sprout 🥀", "Twisted Shelly 🐚", "Twisted Bobette 🎁", "Twisted Goob 🫂",
+          "Twisted Scraps 🐱", "Twisted Gigi 🎰", "Twisted Glisten 🪞", "Twisted Rodger 🔍"
+        ]
+      }
     },
     howTo: {
       title: "How to Run Randomizer Elevator Squads in Dandy's World",
